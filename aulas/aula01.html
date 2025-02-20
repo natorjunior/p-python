@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Aula 01 - Introdução ao Python. Apresentação com os conceitos fundamentais da linguagem Python.">
+  <title>Aula 01 - Introdução ao Python</title>
+
+  <!-- Google Fonts para melhor tipografia -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+
+  <!-- Reveal.js -->
+  <link rel="stylesheet" href="./dist/reveal.css">
+  <link rel="stylesheet" href="./dist/theme/white.css" id="theme">
+
+  <!-- Tema para código -->
+  <link rel="stylesheet" href="./plugin/highlight/atom-one-dark.css">
+
+  <!-- Estilos personalizados -->
+  <style>
+    :root {
+      --primary-color: #0056b3;
+      --secondary-color: #333;
+      --light-bg: #f3f3f3;
+      --accent-bg: #e1f5fe;
+      --code-bg: #222;
+      --transition-fragment: 0.3s ease;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .reveal h1,
+    .reveal h2 {
+      color: var(--primary-color);
+    }
+
+    .reveal p {
+      font-size: 1.1em;
+      color: var(--secondary-color);
+    }
+
+    .subtitle {
+      color: #888;
+      font-size: 0.9em;
+      margin-top: -10px;
+    }
+
+    .reveal pre code {
+      font-size: 1em;
+      background: var(--code-bg);
+      border-radius: 8px;
+      padding: 10px;
+    }
+
+    .fragment {
+      transition: all var(--transition-fragment);
+    }
+
+    /* Classes de fundo para os slides */
+    .bg-light {
+      background-color: var(--light-bg) !important;
+      color: var(--secondary-color);
+    }
+
+    .bg-accent {
+      background-color: var(--accent-bg) !important;
+      color: var(--secondary-color);
+    }
+
+    .bg-green {
+      background-color: #a5d6a7 !important;
+      color: #fff;
+    }
+
+    .bg-yellow {
+      background-color: #ffd54f !important;
+      color: var(--secondary-color);
+    }
+
+    .bg-purple {
+      background-color: #b39ddb !important;
+      color: #fff;
+    }
+
+    .bg-gray {
+      background-color: #e0e0e0 !important;
+      color: var(--secondary-color);
+    }
+
+    /* Ajustes responsivos */
+    @media (max-width: 768px) {
+      .reveal h2 {
+        font-size: 1.8em;
+      }
+
+      .reveal p {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <!-- Slide 1 - Título -->
+      <section data-align="center" data-background-gradient="radial-gradient(#283b95, #17b2c3)">
+        <br><br><br><br>
+        <h4 style="color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);">
+          Aula 01 - Introdução à Programação em Python
+        </h4>
+        <p style="color: white; font-size: .5em; font-weight: 300; margin-top: 10px;">
+          Prof. Msc. Nator Junior Carvalho da Costa
+        </p>
+
+        <h1>🐍</h1>
+
+      </section>
+
+      <section>
+
+        <section>
+          <h2>Por que Python?</h2>
+          <ul class="fragment">
+            <li>Fácil de ler e escrever</li>
+            <li>Ampla comunidade e bibliotecas</li>
+            <li>Multiplataforma</li>
+            <li>Aplicável em ciência de dados, web, automação e muito mais</li>
+          </ul>
+        </section>
+        <!-- Slide 4: Instalação -->
+        <section>
+          <h2>Instalação do Python</h2>
+          <p class="fragment">Baixe e instale o Python pelo site oficial:</p>
+          <p class="fragment"><a href="https://www.python.org/downloads/" target="_blank">python.org/downloads/</a></p>
+          <p class="fragment">Após a instalação, verifique a versão com (bash):</p>
+          <pre class="fragment"><code data-trim data-noescape>python --version</code></pre>
+        </section>
+      </section>
+      <!-- Slide 2: Objetivos -->
+      <section class="bg-accent">
+        <h2>Objetivos de Aprendizagem</h2>
+        <ul class="fragment">
+          <li>Compreender o que é Python e seus principais usos</li>
+          <li>Instalar e configurar o ambiente de desenvolvimento</li>
+          <li>Conceitos fundamentais: variáveis, operadores, condicionais, loops e funções</li>
+        </ul>
+      </section>
+
+      <!-- Slide 3: O que é Python -->
+      <section>
+        <h2>O que é Python?</h2>
+        <!-- <p class="fragment">Python é uma linguagem de programação de alto nível, dinâmica e versátil, utilizada em -->
+          <!-- diversas áreas.</p> -->
+        <!-- <p class="fragment">Criada por Guido van Rossum em 1991, destaca-se pela legibilidade e simplicidade.</p> -->
+        <br><br><br>
+        <p class="fragment">É aplicada em desenvolvimento web, ciência de dados, automação, IA, entre outros.</p>
+      </section>
+
+
+
+      <!-- Slide 5: Primeiro Programa -->
+      <section class="bg-light">
+        <h2>Primeiro Programa</h2>
+        <br><br><br>
+        <p class="fragment">Vamos iniciar com o clássico "Olá, mundo!"</p>
+        <pre class="fragment"><code data-trim data-noescape>print("Olá, mundo!")</code></pre>
+      </section>
+
+      <!-- Slide 6: Variáveis e Tipos (Teoria) -->
+      <section>
+        <h2>Variáveis e Tipos</h2>
+        <p class="fragment">Em Python, variáveis armazenam dados e podem ter diferentes tipos:</p>
+        <ul class="fragment">
+          <li><strong>str</strong> - Cadeia de caracteres</li>
+          <li><strong>int</strong> - Números inteiros</li>
+          <li><strong>float</strong> - Números decimais</li>
+          <li><strong>bool</strong> - Booleanos (True/False)</li>
+        </ul>
+        <p class="fragment">Exemplo de declaração de variáveis:</p>
+        <pre class="fragment"><code data-trim data-noescape>
+nome = "Alice"
+idade = 25
+altura = 1.68
+ativo = True
+        </code></pre>
+      </section>
+
+      <!-- Slide 7: Variáveis e Tipos - Atividade Prática -->
+      <section class="bg-accent">
+        <h5>Atividade Prática: Variáveis e Tipos</h5>
+        <p class="fragment">Crie um programa que:</p>
+        <ul class="fragment">
+          <li>Peça ao usuário seu nome, idade, altura e status (ativo/inativo)</li>
+          <li>Exiba os valores informados e seus respectivos tipos usando <code>type()</code></li>
+          <br><br>
+        Exemplo:
+        </ul>
+        
+        <pre class="fragment"><code data-trim data-noescape>
+          idade = int(input("Digite a idade: "))</code></pre>
+      </section>
+      
+      <section class="bg-accent">
+        <h5>Atividade Prática: Cálculos Simples</h5>
+        <p class="fragment">Crie um programa que:</p>
+        <ul class="fragment">
+          <li>Solicite ao usuário o raio de um círculo e calcule sua área (<code>π * r²</code>)</li>
+          <li>Solicite três números ao usuário e calcule a média aritmética</li>
+          <br><br>
+        Exemplo:
+        </ul>
+        
+        <pre class="fragment"><code data-trim data-noescape>
+          raio = float(input("Digite raio: "))</code></pre>
+      </section>
+      
+
+      <!-- Slide 8: Operadores: Relacionais, Lógicos e Aritméticos (Teoria) -->
+      <section>
+        <h2>Operadores em Python</h2>
+        <p class="fragment">Python utiliza diferentes operadores para realizar operações:</p>
+        <ul class="fragment">
+          <li><strong>Aritméticos:</strong> <code>+, -, *, /, %</code></li>
+          <li><strong>Relacionais:</strong> <code>==, !=, &gt;, &lt;, &gt;=, &lt;=</code></li>
+          <li><strong>Lógicos:</strong> <code>and, or, not</code></li>
+        </ul>
+        <p class="fragment">Exemplo:</p>
+        <pre class="fragment"><code data-trim data-noescape>
+a = 10
+b = 5
+print(a + b)            # Soma
+print(a > b)            # Comparação
+print(a > b and b < 20)   # Operador lógico
+        </code></pre>
+      </section>
+
+      <!-- Slide 9: Operadores - Atividade Prática -->
+      <section class="bg-green">
+        <h2>Atividade Prática: Operadores</h2>
+        <p class="fragment">Crie um programa que:</p>
+        <ul class="fragment">
+          <li>Solicite dois números ao usuário</li>
+          <li>Verifique se o primeiro número é maior, menor ou igual ao segundo</li>
+          <li>Realize e exiba as operações de soma, subtração, multiplicação e divisão</li>
+        </ul>
+      </section>
+
+      <!-- Slide 10: Estruturas Condicionais (Teoria) -->
+      <section>
+        <h2>Estruturas Condicionais</h2>
+        <p class="fragment">As estruturas condicionais permitem executar blocos de código com base em condições.</p>
+        <p class="fragment">Exemplo com <code>if/elif/else</code>:</p>
+        <pre class="fragment"><code data-trim data-noescape>
+idade = 18
+if idade >= 18:
+    print("Maior de idade")
+elif idade == 18:
+    print("Exatamente 18 anos")
+else:
+    print("Menor de idade")
+        </code></pre>
+      </section>
+
+      <!-- Slide 11: Estruturas Condicionais - Atividade Prática -->
+      <section class="bg-yellow">
+        <h2>Atividade Prática: Condicionais</h2>
+        <p class="fragment">Crie um programa que:</p>
+        <ul class="fragment">
+          <li>Peça a idade do usuário</li>
+          <li>Exiba "Maior de idade" se for 18 anos ou mais; caso contrário, exiba "Menor de idade"</li>
+        </ul>
+      </section>
+
+      <!-- Slide 12: Laços de Repetição (Teoria) -->
+      <section>
+        <h2>Laços de Repetição</h2>
+        <p class="fragment">Os laços permitem executar um bloco de código diversas vezes. O <code>for</code> é comumente
+          usado para iterar sobre sequências.</p>
+        <p class="fragment">Exemplo:</p>
+        <pre class="fragment"><code data-trim data-noescape>
+for i in range(1, 6):
+    print(f"Número: {i}")
+        </code></pre>
+      </section>
+
+      <!-- Slide 13: Laços de Repetição - Atividade Prática -->
+      <section class="bg-purple">
+        <h2>Atividade Prática: Laços de Repetição</h2>
+        <p class="fragment">Crie um programa que:</p>
+        <ul class="fragment">
+          <li>Utilize um loop <code>for</code> para imprimir a tabuada do 2 (de 1 a 10)</li>
+        </ul>
+      </section>
+
+      <!-- Slide 14: Funções (Teoria) -->
+      <section>
+        <h2>Funções em Python</h2>
+        <p class="fragment">Funções permitem organizar o código em blocos reutilizáveis.</p>
+        <p class="fragment">Exemplo de definição e chamada:</p>
+        <pre class="fragment"><code data-trim data-noescape>
+def saudacao(nome):
+    return f"Olá, {nome}!"
+
+print(saudacao("Alice"))
+        </code></pre>
+      </section>
+
+      <!-- Slide 15: Funções - Atividade Prática -->
+      <section class="bg-gray">
+        <h2>Atividade Prática: Funções</h2>
+        <p class="fragment">Crie um programa que:</p>
+        <ul class="fragment">
+          <li>Defina uma função para calcular o fatorial de um número</li>
+          <li>Solicite um número ao usuário e exiba seu fatorial</li>
+        </ul>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Scripts Reveal.js -->
+  <script src="./dist/reveal.js"></script>
+  <script src="./plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({
+      center: false,
+      controls: true,
+      progress: true,
+      slideNumber: true,
+      history: true,
+      transition: 'convex',
+      plugins: [RevealHighlight]
+    });
+  </script>
+</body>
+
+</html>

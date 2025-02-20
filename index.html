@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Programação em Python</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    #sidebar {
+      transition: transform 0.3s ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
+
+  <header class="relative">
+    <div class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 py-8 px-4 md:py-12 text-center text-white">
+      <button 
+        class="absolute left-4 top-6 md:hidden bg-gray-700 hover:bg-gray-600 p-2 rounded focus:outline-none"
+        onclick="toggleSidebar()" 
+        aria-label="Abrir Menu">
+        <span class="block w-6 h-0.5 bg-white mb-1"></span>
+        <span class="block w-6 h-0.5 bg-white mb-1"></span>
+        <span class="block w-6 h-0.5 bg-white"></span>
+      </button>
+      <h1 class="text-3xl md:text-4xl font-bold">Disciplina de Programação em Python</h1>
+      <p class="text-lg md:text-xl mt-2 opacity-90">Fundamentos e aplicações práticas</p>
+    </div>
+  </header>
+
+  <div class="flex flex-1">
+    <aside 
+      id="sidebar" 
+      class="fixed md:static inset-y-0 left-0 z-30 w-64 bg-gray-800 shadow-md border-r border-gray-700 transform -translate-x-full md:translate-x-0 p-6">
+      <div class="mt-8">
+        <h2 class="text-xl font-semibold text-gray-100">Sobre</h2>
+        <div class="flex items-center my-4 space-x-4">
+          <img 
+            src="https://avatars.githubusercontent.com/u/51802728?v=4" 
+            alt="Foto do Professor" 
+            class="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover shadow-md" />
+          <div>
+            <h3 class="text-md md:text-lg font-semibold text-gray-200 leading-tight">Prof. Msc. Nator Junior</h3>
+            <p class="text-xs md:text-sm text-gray-400">
+              Mestre em Ciência da Computação,<br />
+              <strong>Algoritmos, Otimização e IA</strong>.
+            </p>
+          </div>
+        </div>
+      </div>
+      <hr class="my-4 border-gray-700" />
+
+      <nav>
+        <h2 class="text-xl font-semibold text-gray-100">Menu</h2>
+        <ul class="mt-3 space-y-2">
+          <li><a href="#" class="block py-2 px-3 rounded text-gray-300 hover:text-gray-900 hover:bg-green-400 transition-colors">Início</a></li>
+          <li><a href="#" class="block py-2 px-3 rounded text-gray-300 hover:text-gray-900 hover:bg-green-400 transition-colors">Sobre</a></li>
+          <li><a href="#" class="block py-2 px-3 rounded text-gray-300 hover:text-gray-900 hover:bg-green-400 transition-colors">Contato</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="flex-1 ml-0 md:ml-1 p-6 space-y-6">
+      <section class="bg-gray-800 p-6 rounded-lg shadow-lg">
+        <h2 class="text-2xl font-semibold text-gray-100 mb-4">Sobre a Disciplina</h2>
+        <p class="text-gray-300 leading-relaxed text-justify">
+          Nesta disciplina, você aprenderá os conceitos fundamentais de <span class="font-semibold text-gray-100">programação em Python</span>.
+          Exploraremos desde a sintaxe básica até tópicos avançados.
+        </p>
+      </section>
+
+      <section class="bg-gray-800 p-6 rounded-lg shadow-lg">
+        <h2 class="text-2xl font-semibold text-gray-100 mb-4">Aulas Disponíveis</h2>
+        <ul id="aulas-list" class="space-y-3">
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <footer class="bg-gray-800 text-gray-400 text-center py-4 mt-8 border-t border-gray-700">
+    <p class="text-sm">&copy; 2025 | Programação em Python - Prof. Nator Junior. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById("sidebar").classList.toggle("-translate-x-full");
+    }
+    
+    document.addEventListener("DOMContentLoaded", async function() {
+      const listaAulas = document.getElementById("aulas-list");
+      try {
+        const response = await fetch('./aulas/aulas.json');
+        if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
+        const aulas = await response.json();
+        if (!aulas || !Array.isArray(aulas) || aulas.length === 0) {
+          listaAulas.innerHTML = '<p class="text-gray-400 text-justify">Nenhuma aula disponível no momento.</p>';
+          return;
+        }
+        aulas.forEach((aula, index) => {
+          const li = document.createElement("li");
+          li.innerHTML = `<a href="${aula.link}" class="block p-4 bg-green-500 text-gray-900 rounded-lg hover:bg-green-400 transition-colors text-center font-semibold">🐍 ${aula.titulo || 'Aula ' + (index + 1)}</a>`;
+          listaAulas.appendChild(li);
+        });
+      } catch (error) {
+        console.error("Erro ao carregar aulas: ", error);
+        listaAulas.innerHTML = '<p class="text-red-500 text-justify">Erro ao carregar aulas.</p>';
+      }
+    });
+  </script>
+</body>
+</html>
