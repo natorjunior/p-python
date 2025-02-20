@@ -155,7 +155,7 @@
       <section>
         <h2>O que é Python?</h2>
         <!-- <p class="fragment">Python é uma linguagem de programação de alto nível, dinâmica e versátil, utilizada em -->
-          <!-- diversas áreas.</p> -->
+        <!-- diversas áreas.</p> -->
         <!-- <p class="fragment">Criada por Guido van Rossum em 1991, destaca-se pela legibilidade e simplicidade.</p> -->
         <br><br><br>
         <p class="fragment">É aplicada em desenvolvimento web, ciência de dados, automação, IA, entre outros.</p>
@@ -198,13 +198,13 @@ ativo = True
           <li>Peça ao usuário seu nome, idade, altura e status (ativo/inativo)</li>
           <li>Exiba os valores informados e seus respectivos tipos usando <code>type()</code></li>
           <br><br>
-        Exemplo:
+          Exemplo:
         </ul>
-        
+
         <pre class="fragment"><code data-trim data-noescape>
           idade = int(input("Digite a idade: "))</code></pre>
       </section>
-      
+
       <section class="bg-accent">
         <h5>Atividade Prática: Cálculos Simples</h5>
         <p class="fragment">Crie um programa que:</p>
@@ -212,32 +212,187 @@ ativo = True
           <li>Solicite ao usuário o raio de um círculo e calcule sua área (<code>π * r²</code>)</li>
           <li>Solicite três números ao usuário e calcule a média aritmética</li>
           <br><br>
-        Exemplo:
+          Exemplo:
         </ul>
-        
+
         <pre class="fragment"><code data-trim data-noescape>
           raio = float(input("Digite raio: "))</code></pre>
       </section>
-      
 
-      <!-- Slide 8: Operadores: Relacionais, Lógicos e Aritméticos (Teoria) -->
+      <!-- Slide 8.1: Operadores Aritméticos -->
       <section>
-        <h2>Operadores em Python</h2>
-        <p class="fragment">Python utiliza diferentes operadores para realizar operações:</p>
-        <ul class="fragment">
-          <li><strong>Aritméticos:</strong> <code>+, -, *, /, %</code></li>
-          <li><strong>Relacionais:</strong> <code>==, !=, &gt;, &lt;, &gt;=, &lt;=</code></li>
-          <li><strong>Lógicos:</strong> <code>and, or, not</code></li>
-        </ul>
-        <p class="fragment">Exemplo:</p>
-        <pre class="fragment"><code data-trim data-noescape>
-a = 10
-b = 5
-print(a + b)            # Soma
-print(a > b)            # Comparação
-print(a > b and b < 20)   # Operador lógico
-        </code></pre>
+        <section>
+          <h3>Operadores Aritméticos</h3>
+          <p class="fragment">
+          <h6>
+            Use operadores para cálculos: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>,
+            <code>%</code>,
+            <code>**</code>, <code>//</code>
+          </h6>
+          </p>
+          <pre class="fragment"><code data-trim data-noescape>
+a = 15; b = 4
+print("Soma:", a + b)
+print("Subtração:", a - b)
+  </code></pre>
+        </section>
+        <section>
+          <p class="fragment">
+            <!-- Tabela Ilustrativa: Operadores Aritméticos -->
+          <table style="width:100%; border-collapse: collapse; text-align: center; margin-top: 10px;">
+            <thead>
+              <tr style="background: linear-gradient(to right, #e0f7fa, #b2ebf2);">
+                <th style="padding: 8px; border: 1px solid #00796b;">Operador</th>
+                <th style="padding: 8px; border: 1px solid #00796b;">Operação</th>
+                <th style="padding: 8px; border: 1px solid #00796b;">Exemplo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background: #ffffff;">
+                <td style="padding: 8px; border: 1px solid #00796b;">+</td>
+                <td style="padding: 8px; border: 1px solid #00796b;">Adição</td>
+                <td style="padding: 8px; border: 1px solid #00796b;">15 + 4 = 19</td>
+              </tr>
+              <tr style="background: #f7f7f7;">
+                <td style="padding: 8px; border: 1px solid #00796b;">-</td>
+                <td style="padding: 8px; border: 1px solid #00796b;">Subtração</td>
+                <td style="padding: 8px; border: 1px solid #00796b;">15 - 4 = 11</td>
+              </tr>
+              <tr style="background: #ffffff;">
+                <td style="padding: 8px; border: 1px solid #00796b;">*</td>
+                <td style="padding: 8px; border: 1px solid #00796b;">Multiplicação</td>
+                <td style="padding: 8px; border: 1px solid #00796b;">15 * 4 = 60</td>
+              </tr>
+              <tr style="background: #f7f7f7;">
+                <td style="padding: 8px; border: 1px solid #00796b;">/</td>
+                <td style="padding: 8px; border: 1px solid #00796b;">Divisão</td>
+                <td style="padding: 8px; border: 1px solid #00796b;">15 / 4 = 3.75</td>
+              </tr>
+              <tr style="background: #ffffff;">
+                <td style="padding: 8px; border: 1px solid #00796b;">%</td>
+                <td style="padding: 8px; border: 1px solid #00796b;">Módulo</td>
+                <td style="padding: 8px; border: 1px solid #00796b;">15 % 4 = 3</td>
+              </tr>
+              <tr style="background: #f7f7f7;">
+                <td style="padding: 8px; border: 1px solid #00796b;">**</td>
+                <td style="padding: 8px; border: 1px solid #00796b;">Exponenciação</td>
+                <td style="padding: 8px; border: 1px solid #00796b;">15 ** 4 = 50625</td>
+              </tr>
+              <tr style="background: #ffffff;">
+                <td style="padding: 8px; border: 1px solid #00796b;">//</td>
+                <td style="padding: 8px; border: 1px solid #00796b;">Divisão Inteira</td>
+                <td style="padding: 8px; border: 1px solid #00796b;">15 // 4 = 3</td>
+              </tr>
+            </tbody>
+          </table>
+          </p>
+        </section>
       </section>
+
+      <!-- Slide 8.2: Operadores Relacionais -->
+      <section>
+        <section>
+          <h3>Operadores Relacionais</h3>
+          <p class="fragment">
+            Compare valores com: <code>==</code>, <code>!=</code>, <code>&gt;</code>, <code>&lt;</code>,
+            <code>&gt;=</code>, <code>&lt;=</code>
+          </p>
+          <pre class="fragment"><code data-trim data-noescape>
+x = 10; y = 20
+print("x == y:", x == y)
+print("x < y:", x < y)
+  </code></pre>
+        </section>
+        <section>
+          <p class="fragment">
+            <!-- Tabela Ilustrativa: Operadores Relacionais -->
+          <table style="width:100%; border-collapse: collapse; text-align: center; margin-top: 10px;">
+            <thead>
+              <tr style="background: linear-gradient(to right, #fff9c4, #ffe082);">
+                <th style="padding: 8px; border: 1px solid #f57f17;">Operador</th>
+                <th style="padding: 8px; border: 1px solid #f57f17;">Comparação</th>
+                <th style="padding: 8px; border: 1px solid #f57f17;">Exemplo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background: #ffffff;">
+                <td style="padding: 8px; border: 1px solid #f57f17;">==</td>
+                <td style="padding: 8px; border: 1px solid #f57f17;">Igual</td>
+                <td style="padding: 8px; border: 1px solid #f57f17;">10 == 20 → False</td>
+              </tr>
+              <tr style="background: #f7f7f7;">
+                <td style="padding: 8px; border: 1px solid #f57f17;">!=</td>
+                <td style="padding: 8px; border: 1px solid #f57f17;">Diferente</td>
+                <td style="padding: 8px; border: 1px solid #f57f17;">10 != 20 → True</td>
+              </tr>
+              <tr style="background: #ffffff;">
+                <td style="padding: 8px; border: 1px solid #f57f17;">&gt;</td>
+                <td style="padding: 8px; border: 1px solid #f57f17;">Maior</td>
+                <td style="padding: 8px; border: 1px solid #f57f17;">10 &gt; 20 → False</td>
+              </tr>
+              <tr style="background: #f7f7f7;">
+                <td style="padding: 8px; border: 1px solid #f57f17;">&lt;</td>
+                <td style="padding: 8px; border: 1px solid #f57f17;">Menor</td>
+                <td style="padding: 8px; border: 1px solid #f57f17;">10 &lt; 20 → True</td>
+              </tr>
+              <tr style="background: #ffffff;">
+                <td style="padding: 8px; border: 1px solid #f57f17;">&gt;=</td>
+                <td style="padding: 8px; border: 1px solid #f57f17;">Maior ou Igual</td>
+                <td style="padding: 8px; border: 1px solid #f57f17;">10 &gt;= 20 → False</td>
+              </tr>
+              <tr style="background: #f7f7f7;">
+                <td style="padding: 8px; border: 1px solid #f57f17;">&lt;=</td>
+                <td style="padding: 8px; border: 1px solid #f57f17;">Menor ou Igual</td>
+                <td style="padding: 8px; border: 1px solid #f57f17;">10 &lt;= 20 → True</td>
+              </tr>
+            </tbody>
+          </table>
+          </p>
+        </section>
+      </section>
+
+      <!-- Slide 8.3: Operadores Lógicos -->
+      <section>
+        <h3>Operadores Lógicos</h3>
+        <p class="fragment">
+          Combine condições com: <code>and</code>, <code>or</code>, <code>not</code>
+        </p>
+        <pre class="fragment"><code data-trim data-noescape>
+p = True; q = False
+print("p and q:", p and q)
+print("not p:", not p)
+  </code></pre>
+        <p class="fragment">
+          <!-- Tabela Ilustrativa: Operadores Lógicos -->
+        <table style="width:100%; border-collapse: collapse; text-align: center; margin-top: 10px;">
+          <thead>
+            <tr style="background: linear-gradient(to right, #fce4ec, #f8bbd0);">
+              <th style="padding: 8px; border: 1px solid #c2185b;">Operador</th>
+              <th style="padding: 8px; border: 1px solid #c2185b;">Descrição</th>
+              <th style="padding: 8px; border: 1px solid #c2185b;">Exemplo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background: #ffffff;">
+              <td style="padding: 8px; border: 1px solid #c2185b;">and</td>
+              <td style="padding: 8px; border: 1px solid #c2185b;">E Lógico</td>
+              <td style="padding: 8px; border: 1px solid #c2185b;">True and False → False</td>
+            </tr>
+            <tr style="background: #f7f7f7;">
+              <td style="padding: 8px; border: 1px solid #c2185b;">or</td>
+              <td style="padding: 8px; border: 1px solid #c2185b;">Ou Lógico</td>
+              <td style="padding: 8px; border: 1px solid #c2185b;">True or False → True</td>
+            </tr>
+            <tr style="background: #ffffff;">
+              <td style="padding: 8px; border: 1px solid #c2185b;">not</td>
+              <td style="padding: 8px; border: 1px solid #c2185b;">Negação</td>
+              <td style="padding: 8px; border: 1px solid #c2185b;">not True → False</td>
+            </tr>
+          </tbody>
+        </table>
+        </p>
+      </section>
+
 
       <!-- Slide 9: Operadores - Atividade Prática -->
       <section class="bg-green">
