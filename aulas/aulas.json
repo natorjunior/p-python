@@ -1,7 +1,11 @@
 [
-    {
-      "titulo": "Aula 1 - Visão geral",
-      "link": "./aulas/aula01.html"
-    }
+  {
+    "titulo": "Aula 1 - Visão geral",
+    "link": "./aulas/aula01.html"
+  },
+  {
+    "titulo": "Aula 2 - Funções anonimas",
+    "link": "./aulas/aula02.html"
+  }
 ]
   

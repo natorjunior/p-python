@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Aula 01 - Introdução ao Python. Apresentação com os conceitos fundamentais da linguagem Python.">
+  <title>Aula 01 - Introdução ao Python</title>
+
+  <!-- Google Fonts para melhor tipografia -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+
+  <!-- Reveal.js -->
+  <link rel="stylesheet" href="./dist/reveal.css">
+  <link rel="stylesheet" href="./dist/theme/white.css" id="theme">
+
+  <!-- Tema para código -->
+  <link rel="stylesheet" href="./plugin/highlight/atom-one-dark.css">
+
+  <!-- Estilos personalizados -->
+  <style>
+    :root {
+      --primary-color: #0056b3;
+      --secondary-color: #333;
+      --light-bg: #f3f3f3;
+      --accent-bg: #e1f5fe;
+      --code-bg: #222;
+      --transition-fragment: 0.3s ease;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .reveal h1,
+    .reveal h2 {
+      color: var(--primary-color);
+    }
+
+    .reveal p {
+      font-size: 1.1em;
+      color: var(--secondary-color);
+    }
+
+    .subtitle {
+      color: #888;
+      font-size: 0.9em;
+      margin-top: -10px;
+    }
+
+    .reveal pre code {
+      font-size: 1em;
+      background: var(--code-bg);
+      border-radius: 8px;
+      padding: 10px;
+    }
+
+    .fragment {
+      transition: all var(--transition-fragment);
+    }
+
+    /* Classes de fundo para os slides */
+    .bg-light {
+      background-color: var(--light-bg) !important;
+      color: var(--secondary-color);
+    }
+
+    .bg-accent {
+      background-color: var(--accent-bg) !important;
+      color: var(--secondary-color);
+    }
+
+    .bg-green {
+      background-color: #a5d6a7 !important;
+      color: #fff;
+    }
+
+    .bg-yellow {
+      background-color: #ffd54f !important;
+      color: var(--secondary-color);
+    }
+
+    .bg-purple {
+      background-color: #b39ddb !important;
+      color: #fff;
+    }
+
+    .bg-gray {
+      background-color: #e0e0e0 !important;
+      color: var(--secondary-color);
+    }
+
+    /* Ajustes responsivos */
+    @media (max-width: 768px) {
+      .reveal h2 {
+        font-size: 1.8em;
+      }
+
+      .reveal p {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <!-- Slide 1 - Título -->
+      <section data-align="center" data-background-gradient="radial-gradient(#283b95, #17b2c3)">
+        <br><br><br><br>
+        <h4 style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">
+          Aula 02 – Funções, Lambda, Listas, Tuplas e Dicionários
+        </h4>
+        <p style="color: white; font-size: .5em; font-weight: 300; margin-top: 10px;">
+          Prof. Msc. Nator Junior Carvalho da Costa
+        </p>
+        <h1>🐍</h1>
+      </section>
+
+      <!-- Slide 2 - Objetivos da Aula -->
+      <section class="bg-accent">
+        <h2>Objetivos da Aula</h2>
+        <ul>
+          <li>Revisar conceitos básicos</li>
+          <li>Explorar funções avançadas e funções lambda</li>
+          <li>Manipular listas, tuplas e dicionários</li>
+        </ul>
+      </section>
+
+      <!-- Slide 3 - Assunto: Funções Avançadas -->
+      <section>
+        <h2>Funções</h2>
+        <p>Utilize parâmetros padrão, *args e **kwargs para criar funções flexíveis e reutilizáveis.</p>
+        <pre><code class="python">def soma(a, b=0):
+    return a + b
+
+print(soma(5, 3))
+print(soma(5))</code></pre>
+      </section>
+
+      <!-- Slide 5 - Assunto: Funções Lambda -->
+      <section>
+        <h2>Funções Lambda</h2>
+        <p>Funções anônimas definidas em uma única linha, ideais para operações simples e rápidas.</p>
+        <pre  class="fragment"><code class="python">quadrado = lambda x: x * x
+print(quadrado(5))</code></pre>
+      </section>
+
+      <section class="bg-green">
+        <h2>Atividade: Criando Funções Lambda</h2>
+        <p>Crie uma função lambda que recebe um número e retorna o dobro desse número.</p>
+        <pre class="fragment"> <code class="python">dobro = lambda x: x * 2 
+print(dobro(5)) # Saída esperada: 10</code></pre>
+      </section>
+
+
+      <!-- Slide 7 - Assunto: Listas -->
+      <section>
+        <h2>Listas</h2>
+        <p>Estruturas mutáveis que armazenam sequências ordenadas e oferecem diversos métodos para manipulação.</p>
+        <pre><code>
+    frutas = ["maçã", "banana", "laranja"]
+    frutas.append("uva")
+    print(frutas)
+        </code></pre>
+      </section>
+
+      <!-- Slide 8 - Atividade: Listas -->
+      <section class="bg-green">
+        <h2>Atividade: Listas</h2>
+        <p>Crie uma lista com números de 1 a 10 e, utilizando compreensão de listas, gere outra lista com os quadrados
+          desses números.</p>
+        <pre><code>
+    numeros = list(range(1, 11))
+    quadrados = [n * n for n in numeros]
+    print(quadrados)
+        </code></pre>
+      </section>
+
+      <!-- Slide 9 - Assunto: Tuplas -->
+      <section>
+        <h2>Tuplas</h2>
+        <p>Tuplas são semelhantes às listas, porém imutáveis, ideais para dados que não devem ser alterados.</p>
+        <pre><code>
+    cores = ("vermelho", "verde", "azul")
+    print(cores)
+        </code></pre>
+      </section>
+
+      <!-- Slide 10 - Atividade: Tuplas -->
+      <section class="bg-green">
+        <h2>Atividade: Tuplas</h2>
+        <p>Dada uma tupla com três valores, desempaque-os em variáveis individuais e exiba cada uma delas.</p>
+        <pre><code>
+    ponto = (10, 20, 30)
+    x, y, z = ponto
+    print("x:", x, "y:", y, "z:", z)
+        </code></pre>
+      </section>
+
+      <!-- Slide 11 - Assunto: Dicionários -->
+      <section>
+        <h2>Dicionários</h2>
+        <p>Dicionários armazenam pares chave-valor, permitindo acesso rápido e organizado aos dados.</p>
+        <pre><code>
+    pessoa = {"nome": "Alice", "idade": 25, "cidade": "São Paulo"}
+    print(pessoa["nome"])
+        </code></pre>
+      </section>
+
+      <!-- Slide 12 - Atividade: Dicionários -->
+      <section class="bg-green">
+        <h2>Atividade: Dicionários</h2>
+        <p>Crie um dicionário para representar um aluno com as chaves <code>nome</code>, <code>idade</code> e
+          <code>curso</code>. Em seguida, itere sobre os itens e exiba cada par.
+        </p>
+        <pre><code>
+    aluno = {
+        "nome": "João",
+        "idade": 22,
+        "curso": "Engenharia"
+    }
+    
+    for chave, valor in aluno.items():
+        print(f"{chave}: {valor}")
+        </code></pre>
+      </section>
+
+      <!-- Slide 13 - Conclusão -->
+      <section class="bg-yellow">
+        <h2>Conclusão</h2>
+        <p>Revisamos funções avançadas, funções lambda, listas, tuplas e dicionários. Pratique os exercícios e tire suas
+          dúvidas!</p>
+      </section>
+    </div>
+
+  </div>
+
+  <!-- Scripts Reveal.js -->
+  <script src="./dist/reveal.js"></script>
+  <script src="./plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({
+      center: false,
+      controls: true,
+      progress: true,
+      slideNumber: true,
+      history: true,
+      transition: 'convex',
+      plugins: [RevealHighlight]
+    });
+  </script>
+</body>
+
+</html>
