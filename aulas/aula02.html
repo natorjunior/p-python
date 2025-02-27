@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
     content="Aula 01 - Introdução ao Python. Apresentação com os conceitos fundamentais da linguagem Python.">
-  <title>Aula 01 - Introdução ao Python</title>
+  <title>Aula 02 - Listas</title>
 
   <!-- Google Fonts para melhor tipografia -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
@@ -119,6 +119,28 @@
         <h1>🐍</h1>
       </section>
 
+    <section data-align="center" data-background-gradient="radial-gradient(#283b95, #17b2c3)">
+      <section>
+          <br><br><br><br>
+          <h4 style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">
+              Atividade Inicial: Tabuada do 1 ao 5
+          </h4>
+          <h1>🔢</h1>
+      </section>
+  
+      <section>
+          <h4 style="color: white;">Desafio: Imprimir as Tabuadas</h4>
+          <p style="color: white;">Escreva um programa que exiba as tabuadas do 1 ao 5.</p>
+          <pre class="fragment" style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+      <code class="language-python">for num in range(1, 6):
+    print(f"Tabuada do {num}:")
+    for i in range(1, 11):
+        print(f"{num} x {i} = {num * i}")
+    print()</code>
+          </pre>
+      </section>
+  </section>
+    
       <!-- Slide 2 - Objetivos da Aula -->
       <section class="bg-accent">
         <h2>Objetivos da Aula</h2>
@@ -129,111 +151,433 @@
         </ul>
       </section>
 
-      <!-- Slide 3 - Assunto: Funções Avançadas -->
-      <section>
-        <h2>Funções</h2>
-        <p>Utilize parâmetros padrão, *args e **kwargs para criar funções flexíveis e reutilizáveis.</p>
-        <pre><code class="python">def soma(a, b=0):
+      <section data-align="center" data-background-gradient="radial-gradient(#283b95, #17b2c3)">
+        <section>
+          <br><br><br><br>
+          <h4 style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">
+            Funções no Python
+          </h4>
+          <h1>🔧</h1>
+        </section>
+
+        <section>
+          <h4 style="color: white;">Definição de Função</h4>
+          <p style="color: white;">Funções são blocos de código reutilizáveis que realizam tarefas específicas.</p>
+          <pre style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+<code class="language-python">def saudacao():
+    print("Olá, bem-vindo ao Python!")
+
+saudacao()  # Chama a função</code>
+    </pre>
+        </section>
+
+        <section>
+          <h4 style="color: white;">Funções com Parâmetros</h4>
+          <p style="color: white;">Podemos passar valores para funções para torná-las mais flexíveis.</p>
+          <pre style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+<code class="language-python">def somar(a, b):
     return a + b
 
-print(soma(5, 3))
-print(soma(5))</code></pre>
+resultado = somar(5, 3)
+print(resultado)  # Saída: 8</code>
+    </pre>
+        </section>
+
+        <section>
+          <h4 style="color: white;">Funções com Retorno</h4>
+          <p style="color: white;">Podemos retornar valores de uma função usando <code>return</code>.</p>
+          <pre style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+<code class="language-python">def quadrado(n):
+    return n ** 2
+
+print(quadrado(4))  # Saída: 16</code>
+    </pre>
+        </section>
+
+        <section>
+          <h4 style="color: white;">Funções Lambda</h4>
+          <p style="color: white;">Funções anônimas podem ser criadas com <code>lambda</code>.</p>
+          <pre style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+<code class="language-python">dobro = lambda x: x * 2
+print(dobro(5))  # Saída: 10</code>
+    </pre>
+        </section>
+
+        <section>
+          <h4 style="color: white;">Funções com Parâmetros Opcionais</h4>
+          <p style="color: white;">Podemos definir valores padrão para os parâmetros.</p>
+          <pre style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+<code class="language-python">def saudacao(nome="Visitante"):
+    print(f"Olá, {nome}!")
+
+saudacao()  # Olá, Visitante!
+saudacao("João")  # Olá, João!</code>
+    </pre>
+        </section>
+
+        <section>
+          <h4 style="color: white;">Funções Recursivas</h4>
+          <p style="color: white;">Funções podem chamar a si mesmas para resolver problemas recursivos.</p>
+          <pre style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+<code class="language-python">def fatorial(n):
+    if n == 0:
+        return 1
+    return n * fatorial(n - 1)
+
+print(fatorial(5))  # Saída: 120</code>
+    </pre>
+        </section>
       </section>
 
-      <!-- Slide 5 - Assunto: Funções Lambda -->
-      <section>
-        <h2>Funções Lambda</h2>
-        <p>Funções anônimas definidas em uma única linha, ideais para operações simples e rápidas.</p>
-        <pre  class="fragment"><code class="python">quadrado = lambda x: x * x
-print(quadrado(5))</code></pre>
+      <section data-align="center" data-background-gradient="radial-gradient(#283b95, #17b2c3)">
+        <section>
+          <br><br><br><br>
+          <h4 style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">
+            Atividades sobre Funções em Python
+          </h4>
+          <h1>📝</h1>
+        </section>
+
+        <section>
+          <h4 style="color: white;">Atividade 1: Criando uma Função</h4>
+          <p style="color: white;">Crie uma função chamada <code>saudacao</code> que exiba "Olá, mundo!" ao ser chamada.
+          </p>
+          <pre class="fragment" style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+  <code class="language-python">def saudacao():
+  print("Olá, mundo!")
+
+saudacao()  # Saída: Olá, mundo!</code>
+      </pre>
+        </section>
+
+        <section>
+          <h4 style="color: white;">Atividade 2: Função com Parâmetro</h4>
+          <p style="color: white;">Crie uma função chamada <code>dobro</code> que recebe um número e retorna o seu
+            dobro.</p>
+          <pre class="fragment" style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+  <code class="language-python">def dobro(n):
+  return n * 2
+
+print(dobro(5))  # Saída: 10</code>
+      </pre>
+        </section>
+
+        <section>
+          <h4 style="color: white;">Atividade 3: Função com Retorno</h4>
+          <p style="color: white;">Crie uma função chamada <code>quadrado</code> que recebe um número e retorna o seu
+            quadrado.</p>
+          <pre class="fragment" style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+  <code class="language-python">def quadrado(n):
+  return n ** 2
+
+print(quadrado(4))  # Saída: 16</code>
+      </pre>
+        </section>
+
+        <section>
+          <h4 style="color: white;">Atividade 4: Função com Parâmetro Padrão</h4>
+          <p style="color: white;">Crie uma função chamada <code>saudacao_personalizada</code> que tenha um nome como
+            parâmetro e exiba "Olá, [nome]!", utilizando "Visitante" como valor padrão.</p>
+          <pre class="fragment" style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+  <code class="language-python">def saudacao_personalizada(nome="Visitante"):
+  print(f"Olá, {nome}!")
+
+saudacao_personalizada()  # Saída: Olá, Visitante!
+saudacao_personalizada("Ana")  # Saída: Olá, Ana!</code>
+      </pre>
+        </section>
+
+        <section>
+          <h4 style="color: white;">Atividade 5: Função Recursiva</h4>
+          <p style="color: white;">Crie uma função chamada <code>fatorial</code> que receba um número e retorne seu
+            fatorial.</p>
+          <pre class="fragment" style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+  <code class="language-python">def fatorial(n):
+  if n == 0:
+      return 1
+  return n * fatorial(n - 1)
+
+print(fatorial(5))  # Saída: 120</code>
+      </pre>
+        </section>
       </section>
 
-      <section class="bg-green">
-        <h2>Atividade: Criando Funções Lambda</h2>
-        <p>Crie uma função lambda que recebe um número e retorna o dobro desse número.</p>
-        <pre class="fragment"> <code class="python">dobro = lambda x: x * 2 
-print(dobro(5)) # Saída esperada: 10</code></pre>
-      </section>
+
+
+
+
 
 
       <!-- Slide 7 - Assunto: Listas -->
       <section>
         <h2>Listas</h2>
         <p>Estruturas mutáveis que armazenam sequências ordenadas e oferecem diversos métodos para manipulação.</p>
-        <pre><code>
-    frutas = ["maçã", "banana", "laranja"]
-    frutas.append("uva")
-    print(frutas)
-        </code></pre>
+        <pre><code class="python">frutas = ["maçã", "banana", "laranja"]
+frutas.append("uva")
+print(frutas)</code></pre>
+      </section>
+
+      <section data-align="center" data-background-gradient="radial-gradient(#283b95, #17b2c3)">
+        <section>
+          <br><br><br><br>
+          <h4 style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">
+            Funções Internas de Listas no Python
+          </h4>
+          <h1>📜</h1>
+        </section>
+
+        <section>
+          <h4 style="color: white;">Método <code>append()</code></h4>
+          <p style="color: white;">Adiciona um item ao final da lista.</p>
+          <pre style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+  <code class="language-python">lista = [1, 2, 3]
+lista.append(4)  # [1, 2, 3, 4]</code>
+      </pre>
+        </section>
+
+        <section>
+          <h4 style="color: white;">Método <code>insert()</code></h4>
+          <p style="color: white;">Insere um item em uma posição específica.</p>
+          <pre style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+  <code class="language-python">lista.insert(1, 5)  # [1, 5, 2, 3, 4]</code>
+      </pre>
+        </section>
+
+        <section>
+          <h4 style="color: white;">Método <code>pop()</code></h4>
+          <p style="color: white;">Remove e retorna o último item (ou o índice especificado).</p>
+          <pre style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+  <code class="language-python">item = lista.pop()  # Remove e retorna o último elemento
+print(item, lista)  # Exibe o item removido e a lista resultante</code>
+      </pre>
+        </section>
+
+        <section>
+          <h4 style="color: white;">Método <code>del()</code></h4>
+          <p style="color: white;">Remove um item pelo índice ou a lista inteira.</p>
+          <pre style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+  <code class="language-python">del lista[0]  # Remove o primeiro elemento
+print(lista)  # Exibe a lista após a remoção</code>
+      </pre>
+        </section>
+
+        <section>
+          <h4 style="color: white;">Método <code>remove()</code></h4>
+          <p style="color: white;">Remove um item específico pelo seu valor.</p>
+          <pre style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+  <code class="language-python">lista.remove(2)  # Remove o número 2 da lista
+print(lista)  # Exibe a lista atualizada</code>
+      </pre>
+        </section>
+
+        <section>
+          <h4 style="color: white;">Método <code>sort()</code></h4>
+          <p style="color: white;">Ordena a lista em ordem crescente.</p>
+          <pre style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+  <code class="language-python">lista.extend([7, 1])  # Adiciona novos elementos
+lista.sort()  # Ordena em ordem crescente
+print(lista)  # Exibe a lista ordenada</code>
+      </pre>
+        </section>
+
+        <section>
+          <h4 style="color: white;">Método <code>reverse()</code></h4>
+          <p style="color: white;">Inverte a ordem dos elementos da lista.</p>
+          <pre style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+  <code class="language-python">lista.reverse()  # Inverte a ordem da lista
+print(lista)  # Exibe a lista invertida</code>
+      </pre>
+        </section>
+      </section>
+
+
+      <section data-align="center" data-background-gradient="radial-gradient(#283b95, #17b2c3)">
+        <section>
+          <br><br><br><br>
+          <h4 style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">
+            Atividades sobre Listas em Python
+          </h4>
+          <h1>📝</h1>
+        </section>
+
+        <section>
+          <h4 style="color: white;">Atividade 1: Criando uma lista</h4>
+          <p style="color: white;">Crie uma lista chamada <code>numeros</code> contendo os números de 1 a 5 e exiba-a.
+          </p>
+          <pre class="fragment" style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+        <code class="language-python">numeros = [1, 2, 3, 4, 5]
+print(numeros)  # [1, 2, 3, 4, 5]</code>
+            </pre>
+        </section>
+
+        <section>
+          <h4 style="color: white;">Atividade 2: Adicionando Elementos</h4>
+          <p style="color: white;">Adicione o número 6 à lista <code>numeros</code> e exiba a lista atualizada.</p>
+          <pre class="fragment" style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+        <code class="language-python">numeros.append(6)
+print(numeros)  # [1, 2, 3, 4, 5, 6]</code>
+            </pre>
+        </section>
+
+        <section>
+          <h4 style="color: white;">Atividade 3: Removendo Elementos</h4>
+          <p style="color: white;">Remova o número 3 da lista <code>numeros</code> e exiba a lista atualizada.</p>
+          <pre class="fragment" style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+        <code class="language-python">numeros.remove(3)
+print(numeros)  # [1, 2, 4, 5, 6]</code>
+            </pre>
+        </section>
+
+        <section>
+          <h4 style="color: white;">Atividade 4: Ordenando a Lista</h4>
+          <p style="color: white;">Crie uma lista com números fora de ordem e organize-a em ordem crescente. (pesquise e
+            use a função .sort())</p>
+          <pre class="fragment" style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+        <code class="language-python">valores = [8, 3, 1, 5, 2]
+valores.sort()
+print(valores)  # [1, 2, 3, 5, 8]</code>
+            </pre>
+        </section>
+
+        <section>
+          <h4 style="color: white;">Atividade 5: Tamanho da Lista</h4>
+          <p style="color: white;">Exiba o número de elementos presentes na lista <code>numeros</code>.</p>
+          <pre class="fragment" style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+        <code class="language-python">print(len(numeros))  # 5</code>
+            </pre>
+        </section>
       </section>
 
       <!-- Slide 8 - Atividade: Listas -->
-      <section class="bg-green">
+      <!-- <section class="bg-green">
         <h2>Atividade: Listas</h2>
         <p>Crie uma lista com números de 1 a 10 e, utilizando compreensão de listas, gere outra lista com os quadrados
           desses números.</p>
-        <pre><code>
-    numeros = list(range(1, 11))
-    quadrados = [n * n for n in numeros]
-    print(quadrados)
-        </code></pre>
+        <pre><code>numeros = list(range(1, 11))
+quadrados = [n * n for n in numeros]
+print(quadrados)</code></pre>
+      </section> -->
+      <section data-align="center" data-background-gradient="radial-gradient(#283b95, #17b2c3)">
+        <section>
+          <br><br><br><br>
+          <h4 style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">
+            Dicionários no Python
+          </h4>
+          <h1>📖</h1>
+        </section>
+
+        <section>
+          <h4 style="color: white;">O que são Dicionários?</h4>
+          <p style="color: white;">Dicionários são estruturas de dados que armazenam pares <code>chave: valor</code>,
+            permitindo acesso eficiente aos dados.</p>
+          <pre style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+        <code class="language-python">dados = {"nome": "Alice", "idade": 25, "cidade": "São Paulo"}
+print(dados["nome"])  # Saída: Alice</code>
+            </pre>
+        </section>
+
+        <section>
+          <h4 style="color: white;">Acessando Valores</h4>
+          <p style="color: white;">Podemos acessar valores diretamente pela chave.</p>
+          <pre style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+        <code class="language-python">print(dados.get("idade"))  # Saída: 25
+print(dados.get("email", "Não informado"))  # Saída: Não informado</code>
+            </pre>
+        </section>
+
+        <section>
+          <h4 style="color: white;">Adicionando e Atualizando Valores</h4>
+          <p style="color: white;">Podemos adicionar novos pares ou atualizar valores existentes.</p>
+          <pre style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+        <code class="language-python">dados["profissao"] = "Engenheira"
+dados["idade"] = 26
+print(dados)</code>
+            </pre>
+        </section>
+
+        <section>
+          <h4 style="color: white;">Removendo Itens</h4>
+          <p style="color: white;">Podemos remover elementos com <code>del</code> ou <code>pop()</code>.</p>
+          <pre style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+        <code class="language-python">del dados["cidade"]
+idade = dados.pop("idade")
+print(dados)  # {'nome': 'Alice', 'profissao': 'Engenheira'}</code></pre>
+        </section>
+
+        <section>
+          <h4 style="color: white;">Iterando sobre um Dicionário</h4>
+          <p style="color: white;">Podemos percorrer as chaves, valores ou ambos.</p>
+          <pre style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+        <code class="language-python">for chave, valor in dados.items():
+    print(f"{chave}: {valor}")</code>
+            </pre>
+        </section>
+
+        <section>
+          <h4 style="color: white;">Dicionários Aninhados</h4>
+          <p style="color: white;">Dicionários podem conter outros dicionários.</p>
+          <pre style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+<code class="language-python">usuarios = {
+  "alice": {"idade": 25, "cidade": "São Paulo"},
+  "bob": {"idade": 30, "cidade": "Rio de Janeiro"}
+}
+print(usuarios["bob"]["cidade"])  # Saída: Rio de Janeiro</code></pre>
+        </section>
       </section>
 
-      <!-- Slide 9 - Assunto: Tuplas -->
-      <section>
-        <h2>Tuplas</h2>
-        <p>Tuplas são semelhantes às listas, porém imutáveis, ideais para dados que não devem ser alterados.</p>
-        <pre><code>
-    cores = ("vermelho", "verde", "azul")
-    print(cores)
-        </code></pre>
-      </section>
-
-      <!-- Slide 10 - Atividade: Tuplas -->
-      <section class="bg-green">
-        <h2>Atividade: Tuplas</h2>
-        <p>Dada uma tupla com três valores, desempaque-os em variáveis individuais e exiba cada uma delas.</p>
-        <pre><code>
-    ponto = (10, 20, 30)
-    x, y, z = ponto
-    print("x:", x, "y:", y, "z:", z)
-        </code></pre>
-      </section>
-
-      <!-- Slide 11 - Assunto: Dicionários -->
-      <section>
-        <h2>Dicionários</h2>
-        <p>Dicionários armazenam pares chave-valor, permitindo acesso rápido e organizado aos dados.</p>
-        <pre><code>
-    pessoa = {"nome": "Alice", "idade": 25, "cidade": "São Paulo"}
-    print(pessoa["nome"])
-        </code></pre>
-      </section>
-
-      <!-- Slide 12 - Atividade: Dicionários -->
-      <section class="bg-green">
-        <h2>Atividade: Dicionários</h2>
-        <p>Crie um dicionário para representar um aluno com as chaves <code>nome</code>, <code>idade</code> e
-          <code>curso</code>. Em seguida, itere sobre os itens e exiba cada par.
-        </p>
-        <pre><code>
-    aluno = {
-        "nome": "João",
-        "idade": 22,
-        "curso": "Engenharia"
-    }
+      <section data-align="center" data-background-gradient="radial-gradient(#283b95, #17b2c3)">
+        <section>
+            <br><br><br><br>
+            <h4 style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">
+                Atividades sobre Dicionários em Python
+            </h4>
+            <h1>📝</h1>
+        </section>
     
-    for chave, valor in aluno.items():
-        print(f"{chave}: {valor}")
-        </code></pre>
-      </section>
-
-      <!-- Slide 13 - Conclusão -->
-      <section class="bg-yellow">
-        <h2>Conclusão</h2>
-        <p>Revisamos funções avançadas, funções lambda, listas, tuplas e dicionários. Pratique os exercícios e tire suas
-          dúvidas!</p>
-      </section>
+        <section>
+            <h4 style="color: white;">Atividade 1: Criando um Dicionário</h4>
+            <p style="color: white;">Crie um dicionário chamado <code>aluno</code> com as chaves "nome", "idade" e "curso".</p>
+            <pre class="fragment" style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+        <code class="language-python">aluno = {"nome": "Carlos", "idade": 20, "curso": "Engenharia"}
+print(aluno)</code>
+            </pre>
+        </section>
+    
+        <section>
+            <h4 style="color: white;">Atividade 2: Acessando Valores</h4>
+            <p style="color: white;">Acesse e exiba o valor da chave "curso" no dicionário <code>aluno</code>.</p>
+            <pre class="fragment" style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+        <code class="language-python">print(aluno["curso"])  # Saída: Engenharia</code>
+            </pre>
+        </section>
+    
+        <section>
+            <h4 style="color: white;">Atividade 3: Adicionando um Novo Par Chave-Valor</h4>
+            <p style="color: white;">Adicione ao dicionário <code>aluno</code> uma nova chave chamada "nota" com o valor 9.5.</p>
+            <pre class="fragment" style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+        <code class="language-python">aluno["nota"] = 9.5
+print(aluno)</code>
+            </pre>
+        </section>
+    
+        <section>
+            <h4 style="color: white;">Atividade 4: Removendo um Elemento</h4>
+            <p style="color: white;">Remova a chave "idade" do dicionário <code>aluno</code>.</p>
+            <pre class="fragment" style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+        <code class="language-python">del aluno["idade"]
+print(aluno)</code>
+            </pre>
+        </section>
+    
+        <section>
+            <h4 style="color: white;">Atividade 5: Iterando sobre um Dicionário</h4>
+            <p style="color: white;">Percorra o dicionário <code>aluno</code> e exiba todas as chaves e valores.</p>
+            <pre class="fragment" style="background: #1e1e1e; color: #dcdcdc; padding: 15px; border-radius: 8px;">
+        <code class="language-python">for chave, valor in aluno.items():
+    print(f"{chave}: {valor}")</code>
+            </pre>
+        </section>
+    </section>
     </div>
 
   </div>
