@@ -519,7 +519,110 @@ for chave, valor in aluno.items():
     </code></pre>
         </section>
       </section>
-
+      
+      
+      <!-- TUPLAS-->
+      <section>
+        <section>Tuplas em Python</section>
+      
+        <section data-auto-animate>
+          <h6>O que é uma tupla?</h6>
+          <p>Uma tupla é uma sequência imutável de elementos, utilizada para armazenar valores que não serão alterados.</p>
+        </section>
+      
+        <section data-auto-animate>
+          <h6>Exemplo 1: Tupla Simples</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+      planeta = ("Marte",)
+          </code></pre>
+        </section>
+      
+        <section data-auto-animate>
+          <h6>Exemplo 2: Tupla com Múltiplos Elementos</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+      planetas = ("Marte", "Terra", "Júpiter")
+          </code></pre>
+        </section>
+      
+        <section data-auto-animate>
+          <h6>Acessando Elementos</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+      print(planetas[0])  # Exibe "Marte"
+      print(planetas[1])  # Exibe "Terra"
+          </code></pre>
+        </section>
+      
+        <section data-auto-animate>
+          <h6>Slicing em Tuplas</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+      print(planetas[1:])  # Exibe ("Terra", "Júpiter")
+          </code></pre>
+        </section>
+      
+        <section data-auto-animate>
+          <h6>Iterando sobre Tuplas</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+      for p in planetas:
+          print(p)
+          </code></pre>
+        </section>
+      
+        <!-- Atividades Rápidas -->
+        <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
+          <h6 style="color: white;">ATV1: Crie uma tupla com 5 números e exiba a tupla completa.</h6>
+        </section>
+        <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
+          <h6 style="color: white;">ATV1: Crie uma tupla com 5 números e exiba a tupla completa.</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+      numeros = (10, 20, 30, 40, 50)
+      print(numeros)
+          </code></pre>
+        </section>
+      
+        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
+          <h6 style="color: white;">ATV2: Acesse e exiba o terceiro elemento da tupla de números.</h6>
+        </section>
+        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
+          <h6 style="color: white;">ATV2: Acesse e exiba o terceiro elemento da tupla de números.</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+      numeros = (10, 20, 30, 40, 50)
+      print(numeros[2])
+          </code></pre>
+        </section>
+      
+        <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
+          <h6 style="color: white;">ATV3: Tente alterar o primeiro elemento da tupla e observe o que acontece.</h6>
+        </section>
+        <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
+          <h6 style="color: white;">ATV3: Tente alterar o primeiro elemento da tupla e observe o que acontece.</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+      numeros = (10, 20, 30, 40, 50)
+      # A linha abaixo gera um erro, pois tuplas são imutáveis:
+      # numeros[0] = 99
+          </code></pre>
+        </section>
+      
+        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
+          <h6 style="color: white;">ATV4: Utilize um loop para imprimir cada elemento da tupla de números.</h6>
+        </section>
+        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
+          <h6 style="color: white;">ATV4: Utilize um loop para imprimir cada elemento da tupla de números.</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+      numeros = (10, 20, 30, 40, 50)
+      for num in numeros:
+          print(num)
+          </code></pre>
+        </section>
+      </section>
+      
 
     </div>
   </div>
