@@ -116,6 +116,72 @@
         <h1>🐍</h1>
       </section>
       <section>
+        <section>Pra começar </section>
+        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom" data-auto-animate>
+          <h6 style="color: white;">Atividades Rápidas</h6>
+          <p style="color: white;">
+            Crie duas listas: uma com os nomes dos alunos e outra com suas respectivas notas. Calcule a média da turma utilizando a equação:
+          </p>
+          $$ \text{media} = \frac{\sum_{i=0}^{n} \text{notas}[i]}{n} $$
+          <ul>
+            <li>Imprima a maior e menor nota;</li>
+            <li>Indique se o aluno foi aprovado utilizando a seguinte função:</li>
+          </ul>
+        </section>
+
+        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom" data-auto-animate>
+          <h6 style="color: white;">Atividades Rápidas</h6>
+          Indique se o aluno foi aprovado utilizando a seguinte função:
+          $$ 
+              aprovacao(\text{media}) = 
+              \begin{cases} 
+              \text{Aprovado} & \text{se } \text{media} \ge 7, \\
+              \text{Reprovado} & \text{caso contrário.}
+              \end{cases}
+              $$
+        </section>
+        
+
+
+
+        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Definindo os Dados</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+        nomes = ["João", "Maria", "Pedro", "Ana", "Carlos", "Luisa"]
+        notas = [85, 92, 78, 88, 95, 67]
+          </code></pre>
+        </section>
+
+        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Calculando Estatísticas</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+        # Equação para calcular a média:
+        # Média = (soma das notas) / (número de alunos)
+        soma_notas = sum(notas)
+        total_alunos = len(notas)
+        media = soma_notas / total_alunos
+        
+        maior_nota = max(notas)
+        menor_nota = min(notas)
+        
+        print("Média da turma: {:.2f}".format(media))
+        print("Maior nota:", maior_nota)
+        print("Menor nota:", menor_nota)
+          </code></pre>
+        </section>
+
+        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Situação dos Alunos</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+        print("\nSituação dos alunos:")
+        for i in range(len(nomes)):
+            situacao = "Aprovado" if notas[i] >= 70 else "Reprovado"
+            print(f"{nomes[i]}: {notas[i]} - {situacao}")
+          </code></pre>
+        </section>
+
+      </section>
+      <section>
         <section>Listas em Python</section>
 
         <section data-auto-animate>
@@ -436,12 +502,14 @@ for chave, valor in planeta.items():
         <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom" data-auto-animate>
           <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
           <h6 style="color: white;">ATV1: Crie um dicionário para um aluno com as chaves <code>nome</code>,
-            <code>idade</code> e <code>curso</code> e exiba o dicionário.</h6>
+            <code>idade</code> e <code>curso</code> e exiba o dicionário.
+          </h6>
         </section>
         <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom" data-auto-animate>
           <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
           <h6 style="color: white;">ATV1: Crie um dicionário para um aluno com as chaves <code>nome</code>,
-            <code>idade</code> e <code>curso</code> e exiba o dicionário.</h6>
+            <code>idade</code> e <code>curso</code> e exiba o dicionário.
+          </h6>
           <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
 aluno = {
     "nome": "João",
@@ -519,31 +587,32 @@ for chave, valor in aluno.items():
     </code></pre>
         </section>
       </section>
-      
-      
+
+
       <!-- TUPLAS-->
       <section>
         <section>Tuplas em Python</section>
-      
+
         <section data-auto-animate>
           <h6>O que é uma tupla?</h6>
-          <p>Uma tupla é uma sequência imutável de elementos, utilizada para armazenar valores que não serão alterados.</p>
+          <p>Uma tupla é uma sequência imutável de elementos, utilizada para armazenar valores que não serão alterados.
+          </p>
         </section>
-      
+
         <section data-auto-animate>
           <h6>Exemplo 1: Tupla Simples</h6>
           <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
       planeta = ("Marte",)
           </code></pre>
         </section>
-      
+
         <section data-auto-animate>
           <h6>Exemplo 2: Tupla com Múltiplos Elementos</h6>
           <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
       planetas = ("Marte", "Terra", "Júpiter")
           </code></pre>
         </section>
-      
+
         <section data-auto-animate>
           <h6>Acessando Elementos</h6>
           <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
@@ -551,14 +620,14 @@ for chave, valor in aluno.items():
       print(planetas[1])  # Exibe "Terra"
           </code></pre>
         </section>
-      
+
         <section data-auto-animate>
           <h6>Slicing em Tuplas</h6>
           <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
       print(planetas[1:])  # Exibe ("Terra", "Júpiter")
           </code></pre>
         </section>
-      
+
         <section data-auto-animate>
           <h6>Iterando sobre Tuplas</h6>
           <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
@@ -566,7 +635,7 @@ for chave, valor in aluno.items():
           print(p)
           </code></pre>
         </section>
-      
+
         <!-- Atividades Rápidas -->
         <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom" data-auto-animate>
           <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
@@ -580,7 +649,7 @@ for chave, valor in aluno.items():
       print(numeros)
           </code></pre>
         </section>
-      
+
         <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom" data-auto-animate>
           <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
           <h6 style="color: white;">ATV2: Acesse e exiba o terceiro elemento da tupla de números.</h6>
@@ -593,7 +662,7 @@ for chave, valor in aluno.items():
       print(numeros[2])
           </code></pre>
         </section>
-      
+
         <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom" data-auto-animate>
           <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
           <h6 style="color: white;">ATV3: Tente alterar o primeiro elemento da tupla e observe o que acontece.</h6>
@@ -607,7 +676,7 @@ for chave, valor in aluno.items():
       # numeros[0] = 99
           </code></pre>
         </section>
-      
+
         <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom" data-auto-animate>
           <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
           <h6 style="color: white;">ATV4: Utilize um loop para imprimir cada elemento da tupla de números.</h6>
@@ -622,10 +691,10 @@ for chave, valor in aluno.items():
           </code></pre>
         </section>
       </section>
-      
+
       <section>
         <section>Resumo: Estruturas em Python</section>
-      
+
         <section data-auto-animate>
           <h6>Listas</h6>
           <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
@@ -633,7 +702,7 @@ for chave, valor in aluno.items():
       print(planetas)
           </code></pre>
         </section>
-      
+
         <section data-auto-animate>
           <h6>Dicionários</h6>
           <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
@@ -641,7 +710,7 @@ for chave, valor in aluno.items():
       print(planeta)
           </code></pre>
         </section>
-      
+
         <section data-auto-animate>
           <h6>Tuplas</h6>
           <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
@@ -649,28 +718,31 @@ for chave, valor in aluno.items():
       print(planetas)
           </code></pre>
         </section>
-      
+
         <section data-auto-animate>
           <h6>Dica</h6>
           <p>Listas e dicionários são mutáveis; tuplas são imutáveis.</p>
         </section>
       </section>
-      
+
     </div>
   </div>
 
   <!-- Scripts Reveal.js -->
   <script src="./dist/reveal.js"></script>
   <script src="./plugin/highlight/highlight.js"></script>
+  <script src="./plugin/math/math.js"></script>
+  
   <script>
     Reveal.initialize({
+      
       // center: false,
       controls: true,
       progress: true,
       slideNumber: true,
       history: true,
       transition: 'convex',
-      plugins: [RevealHighlight]
+      plugins: [RevealHighlight,RevealMath.KaTeX]
     });
   </script>
 </body>
