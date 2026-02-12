@@ -76,7 +76,14 @@
       </section>
 
       <section class="bg-gray-800 p-6 rounded-lg shadow-lg">
-        <h2 class="text-2xl font-semibold text-gray-100 mb-4">Aulas Disponíveis</h2>
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
+          <h2 class="text-2xl font-semibold text-gray-100">Aulas Disponíveis</h2>
+          <div class="flex items-center gap-2">
+            <label for="semester-select" class="text-sm text-gray-300">Semestre:</label>
+            <select id="semester-select" class="bg-gray-700 border border-gray-600 text-gray-100 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400">
+            </select>
+          </div>
+        </div>
         <ul id="aulas-list" class="space-y-3">
         </ul>
       </section>
@@ -94,19 +101,58 @@
     
     document.addEventListener("DOMContentLoaded", async function() {
       const listaAulas = document.getElementById("aulas-list");
-      try {
-        const response = await fetch('./aulas/aulas.json');
-        if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
-        const aulas = await response.json();
-        if (!aulas || !Array.isArray(aulas) || aulas.length === 0) {
-          listaAulas.innerHTML = '<p class="text-gray-400 text-justify">Nenhuma aula disponível no momento.</p>';
-          return;
+      const semesterSelect = document.getElementById("semester-select");
+      const semestresDisponiveis = ["2026.1", "2025.1"];
+
+      function obterSemestrePadrao() {
+        const hoje = new Date();
+        const semestreAtual = `${hoje.getFullYear()}.${hoje.getMonth() < 6 ? 1 : 2}`;
+        return semestresDisponiveis.includes(semestreAtual) ? semestreAtual : semestresDisponiveis[0];
+      }
+
+      function montarLinkAula(semestre, linkAula) {
+        if (!linkAula) return "#";
+        if (/^https?:\/\//i.test(linkAula)) return linkAula;
+        const linkNormalizado = linkAula.replace(/^\.\//, "");
+        return `./${semestre}/${linkNormalizado}`;
+      }
+
+      async function carregarAulas(semestre) {
+        listaAulas.innerHTML = "";
+        try {
+          const response = await fetch(`./${semestre}/aulas/aulas.json`);
+          if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
+          const aulas = await response.json();
+          if (!aulas || !Array.isArray(aulas) || aulas.length === 0) {
+            listaAulas.innerHTML = '<p class="text-gray-400 text-justify">Nenhuma aula disponível no momento.</p>';
+            return;
+          }
+          aulas.forEach((aula, index) => {
+            const li = document.createElement("li");
+            const link = montarLinkAula(semestre, aula.link);
+            li.innerHTML = `<a href="${link}" class="block p-4 bg-green-500 text-gray-900 rounded-lg hover:bg-green-400 transition-colors text-center font-semibold">🐍 ${aula.titulo || 'Aula ' + (index + 1)}</a>`;
+            listaAulas.appendChild(li);
+          });
+        } catch (error) {
+          console.error("Erro ao carregar aulas: ", error);
+          listaAulas.innerHTML = '<p class="text-red-500 text-justify">Erro ao carregar aulas.</p>';
         }
-        aulas.forEach((aula, index) => {
-          const li = document.createElement("li");
-          li.innerHTML = `<a href="${aula.link}" class="block p-4 bg-green-500 text-gray-900 rounded-lg hover:bg-green-400 transition-colors text-center font-semibold">🐍 ${aula.titulo || 'Aula ' + (index + 1)}</a>`;
-          listaAulas.appendChild(li);
-        });
+      }
+
+      semestresDisponiveis.forEach((semestre) => {
+        const option = document.createElement("option");
+        option.value = semestre;
+        option.textContent = semestre;
+        semesterSelect.appendChild(option);
+      });
+
+      semesterSelect.value = obterSemestrePadrao();
+      semesterSelect.addEventListener("change", function(event) {
+        carregarAulas(event.target.value);
+      });
+
+      try {
+        await carregarAulas(semesterSelect.value);
       } catch (error) {
         console.error("Erro ao carregar aulas: ", error);
         listaAulas.innerHTML = '<p class="text-red-500 text-justify">Erro ao carregar aulas.</p>';

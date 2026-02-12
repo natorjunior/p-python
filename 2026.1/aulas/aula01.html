@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Aula 01 - Primeiro contato com programação: o que é programar, algoritmos do dia a dia, variáveis e tipos básicos em Python.">
+  <title>Aula 01 - Bem-vindo à Programação!</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <link rel="stylesheet" href="./dist/reveal.css">
+  <link rel="stylesheet" href="./dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="./plugin/highlight/atom-one-dark.css">
+
+  <style>
+    :root {
+      --primary-color: #0056b3;
+      --secondary-color: #2f2f2f;
+      --light-bg: #f2f7ff;
+      --accent-bg: #e7f6ec;
+      --warn-bg: #fff8e1;
+      --code-bg: #1f2937;
+      --transition-fragment: 0.3s ease;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .reveal h1,
+    .reveal h2,
+    .reveal h3 {
+      color: var(--primary-color);
+    }
+
+    .reveal p,
+    .reveal li {
+      color: var(--secondary-color);
+      font-size: 0.95em;
+    }
+
+    .reveal .icon {
+      color: currentColor;
+      margin-right: 0.28em;
+    }
+
+    .reveal .icon-only {
+      color: currentColor;
+      margin-right: 0;
+    }
+
+    .reveal pre code {
+      font-size: 0.85em;
+      background: var(--code-bg);
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    .fragment {
+      transition: all var(--transition-fragment);
+    }
+
+    .bg-light {
+      background-color: var(--light-bg) !important;
+    }
+
+    .bg-accent {
+      background-color: var(--accent-bg) !important;
+    }
+
+    .bg-warn {
+      background-color: var(--warn-bg) !important;
+    }
+
+    .emoji-big {
+      font-size: 2.5em;
+      margin: 0;
+    }
+
+    .box {
+      background: var(--light-bg);
+      border-left: 5px solid var(--primary-color);
+      padding: 15px 20px;
+      border-radius: 6px;
+      margin: 15px 0;
+      text-align: left;
+    }
+
+    .box-green {
+      background: var(--accent-bg);
+      border-left: 5px solid #27ae60;
+      padding: 15px 20px;
+      border-radius: 6px;
+      margin: 15px 0;
+      text-align: left;
+    }
+
+    .columns {
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+    }
+
+    .columns > div {
+      flex: 1;
+    }
+
+    .reveal table {
+      font-size: 0.8em;
+      margin: 20px auto;
+    }
+
+    .reveal table th {
+      background: var(--primary-color);
+      color: white;
+      padding: 8px 16px;
+    }
+
+    .reveal table td {
+      padding: 6px 16px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .hero-cover {
+      position: relative;
+      overflow: hidden;
+      padding: 40px !important;
+    }
+
+    .hero-cover::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(140deg, rgba(3, 15, 35, 0.5), rgba(11, 53, 112, 0.35), rgba(17, 126, 111, 0.25));
+      z-index: 1;
+    }
+
+    .hero-cover::after {
+      content: "";
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      right: -110px;
+      top: -100px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0));
+      z-index: 1;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero-content {
+      background: rgba(7, 24, 54, 0.48);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 24px 26px;
+      text-align: left;
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.22);
+      backdrop-filter: blur(2px);
+    }
+
+    .hero-kicker {
+      margin: 0 0 12px 0;
+      color: rgba(255, 255, 255, 0.9) !important;
+      font-size: 0.4em !important;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .hero-title {
+      margin: 0 0 12px 0 !important;
+      color: #fff !important;
+      font-size: 1.35em !important;
+      line-height: 1.12 !important;
+      text-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-title span {
+      color: rgba(230, 244, 255, 0.96);
+      font-weight: 500;
+      font-size: 0.88em;
+    }
+
+    .hero-subtitle {
+      margin: 0 0 16px 0;
+      color: rgba(255, 255, 255, 0.92) !important;
+      font-size: 0.5em !important;
+      line-height: 1.45;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 18px 0;
+    }
+
+    .hero-tags span {
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.26);
+      border-radius: 999px;
+      color: #fff;
+      font-size: 0.34em;
+      font-weight: 500;
+      padding: 4px 10px;
+    }
+
+    .hero-meta {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.88) !important;
+      font-size: 0.4em !important;
+      font-weight: 400;
+    }
+
+    .hero-mark {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-icon-wrap {
+      width: 180px;
+      height: 180px;
+      border-radius: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-size: 2em;
+      background: linear-gradient(150deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.08));
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.24);
+    }
+
+    @media (max-width: 768px) {
+      .reveal h2 {
+        font-size: 1.5em;
+      }
+
+      .reveal p,
+      .reveal li {
+        font-size: 0.85em;
+      }
+
+      .columns {
+        flex-direction: column;
+      }
+
+      .hero-cover {
+        padding: 18px !important;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .hero-content {
+        padding: 18px;
+      }
+
+      .hero-title {
+        font-size: 1.05em !important;
+      }
+
+      .hero-subtitle {
+        font-size: 0.46em !important;
+      }
+
+      .hero-icon-wrap {
+        width: 120px;
+        height: 120px;
+        font-size: 1.4em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ==================== SLIDE 1 – Capa ==================== -->
+      <section class="hero-cover" data-background-gradient="linear-gradient(140deg, #0d2550, #1450a4, #1ba37f)">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <p class="hero-kicker"><i class="fa-solid fa-laptop-code icon" aria-hidden="true"></i>Introducao a Programacao</p>
+            <h1 class="hero-title">Aula 01<br><span>Bem-vindo a Programacao</span></h1>
+            <p class="hero-subtitle">Seu primeiro contato com logica, algoritmos e fundamentos do Python.</p>
+            <div class="hero-tags">
+              <span>Algoritmos</span>
+              <span>Variaveis</span>
+              <span>Python Basico</span>
+            </div>
+            <p class="hero-meta"><i class="fa-solid fa-user-tie icon" aria-hidden="true"></i>Prof. Msc. Nator Junior Carvalho da Costa</p>
+          </div>
+          <div class="hero-mark">
+            <div class="hero-icon-wrap">
+              <i class="fa-solid fa-rocket icon-only" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 2 – Boas-vindas ==================== -->
+      <section class="bg-light">
+        <h2>Antes de começar…</h2>
+        <p class="fragment">Você <strong>não</strong> precisa saber nada de programação.</p>
+        <p class="fragment">Tudo o que faremos aqui parte do <strong>zero</strong>.</p>
+        <p class="fragment">O único pré-requisito é: <strong>curiosidade</strong>! <i class="fa-solid fa-user-graduate icon" aria-hidden="true"></i></p>
+        <div class="box fragment">
+          <i class="fa-solid fa-lightbulb icon" aria-hidden="true"></i> <em>"A melhor forma de aprender a programar é… programando."</em>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 3 – Objetivos ==================== -->
+      <section>
+        <h2><i class="fa-solid fa-bullseye icon" aria-hidden="true"></i> Objetivos da Aula</h2>
+        <ul>
+          <li class="fragment">Entender <strong>o que é programar</strong></li>
+          <li class="fragment">Compreender o conceito de <strong>algoritmo</strong></li>
+          <li class="fragment">Conhecer a linguagem <strong>Python</strong></li>
+          <li class="fragment">Escrever seu <strong>primeiro programa</strong></li>
+          <li class="fragment">Aprender sobre <strong>variáveis</strong> e <strong>tipos de dados</strong></li>
+          <li class="fragment">Usar <code>input()</code> e <code>print()</code> para interagir com o usuário</li>
+        </ul>
+      </section>
+
+      <!-- ==================== SLIDE 4 – O que é programar? ==================== -->
+      <section class="bg-accent">
+        <h2>O que é Programar?</h2>
+        <p class="fragment">Programar é dar <strong>instruções</strong> para o computador executar.</p>
+        <p class="fragment">É como escrever uma <strong>receita</strong>: cada passo deve ser claro.</p>
+        <div class="box fragment">
+          <i class="fa-solid fa-desktop icon" aria-hidden="true"></i> O computador é muito rápido, mas não "pensa" sozinho. <br>
+          Ele faz <strong>exatamente</strong> o que você manda.
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 5 – Algoritmo no dia a dia ==================== -->
+      <section>
+        <h2><i class="fa-solid fa-list-check icon" aria-hidden="true"></i> Algoritmo no Dia a Dia</h2>
+        <p class="fragment">Algoritmo = sequência de <strong>passos</strong> para resolver um problema.</p>
+        <div class="columns">
+          <div class="fragment">
+            <h4>Fazer um café <i class="fa-solid fa-mug-hot icon" aria-hidden="true"></i></h4>
+            <ol style="font-size: .8em;">
+              <li>Ferver a água</li>
+              <li>Colocar o pó no filtro</li>
+              <li>Despejar a água</li>
+              <li>Servir na xícara</li>
+            </ol>
+          </div>
+          <div class="fragment">
+            <h4>Escovar os dentes <i class="fa-solid fa-tooth icon" aria-hidden="true"></i></h4>
+            <ol style="font-size: .8em;">
+              <li>Pegar a escova</li>
+              <li>Colocar pasta</li>
+              <li>Escovar por 2 min</li>
+              <li>Enxaguar a boca</li>
+            </ol>
+          </div>
+        </div>
+        <p class="fragment" style="margin-top: 15px;"><em>Você já usa algoritmos todos os dias!</em></p>
+      </section>
+
+      <!-- ==================== SLIDE 6 – Características de um algoritmo ==================== -->
+      <section class="bg-light">
+        <h2>Características de um Algoritmo</h2>
+        <ul>
+          <li class="fragment"><i class="fa-solid fa-check icon" aria-hidden="true"></i> <strong>Claro</strong> – cada passo é compreensível</li>
+          <li class="fragment"><i class="fa-solid fa-check icon" aria-hidden="true"></i> <strong>Ordenado</strong> – a sequência importa</li>
+          <li class="fragment"><i class="fa-solid fa-check icon" aria-hidden="true"></i> <strong>Finito</strong> – tem começo, meio e fim</li>
+          <li class="fragment"><i class="fa-solid fa-check icon" aria-hidden="true"></i> <strong>Eficaz</strong> – resolve o problema proposto</li>
+        </ul>
+      </section>
+
+      <!-- ==================== SLIDE 7 – Algoritmo → Código ==================== -->
+      <section>
+        <h2>Do Algoritmo ao Código</h2>
+        <div class="columns">
+          <div class="fragment">
+            <h4><i class="fa-solid fa-pen-to-square icon" aria-hidden="true"></i> Algoritmo</h4>
+            <pre><code data-trim data-noescape>
+1. Perguntar o nome
+2. Saudar a pessoa
+            </code></pre>
+          </div>
+          <div class="fragment">
+            <h4><i class="fa-solid fa-code icon" aria-hidden="true"></i> Python</h4>
+            <pre><code class="language-python" data-trim data-noescape>
+nome = input("Qual é o seu nome? ")
+print("Olá,", nome, "!")
+            </code></pre>
+          </div>
+        </div>
+        <p class="fragment" style="margin-top: 10px;">Viu? São apenas <strong>2 linhas</strong>!</p>
+      </section>
+
+      <!-- ==================== SLIDE 8 – Por que Python? ==================== -->
+      <section class="bg-accent">
+        <h2><i class="fa-solid fa-code icon" aria-hidden="true"></i> Por que Python?</h2>
+        <ul>
+          <li class="fragment">Linguagem <strong>simples e legível</strong> – parece inglês</li>
+          <li class="fragment">Uma das <strong>mais populares do mundo</strong></li>
+          <li class="fragment">Usada em: <strong>web, dados, IA, automação, games…</strong></li>
+          <li class="fragment">Ótima para <strong>iniciantes</strong> <i class="fa-solid fa-graduation-cap icon" aria-hidden="true"></i></li>
+        </ul>
+        <div class="box-green fragment">
+          <i class="fa-solid fa-trophy icon" aria-hidden="true"></i> Segundo o índice TIOBE, Python é a linguagem nº 1 em popularidade (2025-2026).
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 9 – Seu primeiro programa ==================== -->
+      <section>
+        <h2><i class="fa-solid fa-award icon" aria-hidden="true"></i> Seu Primeiro Programa!</h2>
+        <p class="fragment">Tradição da programação: o famoso <strong>"Hello, World!"</strong></p>
+        <pre class="fragment"><code class="language-python" data-trim data-noescape>
+print("Hello, World!")
+        </code></pre>
+        <p class="fragment">É isso! Uma única linha e seu programa já funciona. <i class="fa-solid fa-rocket icon" aria-hidden="true"></i></p>
+        <div class="box fragment">
+          <i class="fa-solid fa-wrench icon" aria-hidden="true"></i> <strong>print()</strong> é o comando que exibe algo na tela.
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 10 – Variáveis ==================== -->
+      <section class="bg-light">
+        <h2><i class="fa-solid fa-box icon" aria-hidden="true"></i> O que é uma Variável?</h2>
+        <p class="fragment">Pense numa variável como uma <strong>caixa com etiqueta</strong>.</p>
+        <p class="fragment">Você dá um <strong>nome</strong> para a caixa e guarda um <strong>valor</strong> dentro.</p>
+        <pre class="fragment"><code class="language-python" data-trim data-noescape>
+nome = "Ana"
+idade = 19
+        </code></pre>
+        <div class="box fragment">
+          <i class="fa-solid fa-thumbtack icon" aria-hidden="true"></i> O sinal <code>=</code> em Python não é "igual" da matemática. <br>
+          Ele significa <strong>"recebe"</strong> → <code>nome</code> <em>recebe</em> <code>"Ana"</code>.
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 11 – Regras de nomes ==================== -->
+      <section>
+        <h2><i class="fa-solid fa-pen-to-square icon" aria-hidden="true"></i> Regras para Nomes de Variáveis</h2>
+        <table>
+          <thead>
+            <tr>
+              <th><i class="fa-solid fa-check icon" aria-hidden="true"></i> Válido</th>
+              <th><i class="fa-solid fa-xmark icon" aria-hidden="true"></i> Inválido</th>
+              <th>Motivo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="fragment">
+              <td><code>nome</code></td>
+              <td><code>1nome</code></td>
+              <td>Não pode começar com número</td>
+            </tr>
+            <tr class="fragment">
+              <td><code>nota_final</code></td>
+              <td><code>nota final</code></td>
+              <td>Não pode ter espaço</td>
+            </tr>
+            <tr class="fragment">
+              <td><code>idade2</code></td>
+              <td><code>class</code></td>
+              <td>Palavra reservada do Python</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ==================== SLIDE 12 – Tipos de dados ==================== -->
+      <section class="bg-accent">
+        <h2><i class="fa-solid fa-puzzle-piece icon" aria-hidden="true"></i> Tipos de Dados em Python</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Tipo</th>
+              <th>O que guarda</th>
+              <th>Exemplo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="fragment">
+              <td><code>int</code></td>
+              <td>Números inteiros</td>
+              <td><code>10</code>, <code>-3</code>, <code>0</code></td>
+            </tr>
+            <tr class="fragment">
+              <td><code>float</code></td>
+              <td>Números com decimal</td>
+              <td><code>3.14</code>, <code>-0.5</code></td>
+            </tr>
+            <tr class="fragment">
+              <td><code>str</code></td>
+              <td>Textos (strings)</td>
+              <td><code>"Olá"</code>, <code>'Python'</code></td>
+            </tr>
+            <tr class="fragment">
+              <td><code>bool</code></td>
+              <td>Verdadeiro / Falso</td>
+              <td><code>True</code>, <code>False</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ==================== SLIDE 13 – Tipos na prática ==================== -->
+      <section>
+        <h2>Tipos na Prática</h2>
+        <pre><code class="language-python" data-trim data-noescape>
+nome = "Maria"           # str  → texto
+idade = 20               # int  → inteiro
+altura = 1.65            # float → decimal
+matriculada = True       # bool → verdadeiro
+
+print(type(nome))        # &lt;class 'str'&gt;
+print(type(idade))       # &lt;class 'int'&gt;
+print(type(altura))      # &lt;class 'float'&gt;
+print(type(matriculada)) # &lt;class 'bool'&gt;
+        </code></pre>
+        <div class="box fragment">
+          <i class="fa-solid fa-magnifying-glass icon" aria-hidden="true"></i> A função <code>type()</code> mostra o tipo de qualquer variável.
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="./dist/reveal.js"></script>
+  <script src="./plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({
+      center: false,
+      controls: true,
+      progress: true,
+      slideNumber: true,
+      history: true,
+      transition: 'convex',
+      plugins: [RevealHighlight]
+    });
+  </script>
+</body>
+
+</html>

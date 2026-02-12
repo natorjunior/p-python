@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Aula 02 - Operadores aritméticos, relacionais e lógicos em Python. Atividades práticas.">
+  <title>Aula 02 - Operadores em Python</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <link rel="stylesheet" href="./dist/reveal.css">
+  <link rel="stylesheet" href="./dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="./plugin/highlight/atom-one-dark.css">
+
+  <style>
+    :root {
+      --primary-color: #0056b3;
+      --secondary-color: #2f2f2f;
+      --light-bg: #f2f7ff;
+      --accent-bg: #e7f6ec;
+      --warn-bg: #fff8e1;
+      --activity-bg: #f3e8ff;
+      --code-bg: #1f2937;
+      --transition-fragment: 0.3s ease;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .reveal h1,
+    .reveal h2,
+    .reveal h3 {
+      color: var(--primary-color);
+    }
+
+    .reveal p,
+    .reveal li {
+      color: var(--secondary-color);
+      font-size: 0.95em;
+    }
+
+    .reveal .icon {
+      color: currentColor;
+      margin-right: 0.28em;
+    }
+
+    .reveal .icon-only {
+      color: currentColor;
+      margin-right: 0;
+    }
+
+    .reveal pre code {
+      font-size: 0.85em;
+      background: var(--code-bg);
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    .fragment {
+      transition: all var(--transition-fragment);
+    }
+
+    .bg-light {
+      background-color: var(--light-bg) !important;
+    }
+
+    .bg-accent {
+      background-color: var(--accent-bg) !important;
+    }
+
+    .bg-warn {
+      background-color: var(--warn-bg) !important;
+    }
+
+    .bg-activity {
+      background-color: var(--activity-bg) !important;
+    }
+
+    .emoji-big {
+      font-size: 2.5em;
+      margin: 0;
+    }
+
+    .box {
+      background: var(--light-bg);
+      border-left: 5px solid var(--primary-color);
+      padding: 15px 20px;
+      border-radius: 6px;
+      margin: 15px 0;
+      text-align: left;
+    }
+
+    .box-green {
+      background: var(--accent-bg);
+      border-left: 5px solid #27ae60;
+      padding: 15px 20px;
+      border-radius: 6px;
+      margin: 15px 0;
+      text-align: left;
+    }
+
+    .box-purple {
+      background: var(--activity-bg);
+      border-left: 5px solid #8e44ad;
+      padding: 15px 20px;
+      border-radius: 6px;
+      margin: 15px 0;
+      text-align: left;
+    }
+
+    .box-orange {
+      background: #fff3e0;
+      border-left: 5px solid #e67e22;
+      padding: 15px 20px;
+      border-radius: 6px;
+      margin: 15px 0;
+      text-align: left;
+    }
+
+    .columns {
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+    }
+
+    .columns>div {
+      flex: 1;
+    }
+
+    .reveal table {
+      font-size: 0.8em;
+      margin: 20px auto;
+    }
+
+    .reveal table th {
+      background: var(--primary-color);
+      color: white;
+      padding: 8px 16px;
+    }
+
+    .reveal table td {
+      padding: 6px 16px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .hero-cover {
+      position: relative;
+      overflow: hidden;
+      padding: 40px !important;
+    }
+
+    .hero-cover::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(140deg, rgba(3, 15, 35, 0.5), rgba(11, 53, 112, 0.35), rgba(17, 126, 111, 0.25));
+      z-index: 1;
+    }
+
+    .hero-cover::after {
+      content: "";
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      right: -110px;
+      top: -100px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0));
+      z-index: 1;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero-content {
+      background: rgba(7, 24, 54, 0.48);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 24px 26px;
+      text-align: left;
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.22);
+      backdrop-filter: blur(2px);
+    }
+
+    .hero-kicker {
+      margin: 0 0 12px 0;
+      color: rgba(255, 255, 255, 0.9) !important;
+      font-size: 0.4em !important;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .hero-title {
+      margin: 0 0 12px 0 !important;
+      color: #fff !important;
+      font-size: 1.35em !important;
+      line-height: 1.12 !important;
+      text-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-title span {
+      color: rgba(230, 244, 255, 0.96);
+      font-weight: 500;
+      font-size: 0.88em;
+    }
+
+    .hero-subtitle {
+      margin: 0 0 16px 0;
+      color: rgba(255, 255, 255, 0.92) !important;
+      font-size: 0.5em !important;
+      line-height: 1.45;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 18px 0;
+    }
+
+    .hero-tags span {
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.26);
+      border-radius: 999px;
+      color: #fff;
+      font-size: 0.34em;
+      font-weight: 500;
+      padding: 4px 10px;
+    }
+
+    .hero-meta {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.88) !important;
+      font-size: 0.4em !important;
+      font-weight: 400;
+    }
+
+    .hero-mark {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-icon-wrap {
+      width: 180px;
+      height: 180px;
+      border-radius: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-size: 2em;
+      background: linear-gradient(150deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.08));
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.24);
+    }
+
+    @media (max-width: 768px) {
+      .reveal h2 {
+        font-size: 1.5em;
+      }
+
+      .reveal p,
+      .reveal li {
+        font-size: 0.85em;
+      }
+
+      .columns {
+        flex-direction: column;
+      }
+
+      .hero-cover {
+        padding: 18px !important;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .hero-content {
+        padding: 18px;
+      }
+
+      .hero-title {
+        font-size: 1.05em !important;
+      }
+
+      .hero-subtitle {
+        font-size: 0.46em !important;
+      }
+
+      .hero-icon-wrap {
+        width: 120px;
+        height: 120px;
+        font-size: 1.4em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ==================== SLIDE 1 – Capa ==================== -->
+      <section class="hero-cover" data-background-gradient="linear-gradient(140deg, #0d2550, #1450a4, #1ba37f)">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <p class="hero-kicker"><i class="fa-solid fa-laptop-code icon" aria-hidden="true"></i>Introdução à
+              Programação</p>
+            <h1 class="hero-title">Aula 02<br><span>Operadores em Python</span></h1>
+            <p class="hero-subtitle">Aritméticos, relacionais e lógicos — a base para tomar decisões no código.</p>
+            <div class="hero-tags">
+              <span>Operadores Aritméticos</span>
+              <span>Operadores Relacionais</span>
+              <span>Operadores Lógicos</span>
+              <span>Atividades</span>
+            </div>
+            <p class="hero-meta"><i class="fa-solid fa-user-tie icon" aria-hidden="true"></i>Prof. Msc. Nator Junior
+              Carvalho da Costa</p>
+          </div>
+          <div class="hero-mark">
+            <div class="hero-icon-wrap">
+              <i class="fa-solid fa-calculator icon-only" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 2 – Revisão rápida ==================== -->
+      <section class="bg-light">
+        <h2><i class="fa-solid fa-rotate-left icon" aria-hidden="true"></i> Revisão Rápida</h2>
+        <p class="fragment">Na aula passada, aprendemos:</p>
+        <ul>
+          <li class="fragment"><i class="fa-solid fa-check icon" aria-hidden="true"></i> Variáveis guardam valores
+            (<code>int</code>, <code>float</code>, <code>str</code>, <code>bool</code>)</li>
+          <li class="fragment"><i class="fa-solid fa-check icon" aria-hidden="true"></i> <code>print()</code> exibe
+            dados na tela</li>
+          <li class="fragment"><i class="fa-solid fa-check icon" aria-hidden="true"></i> <code>input()</code> lê dados
+            do usuário</li>
+        </ul>
+        <div class="box fragment">
+          <i class="fa-solid fa-lightbulb icon" aria-hidden="true"></i> Hoje vamos aprender a <strong>calcular</strong>,
+          <strong>comparar</strong> e <strong>combinar condições</strong> usando operadores!
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 3 – Objetivos ==================== -->
+      <section>
+        <h2><i class="fa-solid fa-bullseye icon" aria-hidden="true"></i> Objetivos da Aula</h2>
+        <ul>
+          <li class="fragment">Dominar os <strong>operadores aritméticos</strong></li>
+          <li class="fragment">Entender os <strong>operadores relacionais</strong> (comparação)</li>
+          <li class="fragment">Conhecer os <strong>operadores lógicos</strong></li>
+          <li class="fragment">Saber a <strong>precedência</strong> dos operadores</li>
+          <li class="fragment">Resolver <strong>atividades práticas</strong> com operadores</li>
+        </ul>
+      </section>
+
+      <!-- ==================== SLIDE 4 – O que são operadores? ==================== -->
+      <section class="bg-accent">
+        <h2><i class="fa-solid fa-gears icon" aria-hidden="true"></i> O que são Operadores?</h2>
+        <p class="fragment">Operadores são <strong>símbolos especiais</strong> que dizem ao Python para realizar uma
+          operação.</p>
+        <div class="columns">
+          <div class="fragment">
+            <div class="box">
+              <strong>Aritméticos</strong><br>
+              Fazem contas<br>
+              <code>+</code> <code>-</code> <code>*</code> <code>/</code>
+            </div>
+          </div>
+          <div class="fragment">
+            <div class="box">
+              <strong>Relacionais</strong><br>
+              Comparam valores<br>
+              <code>></code> <code><</code> <code>==</code> <code>!=</code>
+            </div>
+          </div>
+          <div class="fragment">
+            <div class="box">
+              <strong>Lógicos</strong><br>
+              Combinam condições<br>
+              <code>and</code> <code>or</code> <code>not</code>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 5 – Aritméticos: tabela ==================== -->
+      <section>
+        <h2><i class="fa-solid fa-calculator icon" aria-hidden="true"></i> Operadores Aritméticos</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Operação</th>
+              <th>Símbolo</th>
+              <th>Exemplo</th>
+              <th>Resultado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="fragment">
+              <td>Soma</td>
+              <td><code>+</code></td>
+              <td><code>5 + 3</code></td>
+              <td><code>8</code></td>
+            </tr>
+            <tr class="fragment">
+              <td>Subtração</td>
+              <td><code>-</code></td>
+              <td><code>10 - 4</code></td>
+              <td><code>6</code></td>
+            </tr>
+            <tr class="fragment">
+              <td>Multiplicação</td>
+              <td><code>*</code></td>
+              <td><code>3 * 7</code></td>
+              <td><code>21</code></td>
+            </tr>
+            <tr class="fragment">
+              <td>Divisão</td>
+              <td><code>/</code></td>
+              <td><code>10 / 3</code></td>
+              <td><code>3.333…</code></td>
+            </tr>
+            <tr class="fragment">
+              <td>Divisão inteira</td>
+              <td><code>//</code></td>
+              <td><code>10 // 3</code></td>
+              <td><code>3</code></td>
+            </tr>
+            <tr class="fragment">
+              <td>Resto (módulo)</td>
+              <td><code>%</code></td>
+              <td><code>10 % 3</code></td>
+              <td><code>1</code></td>
+            </tr>
+            <tr class="fragment">
+              <td>Potência</td>
+              <td><code>**</code></td>
+              <td><code>2 ** 3</code></td>
+              <td><code>8</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ==================== SLIDE 6 – Aritméticos: código ==================== -->
+      <section class="bg-light">
+        <h2><i class="fa-solid fa-code icon" aria-hidden="true"></i> Aritméticos na Prática</h2>
+        <pre><code class="language-python" data-trim data-noescape>
+a = 15
+b = 4
+
+print(a + b)   # 19   → soma
+print(a - b)   # 11   → subtração
+print(a * b)   # 60   → multiplicação
+print(a / b)   # 3.75 → divisão
+print(a // b)  # 3    → divisão inteira
+print(a % b)   # 3    → resto
+print(a ** b)  # 50625 → potência (15⁴)
+        </code></pre>
+        <div class="box fragment">
+          <i class="fa-solid fa-lightbulb icon" aria-hidden="true"></i> <code>/</code> sempre retorna
+          <code>float</code>. Use <code>//</code> quando quiser só a parte inteira.
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 7 – Diferença / e // ==================== -->
+      <section>
+        <h2><i class="fa-solid fa-divide icon" aria-hidden="true"></i> Divisão <code>/</code> vs <code>//</code></h2>
+        <div class="columns">
+          <div class="fragment">
+            <h4><code>/</code> Divisão real</h4>
+            <pre><code class="language-python" data-trim data-noescape>
+print(7 / 2)   # 3.5
+print(10 / 5)  # 2.0
+print(1 / 3)   # 0.333…
+            </code></pre>
+            <p style="font-size:.8em;">Sempre retorna <code>float</code></p>
+          </div>
+          <div class="fragment">
+            <h4><code>//</code> Divisão inteira</h4>
+            <pre><code class="language-python" data-trim data-noescape>
+print(7 // 2)   # 3
+print(10 // 5)  # 2
+print(1 // 3)   # 0
+            </code></pre>
+            <p style="font-size:.8em;">Descarta a parte decimal</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 8 – Operador % (módulo) ==================== -->
+      <section class="bg-accent">
+        <h2><i class="fa-solid fa-percent icon" aria-hidden="true"></i> O Operador <code>%</code> (Módulo / Resto)</h2>
+        <p class="fragment">Retorna o <strong>resto</strong> da divisão inteira.</p>
+        <pre class="fragment"><code class="language-python" data-trim data-noescape>
+print(10 % 3)  # 1  → 10 ÷ 3 = 3, resto 1
+print(10 % 2)  # 0  → 10 ÷ 2 = 5, resto 0
+print(7 % 4)   # 3  → 7 ÷ 4 = 1, resto 3
+        </code></pre>
+        <div class="box-green fragment">
+          <i class="fa-solid fa-star icon" aria-hidden="true"></i> <strong>Truque útil:</strong> para saber se um número
+          é par, basta verificar se <code>n % 2 == 0</code>.
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 9 – Exemplo prático aritméticos ==================== -->
+      <section>
+        <h2><i class="fa-solid fa-flask icon" aria-hidden="true"></i> Exemplo: Calculadora Simples</h2>
+        <pre><code class="language-python" data-trim data-noescape>
+n1 = float(input("Digite o 1º número: "))
+n2 = float(input("Digite o 2º número: "))
+
+print(f"Soma:           {n1 + n2}")
+print(f"Subtração:      {n1 - n2}")
+print(f"Multiplicação:  {n1 * n2}")
+print(f"Divisão:        {n1 / n2}")
+        </code></pre>
+        <div class="box fragment">
+          <i class="fa-solid fa-triangle-exclamation icon" aria-hidden="true"></i> Cuidado! Dividir por zero causa
+          erro: <code>ZeroDivisionError</code>.
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 10 – ATIVIDADE 1 ==================== -->
+      <section class="bg-activity">
+        <h2><i class="fa-solid fa-pen-ruler icon" aria-hidden="true"></i> Atividade 1 — Aritméticos</h2>
+        <div class="box-purple">
+          <strong>Exercício A:</strong> Peça ao usuário dois números inteiros e exiba a <strong>soma</strong>, a
+          <strong>diferença</strong> e o <strong>produto</strong>.
+        </div>
+        <div class="box-purple fragment">
+          <strong>Exercício B:</strong> Peça um valor em <strong>reais (R$)</strong> e a <strong>cotação do
+            dólar</strong>. Exiba o valor convertido em dólares.
+        </div>
+        <div class="box-purple fragment">
+          <strong>Exercício C:</strong> Peça a <strong>temperatura em Celsius</strong> e converta para
+          <strong>Fahrenheit</strong>.<br>
+          Fórmula: <code>F = C × 9/5 + 32</code>
+        </div>
+        <p class="fragment" style="font-size:.8em;"><i class="fa-solid fa-clock icon"
+            aria-hidden="true"></i> Tempo sugerido: 10 minutos</p>
+      </section>
+
+      <!-- ==================== SLIDE 11 – Operadores Relacionais: intro ==================== -->
+      <section>
+        <h2><i class="fa-solid fa-not-equal icon" aria-hidden="true"></i> Operadores Relacionais</h2>
+        <p class="fragment">Servem para <strong>comparar</strong> dois valores.</p>
+        <p class="fragment">O resultado é sempre <code>True</code> ou <code>False</code> (tipo <code>bool</code>).</p>
+        <div class="box fragment">
+          <i class="fa-solid fa-lightbulb icon" aria-hidden="true"></i> São essenciais para criar
+          <strong>condições</strong> (<code>if</code>) nas próximas aulas!
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 12 – Relacionais: tabela ==================== -->
+      <section class="bg-light">
+        <h2><i class="fa-solid fa-table icon" aria-hidden="true"></i> Tabela de Operadores Relacionais</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Operador</th>
+              <th>Significado</th>
+              <th>Exemplo</th>
+              <th>Resultado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="fragment">
+              <td><code>==</code></td>
+              <td>Igual a</td>
+              <td><code>5 == 5</code></td>
+              <td><code>True</code></td>
+            </tr>
+            <tr class="fragment">
+              <td><code>!=</code></td>
+              <td>Diferente de</td>
+              <td><code>5 != 3</code></td>
+              <td><code>True</code></td>
+            </tr>
+            <tr class="fragment">
+              <td><code>></code></td>
+              <td>Maior que</td>
+              <td><code>7 > 3</code></td>
+              <td><code>True</code></td>
+            </tr>
+            <tr class="fragment">
+              <td><code><</code></td>
+              <td>Menor que</td>
+              <td><code>2 < 8</code></td>
+              <td><code>True</code></td>
+            </tr>
+            <tr class="fragment">
+              <td><code>>=</code></td>
+              <td>Maior ou igual</td>
+              <td><code>5 >= 5</code></td>
+              <td><code>True</code></td>
+            </tr>
+            <tr class="fragment">
+              <td><code><=</code></td>
+              <td>Menor ou igual</td>
+              <td><code>3 <= 2</code></td>
+              <td><code>False</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ==================== SLIDE 13 – Relacionais: código ==================== -->
+      <section>
+        <h2><i class="fa-solid fa-code icon" aria-hidden="true"></i> Relacionais na Prática</h2>
+        <pre><code class="language-python" data-trim data-noescape>
+a = 10
+b = 7
+
+print(a == b)   # False → 10 não é igual a 7
+print(a != b)   # True  → 10 é diferente de 7
+print(a > b)    # True  → 10 é maior que 7
+print(a < b)    # False → 10 não é menor que 7
+print(a >= 10)  # True  → 10 é maior ou igual a 10
+print(b <= 5)   # False → 7 não é menor ou igual a 5
+        </code></pre>
+      </section>
+
+      <!-- ==================== SLIDE 14 – Cuidado: = vs == ==================== -->
+      <section class="bg-warn">
+        <h2><i class="fa-solid fa-triangle-exclamation icon" aria-hidden="true"></i> Cuidado! <code>=</code> vs
+          <code>==</code>
+        </h2>
+        <div class="columns">
+          <div class="fragment">
+            <div class="box-orange">
+              <strong><code>=</code> (um igual)</strong><br>
+              <em>Atribuição</em> — guarda valor<br>
+              <pre><code class="language-python" data-trim>
+x = 10  # x recebe 10
+              </code></pre>
+            </div>
+          </div>
+          <div class="fragment">
+            <div class="box-green">
+              <strong><code>==</code> (dois iguais)</strong><br>
+              <em>Comparação</em> — verifica igualdade<br>
+              <pre><code class="language-python" data-trim>
+x == 10  # x é igual a 10?
+              </code></pre>
+            </div>
+          </div>
+        </div>
+        <p class="fragment" style="font-size:.85em;">
+          <i class="fa-solid fa-lightbulb icon" aria-hidden="true"></i>
+          Esse é um dos <strong>erros mais comuns</strong> de iniciantes!
+        </p>
+      </section>
+
+      <!-- ==================== SLIDE 15 – Relacionais com input ==================== -->
+      <section class="bg-light">
+        <h2><i class="fa-solid fa-keyboard icon" aria-hidden="true"></i> Exemplo com Entrada do Usuário</h2>
+        <pre><code class="language-python" data-trim data-noescape>
+idade = int(input("Qual a sua idade? "))
+
+print(f"Você é maior de idade? {idade >= 18}")
+print(f"Você tem exatamente 20 anos? {idade == 20}")
+print(f"Você tem menos de 16 anos? {idade < 16}")
+        </code></pre>
+        <div class="box fragment">
+          <i class="fa-solid fa-magnifying-glass icon" aria-hidden="true"></i> Cada expressão retorna
+          <code>True</code> ou <code>False</code> automaticamente.
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 16 – ATIVIDADE 2 ==================== -->
+      <section class="bg-activity">
+        <h2><i class="fa-solid fa-pen-ruler icon" aria-hidden="true"></i> Atividade 2 — Relacionais</h2>
+        <div class="box-purple">
+          <strong>Exercício D:</strong> Peça dois números ao usuário e exiba se o <strong>primeiro é maior</strong> que
+          o segundo.
+        </div>
+        <div class="box-purple fragment">
+          <strong>Exercício E:</strong> Peça a <strong>idade</strong> do usuário e exiba se ele <strong>pode
+            votar</strong> (idade >= 16).
+        </div>
+        <div class="box-purple fragment">
+          <strong>Exercício F:</strong> Peça um número e exiba se ele é <strong>par</strong>.
+          <br><em>Dica: use o operador <code>%</code></em>
+        </div>
+        <p class="fragment" style="font-size:.8em;"><i class="fa-solid fa-clock icon"
+            aria-hidden="true"></i> Tempo sugerido: 10 minutos</p>
+      </section>
+
+      <!-- ==================== SLIDE 17 – Operadores Lógicos: intro ==================== -->
+      <section>
+        <h2><i class="fa-solid fa-code-branch icon" aria-hidden="true"></i> Operadores Lógicos</h2>
+        <p class="fragment">Servem para <strong>combinar</strong> duas ou mais condições.</p>
+        <p class="fragment">Resultado: sempre <code>True</code> ou <code>False</code>.</p>
+        <table class="fragment">
+          <thead>
+            <tr>
+              <th>Operador</th>
+              <th>Significado</th>
+              <th>Quando é <code>True</code>?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>and</code></td>
+              <td>E</td>
+              <td>Ambas as condições são verdadeiras</td>
+            </tr>
+            <tr>
+              <td><code>or</code></td>
+              <td>OU</td>
+              <td>Pelo menos uma condição é verdadeira</td>
+            </tr>
+            <tr>
+              <td><code>not</code></td>
+              <td>NÃO</td>
+              <td>Inverte o valor lógico</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ==================== SLIDE 18 – Tabela verdade AND ==================== -->
+      <section class="bg-accent">
+        <h2><i class="fa-solid fa-table icon" aria-hidden="true"></i> Tabela Verdade — <code>and</code></h2>
+        <p>Só é <code>True</code> quando <strong>as duas</strong> condições são verdadeiras.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>A</th>
+              <th>B</th>
+              <th>A <code>and</code> B</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="fragment">
+              <td><code>True</code></td>
+              <td><code>True</code></td>
+              <td><code style="color:#27ae60; font-weight:700;">True</code></td>
+            </tr>
+            <tr class="fragment">
+              <td><code>True</code></td>
+              <td><code>False</code></td>
+              <td><code style="color:#c0392b; font-weight:700;">False</code></td>
+            </tr>
+            <tr class="fragment">
+              <td><code>False</code></td>
+              <td><code>True</code></td>
+              <td><code style="color:#c0392b; font-weight:700;">False</code></td>
+            </tr>
+            <tr class="fragment">
+              <td><code>False</code></td>
+              <td><code>False</code></td>
+              <td><code style="color:#c0392b; font-weight:700;">False</code></td>
+            </tr>
+          </tbody>
+        </table>
+        <pre class="fragment"><code class="language-python" data-trim data-noescape>
+idade = 20
+tem_carteira = True
+print(idade >= 18 and tem_carteira)  # True
+        </code></pre>
+      </section>
+
+      <!-- ==================== SLIDE 19 – Tabela verdade OR ==================== -->
+      <section class="bg-light">
+        <h2><i class="fa-solid fa-table icon" aria-hidden="true"></i> Tabela Verdade — <code>or</code></h2>
+        <p>É <code>True</code> quando <strong>pelo menos uma</strong> condição é verdadeira.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>A</th>
+              <th>B</th>
+              <th>A <code>or</code> B</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="fragment">
+              <td><code>True</code></td>
+              <td><code>True</code></td>
+              <td><code style="color:#27ae60; font-weight:700;">True</code></td>
+            </tr>
+            <tr class="fragment">
+              <td><code>True</code></td>
+              <td><code>False</code></td>
+              <td><code style="color:#27ae60; font-weight:700;">True</code></td>
+            </tr>
+            <tr class="fragment">
+              <td><code>False</code></td>
+              <td><code>True</code></td>
+              <td><code style="color:#27ae60; font-weight:700;">True</code></td>
+            </tr>
+            <tr class="fragment">
+              <td><code>False</code></td>
+              <td><code>False</code></td>
+              <td><code style="color:#c0392b; font-weight:700;">False</code></td>
+            </tr>
+          </tbody>
+        </table>
+        <pre class="fragment"><code class="language-python" data-trim data-noescape>
+tem_rg = False
+tem_passaporte = True
+print(tem_rg or tem_passaporte)  # True
+        </code></pre>
+      </section>
+
+      <!-- ==================== SLIDE 20 – Tabela verdade NOT ==================== -->
+      <section>
+        <h2><i class="fa-solid fa-table icon" aria-hidden="true"></i> Tabela Verdade — <code>not</code></h2>
+        <p><strong>Inverte</strong> o valor lógico.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>A</th>
+              <th><code>not</code> A</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="fragment">
+              <td><code>True</code></td>
+              <td><code style="color:#c0392b; font-weight:700;">False</code></td>
+            </tr>
+            <tr class="fragment">
+              <td><code>False</code></td>
+              <td><code style="color:#27ae60; font-weight:700;">True</code></td>
+            </tr>
+          </tbody>
+        </table>
+        <pre class="fragment"><code class="language-python" data-trim data-noescape>
+chovendo = True
+print(not chovendo)  # False → "não está chovendo" é falso
+        </code></pre>
+      </section>
+
+      <!-- ==================== SLIDE 21 – Lógicos: exemplo completo ==================== -->
+      <section class="bg-accent">
+        <h2><i class="fa-solid fa-flask icon" aria-hidden="true"></i> Exemplo do Dia a Dia</h2>
+        <p style="font-size:.85em;">Imagine um sistema de cinema que dá desconto para <strong>estudantes menores de
+            25 anos</strong>:</p>
+        <pre><code class="language-python" data-trim data-noescape>
+estudante = input("Você é estudante? (s/n): ")
+idade = int(input("Qual a sua idade? "))
+
+tem_desconto = (estudante == "s") and (idade < 25)
+
+print(f"Tem desconto? {tem_desconto}")
+        </code></pre>
+        <div class="box fragment">
+          <i class="fa-solid fa-lightbulb icon" aria-hidden="true"></i> Usar parênteses deixa o código mais
+          <strong>legível</strong>, mesmo quando não são obrigatórios.
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 22 – Combinando operadores ==================== -->
+      <section class="bg-light">
+        <h2><i class="fa-solid fa-layer-group icon" aria-hidden="true"></i> Combinando Operadores</h2>
+        <p class="fragment">Você pode misturar aritméticos, relacionais e lógicos!</p>
+        <pre class="fragment"><code class="language-python" data-trim data-noescape>
+nota1 = 7.0
+nota2 = 5.0
+media = (nota1 + nota2) / 2          # aritmético
+faltas = 3
+
+aprovado = (media >= 6) and (faltas <= 5)  # relacional + lógico
+
+print(f"Média: {media}")
+print(f"Aprovado? {aprovado}")  # True
+        </code></pre>
+      </section>
+
+      <!-- ==================== SLIDE 23 – Precedência ==================== -->
+      <section>
+        <h2><i class="fa-solid fa-sort-numeric-down icon" aria-hidden="true"></i> Ordem de Precedência</h2>
+        <p class="fragment" style="font-size:.85em;">Python segue uma ordem para avaliar os operadores (do mais
+          prioritário ao menos):</p>
+        <table class="fragment">
+          <thead>
+            <tr>
+              <th>Prioridade</th>
+              <th>Operadores</th>
+              <th>Tipo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1ª (mais alta)</td>
+              <td><code>**</code></td>
+              <td>Potência</td>
+            </tr>
+            <tr>
+              <td>2ª</td>
+              <td><code>*</code> <code>/</code> <code>//</code> <code>%</code></td>
+              <td>Multiplicação, divisão</td>
+            </tr>
+            <tr>
+              <td>3ª</td>
+              <td><code>+</code> <code>-</code></td>
+              <td>Soma, subtração</td>
+            </tr>
+            <tr>
+              <td>4ª</td>
+              <td><code>==</code> <code>!=</code> <code>></code> <code><</code> <code>>=</code> <code><=</code></td>
+              <td>Relacionais</td>
+            </tr>
+            <tr>
+              <td>5ª</td>
+              <td><code>not</code></td>
+              <td>Lógico NÃO</td>
+            </tr>
+            <tr>
+              <td>6ª</td>
+              <td><code>and</code></td>
+              <td>Lógico E</td>
+            </tr>
+            <tr>
+              <td>7ª (mais baixa)</td>
+              <td><code>or</code></td>
+              <td>Lógico OU</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="fragment" style="font-size:.8em;"><i class="fa-solid fa-lightbulb icon"
+            aria-hidden="true"></i> Na dúvida, use <strong>parênteses</strong>!</p>
+      </section>
+
+      <!-- ==================== SLIDE 24 – Precedência: exemplo ==================== -->
+      <section class="bg-warn">
+        <h2><i class="fa-solid fa-magnifying-glass icon" aria-hidden="true"></i> Precedência na Prática</h2>
+        <pre><code class="language-python" data-trim data-noescape>
+# Sem parênteses — Python segue a precedência
+resultado = 2 + 3 * 4
+print(resultado)  # 14 (não 20!)
+
+# Com parênteses — você controla a ordem
+resultado = (2 + 3) * 4
+print(resultado)  # 20
+        </code></pre>
+        <pre class="fragment"><code class="language-python" data-trim data-noescape>
+# Exemplo com lógicos
+x = 5
+print(x > 3 and x < 10)        # True
+print(not (x > 3 and x < 10))  # False
+        </code></pre>
+      </section>
+
+      <!-- ==================== SLIDE 25 – ATIVIDADE 3 ==================== -->
+      <section class="bg-activity">
+        <h2><i class="fa-solid fa-pen-ruler icon" aria-hidden="true"></i> Atividade 3 — Lógicos</h2>
+        <div class="box-purple">
+          <strong>Exercício G:</strong> Peça <strong>idade</strong> e se a pessoa é <strong>estudante</strong> (s/n).
+          Exiba <code>True</code> se ela tiver <strong>menos de 18 anos ou for estudante</strong>.
+        </div>
+        <div class="box-purple fragment">
+          <strong>Exercício H:</strong> Peça um número e verifique se ele está no intervalo <strong>entre 1 e
+            100</strong> (inclusive).<br>
+          <em>Dica: use <code>and</code></em>
+        </div>
+        <div class="box-purple fragment">
+          <strong>Exercício I:</strong> Peça a <strong>média</strong> e o número de <strong>faltas</strong>. Exiba se o
+          aluno está <strong>aprovado</strong> (média >= 7 <code>and</code> faltas <= 10).
+        </div>
+        <p class="fragment" style="font-size:.8em;"><i class="fa-solid fa-clock icon"
+            aria-hidden="true"></i> Tempo sugerido: 10 minutos</p>
+      </section>
+
+      <!-- ==================== SLIDE 26 – Desafio final ==================== -->
+      <section data-background-gradient="linear-gradient(135deg, #667eea, #764ba2)">
+        <h2 style="color: white;"><i class="fa-solid fa-trophy icon" style="color: #f1c40f;"
+            aria-hidden="true"></i> Desafio Final!</h2>
+        <p style="color: rgba(255,255,255,.92); font-size: .85em;">
+          Crie um programa que simule uma <strong>verificação de acesso</strong> a um evento:
+        </p>
+        <ol style="color: rgba(255,255,255,.9); font-size: .82em;">
+          <li class="fragment">Pergunte a <strong>idade</strong></li>
+          <li class="fragment">Pergunte se tem <strong>convite</strong> (s/n)</li>
+          <li class="fragment">Pergunte se é <strong>acompanhante de responsável</strong> (s/n)</li>
+          <li class="fragment">
+            O acesso é permitido se:<br>
+            • idade >= 18 <strong>ou</strong><br>
+            • tem convite <strong>e</strong> acompanhante de responsável
+          </li>
+          <li class="fragment">Exiba <code>True</code> ou <code>False</code></li>
+        </ol>
+        <pre class="fragment"><code class="language-python" data-trim data-noescape>
+idade = int(input("Idade: "))
+convite = input("Tem convite? (s/n): ") == "s"
+acompanhante = input("Com responsável? (s/n): ") == "s"
+
+acesso = (idade >= 18) or (convite and acompanhante)
+print(f"Acesso permitido? {acesso}")
+        </code></pre>
+      </section>
+
+      <!-- ==================== SLIDE 27 – Erros comuns ==================== -->
+      <section class="bg-warn">
+        <h2><i class="fa-solid fa-bug icon" aria-hidden="true"></i> Erros Comuns desta Aula</h2>
+        <ul>
+          <li class="fragment">
+            Usar <code>=</code> quando deveria usar <code>==</code>:<br>
+            <code>if x = 5</code> <i class="fa-solid fa-xmark" style="color:#c0392b;" aria-hidden="true"></i> →
+            <code>if x == 5</code> <i class="fa-solid fa-check" style="color:#27ae60;" aria-hidden="true"></i>
+          </li>
+          <li class="fragment">
+            Esquecer de converter <code>input()</code>:<br>
+            <code>"5" > 3</code> <i class="fa-solid fa-xmark" style="color:#c0392b;" aria-hidden="true"></i> →
+            <code>int("5") > 3</code> <i class="fa-solid fa-check" style="color:#27ae60;" aria-hidden="true"></i>
+          </li>
+          <li class="fragment">
+            Usar <code>&&</code> ou <code>||</code> (de outras linguagens):<br>
+            Em Python é <code>and</code>, <code>or</code>, <code>not</code>
+          </li>
+          <li class="fragment">
+            Confundir precedência:<br>
+            <code>2 + 3 * 4</code> = <strong>14</strong>, não 20!
+          </li>
+        </ul>
+      </section>
+
+      <!-- ==================== SLIDE 28 – Resumo ==================== -->
+      <section class="bg-light">
+        <h2><i class="fa-solid fa-clipboard-list icon" aria-hidden="true"></i> Resumo da Aula</h2>
+        <ul>
+          <li class="fragment"><i class="fa-solid fa-calculator icon" aria-hidden="true"></i> <strong>Aritméticos</strong>:
+            <code>+</code> <code>-</code> <code>*</code> <code>/</code> <code>//</code> <code>%</code>
+            <code>**</code>
+          </li>
+          <li class="fragment"><i class="fa-solid fa-not-equal icon" aria-hidden="true"></i>
+            <strong>Relacionais</strong>:
+            <code>==</code> <code>!=</code> <code>></code> <code><</code> <code>>=</code> <code><=</code>
+          </li>
+          <li class="fragment"><i class="fa-solid fa-code-branch icon" aria-hidden="true"></i>
+            <strong>Lógicos</strong>:
+            <code>and</code> <code>or</code> <code>not</code>
+          </li>
+          <li class="fragment"><i class="fa-solid fa-sort-numeric-down icon" aria-hidden="true"></i>
+            <strong>Precedência</strong>: potência → mult/div → soma/sub → relacional → not → and → or
+          </li>
+          <li class="fragment"><i class="fa-solid fa-lightbulb icon" aria-hidden="true"></i> Na dúvida, use
+            <strong>parênteses</strong>!
+          </li>
+        </ul>
+      </section>
+
+      <!-- ==================== SLIDE 29 – Próxima aula ==================== -->
+      <section data-background-gradient="radial-gradient(#1f4b99, #16a085)">
+        <h2 style="color: white;">Próxima Aula</h2>
+        <p style="color: rgba(255,255,255,.85); font-size: .9em;">
+          Estruturas condicionais:
+          <code style="color: #f1c40f;">if</code>,
+          <code style="color: #f1c40f;">elif</code> e
+          <code style="color: #f1c40f;">else</code>
+        </p>
+        <p style="color: rgba(255,255,255,.75); font-size: .75em; margin-top: 10px;">
+          Agora que você sabe comparar e combinar condições, <br>
+          vamos fazer o programa <strong>tomar decisões</strong>!
+        </p>
+        <p class="emoji-big"><i class="fa-solid fa-hand-peace icon-only" style="color:white;"
+            aria-hidden="true"></i></p>
+        <p style="color: rgba(255,255,255,.7); font-size: .65em;">
+          Dúvidas? Me procure no e-mail ou no horário de atendimento.
+        </p>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="./dist/reveal.js"></script>
+  <script src="./plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({
+      center: false,
+      controls: true,
+      progress: true,
+      slideNumber: true,
+      history: true,
+      transition: 'convex',
+      plugins: [RevealHighlight]
+    });
+  </script>
+</body>
+
+</html>

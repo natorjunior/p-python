@@ -1,0 +1,14 @@
+[
+  {
+    "titulo": "Aula 1 - Algoritmo e Variáveis",
+    "link": "./aulas/aula01.html"
+  },
+  {
+    "titulo": "Aula 2 - Funções anonimas",
+    "link": "./aulas/aula02.html"
+  },
+  {
+    "titulo": "Aula 3 - Listas, Dicionários e Tuplas",
+    "link": "./aulas/aula03.html"
+  }
+]

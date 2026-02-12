@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Aula 01 - Introdução ao Python. Apresentação com os conceitos fundamentais da linguagem Python.">
+  <title>Aula 03 - Listas</title>
+
+  <!-- Google Fonts para melhor tipografia -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- Reveal.js -->
+  <link rel="stylesheet" href="./dist/reveal.css">
+  <link rel="stylesheet" href="./dist/theme/white.css" id="theme">
+
+  <!-- Tema para código -->
+  <link rel="stylesheet" href="./plugin/highlight/atom-one-dark.css">
+
+  <!-- Estilos personalizados -->
+  <style>
+    :root {
+      --primary-color: #0056b3;
+      --secondary-color: #333;
+      --light-bg: #f3f3f3;
+      --accent-bg: #e1f5fe;
+      --code-bg: #222;
+      --transition-fragment: 0.3s ease;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .reveal h1,
+    .reveal h2 {
+      color: var(--primary-color);
+    }
+
+    .reveal p {
+      font-size: 1.1em;
+      color: var(--secondary-color);
+    }
+
+    .reveal .icon {
+      color: currentColor;
+      margin-right: 0.28em;
+    }
+
+    .reveal .icon-only {
+      color: currentColor;
+      margin-right: 0;
+    }
+
+    .subtitle {
+      color: #888;
+      font-size: 0.9em;
+      margin-top: -10px;
+    }
+
+    .reveal pre code {
+      font-size: 1em;
+      background: var(--code-bg);
+      border-radius: 8px;
+      padding: 10px;
+    }
+
+    .fragment {
+      transition: all var(--transition-fragment);
+    }
+
+    /* Classes de fundo para os slides */
+    .bg-light {
+      background-color: var(--light-bg) !important;
+      color: var(--secondary-color);
+    }
+
+    .bg-accent {
+      background-color: var(--accent-bg) !important;
+      color: var(--secondary-color);
+    }
+
+    .bg-green {
+      background-color: #a5d6a7 !important;
+      color: #fff;
+    }
+
+    .bg-yellow {
+      background-color: #ffd54f !important;
+      color: var(--secondary-color);
+    }
+
+    .bg-purple {
+      background-color: #b39ddb !important;
+      color: #fff;
+    }
+
+    .bg-gray {
+      background-color: #e0e0e0 !important;
+      color: var(--secondary-color);
+    }
+
+    /* Ajustes responsivos */
+    @media (max-width: 768px) {
+      .reveal h2 {
+        font-size: 1.8em;
+      }
+
+      .reveal p {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="reveal">
+    <div class="slides">
+      <section data-align="center" data-background-gradient="radial-gradient(#283b95, #17b2c3)"> <br><br><br><br>
+        <h4 style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.4);"> Aula 03 – Listas, Tuplas e Dicionários
+        </h4>
+        <p style="color: white; font-size: .5em; font-weight: 300; margin-top: 10px;"> Prof. Msc. Nator Junior Carvalho
+          da Costa </p>
+        <h1><i class="fa-solid fa-code icon-only" aria-hidden="true"></i></h1>
+      </section>
+      <section>
+        <section>Pra começar </section>
+        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom" data-auto-animate>
+          <h6 style="color: white;">Atividades Rápidas</h6>
+          <p style="color: white;">
+            Crie duas listas: uma com os nomes dos alunos e outra com suas respectivas notas. Calcule a média da turma utilizando a equação:
+          </p>
+          $$ \text{media} = \frac{\sum_{i=0}^{n} \text{notas}[i]}{n} $$
+          <ul>
+            <li>Imprima a maior e menor nota;</li>
+            <li>Indique se o aluno foi aprovado utilizando a seguinte função:</li>
+          </ul>
+        </section>
+
+        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom" data-auto-animate>
+          <h6 style="color: white;">Atividades Rápidas</h6>
+          Indique se o aluno foi aprovado utilizando a seguinte função:
+          $$ 
+              aprovacao(\text{media}) = 
+              \begin{cases} 
+              \text{Aprovado} & \text{se } \text{media} \ge 7, \\
+              \text{Reprovado} & \text{caso contrário.}
+              \end{cases}
+              $$
+        </section>
+        
+
+
+
+        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Definindo os Dados</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+        nomes = ["João", "Maria", "Pedro", "Ana", "Carlos", "Luisa"]
+        notas = [85, 92, 78, 88, 95, 67]
+          </code></pre>
+        </section>
+
+        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Calculando Estatísticas</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+        # Equação para calcular a média:
+        # Média = (soma das notas) / (número de alunos)
+        soma_notas = sum(notas)
+        total_alunos = len(notas)
+        media = soma_notas / total_alunos
+        
+        maior_nota = max(notas)
+        menor_nota = min(notas)
+        
+        print("Média da turma: {:.2f}".format(media))
+        print("Maior nota:", maior_nota)
+        print("Menor nota:", menor_nota)
+          </code></pre>
+        </section>
+
+        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Situação dos Alunos</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+        print("\nSituação dos alunos:")
+        for i in range(len(nomes)):
+            situacao = "Aprovado" if notas[i] >= 70 else "Reprovado"
+            print(f"{nomes[i]}: {notas[i]} - {situacao}")
+          </code></pre>
+        </section>
+
+      </section>
+      <section>
+        <section>Listas em Python</section>
+
+        <section data-auto-animate>
+          <h6>O que é uma lista?</h6>
+        </section>
+
+        <section data-auto-animate>
+          <h6>O que é uma lista?</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+            planets = ["Mars"]
+          </code></pre>
+        </section>
+
+        <section data-auto-animate>
+          <h6>O que é uma lista?</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+            planets = ["Mars", "Earth", "Jupiter"]
+          </code></pre>
+        </section>
+
+        <section data-auto-animate>
+          <h6>O que é uma lista?</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+            planets = ["Mars", "Earth", "Jupiter"]
+      
+            print(planets[0])  # Primeiro elemento
+            print(planets[1])  # Segundo elemento
+            print(planets[2])  # Terceiro elemento
+          </code></pre>
+        </section>
+
+        <section data-auto-animate>
+          <h6>O que é uma lista?</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+            planets = ["Mars", "Earth", "Jupiter"]
+      
+            planets.append("Saturn")  # Adicionando um elemento
+            print(planets)
+          </code></pre>
+        </section>
+
+        <section data-auto-animate>
+          <h6>O que é uma lista?</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+            planets = ["Mars", "Earth", "Jupiter", "Saturn"]
+      
+            planets.remove("Earth")  # Removendo um elemento
+            print(planets)
+          </code></pre>
+        </section>
+
+        <section data-auto-animate>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+            planets = ["Mars", "Earth", "Jupiter", "Saturn"]
+      
+            print(len(planets))  # Número de elementos na lista
+          </code></pre>
+        </section>
+
+        <section>É só isso ?</section>
+        <section>Mais operações com listas</section>
+
+        <section data-auto-animate>
+          <h6>Acessando partes da lista</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+              planets = ["Mars", "Earth", "Jupiter", "Saturn", "Venus"]
+        
+              print(planets[1:4])  # Elementos do índice 1 ao 3
+            </code></pre>
+        </section>
+
+        <section data-auto-animate>
+          <h6>Ordem inversa da lista</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+              planets = ["Mars", "Earth", "Jupiter", "Saturn", "Venus"]
+        
+              planets.reverse()
+              print(planets)  # Lista invertida
+            </code></pre>
+        </section>
+
+        <section data-auto-animate>
+          <h6>Ordenando a lista</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+              planets = ["Mars", "Earth", "Jupiter", "Saturn", "Venus"]
+        
+              planets.sort()  # Ordenação alfabética
+              print(planets)
+            </code></pre>
+        </section>
+
+        <section data-auto-animate>
+          <h6>Iterando sobre a lista</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+              planets = ["Mars", "Earth", "Jupiter", "Saturn", "Venus"]
+        
+              for planet in planets:
+                  print("Planeta:", planet)
+            </code></pre>
+        </section>
+
+        <section data-auto-animate>
+          <h6>Listas com números</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+              numbers = [5, 2, 9, 1, 7]
+        
+              numbers.sort()  # Ordenando números
+              print(numbers)
+            </code></pre>
+        </section>
+
+        <section data-auto-animate>
+          <h6>Usando slicing para pegar os três primeiros números</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+              numbers = [1, 2, 5, 7, 9]
+        
+              print(numbers[:3])  # Pega os três primeiros números
+            </code></pre>
+        </section>
+
+        <section data-auto-animate>
+          <h6>Juntando listas</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+              a = [1, 2, 3]
+              b = [4, 5, 6]
+        
+              c = a + b  # Concatenando listas
+              print(c)
+            </code></pre>
+        </section>
+        <section data-auto-animate>
+          <h4>Atividades Rápidas</h4>
+        </section>
+        <section data-auto-animate>
+          <h4 style="margin-top: 100px; color: rgb(51, 121, 4);">Atividades Rápidas</h4>
+          <h4>ATV1: Crie uma lista com 6 cores e exiba apenas as 3 últimas.</4>
+        </section>
+        <section data-auto-animate>
+          <h4 style="margin-top: 100px; color:  rgb(51, 121, 4);">Atividades Rápidas</h4>
+          <h4>ATV1: Crie uma lista com 6 cores e exiba apenas as 3 últimas.</6>
+            <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+              cores = ["azul", "vermelho", "rosa", "preto", "branco", "amarelo"]
+            </code></pre>
+        </section>
+
+        <section data-auto-animate>
+          <h4 style="margin-top: 100px; color: rgb(51, 121, 4);">Atividades Rápidas</h4>
+          <h4>ATV1: Crie uma lista com 6 cores e exiba apenas as 3 últimas.</h4>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+              cores = ["azul", "vermelho", "rosa", "preto", "branco", "amarelo"]
+        
+              print(cores[0:3])
+            </code></pre>
+        </section>
+        <section data-auto-animate>
+          <h6 style="margin-top: 100px; color: rgb(51, 121, 4);">Atividades Rápidas</h6>
+          <h6>ATV2: Crie uma lista com 5 nomes e exiba a lista na ordem inversa.</h6>
+        </section>
+
+        <section data-auto-animate>
+          <h6 style="margin-top: 100px; color: rgb(51, 121, 4);">Atividades Rápidas</h6>
+          <h6>ATV2: Crie uma lista com 5 nomes e exiba a lista na ordem inversa.</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+            nomes = ["Ana", "Bruno", "Carlos", "Daniela", "Eduardo"]
+            </code></pre>
+        </section>
+
+        <section data-auto-animate>
+          <h6 style="margin-top: 100px; color: rgb(51, 121, 4);">Atividades Rápidas</h6>
+          <h6>ATV2: Crie uma lista com 5 nomes e exiba a lista na ordem inversa.</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+            nomes = ["Ana", "Bruno", "Carlos", "Daniela", "Eduardo"]
+          
+            nomes.reverse()
+            print(nomes)
+            </code></pre>
+        </section>
+        <section data-auto-animate>
+          <h6 style="margin-top: 100px; color: rgb(51, 121, 4);">Atividades Rápidas</h6>
+          <h6>ATV3: Crie uma lista de 4 frutas e exiba a lista ordenada alfabeticamente.</h6>
+        </section>
+
+        <section data-auto-animate>
+          <h6 style="margin-top: 100px; color: rgb(51, 121, 4);">Atividades Rápidas</h6>
+          <h6>ATV3: Crie uma lista de 4 frutas e exiba a lista ordenada alfabeticamente.</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+            frutas = ["banana", "maçã", "uva", "laranja"]
+            </code></pre>
+        </section>
+
+        <section data-auto-animate>
+          <h6 style="margin-top: 100px; color: rgb(51, 121, 4);">Atividades Rápidas</h6>
+          <h6>ATV3: Crie uma lista de 4 frutas e exiba a lista ordenada alfabeticamente.</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+            frutas = ["banana", "maçã", "uva", "laranja"]
+          
+            frutas.sort()
+            print(frutas)
+            </code></pre>
+        </section>
+
+        <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
+          <h6 style="color: white;">ATV4: Crie uma lista com 4 animais e use um loop <code>for</code> para exibi-los.
+          </h6>
+        </section>
+
+        <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom" data-auto-animate>
+          <h6 style="color: white;">ATV4: Crie uma lista com 4 animais e use um loop <code>for</code> para exibi-los.
+          </h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+            animais = ["cachorro", "gato", "elefante", "leão"]
+            </code></pre>
+        </section>
+
+        <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
+          <h6 style="color: white;">ATV4: Crie uma lista com 4 animais e use um loop <code>for</code> para exibi-los.
+          </h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+            animais = ["cachorro", "gato", "elefante", "leão"]
+          
+            for animal in animais:
+                print(animal)
+            </code></pre>
+        </section>
+
+        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
+          <h6 style="color: white;">ATV5: Crie uma lista com 5 números e exiba-os em ordem crescente.</h6>
+        </section>
+
+        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
+          <h6 style="color: white;">ATV5: Crie uma lista com 5 números e exiba-os em ordem crescente.</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+            numeros = [42, 7, 19, 3, 12]
+            </code></pre>
+        </section>
+
+        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
+          <h6 style="color: white;">ATV5: Crie uma lista com 5 números e exiba-os em ordem crescente.</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+            numeros = [42, 7, 19, 3, 12]
+          
+            numeros.sort()
+            print(numeros)
+            </code></pre>
+        </section>
+      </section>
+
+      <!-- DICIONÁRIOS-->
+      <section>
+        <section>Dicionários em Python</section>
+
+        <section data-auto-animate>
+          <h6>O que é um dicionário?</h6>
+          <p>Um dicionário é uma coleção de pares <em>chave: valor</em> que permite acesso rápido às informações.</p>
+        </section>
+
+        <section data-auto-animate>
+          <h6>Exemplo 1: Dicionário Simples</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+planeta = {"nome": "Marte"}
+    </code></pre>
+        </section>
+
+        <section data-auto-animate>
+          <h6>Exemplo 2: Dicionário com Vários Dados</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+planeta = {
+    "nome": "Marte",
+    "diametro": 6779,
+    "luas": 2
+}
+    </code></pre>
+        </section>
+
+        <section data-auto-animate>
+          <h6>Acessando Elementos</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+print(planeta["nome"])      # Exibe o nome do planeta
+print(planeta["diametro"])  # Exibe o diâmetro
+    </code></pre>
+        </section>
+
+        <section data-auto-animate>
+          <h6>Adicionando e Atualizando Dados</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+# Adicionando nova informação
+planeta["distancia"] = 225e6  # distância em km
+
+# Atualizando valor existente
+planeta["diametro"] = 6792
+
+print(planeta)
+    </code></pre>
+        </section>
+
+        <section data-auto-animate>
+          <h6>Removendo Elementos</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+del planeta["luas"]
+print(planeta)
+    </code></pre>
+        </section>
+
+        <section data-auto-animate>
+          <h6>Iterando sobre o Dicionário</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+for chave, valor in planeta.items():
+    print(f"{chave}: {valor}")
+    </code></pre>
+        </section>
+
+        <!-- Atividades Rápidas -->
+        <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
+          <h6 style="color: white;">ATV1: Crie um dicionário para um aluno com as chaves <code>nome</code>,
+            <code>idade</code> e <code>curso</code> e exiba o dicionário.
+          </h6>
+        </section>
+        <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
+          <h6 style="color: white;">ATV1: Crie um dicionário para um aluno com as chaves <code>nome</code>,
+            <code>idade</code> e <code>curso</code> e exiba o dicionário.
+          </h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+aluno = {
+    "nome": "João",
+    "idade": 20,
+    "curso": "Engenharia"
+}
+
+print(aluno)
+    </code></pre>
+        </section>
+
+        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
+          <h6 style="color: white;">ATV2: Adicione uma nova chave <code>nota</code> ao dicionário do aluno com o valor
+            8.5 e exiba o dicionário atualizado.</h6>
+        </section>
+        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
+          <h6 style="color: white;">ATV2: Adicione uma nova chave <code>nota</code> ao dicionário do aluno com o valor
+            8.5 e exiba o dicionário atualizado.</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers data-auto-animate>
+aluno = {
+    "nome": "João",
+    "idade": 20,
+    "curso": "Engenharia"
+}
+
+aluno["nota"] = 8.5
+
+print(aluno)
+    </code></pre>
+        </section>
+
+        <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
+          <h6 style="color: white;">ATV3: Remova a chave <code>idade</code> do dicionário do aluno e exiba o resultado.
+          </h6>
+        </section>
+        <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
+          <h6 style="color: white;">ATV3: Remova a chave <code>idade</code> do dicionário do aluno e exiba o resultado.
+          </h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers data-auto-animate>
+aluno = {
+    "nome": "João",
+    "idade": 20,
+    "curso": "Engenharia",
+    "nota": 8.5
+}
+
+del aluno["idade"]
+
+print(aluno)
+    </code></pre>
+        </section>
+
+        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
+          <h6 style="color: white;">ATV4: Utilize um loop para imprimir cada par chave-valor do dicionário do aluno.
+          </h6>
+        </section>
+        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
+          <h6 style="color: white;">ATV4: Utilize um loop para imprimir cada par chave-valor do dicionário do aluno.
+          </h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers data-auto-animate>
+aluno = {
+    "nome": "João",
+    "curso": "Engenharia",
+    "nota": 8.5
+}
+
+for chave, valor in aluno.items():
+    print(f"{chave}: {valor}")
+    </code></pre>
+        </section>
+      </section>
+
+
+      <!-- TUPLAS-->
+      <section>
+        <section>Tuplas em Python</section>
+
+        <section data-auto-animate>
+          <h6>O que é uma tupla?</h6>
+          <p>Uma tupla é uma sequência imutável de elementos, utilizada para armazenar valores que não serão alterados.
+          </p>
+        </section>
+
+        <section data-auto-animate>
+          <h6>Exemplo 1: Tupla Simples</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+      planeta = ("Marte",)
+          </code></pre>
+        </section>
+
+        <section data-auto-animate>
+          <h6>Exemplo 2: Tupla com Múltiplos Elementos</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+      planetas = ("Marte", "Terra", "Júpiter")
+          </code></pre>
+        </section>
+
+        <section data-auto-animate>
+          <h6>Acessando Elementos</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+      print(planetas[0])  # Exibe "Marte"
+      print(planetas[1])  # Exibe "Terra"
+          </code></pre>
+        </section>
+
+        <section data-auto-animate>
+          <h6>Slicing em Tuplas</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+      print(planetas[1:])  # Exibe ("Terra", "Júpiter")
+          </code></pre>
+        </section>
+
+        <section data-auto-animate>
+          <h6>Iterando sobre Tuplas</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+      for p in planetas:
+          print(p)
+          </code></pre>
+        </section>
+
+        <!-- Atividades Rápidas -->
+        <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
+          <h6 style="color: white;">ATV1: Crie uma tupla com 5 números e exiba a tupla completa.</h6>
+        </section>
+        <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
+          <h6 style="color: white;">ATV1: Crie uma tupla com 5 números e exiba a tupla completa.</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+      numeros = (10, 20, 30, 40, 50)
+      print(numeros)
+          </code></pre>
+        </section>
+
+        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
+          <h6 style="color: white;">ATV2: Acesse e exiba o terceiro elemento da tupla de números.</h6>
+        </section>
+        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
+          <h6 style="color: white;">ATV2: Acesse e exiba o terceiro elemento da tupla de números.</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+      numeros = (10, 20, 30, 40, 50)
+      print(numeros[2])
+          </code></pre>
+        </section>
+
+        <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
+          <h6 style="color: white;">ATV3: Tente alterar o primeiro elemento da tupla e observe o que acontece.</h6>
+        </section>
+        <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
+          <h6 style="color: white;">ATV3: Tente alterar o primeiro elemento da tupla e observe o que acontece.</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+      numeros = (10, 20, 30, 40, 50)
+      # A linha abaixo gera um erro, pois tuplas são imutáveis:
+      # numeros[0] = 99
+          </code></pre>
+        </section>
+
+        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
+          <h6 style="color: white;">ATV4: Utilize um loop para imprimir cada elemento da tupla de números.</h6>
+        </section>
+        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom" data-auto-animate>
+          <h6 style="margin-top: 100px; color: white;">Atividades Rápidas</h6>
+          <h6 style="color: white;">ATV4: Utilize um loop para imprimir cada elemento da tupla de números.</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+      numeros = (10, 20, 30, 40, 50)
+      for num in numeros:
+          print(num)
+          </code></pre>
+        </section>
+      </section>
+
+      <section>
+        <section>Resumo: Estruturas em Python</section>
+
+        <section data-auto-animate>
+          <h6>Listas</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+      planetas = ["Marte", "Terra", "Júpiter"]
+      print(planetas)
+          </code></pre>
+        </section>
+
+        <section data-auto-animate>
+          <h6>Dicionários</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+      planeta = {"nome": "Marte", "diametro": 6779}
+      print(planeta)
+          </code></pre>
+        </section>
+
+        <section data-auto-animate>
+          <h6>Tuplas</h6>
+          <pre data-id="code-animation"><code class="language-python" data-trim data-line-numbers>
+      planetas = ("Marte", "Terra", "Júpiter")
+      print(planetas)
+          </code></pre>
+        </section>
+
+        <section data-auto-animate>
+          <h6>Dica</h6>
+          <p>Listas e dicionários são mutáveis; tuplas são imutáveis.</p>
+        </section>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Scripts Reveal.js -->
+  <script src="./dist/reveal.js"></script>
+  <script src="./plugin/highlight/highlight.js"></script>
+  <script src="./plugin/math/math.js"></script>
+  
+  <script>
+    Reveal.initialize({
+      
+      // center: false,
+      controls: true,
+      progress: true,
+      slideNumber: true,
+      history: true,
+      transition: 'convex',
+      plugins: [RevealHighlight,RevealMath.KaTeX]
+    });
+  </script>
+</body>
+
+</html>
