@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introdução Fase 3 — CodeAdventure</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/intro.css">
+</head>
+<body class="intro-page">
+
+<div class="intro-container">
+
+    <a href="fase3.html" class="intro-skip">Pular introdução →</a>
+
+    <div class="intro-slide active" data-slide="0">
+        <span class="slide-emoji">🧱</span>
+        <h1 class="slide-title">
+            Fase 3: <span class="highlight">Obstáculo e Salto</span>
+        </h1>
+        <p class="slide-text">
+            Agora existe um obstáculo no caminho. Você vai usar um novo comando para superar essa barreira.
+        </p>
+    </div>
+
+    <div class="intro-slide" data-slide="1">
+        <h1 class="slide-title">
+            Novo comando disponível:<br>
+            <span class="highlight-yellow">jump()</span>
+        </h1>
+
+        <div class="slide-illustration">
+            <div class="code-bubble">
+                <span class="cb-func">jump</span><span class="cb-paren">()</span>
+            </div>
+            <div class="speech-bubble">
+                <strong>jump()</strong> faz o personagem pular para frente,
+                atravessando o obstáculo.
+            </div>
+        </div>
+    </div>
+
+    <div class="intro-slide" data-slide="2">
+        <h1 class="slide-title">
+            Você ainda usa sequência<br>
+            <span class="highlight-green">sem condicionais</span>
+        </h1>
+
+        <div class="slide-illustration">
+            <div class="illust-card">
+                <div class="illust-card-title">📋 Estratégia</div>
+                <div class="illust-step">
+                    <span class="step-num">1</span>
+                    <span>Avance até perto do obstáculo</span>
+                </div>
+                <div class="illust-step">
+                    <span class="step-num">2</span>
+                    <span>Use <code style="font-family: var(--font-mono); color:#89dceb;">jump()</code> na casa antes do obstáculo</span>
+                </div>
+                <div class="illust-step">
+                    <span class="step-num">3</span>
+                    <span>Continue até o tesouro</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="intro-slide" data-slide="3">
+        <h1 class="slide-title">
+            Comandos da fase
+        </h1>
+
+        <div class="slide-illustration">
+            <div class="code-bubble"><span class="cb-func">step_right</span><span class="cb-paren">()</span></div>
+            <div class="code-bubble"><span class="cb-func">step_left</span><span class="cb-paren">()</span></div>
+            <div class="code-bubble"><span class="cb-func">jump</span><span class="cb-paren">()</span></div>
+        </div>
+    </div>
+
+    <div class="intro-slide" data-slide="4">
+        <h1 class="slide-title">
+            Dica rápida
+        </h1>
+
+        <div class="slide-illustration">
+            <div class="speech-bubble">
+                Se tentar andar direto para dentro do obstáculo,
+                o personagem será bloqueado.
+                Use o salto no momento certo.
+            </div>
+        </div>
+    </div>
+
+    <div class="intro-slide" data-slide="5">
+        <span class="slide-emoji">🎯</span>
+
+        <h1 class="slide-title">
+            Bora para a <span class="highlight-green">Fase 3</span>?
+        </h1>
+
+        <p class="slide-text">
+            Monte a sequência correta e passe pelo obstáculo para vencer.
+        </p>
+
+        <a href="fase3.html" class="intro-cta">
+            Iniciar Fase 3 ▶
+        </a>
+    </div>
+
+    <div class="intro-dots">
+        <div class="intro-dot active"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+    </div>
+
+    <nav class="intro-nav">
+        <button class="intro-nav-btn" id="prev-btn" disabled aria-label="Anterior">‹</button>
+        <span class="intro-progress" id="progress-text">1 de 6</span>
+        <button class="intro-nav-btn" id="next-btn" aria-label="Próximo">›</button>
+    </nav>
+
+</div>
+
+<script src="../js/intro.js"></script>
+</body>
+</html>

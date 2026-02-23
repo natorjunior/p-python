@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introdução — CodeAdventure</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/intro.css">
+</head>
+<body class="intro-page">
+
+<div class="intro-container">
+
+    <!-- Skip -->
+    <a href="fase1.html" class="intro-skip">Pular introdução →</a>
+
+    <!-- ===== SLIDE 1 — Boas-vindas ===== -->
+    <div class="intro-slide active" data-slide="0">
+        <span class="slide-emoji">🚀</span>
+        <h1 class="slide-title">
+            Comece a <span class="highlight">Programar</span>
+        </h1>
+
+        <div class="slide-illustration">
+            <svg width="240" height="4" style="margin: 8px 0;">
+                <line x1="0" y1="2" x2="100" y2="2" stroke="#45475a" stroke-width="2" stroke-dasharray="6 4"/>
+                <circle cx="120" cy="2" r="4" fill="#89b4fa"/>
+                <line x1="140" y1="2" x2="240" y2="2" stroke="#45475a" stroke-width="2" stroke-dasharray="6 4"/>
+            </svg>
+        </div>
+
+        <p class="slide-text" style="margin-top: 8px;">
+            Comandos
+        </p>
+
+        <div class="intro-credit">
+            <span class="intro-credit-label">Apresentação</span>
+            <strong class="intro-credit-name">Prof. Nator Junior</strong>
+            <span class="intro-credit-tagline">Facilitando o aprendizado de programação</span>
+        </div>
+    </div>
+
+    <!-- ===== SLIDE 2 — Receita / analogia ===== -->
+    <div class="intro-slide" data-slide="1">
+        <h1 class="slide-title">
+            Você já seguiu um mapa para<br>
+            <span class="highlight-yellow">chegar ao destino certo?</span>
+        </h1>
+
+        <div class="slide-illustration">
+            <span style="font-size: 100px; display: block; margin: 16px 0; filter: drop-shadow(0 8px 24px rgba(0,0,0,0.3));">🗺️</span>
+        </div>
+    </div>
+
+    <!-- ===== SLIDE 3 — Instruções em ordem ===== -->
+    <div class="intro-slide" data-slide="2">
+        <h1 class="slide-title">
+            Ou seguiu instruções para montar<br>
+            <span class="highlight">algo incrível?</span>
+        </h1>
+
+        <div class="slide-illustration">
+            <div class="illust-card">
+                <div class="illust-card-title">📘 Manual de Montagem</div>
+                <div class="illust-step">
+                    <span class="step-num">1</span>
+                    <span>Separe as peças</span>
+                </div>
+                <div class="illust-step">
+                    <span class="step-num">2</span>
+                    <span>Encaixe a base</span>
+                </div>
+                <div class="illust-step">
+                    <span class="step-num">3</span>
+                    <span>Monte as laterais</span>
+                </div>
+                <div class="illust-step">
+                    <span class="step-num">4</span>
+                    <span>Finalize o topo ✨</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SLIDE 4 — Ordem importa ===== -->
+    <div class="intro-slide" data-slide="3">
+        <h1 class="slide-title">
+            A <span class="highlight-peach">ordem</span> faz toda diferença.<br>
+            Senão o resultado pode ser…
+        </h1>
+
+        <div class="slide-illustration">
+            <div class="illust-card" style="border-color: rgba(243, 139, 168, 0.3);">
+                <div class="illust-card-title" style="color: #f38ba8;">⚠️ Ordem errada</div>
+                <div class="illust-step step-wrong">
+                    <span class="step-num">1</span>
+                    <span>Finalize o topo 💥</span>
+                </div>
+                <div class="illust-step step-wrong">
+                    <span class="step-num">2</span>
+                    <span>Monte as laterais</span>
+                </div>
+                <div class="illust-step step-wrong">
+                    <span class="step-num">3</span>
+                    <span>Separe as peças</span>
+                </div>
+            </div>
+            <span style="font-size: 48px; margin-top: 8px;">😵</span>
+        </div>
+    </div>
+
+    <!-- ===== SLIDE 5 — Programação = instruções ===== -->
+    <div class="intro-slide" data-slide="4">
+        <h1 class="slide-title">
+            Programar é criar<br>
+            <span class="highlight-green">instruções</span> para o computador.
+        </h1>
+
+        <div class="slide-split">
+            <div class="slide-split-visual">🤖</div>
+            <div class="slide-split-text">
+                Seu objetivo é descobrir <strong>quais instruções</strong>,
+                em <strong>qual ordem</strong>, resolvem cada desafio.
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SLIDE 6 — Comandos do jogo ===== -->
+    <div class="intro-slide" data-slide="5">
+        <h1 class="slide-title">
+            Você escreverá <span class="highlight">comandos</span><br>
+            para mover o personagem
+        </h1>
+
+        <div class="slide-illustration">
+            <div class="speech-bubble">
+                Para mover um passo para a <strong>direita</strong>:
+            </div>
+            <div class="code-bubble">
+                <span class="cb-func">step_right</span><span class="cb-paren">()</span>
+            </div>
+
+            <div style="height: 16px;"></div>
+
+            <div class="speech-bubble">
+                E para mover um passo para a <strong>esquerda</strong>:
+            </div>
+            <div class="code-bubble">
+                <span class="cb-func">step_left</span><span class="cb-paren">()</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SLIDE 7 — Demo visual ===== -->
+    <div class="intro-slide" data-slide="6">
+        <h1 class="slide-title">
+            Cada comando move <span class="highlight-yellow">um passo</span>
+        </h1>
+
+        <div class="slide-illustration">
+            <!-- Demo track -->
+            <div class="demo-track" id="demo-track">
+                <div class="demo-cell has-player" style="position: relative;">
+                    <span id="demo-player" class="demo-player" style="left: 14px;">🧑‍💻</span>
+                </div>
+                <div class="demo-cell"></div>
+                <div class="demo-cell"></div>
+                <div class="demo-cell"></div>
+                <div class="demo-cell has-treasure">💎</div>
+            </div>
+
+            <!-- Commands being "executed" -->
+            <div id="demo-commands" style="margin-top: 16px; text-align: left;">
+                <div class="demo-cmd-line" style="font-family: var(--font-mono); font-size: 14px; color: #585b70; padding: 3px 12px; border-radius: 6px; transition: all 0.3s;">
+                    <span style="color: #6c7086;">1</span>&nbsp;&nbsp;<span style="color: #89dceb;">step_right</span><span style="color: #f9e2af;">()</span>
+                </div>
+                <div class="demo-cmd-line" style="font-family: var(--font-mono); font-size: 14px; color: #585b70; padding: 3px 12px; border-radius: 6px; transition: all 0.3s;">
+                    <span style="color: #6c7086;">2</span>&nbsp;&nbsp;<span style="color: #89dceb;">step_right</span><span style="color: #f9e2af;">()</span>
+                </div>
+                <div class="demo-cmd-line" style="font-family: var(--font-mono); font-size: 14px; color: #585b70; padding: 3px 12px; border-radius: 6px; transition: all 0.3s;">
+                    <span style="color: #6c7086;">3</span>&nbsp;&nbsp;<span style="color: #89dceb;">step_right</span><span style="color: #f9e2af;">()</span>
+                </div>
+                <div class="demo-cmd-line" style="font-family: var(--font-mono); font-size: 14px; color: #585b70; padding: 3px 12px; border-radius: 6px; transition: all 0.3s;">
+                    <span style="color: #6c7086;">4</span>&nbsp;&nbsp;<span style="color: #89dceb;">step_right</span><span style="color: #f9e2af;">()</span>
+                </div>
+            </div>
+        </div>
+
+        <p class="slide-text" style="margin-top: 12px;">
+            4 comandos <code style="font-family: var(--font-mono); color: #89dceb; background: rgba(137,180,250,0.08); padding: 2px 6px; border-radius: 4px;">step_right()</code> levam até o tesouro!
+        </p>
+    </div>
+
+    <!-- ===== SLIDE 8 — Detalhes de sintaxe ===== -->
+    <div class="intro-slide" data-slide="7">
+        <h1 class="slide-title">
+            Repare nos <span class="highlight-peach">detalhes</span>
+        </h1>
+
+        <div class="slide-illustration">
+            <div class="speech-bubble">
+                Está vendo as palavras juntas? Na programação,
+                <strong>comandos não têm espaços</strong> entre as palavras.
+            </div>
+
+            <div class="code-bubble" style="font-size: clamp(18px, 3.5vw, 26px);">
+                <span class="cb-func">step</span><span style="color:#585b70;">_</span><span class="cb-func">right</span><span class="cb-paren">()</span>
+            </div>
+
+            <div class="speech-bubble" style="margin-top: 16px;">
+                E todo comando termina com <strong>parênteses ()</strong>.
+                Eles dizem ao computador: "execute isso agora!"
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SLIDE 9 — CTA final ===== -->
+    <div class="intro-slide" data-slide="8">
+        <span class="slide-emoji">🎯</span>
+
+        <h1 class="slide-title">
+            Hora de <span class="highlight-green">praticar!</span>
+        </h1>
+
+        <p class="slide-text">
+            Na próxima tela você terá um editor de código e um personagem esperando suas instruções.
+            Escreva os comandos certos e colete o tesouro!
+        </p>
+
+        <a href="fase1.html" class="intro-cta">
+            Começar a Programar ▶
+        </a>
+    </div>
+
+    <!-- ===== DOTS ===== -->
+    <div class="intro-dots">
+        <div class="intro-dot active"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+    </div>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="intro-nav">
+        <button class="intro-nav-btn" id="prev-btn" disabled aria-label="Anterior">‹</button>
+        <span class="intro-progress" id="progress-text">1 de 9</span>
+        <button class="intro-nav-btn" id="next-btn" aria-label="Próximo">›</button>
+    </nav>
+
+</div>
+
+<script src="../js/intro.js"></script>
+</body>
+</html>

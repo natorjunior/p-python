@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introdução Fase 2 — CodeAdventure</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/intro.css">
+</head>
+<body class="intro-page">
+
+<div class="intro-container">
+
+    <a href="fase2.html" class="intro-skip">Pular introdução →</a>
+
+    <div class="intro-slide active" data-slide="0">
+        <span class="slide-emoji">🧭</span>
+        <h1 class="slide-title">
+            Fase 2: <span class="highlight">Rota de Coleta</span>
+        </h1>
+        <p class="slide-text">
+            Agora você vai montar um algoritmo com ida e volta.
+            A ordem dos passos continua sendo o mais importante.
+        </p>
+    </div>
+
+    <div class="intro-slide" data-slide="1">
+        <h1 class="slide-title">
+            Objetivo: coletar <span class="highlight-yellow">2 cristais</span><br>
+            e abrir o <span class="highlight">baú</span>
+        </h1>
+
+        <div class="slide-illustration">
+            <div class="illust-card">
+                <div class="illust-card-title">🎯 Missão da fase</div>
+                <div class="illust-step">
+                    <span class="step-num">1</span>
+                    <span>Colete o primeiro cristal</span>
+                </div>
+                <div class="illust-step">
+                    <span class="step-num">2</span>
+                    <span>Colete o segundo cristal</span>
+                </div>
+                <div class="illust-step">
+                    <span class="step-num">3</span>
+                    <span>Volte para abrir o baú</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="intro-slide" data-slide="2">
+        <h1 class="slide-title">
+            Nesta fase você ainda usa apenas<br>
+            <span class="highlight-green">comandos simples</span>
+        </h1>
+
+        <div class="slide-illustration">
+            <div class="code-bubble">
+                <span class="cb-func">step_right</span><span class="cb-paren">()</span>
+            </div>
+            <div class="code-bubble">
+                <span class="cb-func">step_left</span><span class="cb-paren">()</span>
+            </div>
+        </div>
+
+        <p class="slide-text" style="margin-top: 8px;">
+            Sem <code style="font-family: var(--font-mono); color: #cba6f7;">if</code>,
+            sem loops. Só sequência e estratégia.
+        </p>
+    </div>
+
+    <div class="intro-slide" data-slide="3">
+        <h1 class="slide-title">
+            Pense no caminho antes de executar
+        </h1>
+
+        <div class="slide-illustration">
+            <div class="speech-bubble">
+                Primeiro avance para coletar os dois cristais.
+                Depois volte para a posição do baú.
+            </div>
+
+            <div class="illust-card">
+                <div class="illust-card-title">📝 Planejamento</div>
+                <div class="illust-step">
+                    <span class="step-num">1</span>
+                    <span>Avançar</span>
+                </div>
+                <div class="illust-step">
+                    <span class="step-num">2</span>
+                    <span>Avançar</span>
+                </div>
+                <div class="illust-step">
+                    <span class="step-num">...</span>
+                    <span>Depois retornar</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="intro-slide" data-slide="4">
+        <h1 class="slide-title">
+            Você tem até <span class="highlight-peach">8 comandos</span>
+        </h1>
+
+        <p class="slide-text">
+            Escreva sua sequência, clique em <strong>Run</strong> e veja o resultado.
+            Se não concluir a missão, a fase reinicia para uma nova tentativa.
+        </p>
+    </div>
+
+    <div class="intro-slide" data-slide="5">
+        <h1 class="slide-title">
+            Dica: um bom algoritmo<br>
+            evita passos desnecessários
+        </h1>
+
+        <div class="slide-illustration">
+            <div class="speech-bubble">
+                Quanto melhor a ordem dos comandos,
+                mais rápido você chega ao objetivo.
+            </div>
+        </div>
+    </div>
+
+    <div class="intro-slide" data-slide="6">
+        <span class="slide-emoji">🚩</span>
+
+        <h1 class="slide-title">
+            Pronto para a <span class="highlight-green">Fase 2</span>?
+        </h1>
+
+        <p class="slide-text">
+            Monte sua rota, colete os cristais e abra o baú.
+        </p>
+
+        <a href="fase2.html" class="intro-cta">
+            Iniciar Fase 2 ▶
+        </a>
+    </div>
+
+    <div class="intro-dots">
+        <div class="intro-dot active"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+    </div>
+
+    <nav class="intro-nav">
+        <button class="intro-nav-btn" id="prev-btn" disabled aria-label="Anterior">‹</button>
+        <span class="intro-progress" id="progress-text">1 de 7</span>
+        <button class="intro-nav-btn" id="next-btn" aria-label="Próximo">›</button>
+    </nav>
+
+</div>
+
+<script src="../js/intro.js"></script>
+</body>
+</html>
