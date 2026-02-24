@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introdução Fase 4 — CodeAdventure</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/intro.css">
+</head>
+<body class="intro-page">
+
+<div class="intro-container">
+
+    <a href="fase4.html" class="intro-skip">Pular introdução →</a>
+
+    <div class="intro-slide active" data-slide="0">
+        <span class="slide-emoji">🧪</span>
+        <h1 class="slide-title">
+            Passo 1: <span class="highlight">Variáveis e Tipos</span>
+        </h1>
+        <p class="slide-text">
+            Nesta fase você vai aprender a guardar dados e usar
+            esses dados para controlar o personagem.
+        </p>
+    </div>
+
+    <div class="intro-slide" data-slide="1">
+        <h1 class="slide-title">
+            Passo 2: Entenda o desafio
+        </h1>
+        <div class="slide-illustration">
+            <div class="speech-bubble">
+                Você precisa declarar <strong>passos</strong>, <strong>nome</strong> e <strong>feminina</strong>.
+                Depois, mover com <code style="font-family: var(--font-mono); color:#89dceb;">move_right(passos)</code>.
+            </div>
+        </div>
+    </div>
+
+    <div class="intro-slide" data-slide="2">
+        <h1 class="slide-title">
+            Passo 3: O que é variável?
+        </h1>
+        <div class="slide-illustration">
+            <div class="speech-bubble">
+                Variável é uma "caixinha" com nome para guardar um valor.
+            </div>
+            <div class="code-bubble"><span class="cb-func">nome</span> = <span class="cb-string">"Lia"</span></div>
+        </div>
+    </div>
+
+    <div class="intro-slide" data-slide="3">
+        <h1 class="slide-title">
+            Passo 4: Nome de variável
+        </h1>
+        <div class="slide-illustration">
+            <div class="speech-bubble">
+                Use nomes claros: <strong>passos</strong>, <strong>nome</strong>.
+                Evite começar com número.
+            </div>
+            <div class="code-bubble"><span class="cb-func">passos_total</span> = <span class="cb-number">3</span></div>
+        </div>
+    </div>
+
+    <div class="intro-slide" data-slide="4">
+        <h1 class="slide-title">
+            Passo 5: Tipo <span class="highlight-yellow">int</span>
+        </h1>
+        <div class="slide-illustration">
+            <div class="code-bubble"><span class="cb-func">passos</span> = <span class="cb-number">3</span></div>
+            <div class="speech-bubble">Inteiro é número sem vírgula.</div>
+        </div>
+    </div>
+
+    <div class="intro-slide" data-slide="5">
+        <h1 class="slide-title">
+            Passo 6: int no movimento
+        </h1>
+        <div class="slide-illustration">
+            <div class="code-bubble"><span class="cb-func">move_right</span><span class="cb-paren">(</span><span class="cb-func">passos</span><span class="cb-paren">)</span></div>
+            <div class="speech-bubble">Aqui o jogo lê o valor de <strong>passos</strong> para mover.</div>
+        </div>
+    </div>
+
+    <div class="intro-slide" data-slide="6">
+        <h1 class="slide-title">
+            Passo 7: Tipo <span class="highlight-green">str</span>
+        </h1>
+        <div class="slide-illustration">
+            <div class="code-bubble"><span class="cb-func">nome</span> = <span class="cb-string">"Lia"</span></div>
+            <div class="speech-bubble">String é texto. Sempre use aspas.</div>
+        </div>
+    </div>
+
+    <div class="intro-slide" data-slide="7">
+        <h1 class="slide-title">
+            Passo 8: Texto no jogo
+        </h1>
+        <div class="slide-illustration">
+            <div class="speech-bubble">
+                O valor de <strong>nome</strong> aparece sobre o personagem.
+                Assim você vê a variável sendo usada.
+            </div>
+        </div>
+    </div>
+
+    <div class="intro-slide" data-slide="8">
+        <h1 class="slide-title">
+            Passo 9: Tipo <span class="highlight-peach">bool</span>
+        </h1>
+        <div class="slide-illustration">
+            <div class="code-bubble"><span class="cb-func">feminina</span> = <span class="cb-number">True</span></div>
+            <div class="speech-bubble">Booleano só pode ser <strong>True</strong> ou <strong>False</strong>.</div>
+        </div>
+    </div>
+
+    <div class="intro-slide" data-slide="9">
+        <h1 class="slide-title">
+            Passo 10: bool em ação
+        </h1>
+        <div class="slide-illustration">
+            <div class="speech-bubble">
+                Com <strong>feminina = True</strong>, o personagem usa visual alternativo.
+                Com <strong>False</strong>, volta ao visual padrão.
+            </div>
+        </div>
+    </div>
+
+    <div class="intro-slide" data-slide="10">
+        <h1 class="slide-title">
+            Passo 11: Ordem importa
+        </h1>
+        <div class="slide-illustration">
+            <div class="speech-bubble">
+                Primeiro declare variáveis. Só depois use os comandos de movimento.
+            </div>
+            <div class="code-bubble"><span class="cb-func">passos</span> = <span class="cb-number">3</span></div>
+        </div>
+    </div>
+
+    <div class="intro-slide" data-slide="11">
+        <h1 class="slide-title">
+            Passo 12: Exemplo completo
+        </h1>
+        <div class="slide-illustration">
+            <div class="speech-bubble">
+                <code style="font-family: var(--font-mono); color:#89dceb;">passos = 3</code><br>
+                <code style="font-family: var(--font-mono); color:#89dceb;">nome = "Lia"</code><br>
+                <code style="font-family: var(--font-mono); color:#89dceb;">feminina = True</code><br>
+                <code style="font-family: var(--font-mono); color:#89dceb;">move_right(passos)</code><br>
+                <code style="font-family: var(--font-mono); color:#89dceb;">move_right(passos)</code>
+            </div>
+        </div>
+    </div>
+
+    <div class="intro-slide" data-slide="12">
+        <h1 class="slide-title">
+            Passo 13: Atualizando valor
+        </h1>
+        <div class="slide-illustration">
+            <div class="speech-bubble">
+                Variáveis podem mudar durante o código.
+            </div>
+            <div class="code-bubble"><span class="cb-func">passos</span> = <span class="cb-number">2</span></div>
+            <div class="code-bubble"><span class="cb-func">passos</span> = <span class="cb-number">4</span></div>
+        </div>
+    </div>
+
+    <div class="intro-slide" data-slide="13">
+        <h1 class="slide-title">
+            Passo 14: Erros comuns
+        </h1>
+        <div class="slide-illustration">
+            <div class="speech-bubble">
+                1) Esquecer aspas em <strong>nome</strong>.<br>
+                2) Usar <strong>passos = 0</strong>.<br>
+                3) Mover antes de declarar variáveis.
+            </div>
+        </div>
+    </div>
+
+    <div class="intro-slide" data-slide="14">
+        <span class="slide-emoji">🚀</span>
+        <h1 class="slide-title">
+            Passo 15: Vamos praticar
+        </h1>
+        <p class="slide-text">
+            Agora escreva seu código com as três variáveis e chegue à bandeira.
+        </p>
+        <a href="fase4.html" class="intro-cta">
+            Iniciar Fase 4 ▶
+        </a>
+    </div>
+
+    <div class="intro-dots">
+        <div class="intro-dot active"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+    </div>
+
+    <nav class="intro-nav">
+        <button class="intro-nav-btn" id="prev-btn" disabled aria-label="Anterior">‹</button>
+        <span class="intro-progress" id="progress-text">1 de 15</span>
+        <button class="intro-nav-btn" id="next-btn" aria-label="Próximo">›</button>
+    </nav>
+
+</div>
+
+<script src="../js/intro.js"></script>
+</body>
+</html>

@@ -266,6 +266,283 @@
       box-shadow: 0 18px 36px rgba(0, 0, 0, 0.24);
     }
 
+    .precedence-card {
+      background: #ffffff;
+      border: 1px solid #d5dde7;
+      border-left: 6px solid #1450a4;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 12px 0;
+      text-align: left;
+      box-shadow: 0 10px 24px rgba(12, 42, 84, 0.08);
+    }
+
+    .precedence-card p {
+      margin: 6px 0;
+      font-size: 0.84em !important;
+      line-height: 1.42;
+    }
+
+    .precedence-order {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .precedence-pill {
+      background: #f3f8ff;
+      border: 1px solid #bfd5ef;
+      color: #234154;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 0.72em;
+      font-weight: 600;
+    }
+
+    .resolve-sheet {
+      background: #f5f5f5;
+      border: 1px solid #d4d4d4;
+      border-radius: 12px;
+      padding: 10px 12px;
+      text-align: left;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .resolve-head {
+      margin: 0 0 4px 0;
+      font-size: 0.78em !important;
+      line-height: 1.25;
+      color: #1f2a33 !important;
+    }
+
+    .resolve-head strong {
+      font-weight: 800;
+    }
+
+    .resolve-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .resolve-item {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      align-items: baseline;
+      gap: 6px;
+      margin: 2px 0;
+    }
+
+    .resolve-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 3px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #cfcfcf;
+      color: #ffffff;
+      font-size: 0.65em;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .resolve-exp {
+      margin: 0;
+      font-family: 'Roboto Mono', Consolas, Monaco, monospace;
+      font-size: 0.70em;
+      color: #111;
+      letter-spacing: 0.01em;
+    }
+
+    .resolve-note {
+      margin: 4px 0 0 0;
+      font-size: 0.60em !important;
+      color: #4d5b66 !important;
+      font-style: italic;
+    }
+
+    .algo-recap {
+      background: #f3f3f3 !important;
+    }
+
+    .algo-shell {
+      text-align: left;
+      padding: 8px 16px 18px;
+      border-bottom: 2px solid #bfbfbf;
+    }
+
+    .algo-title {
+      margin: 0 0 8px 0 !important;
+      color: #ff5a24 !important;
+      font-size: 1.5em !important;
+      line-height: 1;
+      font-weight: 800 !important;
+    }
+
+    .algo-main {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .algo-main p,
+    .algo-main li {
+      font-size: 0.88em !important;
+      line-height: 1.35;
+      color: #171717 !important;
+    }
+
+    .algo-side-art {
+      min-height: 200px;
+      border-radius: 14px;
+      border: 1px solid #d5d5d5;
+      background: linear-gradient(150deg, #edf6f8, #f9fcff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0d7377;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+    }
+
+    .algo-side-art i {
+      font-size: 4.2em;
+      opacity: 0.9;
+    }
+
+    .algo-question {
+      margin: 8px 0 4px;
+      font-size: 0.95em !important;
+      color: #111 !important;
+    }
+
+    .algo-choice-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 16px;
+      align-items: center;
+      margin-top: 8px;
+    }
+
+    .algo-choice-card {
+      border-radius: 14px;
+      border: 1px solid #d4d4d4;
+      background: #fbfbfb;
+      min-height: 230px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-align: center;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+    }
+
+    .algo-choice-title {
+      margin: 0;
+      font-size: 0.9em !important;
+      font-weight: 700 !important;
+      color: #1c1c1c !important;
+    }
+
+    .algo-choice-card i {
+      font-size: 4.1em;
+    }
+
+    .algo-choice-card.wedding i {
+      color: #e85b93;
+    }
+
+    .algo-choice-card.bike i {
+      color: #ff4f8f;
+    }
+
+    .algo-ou {
+      font-size: 0.95em !important;
+      font-weight: 700;
+      color: #222 !important;
+      min-width: 40px;
+      text-align: center;
+    }
+
+    .algo-think-card {
+      margin: 14px auto 4px;
+      max-width: 900px;
+      border-radius: 24px;
+      border: 2px solid #2b5f98;
+      background: #ecebe3;
+      min-height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+    }
+
+    .algo-think-card p {
+      margin: 0;
+      color: #ff5a24 !important;
+      font-size: 1.2em !important;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .algo-flow-wrap {
+      margin-top: 8px;
+      border-radius: 14px;
+      border: 1px solid #d8d8d8;
+      background: #fbfbfb;
+      padding: 10px;
+    }
+
+    .algo-flow {
+      width: 100%;
+      max-width: 930px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .algo-flow-slide .algo-shell {
+      padding: 4px 12px 10px;
+    }
+
+    .algo-flow-slide .algo-title {
+      margin-bottom: 4px !important;
+      font-size: 1.2em !important;
+    }
+
+    .algo-flow-slide .algo-question {
+      margin: 0 0 6px;
+      font-size: 0.78em !important;
+      line-height: 1.15;
+    }
+
+    .algo-flow-slide .algo-flow-wrap {
+      margin-top: 0;
+      padding: 6px;
+    }
+
+    .algo-flow-slide .algo-flow {
+      max-width: 760px;
+    }
+
+    .algo-solution-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 20px;
+      align-items: center;
+      margin-top: 8px;
+    }
+
+    .algo-flow-placeholder {
+      min-height: 300px;
+      border-radius: 10px;
+      background: transparent;
+    }
+
     @media (max-width: 768px) {
       .reveal h2 {
         font-size: 1.5em;
@@ -305,6 +582,65 @@
         width: 120px;
         height: 120px;
         font-size: 1.4em;
+      }
+
+      .resolve-sheet {
+        padding: 12px 12px;
+      }
+
+      .resolve-item {
+        grid-template-columns: 28px 1fr;
+        gap: 8px;
+      }
+
+      .resolve-num {
+        width: 26px;
+        height: 26px;
+        font-size: 0.75em;
+      }
+
+      .resolve-exp {
+        font-size: 0.78em;
+      }
+
+      .algo-main {
+        grid-template-columns: 1fr;
+      }
+
+      .algo-side-art {
+        min-height: 140px;
+      }
+
+      .algo-choice-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .algo-choice-card {
+        min-height: 150px;
+      }
+
+      .algo-ou {
+        min-width: auto;
+      }
+
+      .algo-think-card {
+        min-height: 180px;
+      }
+
+      .algo-think-card p {
+        font-size: 0.9em !important;
+      }
+
+      .algo-solution-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .algo-flow-placeholder {
+        min-height: 130px;
+      }
+
+      .algo-flow-slide .algo-flow {
+        max-width: 100%;
       }
     }
   </style>
@@ -357,6 +693,175 @@
         </div>
       </section>
 
+      <!-- ==================== SLIDES 2.x – Relembrando Algoritmo (auto-animate) ==================== -->
+      <section class="algo-recap" data-auto-animate data-auto-animate-duration="0.65">
+        <div class="algo-shell">
+          <h2 class="algo-title" data-id="algo-title">Algoritmo</h2>
+          <div class="algo-main">
+            <div>
+              <p data-id="algo-def">Um algoritmo é uma sequência de passos bem definidos para resolver um problema ou
+                realizar uma atividade.</p>
+              <p style="margin-top: 12px;">Exemplos:</p>
+              <ul>
+                <li>Fazer um bolo;</li>
+                <li>Trocar uma lâmpada;</li>
+                <li>Trocar o pneu de um carro.</li>
+              </ul>
+            </div>
+            <div class="algo-side-art" data-id="algo-art">
+              <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="algo-recap" data-auto-animate data-auto-animate-duration="0.65">
+        <div class="algo-shell">
+          <h2 class="algo-title" data-id="algo-title">Algoritmo</h2>
+          <p class="algo-question" data-id="algo-question">Imagine a seguinte questão:</p>
+        </div>
+      </section>
+
+      <section class="algo-recap" data-auto-animate data-auto-animate-duration="0.65">
+        <div class="algo-shell">
+          <h2 class="algo-title" data-id="algo-title">Algoritmo</h2>
+          <p class="algo-question" data-id="algo-question">Imagine a seguinte questão:</p>
+          <div class="algo-choice-grid">
+            <div class="algo-choice-card wedding" data-id="choice-wedding">
+              <p class="algo-choice-title">Casar</p>
+              <i class="fa-solid fa-heart" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="algo-recap" data-auto-animate data-auto-animate-duration="0.65">
+        <div class="algo-shell">
+          <h2 class="algo-title" data-id="algo-title">Algoritmo</h2>
+          <p class="algo-question" data-id="algo-question">Imagine a seguinte questão:</p>
+          <div class="algo-choice-grid">
+            <div class="algo-choice-card wedding" data-id="choice-wedding">
+              <p class="algo-choice-title">Casar</p>
+              <i class="fa-solid fa-heart" aria-hidden="true"></i>
+            </div>
+            <div class="algo-ou" data-id="choice-or">ou</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="algo-recap" data-auto-animate data-auto-animate-duration="0.65">
+        <div class="algo-shell">
+          <h2 class="algo-title" data-id="algo-title">Algoritmo</h2>
+          <p class="algo-question" data-id="algo-question">Imagine a seguinte questão:</p>
+          <div class="algo-choice-grid">
+            <div class="algo-choice-card wedding" data-id="choice-wedding">
+              <p class="algo-choice-title">Casar</p>
+              <i class="fa-solid fa-heart" aria-hidden="true"></i>
+            </div>
+            <div class="algo-ou" data-id="choice-or">ou</div>
+            <div class="algo-choice-card bike" data-id="choice-bike">
+              <p class="algo-choice-title">Comprar uma bicicleta</p>
+              <i class="fa-solid fa-bicycle" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="algo-recap" data-auto-animate data-auto-animate-duration="0.65">
+        <div class="algo-shell">
+          <h2 class="algo-title" data-id="algo-title">Algoritmo</h2>
+          <div class="algo-think-card">
+            <p>Como você resolveria a questão?</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="algo-recap algo-flow-slide" data-auto-animate data-auto-animate-duration="0.65">
+        <div class="algo-shell">
+          <h2 class="algo-title" data-id="algo-title">Algoritmo</h2>
+          <p class="algo-question" data-id="algo-solution-text">Podemos solucionar a questão de diversas maneiras. Uma
+            solução viável é:</p>
+          <div class="algo-solution-grid">
+            <div class="algo-flow-wrap" data-id="algo-flow-panel">
+              <div class="algo-flow-placeholder"></div>
+            </div>
+            <div class="algo-side-art" data-id="algo-solution-art">
+              <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="algo-recap algo-flow-slide" data-auto-animate data-auto-animate-duration="0.65">
+        <div class="algo-shell">
+          <h2 class="algo-title" data-id="algo-title">Algoritmo</h2>
+          <p class="algo-question" data-id="algo-solution-text">Podemos solucionar a questão de diversas maneiras. Uma
+            solução viável é:</p>
+          <div class="algo-solution-grid" style="grid-template-columns: 1fr;">
+            <div class="algo-flow-wrap" data-id="algo-flow-panel">
+              <svg class="algo-flow" viewBox="0 0 1200 740" xmlns="http://www.w3.org/2000/svg" role="img"
+                aria-label="Fluxograma completo de decisão">
+                <defs>
+                  <linearGradient id="algoNodeFill" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#f8e7b2" />
+                    <stop offset="100%" stop-color="#f2d36b" />
+                  </linearGradient>
+                  <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                    <polygon points="0 0, 8 3, 0 6" fill="#202020" />
+                  </marker>
+                </defs>
+
+                <rect x="330" y="20" width="540" height="80" rx="14" fill="url(#algoNodeFill)" stroke="#d5b459" stroke-width="2" />
+                <text x="600" y="71" text-anchor="middle" font-size="24" font-family="Roboto, sans-serif"
+                  fill="#111">Casar ou comprar uma bicicleta?</text>
+
+                <polygon points="600,145 700,245 600,345 500,245" fill="#efe5c6" stroke="#d2b05b" stroke-width="2" />
+                <text x="600" y="238" text-anchor="middle" font-size="24" font-family="Roboto, sans-serif" fill="#111">Você está</text>
+                <text x="600" y="292" text-anchor="middle" font-size="24" font-family="Roboto, sans-serif" fill="#111">gordo(a) ?</text>
+
+                <polygon points="160,285 280,405 160,525 40,405" fill="#efe5c6" stroke="#d2b05b" stroke-width="2" />
+                <text x="160" y="395" text-anchor="middle" font-size="24" font-family="Roboto, sans-serif" fill="#111">Quer</text>
+                <text x="160" y="445" text-anchor="middle" font-size="24" font-family="Roboto, sans-serif" fill="#111">emagrecer ?</text>
+
+                <polygon points="1040,285 1160,405 1040,525 920,405" fill="#efe5c6" stroke="#d2b05b" stroke-width="2" />
+                <text x="1040" y="395" text-anchor="middle" font-size="24" font-family="Roboto, sans-serif" fill="#111">Quer</text>
+                <text x="1040" y="445" text-anchor="middle" font-size="24" font-family="Roboto, sans-serif" fill="#111">Engordar ?</text>
+
+                <rect x="330" y="550" width="540" height="74" rx="14" fill="url(#algoNodeFill)" stroke="#d5b459" stroke-width="2" />
+                <text x="600" y="598" text-anchor="middle" font-size="24" font-family="Roboto, sans-serif" fill="#111">Case</text>
+
+                <rect x="330" y="640" width="540" height="74" rx="14" fill="url(#algoNodeFill)" stroke="#d5b459" stroke-width="2" />
+                <text x="600" y="688" text-anchor="middle" font-size="24" font-family="Roboto, sans-serif" fill="#111">Compre uma bicicleta !</text>
+
+                <line x1="600" y1="100" x2="600" y2="143" stroke="#202020" stroke-width="3" marker-end="url(#arrowhead)" />
+
+                <polyline points="500,245 160,245 160,284" fill="none" stroke="#202020" stroke-width="3" marker-end="url(#arrowhead)" />
+                <text x="300" y="225" text-anchor="middle" font-size="22" font-family="Roboto, sans-serif" fill="#111">Sim</text>
+
+                <polyline points="700,245 1040,245 1040,284" fill="none" stroke="#202020" stroke-width="3" marker-end="url(#arrowhead)" />
+                <text x="880" y="225" text-anchor="middle" font-size="22" font-family="Roboto, sans-serif" fill="#111">Não</text>
+
+                <polyline points="280,405 330,405 330,587" fill="none" stroke="#202020" stroke-width="3" marker-end="url(#arrowhead)" />
+                <text x="290" y="510" text-anchor="middle" font-size="22" font-family="Roboto, sans-serif" fill="#111">Não</text>
+
+                <polyline points="920,405 900,405 900,587 870,587" fill="none" stroke="#202020" stroke-width="3" marker-end="url(#arrowhead)" />
+                <text x="925" y="510" text-anchor="middle" font-size="22" font-family="Roboto, sans-serif" fill="#111">Sim</text>
+
+                <polyline points="160,525 160,677 330,677" fill="none" stroke="#202020" stroke-width="3" marker-end="url(#arrowhead)" />
+                <text x="92" y="610" text-anchor="middle" font-size="22" font-family="Roboto, sans-serif" fill="#111">Sim</text>
+
+                <polyline points="1040,525 1040,677 870,677" fill="none" stroke="#202020" stroke-width="3" marker-end="url(#arrowhead)" />
+                <text x="1078" y="610" text-anchor="middle" font-size="22" font-family="Roboto, sans-serif" fill="#111">Não</text>
+
+                <line x1="20" y1="712" x2="84" y2="712" stroke="#8a8a8a" stroke-width="3" />
+                <line x1="988" y1="712" x2="1180" y2="712" stroke="#8a8a8a" stroke-width="3" />
+                <text x="955" y="720" text-anchor="middle" font-size="22" font-family="Roboto, sans-serif" fill="#111">Fonte: icasei.com</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- ==================== SLIDE 3 – Objetivos ==================== -->
       <section>
         <h2><i class="fa-solid fa-bullseye icon" aria-hidden="true"></i> Objetivos da Aula</h2>
@@ -398,6 +903,7 @@
           </div>
         </div>
       </section>
+<section>
 
       <!-- ==================== SLIDE 5 – Aritméticos: tabela ==================== -->
       <section>
@@ -513,11 +1019,9 @@ print(10 % 3)  # 1  → 10 ÷ 3 = 3, resto 1
 print(10 % 2)  # 0  → 10 ÷ 2 = 5, resto 0
 print(7 % 4)   # 3  → 7 ÷ 4 = 1, resto 3
         </code></pre>
-        <div class="box-green fragment">
-          <i class="fa-solid fa-star icon" aria-hidden="true"></i> <strong>Truque útil:</strong> para saber se um número
-          é par, basta verificar se <code>n % 2 == 0</code>.
-        </div>
       </section>
+
+
 
       <!-- ==================== SLIDE 9 – Exemplo prático aritméticos ==================== -->
       <section>
@@ -537,27 +1041,92 @@ print(f"Divisão:        {n1 / n2}")
         </div>
       </section>
 
-      <!-- ==================== SLIDE 10 – ATIVIDADE 1 ==================== -->
-      <section class="bg-activity">
-        <h2><i class="fa-solid fa-pen-ruler icon" aria-hidden="true"></i> Atividade 1 — Aritméticos</h2>
-        <div class="box-purple">
-          <strong>Exercício A:</strong> Peça ao usuário dois números inteiros e exiba a <strong>soma</strong>, a
-          <strong>diferença</strong> e o <strong>produto</strong>.
+      <!-- ==================== SLIDE 10 – Precedência Aritmética ==================== -->
+      <section class="bg-light">
+        <h2><i class="fa-solid fa-sort-numeric-down icon" aria-hidden="true"></i> Precedência Aritmética</h2>
+        <div class="precedence-card fragment">
+          <p>Quando uma expressão tem vários operadores, o Python resolve em uma ordem padrão.</p>
+          <div class="precedence-order">
+            <span class="precedence-pill">1) <code>()</code> parênteses</span>
+            <span class="precedence-pill">2) <code>**</code> potência</span>
+            <span class="precedence-pill">3) <code>* / // %</code></span>
+            <span class="precedence-pill">4) <code>+ -</code></span>
+          </div>
         </div>
-        <div class="box-purple fragment">
-          <strong>Exercício B:</strong> Peça um valor em <strong>reais (R$)</strong> e a <strong>cotação do
-            dólar</strong>. Exiba o valor convertido em dólares.
-        </div>
-        <div class="box-purple fragment">
-          <strong>Exercício C:</strong> Peça a <strong>temperatura em Celsius</strong> e converta para
-          <strong>Fahrenheit</strong>.<br>
-          Fórmula: <code>F = C × 9/5 + 32</code>
-        </div>
-        <p class="fragment" style="font-size:.8em;"><i class="fa-solid fa-clock icon"
-            aria-hidden="true"></i> Tempo sugerido: 10 minutos</p>
+        <pre class="fragment"><code class="language-python" data-trim data-noescape>
+resultado1 = 2 + 3 * 4      # 14
+resultado2 = (2 + 3) * 4    # 20
+        </code></pre>
       </section>
 
-      <!-- ==================== SLIDE 11 – Operadores Relacionais: intro ==================== -->
+      <!-- ==================== SLIDE 11 – Exercícios Aritméticos (Pergunta) ==================== -->
+      <section class="bg-activity" data-auto-animate>
+        <div class="resolve-sheet">
+          <p class="resolve-head"><strong>Resolva</strong> (use a precedência: <em>parênteses → potência → mult/div/mod → soma/sub</em>).</p>
+          <ol class="resolve-list" data-auto-animate-target=".resolve-list">
+            <li class="resolve-item">
+              <span class="resolve-num">1</span>
+              <p class="resolve-exp">2 + 3 * 4;</p>
+            </li>
+            <li class="resolve-item">
+              <span class="resolve-num">2</span>
+              <p class="resolve-exp">18 / 3 + 5 * 2;</p>
+            </li>
+            <li class="resolve-item">
+              <span class="resolve-num">3</span>
+              <p class="resolve-exp">(9 - 3) * (2 + 1);</p>
+            </li>
+            <li class="resolve-item">
+              <span class="resolve-num">4</span>
+              <p class="resolve-exp">20 // 3 + 20 % 3;</p>
+            </li>
+            <li class="resolve-item">
+              <span class="resolve-num">5</span>
+              <p class="resolve-exp">2 ** 3 + 4 * 2 - 5;</p>
+            </li>
+          </ol>
+          <p class="resolve-note">Atividade curta: Resolva primeiro sem executar e depois confira no Python.</p>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 11B – Exercícios Aritméticos (Respostas com Auto-Animate) ==================== -->
+      <section class="bg-activity" data-auto-animate>
+        <div class="resolve-sheet">
+          <p class="resolve-head"><strong>Respostas</strong> ✓</p>
+          <ol class="resolve-list" data-auto-animate-target=".resolve-list">
+            <li class="resolve-item" style="display: grid; grid-template-columns: 24px 1fr auto; gap: 6px; align-items: baseline;">
+              <span class="resolve-num">1</span>
+              <p class="resolve-exp">2 + 3 * 4;</p>
+              <p class="resolve-exp"><span style="color: #27ae60; font-weight: 700;">= 14</span></p>
+            </li>
+            <li class="resolve-item" style="display: grid; grid-template-columns: 24px 1fr auto; gap: 6px; align-items: baseline;">
+              <span class="resolve-num">2</span>
+              <p class="resolve-exp">18 / 3 + 5 * 2;</p>
+              <p class="resolve-exp"><span style="color: #27ae60; font-weight: 700;">= 16</span></p>
+            </li>
+            <li class="resolve-item" style="display: grid; grid-template-columns: 24px 1fr auto; gap: 6px; align-items: baseline;">
+              <span class="resolve-num">3</span>
+              <p class="resolve-exp">(9 - 3) * (2 + 1);</p>
+              <p class="resolve-exp"><span style="color: #27ae60; font-weight: 700;">= 18</span></p>
+            </li>
+            <li class="resolve-item" style="display: grid; grid-template-columns: 24px 1fr auto; gap: 6px; align-items: baseline;">
+              <span class="resolve-num">4</span>
+              <p class="resolve-exp">20 // 3 + 20 % 3;</p>
+              <p class="resolve-exp"><span style="color: #27ae60; font-weight: 700;">= 8</span></p>
+            </li>
+            <li class="resolve-item" style="display: grid; grid-template-columns: 24px 1fr auto; gap: 6px; align-items: baseline;">
+              <span class="resolve-num">5</span>
+              <p class="resolve-exp">2 ** 3 + 4 * 2 - 5;</p>
+              <p class="resolve-exp"><span style="color: #27ae60; font-weight: 700;">= 11</span></p>
+            </li>
+          </ol>
+        </div>
+      </section>
+    </section>
+
+    <section>
+
+      <!-- ==================== SLIDE 12 – Operadores Relacionais: intro ==================== -->
       <section>
         <h2><i class="fa-solid fa-not-equal icon" aria-hidden="true"></i> Operadores Relacionais</h2>
         <p class="fragment">Servem para <strong>comparar</strong> dois valores.</p>
@@ -568,7 +1137,7 @@ print(f"Divisão:        {n1 / n2}")
         </div>
       </section>
 
-      <!-- ==================== SLIDE 12 – Relacionais: tabela ==================== -->
+      <!-- ==================== SLIDE 13 – Relacionais: tabela ==================== -->
       <section class="bg-light">
         <h2><i class="fa-solid fa-table icon" aria-hidden="true"></i> Tabela de Operadores Relacionais</h2>
         <table>
@@ -699,9 +1268,11 @@ print(f"Você tem menos de 16 anos? {idade < 16}")
           <strong>Exercício F:</strong> Peça um número e exiba se ele é <strong>par</strong>.
           <br><em>Dica: use o operador <code>%</code></em>
         </div>
-        <p class="fragment" style="font-size:.8em;"><i class="fa-solid fa-clock icon"
-            aria-hidden="true"></i> Tempo sugerido: 10 minutos</p>
+        
       </section>
+    </section>
+
+    <section>
 
       <!-- ==================== SLIDE 17 – Operadores Lógicos: intro ==================== -->
       <section>
@@ -771,11 +1342,11 @@ print(f"Você tem menos de 16 anos? {idade < 16}")
             </tr>
           </tbody>
         </table>
-        <pre class="fragment"><code class="language-python" data-trim data-noescape>
+        <!-- <pre class="fragment"><code class="language-python" data-trim data-noescape>
 idade = 20
 tem_carteira = True
 print(idade >= 18 and tem_carteira)  # True
-        </code></pre>
+        </code></pre> -->
       </section>
 
       <!-- ==================== SLIDE 19 – Tabela verdade OR ==================== -->
@@ -813,11 +1384,11 @@ print(idade >= 18 and tem_carteira)  # True
             </tr>
           </tbody>
         </table>
-        <pre class="fragment"><code class="language-python" data-trim data-noescape>
+        <!-- <pre class="fragment"><code class="language-python" data-trim data-noescape>
 tem_rg = False
 tem_passaporte = True
 print(tem_rg or tem_passaporte)  # True
-        </code></pre>
+        </code></pre> -->
       </section>
 
       <!-- ==================== SLIDE 20 – Tabela verdade NOT ==================== -->
@@ -884,6 +1455,8 @@ print(f"Aprovado? {aprovado}")  # True
         </code></pre>
       </section>
 
+    </section>
+
       <!-- ==================== SLIDE 23 – Precedência ==================== -->
       <section>
         <h2><i class="fa-solid fa-sort-numeric-down icon" aria-hidden="true"></i> Ordem de Precedência</h2>
@@ -940,7 +1513,7 @@ print(f"Aprovado? {aprovado}")  # True
       </section>
 
       <!-- ==================== SLIDE 24 – Precedência: exemplo ==================== -->
-      <section class="bg-warn">
+      <!-- <section class="bg-warn">
         <h2><i class="fa-solid fa-magnifying-glass icon" aria-hidden="true"></i> Precedência na Prática</h2>
         <pre><code class="language-python" data-trim data-noescape>
 # Sem parênteses — Python segue a precedência
@@ -957,7 +1530,7 @@ x = 5
 print(x > 3 and x < 10)        # True
 print(not (x > 3 and x < 10))  # False
         </code></pre>
-      </section>
+      </section> -->
 
       <!-- ==================== SLIDE 25 – ATIVIDADE 3 ==================== -->
       <section class="bg-activity">
@@ -980,7 +1553,7 @@ print(not (x > 3 and x < 10))  # False
       </section>
 
       <!-- ==================== SLIDE 26 – Desafio final ==================== -->
-      <section data-background-gradient="linear-gradient(135deg, #667eea, #764ba2)">
+      <!-- <section data-background-gradient="linear-gradient(135deg, #667eea, #764ba2)">
         <h2 style="color: white;"><i class="fa-solid fa-trophy icon" style="color: #f1c40f;"
             aria-hidden="true"></i> Desafio Final!</h2>
         <p style="color: rgba(255,255,255,.92); font-size: .85em;">
@@ -1005,10 +1578,10 @@ acompanhante = input("Com responsável? (s/n): ") == "s"
 acesso = (idade >= 18) or (convite and acompanhante)
 print(f"Acesso permitido? {acesso}")
         </code></pre>
-      </section>
+      </section> -->
 
       <!-- ==================== SLIDE 27 – Erros comuns ==================== -->
-      <section class="bg-warn">
+      <!-- <section class="bg-warn">
         <h2><i class="fa-solid fa-bug icon" aria-hidden="true"></i> Erros Comuns desta Aula</h2>
         <ul>
           <li class="fragment">
@@ -1030,7 +1603,7 @@ print(f"Acesso permitido? {acesso}")
             <code>2 + 3 * 4</code> = <strong>14</strong>, não 20!
           </li>
         </ul>
-      </section>
+      </section> -->
 
       <!-- ==================== SLIDE 28 – Resumo ==================== -->
       <section class="bg-light">
@@ -1058,7 +1631,7 @@ print(f"Acesso permitido? {acesso}")
       </section>
 
       <!-- ==================== SLIDE 29 – Próxima aula ==================== -->
-      <section data-background-gradient="radial-gradient(#1f4b99, #16a085)">
+      <!-- <section data-background-gradient="radial-gradient(#1f4b99, #16a085)">
         <h2 style="color: white;">Próxima Aula</h2>
         <p style="color: rgba(255,255,255,.85); font-size: .9em;">
           Estruturas condicionais:
@@ -1075,7 +1648,7 @@ print(f"Acesso permitido? {acesso}")
         <p style="color: rgba(255,255,255,.7); font-size: .65em;">
           Dúvidas? Me procure no e-mail ou no horário de atendimento.
         </p>
-      </section>
+      </section> -->
 
     </div>
   </div>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducao Fase 5 — CodeAdventure</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/intro.css">
+</head>
+<body class="intro-page">
+
+<div class="intro-container">
+
+    <a href="fase5.html" class="intro-skip">Pular introducao →</a>
+
+    <div class="intro-slide active" data-slide="0">
+        <span class="slide-emoji">🧠</span>
+        <h1 class="slide-title">
+            Passo 1: <span class="highlight">Calculo de Rota</span>
+        </h1>
+        <p class="slide-text">
+            Agora voce vai usar variaveis para calcular distancias
+            e montar uma rota completa com ida e volta.
+        </p>
+    </div>
+
+    <div class="intro-slide" data-slide="1">
+        <h1 class="slide-title">Passo 2: Novo desafio</h1>
+        <div class="slide-illustration">
+            <div class="speech-bubble">
+                Nao basta chegar na bandeira.
+                Primeiro voce precisa coletar os cristais <strong>A</strong> e <strong>B</strong>.
+            </div>
+        </div>
+    </div>
+
+    <div class="intro-slide" data-slide="2">
+        <h1 class="slide-title">Passo 3: Variavel base</h1>
+        <div class="slide-illustration">
+            <div class="code-bubble"><span class="cb-func">base</span> = <span class="cb-number">2</span></div>
+            <div class="speech-bubble">
+                Comece com um valor simples e reaproveite esse valor nos calculos.
+            </div>
+        </div>
+    </div>
+
+    <div class="intro-slide" data-slide="3">
+        <h1 class="slide-title">Passo 4: Somando distancias</h1>
+        <div class="slide-illustration">
+            <div class="code-bubble"><span class="cb-func">rota1</span> = <span class="cb-func">base</span> + <span class="cb-number">3</span></div>
+            <div class="speech-bubble">Use <strong>+</strong> para aumentar a distancia.</div>
+        </div>
+    </div>
+
+    <div class="intro-slide" data-slide="4">
+        <h1 class="slide-title">Passo 5: Subtraindo distancias</h1>
+        <div class="slide-illustration">
+            <div class="code-bubble"><span class="cb-func">rota2</span> = <span class="cb-func">rota1</span> - <span class="cb-number">2</span></div>
+            <div class="speech-bubble">Use <strong>-</strong> para ajustar o retorno.</div>
+        </div>
+    </div>
+
+    <div class="intro-slide" data-slide="5">
+        <h1 class="slide-title">Passo 6: Variavel calcula variavel</h1>
+        <div class="slide-illustration">
+            <div class="code-bubble"><span class="cb-func">rota3</span> = <span class="cb-func">rota1</span> + <span class="cb-number">1</span></div>
+            <div class="speech-bubble">
+                Uma variavel pode usar o resultado de outra variavel.
+            </div>
+        </div>
+    </div>
+
+    <div class="intro-slide" data-slide="6">
+        <h1 class="slide-title">Passo 7: Movimento com variaveis</h1>
+        <div class="slide-illustration">
+            <div class="code-bubble"><span class="cb-func">move_right</span><span class="cb-paren">(</span><span class="cb-func">rota1</span><span class="cb-paren">)</span></div>
+            <div class="speech-bubble">
+                O comando de movimento usa o valor guardado na variavel.
+            </div>
+        </div>
+    </div>
+
+    <div class="intro-slide" data-slide="7">
+        <h1 class="slide-title">Passo 8: Ida e volta</h1>
+        <div class="slide-illustration">
+            <div class="speech-bubble">
+                Nesta fase, voce precisa usar <strong>move_right()</strong> e <strong>move_left()</strong>.
+                Isso deixa a rota mais estrategica.
+            </div>
+        </div>
+    </div>
+
+    <div class="intro-slide" data-slide="8">
+        <h1 class="slide-title">Passo 9: Exemplo de sequencia</h1>
+        <div class="slide-illustration">
+            <div class="speech-bubble">
+                <code style="font-family: var(--font-mono); color:#89dceb;">base = 2</code><br>
+                <code style="font-family: var(--font-mono); color:#89dceb;">rota1 = base + 3</code><br>
+                <code style="font-family: var(--font-mono); color:#89dceb;">rota2 = rota1 - 2</code><br>
+                <code style="font-family: var(--font-mono); color:#89dceb;">rota3 = rota1 + 1</code>
+            </div>
+        </div>
+    </div>
+
+    <div class="intro-slide" data-slide="9">
+        <h1 class="slide-title">Passo 10: Execute a rota</h1>
+        <div class="slide-illustration">
+            <div class="speech-bubble">
+                <code style="font-family: var(--font-mono); color:#89dceb;">move_right(rota1)</code><br>
+                <code style="font-family: var(--font-mono); color:#89dceb;">move_left(rota2)</code><br>
+                <code style="font-family: var(--font-mono); color:#89dceb;">move_right(rota3)</code>
+            </div>
+        </div>
+    </div>
+
+    <div class="intro-slide" data-slide="10">
+        <h1 class="slide-title">Passo 11: Erros comuns</h1>
+        <div class="slide-illustration">
+            <div class="speech-bubble">
+                1) Nao usar soma e subtracao nas atribuicoes.<br>
+                2) Criar rota que nao passa pelos cristais A e B.<br>
+                3) Tentar ir para a bandeira sem coletar A e B.
+            </div>
+        </div>
+    </div>
+
+    <div class="intro-slide" data-slide="11">
+        <span class="slide-emoji">🚀</span>
+        <h1 class="slide-title">Passo 12: Vamos para a Fase 5</h1>
+        <p class="slide-text">
+            Planeje, calcule e execute uma rota inteligente para completar o desafio.
+        </p>
+        <a href="fase5.html" class="intro-cta">Iniciar Fase 5 ▶</a>
+    </div>
+
+    <div class="intro-dots">
+        <div class="intro-dot active"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+    </div>
+
+    <nav class="intro-nav">
+        <button class="intro-nav-btn" id="prev-btn" disabled aria-label="Anterior">‹</button>
+        <span class="intro-progress" id="progress-text">1 de 12</span>
+        <button class="intro-nav-btn" id="next-btn" aria-label="Proximo">›</button>
+    </nav>
+
+</div>
+
+<script src="../js/intro.js"></script>
+</body>
+</html>
