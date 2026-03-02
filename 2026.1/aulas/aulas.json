@@ -1,14 +1,34 @@
 [
   {
-    "titulo": "Aula 1 - Algoritmo e Variáveis",
-    "link": "./aulas/aula01.html"
+    "numero": 1,
+    "titulo": "Aula 01 - Bem-vindo à Programação!",
+    "subtitulo": "Algoritmos e Variáveis",
+    "descricao": "Primeiro contato com programação, o que é programar, algoritmos do dia a dia, variáveis e tipos básicos em Python.",
+    "link": "./aulas/aula01.html",
+    "topicos": ["Algoritmos", "Variáveis", "Tipos de dados", "input() e print()"]
   },
   {
-    "titulo": "Aula 2 - Funções anonimas",
-    "link": "./aulas/aula02.html"
+    "numero": 2,
+    "titulo": "Aula 02 - Variáveis e Tipos de Dados",
+    "subtitulo": "int, float, str, bool",
+    "descricao": "Exploração profunda dos tipos básicos de Python, conversão de tipos, operações com dados.",
+    "link": "./aulas/aula02.html",
+    "topicos": ["int", "float", "str", "bool", "Conversão de tipos", "Concatenação"]
   },
   {
-    "titulo": "Aula 3 - Listas, Dicionários e Tuplas",
-    "link": "./aulas/aula03.html"
+    "numero": 3,
+    "titulo": "Aula 03 - Operadores em Python",
+    "subtitulo": "Aritméticos, Relacionais e Lógicos",
+    "descricao": "Dominando os operadores fundamentais: aritméticos (+, -, *, /), relacionais (==, !=, <, >) e lógicos (and, or, not).",
+    "link": "./aulas/aula03.html",
+    "topicos": ["Operadores Aritméticos", "Operadores Relacionais", "Operadores Lógicos", "Precedência", "Expressões"]
+  },
+  {
+    "numero": 4,
+    "titulo": "Aula 04 - Estruturas Condicionais",
+    "subtitulo": "if, elif, else e Operadores Lógicos",
+    "descricao": "Tomando decisões com estruturas condicionais, operadores relacionais e lógicos, validações de entrada.",
+    "link": "./aulas/aula04.html",
+    "topicos": ["if / elif / else", "Operadores relacionais", "Operadores lógicos", "Condicionais encadeadas", "Indentação"]
   }
 ]

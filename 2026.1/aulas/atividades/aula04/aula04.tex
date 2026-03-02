@@ -1,0 +1,411 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazilian]{babel}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{fontawesome5}
+
+\tcbuselibrary{skins,breakable}
+
+\geometry{margin=1in}
+\setlength{\headheight}{15pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+
+% ── Cores ──
+\definecolor{primary}{HTML}{1F4E79}
+\definecolor{secondary}{HTML}{0B6E99}
+\definecolor{accent}{HTML}{2E86C1}
+\definecolor{lightbg}{HTML}{EAF2F8}
+\definecolor{codebg}{HTML}{F8F9FA}
+\definecolor{codeframe}{HTML}{BDC3C7}
+\definecolor{fixcolor}{HTML}{E67E22}
+\definecolor{fixbg}{HTML}{FEF5E7}
+\definecolor{desafiobg}{HTML}{F5EEF8}
+\definecolor{desafiocolor}{HTML}{7D3C98}
+\definecolor{dicabg}{HTML}{EAFAF1}
+\definecolor{dicacolor}{HTML}{1E8449}
+\definecolor{exemplobg}{HTML}{F4F6F7}
+
+% ── Caixas personalizadas ──
+\newtcolorbox{instrucaobox}{
+    colback=lightbg, colframe=primary,
+    fonttitle=\bfseries\color{primary},
+    title={\faIcon{info-circle} ~Instruções},
+    boxrule=1pt, arc=4pt,
+    left=8pt, right=8pt, top=6pt, bottom=6pt,
+    breakable
+}
+
+\newtcolorbox{fixacaobox}[1][]{
+    colback=fixbg, colframe=fixcolor,
+    fonttitle=\bfseries\color{fixcolor},
+    title={\faIcon{pencil-alt} ~Micro Atividade de Fixação},
+    boxrule=0.8pt, arc=4pt,
+    left=8pt, right=8pt, top=6pt, bottom=6pt,
+    breakable, #1
+}
+
+\newtcolorbox{exemplobox}[1][]{
+    colback=exemplobg, colframe=accent,
+    fonttitle=\bfseries\color{accent},
+    title={\faIcon{code} ~#1},
+    boxrule=0.8pt, arc=4pt,
+    left=6pt, right=6pt, top=4pt, bottom=4pt,
+    breakable
+}
+
+\newtcolorbox{dicabox}{
+    colback=dicabg, colframe=dicacolor,
+    fonttitle=\bfseries\color{dicacolor},
+    title={\faIcon{lightbulb} ~Dica},
+    boxrule=0.8pt, arc=4pt,
+    left=8pt, right=8pt, top=4pt, bottom=4pt
+}
+
+\newtcolorbox{desafiobox}{
+    colback=desafiobg, colframe=desafiocolor,
+    fonttitle=\bfseries\color{desafiocolor},
+    title={\faIcon{trophy} ~Desafio Bônus},
+    boxrule=1pt, arc=4pt,
+    left=8pt, right=8pt, top=6pt, bottom=6pt,
+    breakable
+}
+
+% ── Títulos ──
+\titleformat{\section}
+  {\Large\bfseries\color{primary}}
+  {}
+  {0pt}
+  {\rule{\linewidth}{0.6pt}\\}
+
+\titleformat{\subsection}
+  {\large\bfseries\color{secondary}}
+  {}
+  {0pt}
+  {}
+
+\setlist[itemize]{leftmargin=1.4em,itemsep=2pt,topsep=4pt}
+\setlist[enumerate]{leftmargin=1.6em,itemsep=2pt,topsep=4pt}
+
+% ── Cabeçalho/Rodapé ──
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{\color{primary}Programação em Python}}
+\rhead{\small Prof. Msc. Nator Junior C. da Costa}
+\cfoot{\color{gray}\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ── Código ──
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    backgroundcolor=\color{codebg},
+    frame=single,
+    rulecolor=\color{codeframe},
+    keywordstyle=\bfseries\color{blue!80!black},
+    commentstyle=\itshape\color{gray},
+    stringstyle=\color{red!70!black},
+    breaklines=true,
+    showstringspaces=false,
+    tabsize=4,
+    xleftmargin=6pt,
+    framexleftmargin=6pt,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    numbersep=8pt
+}
+
+\begin{document}
+
+% ── Cabeçalho da Lista ──
+\begin{center}
+\colorbox{primary}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+\centering\color{white}
+\vspace{6pt}
+{\LARGE \textbf{Lista de Atividades -- Aula 04}}\\[4pt]
+{\large Estruturas Condicionais em Python}\\[6pt]
+}}
+\vspace{8pt}
+
+\begin{tabular}{rl}
+\textbf{Disciplina:} & Lógica de Programação em Python\\
+\textbf{Professor:} & Prof. Msc. Nator Junior Carvalho da Costa\\
+\textbf{Semestre:} & 2026.1\\
+\end{tabular}
+\end{center}
+
+\vspace{6pt}
+
+% ── Instruções ──
+\begin{instrucaobox}
+Resolva as atividades abaixo em Python. Nesta aula, pratique:
+\begin{itemize}
+    \item Estruturas condicionais: \texttt{if}, \texttt{elif}, \texttt{else}
+    \item Operadores relacionais: \texttt{>}, \texttt{<}, \texttt{>=}, \texttt{<=}, \texttt{==}, \texttt{!=}
+    \item Operadores lógicos: \texttt{and}, \texttt{or}, \texttt{not}
+\end{itemize}
+Leia cada exemplo com atenção, resolva a \textbf{micro atividade de fixação} logo em seguida e depois avance para a atividade principal.
+\end{instrucaobox}
+
+%=============================================================
+\section*{Parte 1 -- Decisão Simples (\texttt{if / else})}
+%=============================================================
+
+\begin{exemplobox}{Exemplo -- if / else}
+\begin{lstlisting}
+idade = int(input("Digite sua idade: "))
+
+if idade >= 18:
+    print("Maior de idade")
+else:
+    print("Menor de idade")
+\end{lstlisting}
+\end{exemplobox}
+
+\begin{fixacaobox}
+Sem rodar no computador, diga o que será exibido em cada caso:
+\begin{enumerate}
+    \item \texttt{idade = 20} $\rightarrow$ Saída: \rule{5cm}{0.4pt}
+    \item \texttt{idade = 15} $\rightarrow$ Saída: \rule{5cm}{0.4pt}
+    \item \texttt{idade = 18} $\rightarrow$ Saída: \rule{5cm}{0.4pt}
+\end{enumerate}
+\end{fixacaobox}
+
+\subsection*{Atividade 1: Maior ou Menor de Idade}
+Escreva um programa que:
+\begin{enumerate}
+    \item Leia a idade de uma pessoa com \texttt{input()}
+    \item Verifique se a pessoa tem 18 anos ou mais
+    \item Exiba \texttt{"Maior de idade"} ou \texttt{"Menor de idade"}
+\end{enumerate}
+
+\begin{dicabox}
+Use \texttt{int(input(...))} para converter a entrada para número inteiro.
+\end{dicabox}
+
+\subsection*{Atividade 2: Número Positivo ou Negativo}
+Escreva um programa que:
+\begin{enumerate}
+    \item Leia um número inteiro
+    \item Exiba \texttt{"Positivo"} se for maior que zero, ou \texttt{"Negativo"} caso contrário
+\end{enumerate}
+
+\begin{fixacaobox}
+Complete o código abaixo:
+\begin{lstlisting}
+numero = int(input("Digite um numero: "))
+
+if ________ :
+    print("Positivo")
+________ :
+    print("Negativo")
+\end{lstlisting}
+\end{fixacaobox}
+
+%=============================================================
+\section*{Parte 2 -- Múltiplas Condições (\texttt{if / elif / else})}
+%=============================================================
+
+\begin{exemplobox}{Exemplo -- if / elif / else}
+\begin{lstlisting}
+nota = float(input("Digite a nota: "))
+
+if nota >= 7:
+    print("Aprovado")
+elif nota >= 5:
+    print("Recuperacao")
+else:
+    print("Reprovado")
+\end{lstlisting}
+\end{exemplobox}
+
+\begin{fixacaobox}
+Qual será a saída para cada nota abaixo?
+\begin{enumerate}
+    \item \texttt{nota = 8.5} $\rightarrow$ \rule{5cm}{0.4pt}
+    \item \texttt{nota = 6.0} $\rightarrow$ \rule{5cm}{0.4pt}
+    \item \texttt{nota = 3.2} $\rightarrow$ \rule{5cm}{0.4pt}
+    \item \texttt{nota = 7.0} $\rightarrow$ \rule{5cm}{0.4pt}
+\end{enumerate}
+\end{fixacaobox}
+
+\subsection*{Atividade 3: Situação do Aluno}
+Escreva um programa que:
+\begin{enumerate}
+    \item Leia a nota final de um aluno (0 a 10)
+    \item Exiba:
+    \begin{itemize}
+        \item \texttt{"Aprovado"} se nota $\geq$ 7
+        \item \texttt{"Recuperação"} se nota $\geq$ 5 e $<$ 7
+        \item \texttt{"Reprovado"} se nota $<$ 5
+    \end{itemize}
+\end{enumerate}
+
+\subsection*{Atividade 4: Par, Ímpar ou Zero}
+Escreva um programa que:
+\begin{enumerate}
+    \item Leia um número inteiro
+    \item Se for zero, exiba \texttt{"Zero"}
+    \item Se for par, exiba \texttt{"Par"}
+    \item Se for ímpar, exiba \texttt{"Ímpar"}
+\end{enumerate}
+
+\begin{dicabox}
+O operador \texttt{\%} (módulo) retorna o resto da divisão. Se \texttt{n \% 2 == 0}, o número é par.
+\end{dicabox}
+
+\begin{fixacaobox}
+Corrija o código abaixo (há 2 erros):
+\begin{lstlisting}
+n = int(input("Numero: "))
+
+if n = 0:
+    print("Zero")
+elif n % 2 = 0:
+    print("Par")
+else:
+    print("Impar")
+\end{lstlisting}
+\end{fixacaobox}
+
+%=============================================================
+\section*{Parte 3 -- Operadores Lógicos (\texttt{and}, \texttt{or}, \texttt{not})}
+%=============================================================
+
+\begin{exemplobox}{Exemplo -- Operadores Lógicos}
+\begin{lstlisting}
+idade = int(input("Idade: "))
+cnh = input("Tem CNH? (s/n): ")
+
+if idade >= 18 and cnh == "s":
+    print("Pode dirigir")
+else:
+    print("Nao pode dirigir")
+\end{lstlisting}
+\end{exemplobox}
+
+\begin{fixacaobox}
+Preencha a tabela com \texttt{True} ou \texttt{False}:
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\texttt{idade} & \texttt{cnh} & \texttt{idade >= 18 and cnh == "s"} & Pode dirigir? \\
+\hline
+20 & \texttt{"s"} & \rule{2cm}{0.4pt} & \rule{2cm}{0.4pt} \\
+\hline
+16 & \texttt{"s"} & \rule{2cm}{0.4pt} & \rule{2cm}{0.4pt} \\
+\hline
+25 & \texttt{"n"} & \rule{2cm}{0.4pt} & \rule{2cm}{0.4pt} \\
+\hline
+15 & \texttt{"n"} & \rule{2cm}{0.4pt} & \rule{2cm}{0.4pt} \\
+\hline
+\end{tabular}
+\end{center}
+\end{fixacaobox}
+
+\subsection*{Atividade 5: Login Simples}
+Escreva um programa que:
+\begin{enumerate}
+    \item Leia \texttt{usuario} e \texttt{senha}
+    \item Considere acesso válido apenas se:
+    \begin{itemize}
+        \item usuário igual a \texttt{"admin"}
+        \item \textbf{e} senha igual a \texttt{"python123"}
+    \end{itemize}
+    \item Exiba \texttt{"Acesso permitido"} ou \texttt{"Acesso negado"}
+\end{enumerate}
+
+\subsection*{Atividade 6: Pode Dirigir?}
+Escreva um programa que:
+\begin{enumerate}
+    \item Leia a idade e se a pessoa possui CNH (\texttt{s} ou \texttt{n})
+    \item Considere que ela pode dirigir somente se:
+    \begin{itemize}
+        \item idade $\geq$ 18 \textbf{e} resposta da CNH for \texttt{"s"}
+    \end{itemize}
+    \item Exiba \texttt{"Pode dirigir"} ou \texttt{"Não pode dirigir"}
+\end{enumerate}
+
+\begin{fixacaobox}
+Qual operador lógico completa cada frase?
+\begin{enumerate}
+    \item Pode entrar se tem ingresso \rule{2cm}{0.4pt} tem convite. (\texttt{and} / \texttt{or})
+    \item Aprovado se nota $\geq$ 7 \rule{2cm}{0.4pt} frequência $\geq$ 75\%. (\texttt{and} / \texttt{or})
+    \item Proibido se \rule{2cm}{0.4pt} é maior de idade. (\texttt{not})
+\end{enumerate}
+\end{fixacaobox}
+
+%=============================================================
+\section*{Parte 4 -- Atividades Integradas}
+%=============================================================
+
+\subsection*{Atividade 7: Desconto em Compra}
+Escreva um programa que:
+\begin{enumerate}
+    \item Leia o valor total da compra
+    \item Aplique as regras:
+    \begin{itemize}
+        \item 10\% de desconto se valor $>$ 200
+        \item 5\% de desconto se valor $>$ 100 e $\leq$ 200
+        \item Sem desconto nos demais casos
+    \end{itemize}
+    \item Exiba o valor original e o valor final com duas casas decimais
+\end{enumerate}
+
+\begin{fixacaobox}
+Para uma compra de R\$ 150,00, qual desconto será aplicado? \\[4pt]
+Valor final = \rule{5cm}{0.4pt}
+\end{fixacaobox}
+
+\subsection*{Atividade 8: Classificação por Faixa Etária}
+Escreva um programa que:
+\begin{enumerate}
+    \item Leia a idade de uma pessoa
+    \item Classifique em:
+    \begin{itemize}
+        \item \texttt{"Criança"} se idade $<$ 12
+        \item \texttt{"Adolescente"} se idade $\geq$ 12 e $<$ 18
+        \item \texttt{"Adulto"} se idade $\geq$ 18 e $<$ 60
+        \item \texttt{"Idoso"} se idade $\geq$ 60
+    \end{itemize}
+\end{enumerate}
+
+%=============================================================
+\section*{Desafios}
+%=============================================================
+
+\begin{desafiobox}
+\subsection*{Desafio 1: Classificação do IMC}
+Crie um programa que:
+\begin{enumerate}
+    \item Leia peso (kg) e altura (m)
+    \item Calcule o IMC: $IMC = \dfrac{peso}{altura^2}$
+    \item Classifique:
+    \begin{itemize}
+        \item \texttt{"Abaixo do peso"} se IMC $<$ 18.5
+        \item \texttt{"Peso normal"} se 18.5 $\leq$ IMC $<$ 25
+        \item \texttt{"Sobrepeso"} se 25 $\leq$ IMC $<$ 30
+        \item \texttt{"Obesidade"} se IMC $\geq$ 30
+    \end{itemize}
+    \item Exiba o IMC com 2 casas decimais e a classificação
+\end{enumerate}
+
+\subsection*{Desafio 2: Calculadora Simples}
+Crie um programa que:
+\begin{enumerate}
+    \item Leia dois números e um operador (\texttt{+}, \texttt{-}, \texttt{*}, \texttt{/})
+    \item Realize a operação correspondente
+    \item Se o operador for \texttt{/} e o segundo número for zero, exiba \texttt{"Erro: divisão por zero"}
+    \item Se o operador for inválido, exiba \texttt{"Operador inválido"}
+\end{enumerate}
+\end{desafiobox}
+
+\end{document}

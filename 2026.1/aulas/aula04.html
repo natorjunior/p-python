@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Aula 04 - Estruturas condicionais em Python: if, elif, else, operadores lógicos e validações.">
+  <title>Aula 04 - Estruturas Condicionais em Python</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <link rel="stylesheet" href="./dist/reveal.css">
+  <link rel="stylesheet" href="./dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="./plugin/highlight/atom-one-dark.css">
+
+  <style>
+    :root {
+      --primary-color: #0056b3;
+      --secondary-color: #2f2f2f;
+      --light-bg: #f2f7ff;
+      --accent-bg: #e7f6ec;
+      --warn-bg: #fff8e1;
+      --activity-bg: #f3e8ff;
+      --code-bg: #1f2937;
+      --transition-fragment: 0.3s ease;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .reveal h1,
+    .reveal h2,
+    .reveal h3 {
+      color: var(--primary-color);
+    }
+
+    .reveal p,
+    .reveal li {
+      color: var(--secondary-color);
+      font-size: 0.95em;
+    }
+
+    .reveal .icon {
+      color: currentColor;
+      margin-right: 0.28em;
+    }
+
+    .reveal .icon-only {
+      color: currentColor;
+      margin-right: 0;
+    }
+
+    .reveal pre code {
+      font-size: 0.85em;
+      background: var(--code-bg);
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    .fragment {
+      transition: all var(--transition-fragment);
+    }
+
+    .bg-light {
+      background-color: var(--light-bg) !important;
+    }
+
+    .bg-accent {
+      background-color: var(--accent-bg) !important;
+    }
+
+    .bg-warn {
+      background-color: var(--warn-bg) !important;
+    }
+
+    .bg-activity {
+      background-color: var(--activity-bg) !important;
+    }
+
+    /* ── Hero Cover ── */
+    .hero-cover {
+      position: relative;
+      overflow: hidden;
+      padding: 40px !important;
+    }
+
+    .hero-cover::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(140deg, rgba(3, 15, 35, 0.55), rgba(11, 53, 112, 0.4), rgba(17, 126, 111, 0.28));
+      z-index: 1;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero-content {
+      background: rgba(7, 24, 54, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 24px 26px;
+      text-align: left;
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.22);
+      backdrop-filter: blur(2px);
+    }
+
+    .hero-kicker {
+      margin: 0 0 12px 0;
+      color: rgba(255, 255, 255, 0.9) !important;
+      font-size: 0.4em !important;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .hero-title {
+      margin: 0 0 12px 0 !important;
+      color: #fff !important;
+      font-size: 1.35em !important;
+      line-height: 1.12 !important;
+      text-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-title span {
+      color: rgba(230, 244, 255, 0.96);
+      font-weight: 500;
+      font-size: 0.88em;
+    }
+
+    .hero-subtitle {
+      margin: 0 0 16px 0;
+      color: rgba(255, 255, 255, 0.92) !important;
+      font-size: 0.5em !important;
+      line-height: 1.45;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 18px 0;
+    }
+
+    .hero-tags span {
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.26);
+      border-radius: 999px;
+      color: #fff;
+      font-size: 0.34em;
+      font-weight: 500;
+      padding: 4px 10px;
+    }
+
+    .hero-meta {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.88) !important;
+      font-size: 0.4em !important;
+      font-weight: 400;
+    }
+
+    .hero-mark {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-icon-wrap {
+      width: 180px;
+      height: 180px;
+      border-radius: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.24);
+      color: #fff;
+      font-size: 3.4em;
+    }
+
+    /* ── Boxes ── */
+    .box {
+      background: var(--light-bg);
+      border-left: 5px solid var(--primary-color);
+      padding: 14px 18px;
+      border-radius: 8px;
+      margin: 14px 0;
+      text-align: left;
+    }
+
+    .box-green {
+      background: var(--accent-bg);
+      border-left: 5px solid #27ae60;
+      padding: 14px 18px;
+      border-radius: 8px;
+      margin: 14px 0;
+      text-align: left;
+    }
+
+    .box-orange {
+      background: #fff3e0;
+      border-left: 5px solid #e67e22;
+      padding: 14px 18px;
+      border-radius: 8px;
+      margin: 14px 0;
+      text-align: left;
+    }
+
+    .box-purple {
+      background: var(--activity-bg);
+      border-left: 5px solid #8e44ad;
+      padding: 14px 18px;
+      border-radius: 8px;
+      margin: 14px 0;
+      text-align: left;
+    }
+
+    .columns {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .columns>div {
+      flex: 1;
+    }
+
+    /* ── Tables ── */
+    .reveal table {
+      font-size: 0.78em;
+      margin: 20px auto;
+    }
+
+    .reveal table th {
+      background: var(--primary-color);
+      color: #fff;
+      padding: 8px 14px;
+    }
+
+    .reveal table td {
+      padding: 6px 14px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    /* ── Activity Slide (micro atividades) ── */
+    .activity-slide {
+      background: radial-gradient(circle at top right, #eef6ff 0%, #f8fbff 44%, #eef4fb 100%) !important;
+      text-align: left;
+      padding: 20px 26px !important;
+    }
+
+    .activity-card {
+      max-width: 860px;
+      margin: 10px auto 0;
+      padding: 16px 18px;
+      border-radius: 14px;
+      border: 1px solid #bfd9f2;
+      border-left: 6px solid #1a5f9b;
+      background: linear-gradient(140deg, #f8fcff, #edf6ff);
+      box-shadow: 0 10px 24px rgba(9, 43, 84, 0.1);
+    }
+
+    .activity-title {
+      margin: 0 0 8px 0;
+      color: #124980 !important;
+      font-size: 0.86em !important;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .activity-question {
+      margin: 4px 0;
+      color: #2b4352 !important;
+      font-size: 0.74em !important;
+      line-height: 1.45;
+    }
+
+    .activity-question code {
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 6px;
+      padding: 2px 6px;
+      font-size: 0.95em;
+      white-space: nowrap;
+    }
+
+    /* ── Quiz / Fixação ── */
+    .quiz-slide {
+      background: radial-gradient(circle at bottom left, #fef9f0 0%, #fff7eb 40%, #fef5e7 100%) !important;
+      text-align: left;
+      padding: 20px 26px !important;
+    }
+
+    .quiz-card {
+      max-width: 860px;
+      margin: 10px auto 0;
+      padding: 16px 18px;
+      border-radius: 14px;
+      border: 1px solid #f5d6a7;
+      border-left: 6px solid #e67e22;
+      background: linear-gradient(140deg, #fffcf7, #fef6ea);
+      box-shadow: 0 10px 24px rgba(120, 60, 5, 0.08);
+    }
+
+    .quiz-title {
+      margin: 0 0 10px 0;
+      color: #b45309 !important;
+      font-size: 0.86em !important;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .quiz-option {
+      margin: 6px 0;
+      color: #4a3520 !important;
+      font-size: 0.72em !important;
+      line-height: 1.5;
+      padding: 6px 10px;
+      border-radius: 8px;
+      border: 1px solid #eddcc8;
+      background: rgba(255, 255, 255, 0.7);
+      cursor: default;
+    }
+
+    .quiz-option code {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 5px;
+      padding: 2px 6px;
+      font-size: 0.95em;
+    }
+
+    .quiz-answer {
+      margin: 10px 0 0 0;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: #e7f6ec;
+      border: 1px solid #a3d9b1;
+      color: #1a6b3a !important;
+      font-size: 0.68em !important;
+      font-weight: 500;
+    }
+
+    /* ── Section Divider ── */
+    .section-divider {
+      position: relative;
+      padding: 40px !important;
+    }
+
+    .section-divider h2 {
+      color: #fff !important;
+      font-size: 1.6em;
+      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .section-divider p {
+      color: rgba(255, 255, 255, 0.9) !important;
+      font-size: 0.85em;
+    }
+
+    .section-number {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 16px;
+      padding: 6px 20px;
+      color: #fff;
+      font-size: 0.5em;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+
+    /* ── Analogy card ── */
+    .analogy-card {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      background: #fff;
+      border: 1px solid #d4e2f2;
+      border-radius: 14px;
+      padding: 18px 22px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+      margin: 16px 0;
+      text-align: left;
+    }
+
+    .analogy-icon {
+      font-size: 2.4em;
+      flex-shrink: 0;
+    }
+
+    .analogy-text {
+      font-size: 0.82em !important;
+      color: #334155 !important;
+      line-height: 1.5;
+    }
+
+    /* ── Visual flow ── */
+    .flow-diagram {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin: 18px 0;
+      flex-wrap: wrap;
+    }
+
+    .flow-box {
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 0.72em;
+      font-weight: 600;
+      text-align: center;
+      min-width: 80px;
+    }
+
+    .flow-condition {
+      background: #fff3e0;
+      border: 2px solid #e67e22;
+      color: #b45309;
+    }
+
+    .flow-true {
+      background: #e7f6ec;
+      border: 2px solid #27ae60;
+      color: #1a6b3a;
+    }
+
+    .flow-false {
+      background: #fde8e8;
+      border: 2px solid #c0392b;
+      color: #922b21;
+    }
+
+    .flow-arrow {
+      font-size: 1.2em;
+      color: #94a3b8;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-icon-wrap {
+        width: 130px;
+        height: 130px;
+        font-size: 2.4em;
+      }
+
+      .columns {
+        flex-direction: column;
+      }
+
+      .activity-card, .quiz-card {
+        padding: 12px 14px;
+      }
+
+      .activity-title, .quiz-title {
+        font-size: 0.78em !important;
+      }
+
+      .activity-question, .quiz-option {
+        font-size: 0.68em !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ==================== SLIDE 1 – CAPA ==================== -->
+      <section class="hero-cover" data-background-gradient="linear-gradient(140deg, #0d2550, #1450a4, #1ba37f)">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <p class="hero-kicker"><i class="fa-solid fa-laptop-code icon" aria-hidden="true"></i>Introdução à
+              Programação</p>
+            <h1 class="hero-title">Aula 04<br><span>Estruturas Condicionais em Python</span></h1>
+            <p class="hero-subtitle">Tomando decisões com <code>if</code>, <code>elif</code> e <code>else</code>.</p>
+            <div class="hero-tags">
+              <span>if</span>
+              <span>elif</span>
+              <span>else</span>
+              <span>Operadores Lógicos</span>
+              <span>Indentação</span>
+              <span>Validações</span>
+            </div>
+            <p class="hero-meta"><i class="fa-solid fa-user-tie icon" aria-hidden="true"></i>Prof. Msc. Nator Junior
+              Carvalho da Costa</p>
+          </div>
+          <div class="hero-mark">
+            <div class="hero-icon-wrap">
+              <i class="fa-solid fa-code-branch icon-only" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 2 – REVISÃO ==================== -->
+      <section class="bg-light">
+        <h2><i class="fa-solid fa-rotate-left icon" aria-hidden="true"></i> Revisão Rápida</h2>
+        <ul>
+          <li class="fragment">Usamos <strong>operadores aritméticos</strong> para calcular valores.</li>
+          <li class="fragment">Usamos <strong>operadores relacionais</strong> para comparar resultados.</li>
+          <li class="fragment">Usamos <strong>operadores lógicos</strong> para combinar condições.</li>
+        </ul>
+        <div class="box fragment">
+          <i class="fa-solid fa-lightbulb icon" style="color:#e67e22;" aria-hidden="true"></i>
+          Com isso, já conseguimos montar condições. Agora vamos decidir <strong>qual caminho</strong> o programa deve
+          seguir!
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 3 – ANALOGIA ==================== -->
+      <section>
+        <h2><i class="fa-solid fa-circle-question icon" aria-hidden="true"></i> O Que é Condicional?</h2>
+        <p>Na vida real, tomamos decisões o tempo todo:</p>
+        <div class="analogy-card fragment">
+          <div class="analogy-icon">🌧️</div>
+          <div class="analogy-text">
+            <strong>Se</strong> estiver chovendo, levo o guarda-chuva.<br>
+            <strong>Senão</strong>, saio sem ele.
+          </div>
+        </div>
+        <div class="analogy-card fragment">
+          <div class="analogy-icon">📝</div>
+          <div class="analogy-text">
+            <strong>Se</strong> a nota for ≥ 7, o aluno está aprovado.<br>
+            <strong>Senão</strong>, está reprovado.
+          </div>
+        </div>
+        <div class="box-green fragment" style="text-align:center;">
+          Em Python, fazemos isso com <code>if</code>, <code>elif</code> e <code>else</code>.
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 4 – FLUXO VISUAL ==================== -->
+      <section class="bg-light">
+        <h2><i class="fa-solid fa-diagram-project icon" aria-hidden="true"></i> Fluxo de Decisão</h2>
+        <p>O programa avalia uma condição e escolhe um caminho:</p>
+        <div class="flow-diagram fragment">
+          <div class="flow-box flow-condition">
+            <i class="fa-solid fa-question" aria-hidden="true"></i><br>Condição
+          </div>
+          <div class="flow-arrow">→</div>
+          <div>
+            <div class="flow-box flow-true" style="margin-bottom:8px;">
+              ✅ Verdadeiro<br><small>executa bloco A</small>
+            </div>
+            <div class="flow-box flow-false">
+              ❌ Falso<br><small>executa bloco B</small>
+            </div>
+          </div>
+        </div>
+        <div class="box fragment" style="text-align:center;">
+          <i class="fa-solid fa-triangle-exclamation icon" style="color:#e67e22;" aria-hidden="true"></i>
+          Em Python, o <strong>bloco</strong> de código é definido pela <strong>indentação</strong> (4 espaços).
+        </div>
+      </section>
+
+      <!-- ============= SEÇÃO 1 – if simples ============= -->
+      <section class="section-divider" data-background-gradient="linear-gradient(135deg, #1450a4, #0d7377)">
+        <div class="section-number">Parte 1</div>
+        <h2><i class="fa-solid fa-code icon" aria-hidden="true"></i> Estrutura <code style="color:#f1c40f;">if</code></h2>
+        <p>Executando código apenas quando a condição é verdadeira.</p>
+      </section>
+
+      <!-- ==================== SLIDE 5 – IF SIMPLES ==================== -->
+      <section>
+        <h2><i class="fa-solid fa-code icon" aria-hidden="true"></i> Estrutura <code>if</code></h2>
+        <p>O <code>if</code> executa um bloco <strong>somente se</strong> a condição for verdadeira:</p>
+        <pre><code class="language-python" data-trim data-noescape>
+idade = int(input("Digite sua idade: "))
+
+if idade >= 18:
+    print("Maior de idade")
+        </code></pre>
+        <div class="box fragment">
+          <i class="fa-solid fa-circle-info icon" style="color:#0056b3;" aria-hidden="true"></i>
+          Se a condição for <strong>falsa</strong>, nada acontece — o programa simplesmente continua.
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 6 – MICRO FIXAÇÃO 1 ==================== -->
+      <section class="quiz-slide">
+        <h2><i class="fa-solid fa-brain icon" style="color:#e67e22;" aria-hidden="true"></i> Micro Fixação</h2>
+        <div class="quiz-card">
+          <p class="quiz-title"><i class="fa-solid fa-bolt" aria-hidden="true"></i> O que será exibido?</p>
+          <pre style="margin: 8px 0;"><code class="language-python" data-trim data-noescape>
+x = 10
+if x > 20:
+    print("Grande")
+print("Fim")
+          </code></pre>
+          <div class="quiz-option fragment">a) <code>Grande</code> e <code>Fim</code></div>
+          <div class="quiz-option fragment">b) Apenas <code>Fim</code></div>
+          <div class="quiz-option fragment">c) Apenas <code>Grande</code></div>
+          <div class="quiz-option fragment">d) Nada é exibido</div>
+          <div class="quiz-answer fragment">
+            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+            <strong>Resposta: b)</strong> — <code>x > 20</code> é falso, então o <code>print("Grande")</code> não roda. Mas <code>print("Fim")</code> está <strong>fora</strong> do <code>if</code>.
+          </div>
+        </div>
+      </section>
+
+      <!-- ============= SEÇÃO 2 – if/else ============= -->
+      <section class="section-divider" data-background-gradient="linear-gradient(135deg, #0e4f9b, #2c3e50)">
+        <div class="section-number">Parte 2</div>
+        <h2><i class="fa-solid fa-right-left icon" aria-hidden="true"></i> Estrutura <code style="color:#f1c40f;">if / else</code></h2>
+        <p>Dois caminhos: um para verdadeiro, outro para falso.</p>
+      </section>
+
+      <!-- ==================== SLIDE 7 – IF/ELSE ==================== -->
+      <section>
+        <h2><i class="fa-solid fa-right-left icon" aria-hidden="true"></i> Estrutura <code>if / else</code></h2>
+        <p>Quando queremos que algo aconteça <strong>nos dois casos</strong>:</p>
+        <pre><code class="language-python" data-trim data-noescape>
+nota = float(input("Digite a nota: "))
+
+if nota >= 7:
+    print("Aprovado ✅")
+else:
+    print("Reprovado ❌")
+        </code></pre>
+        <div class="box-green fragment">
+          <i class="fa-solid fa-lightbulb icon" aria-hidden="true"></i>
+          O <code>else</code> pega <strong>todos os outros casos</strong> que o <code>if</code> não pegou.
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 8 – MICRO FIXAÇÃO 2 ==================== -->
+      <section class="activity-slide">
+        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade Rápida</h2>
+        <div class="activity-card">
+          <p class="activity-title"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Maior ou Menor de Idade</p>
+          <p class="activity-question">Escreva um programa que:</p>
+          <ul style="font-size:0.72em; color:#2b4352; margin-top:6px;">
+            <li>Leia a idade do usuário com <code>input()</code></li>
+            <li>Se idade ≥ 18, exiba <code>"Maior de idade"</code></li>
+            <li>Caso contrário, exiba <code>"Menor de idade"</code></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 9 – QUIZ IF/ELSE ==================== -->
+      <section class="quiz-slide">
+        <h2><i class="fa-solid fa-brain icon" style="color:#e67e22;" aria-hidden="true"></i> Micro Fixação</h2>
+        <div class="quiz-card">
+          <p class="quiz-title"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Qual a saída para cada valor?</p>
+          <pre style="margin: 8px 0;"><code class="language-python" data-trim data-noescape>
+n = int(input("Número: "))
+if n % 2 == 0:
+    print("Par")
+else:
+    print("Ímpar")
+          </code></pre>
+          <div class="quiz-option fragment"><code>n = 4</code> → Saída: <strong>?</strong></div>
+          <div class="quiz-option fragment"><code>n = 7</code> → Saída: <strong>?</strong></div>
+          <div class="quiz-option fragment"><code>n = 0</code> → Saída: <strong>?</strong></div>
+          <div class="quiz-answer fragment">
+            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+            <strong>Respostas:</strong> Par, Ímpar, Par — zero é par porque <code>0 % 2 == 0</code> é verdadeiro.
+          </div>
+        </div>
+      </section>
+
+      <!-- ============= SEÇÃO 3 – if/elif/else ============= -->
+      <section class="section-divider" data-background-gradient="linear-gradient(135deg, #1a237e, #0d7377)">
+        <div class="section-number">Parte 3</div>
+        <h2><i class="fa-solid fa-layer-group icon" aria-hidden="true"></i> Estrutura <code style="color:#f1c40f;">if / elif / else</code></h2>
+        <p>Múltiplos caminhos para múltiplas condições.</p>
+      </section>
+
+      <!-- ==================== SLIDE 10 – IF/ELIF/ELSE ==================== -->
+      <section>
+        <h2><i class="fa-solid fa-layer-group icon" aria-hidden="true"></i> Estrutura <code>if / elif / else</code></h2>
+        <p>Quando temos <strong>mais de dois cenários</strong>:</p>
+        <pre><code class="language-python" data-trim data-noescape>
+media = float(input("Média final: "))
+
+if media >= 7:
+    print("Aprovado")
+elif media >= 5:
+    print("Recuperação")
+else:
+    print("Reprovado")
+        </code></pre>
+        <div class="box fragment">
+          <i class="fa-solid fa-circle-info icon" style="color:#0056b3;" aria-hidden="true"></i>
+          O Python testa <strong>de cima para baixo</strong>. Assim que encontra uma condição verdadeira, executa aquele bloco e <strong>ignora o resto</strong>.
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 11 – TABELA FLUXO ==================== -->
+      <section class="bg-light">
+        <h2><i class="fa-solid fa-table-list icon" aria-hidden="true"></i> Fluxo de Decisão — Notas</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Situação</th>
+              <th>Condição</th>
+              <th>Saída</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="fragment">
+              <td>Aprovado</td>
+              <td><code>media >= 7</code></td>
+              <td><code>"Aprovado"</code></td>
+            </tr>
+            <tr class="fragment">
+              <td>Recuperação</td>
+              <td><code>media >= 5</code> (e &lt; 7)</td>
+              <td><code>"Recuperação"</code></td>
+            </tr>
+            <tr class="fragment">
+              <td>Reprovado</td>
+              <td>Nenhuma das anteriores</td>
+              <td><code>"Reprovado"</code></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="box-orange fragment">
+          <i class="fa-solid fa-triangle-exclamation icon" aria-hidden="true"></i>
+          No <code>elif</code> não precisa colocar <code>media &lt; 7</code> porque se chegou ali, o primeiro <code>if</code> já foi falso!
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 12 – MICRO FIXAÇÃO 3 ==================== -->
+      <section class="quiz-slide">
+        <h2><i class="fa-solid fa-brain icon" style="color:#e67e22;" aria-hidden="true"></i> Micro Fixação</h2>
+        <div class="quiz-card">
+          <p class="quiz-title"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Qual a saída?</p>
+          <pre style="margin: 8px 0;"><code class="language-python" data-trim data-noescape>
+temperatura = 35
+
+if temperatura > 30:
+    print("Muito quente 🔥")
+elif temperatura > 20:
+    print("Agradável 😊")
+else:
+    print("Frio 🥶")
+          </code></pre>
+          <div class="quiz-option fragment">a) <code>Muito quente 🔥</code></div>
+          <div class="quiz-option fragment">b) <code>Agradável 😊</code></div>
+          <div class="quiz-option fragment">c) <code>Frio 🥶</code></div>
+          <div class="quiz-option fragment">d) <code>Muito quente 🔥</code> e <code>Agradável 😊</code></div>
+          <div class="quiz-answer fragment">
+            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+            <strong>Resposta: a)</strong> — 35 > 30 é verdadeiro, então executa só o primeiro bloco. O <code>elif</code> nem é testado!
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 13 – ATIVIDADE NOTAS ==================== -->
+      <section class="activity-slide">
+        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade Rápida</h2>
+        <div class="activity-card">
+          <p class="activity-title"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Situação do Aluno</p>
+          <p class="activity-question">Escreva um programa que leia a nota de um aluno e exiba:</p>
+          <ul style="font-size:0.72em; color:#2b4352; margin-top:6px;">
+            <li><code>"Aprovado"</code> se nota ≥ 7</li>
+            <li><code>"Recuperação"</code> se nota ≥ 5 e &lt; 7</li>
+            <li><code>"Reprovado"</code> se nota &lt; 5</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============= SEÇÃO 4 – Operadores Lógicos ============= -->
+      <section class="section-divider" data-background-gradient="linear-gradient(135deg, #2c3e50, #8e44ad)">
+        <div class="section-number">Parte 4</div>
+        <h2><i class="fa-solid fa-gears icon" aria-hidden="true"></i> Condições Compostas</h2>
+        <p>Combinando condições com <code style="color:#f1c40f;">and</code>, <code style="color:#f1c40f;">or</code> e <code style="color:#f1c40f;">not</code>.</p>
+      </section>
+
+      <!-- ==================== SLIDE 14 – AND / OR / NOT ==================== -->
+      <section class="bg-accent">
+        <h2><i class="fa-solid fa-gears icon" aria-hidden="true"></i> Operadores Lógicos</h2>
+        <div class="columns">
+          <div>
+            <div class="box">
+              <strong><code>and</code></strong> — <strong>todas</strong> as condições precisam ser verdadeiras.
+            </div>
+            <div class="box">
+              <strong><code>or</code></strong> — basta <strong>uma</strong> condição ser verdadeira.
+            </div>
+            <div class="box">
+              <strong><code>not</code></strong> — <strong>inverte</strong> o valor lógico.
+            </div>
+          </div>
+          <div>
+            <pre><code class="language-python" data-trim data-noescape>
+idade = 20
+tem_cnh = True
+
+if idade >= 18 and tem_cnh:
+    print("Pode dirigir 🚗")
+else:
+    print("Não pode dirigir")
+            </code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 15 – TABELA VERDADE ==================== -->
+      <section>
+        <h2><i class="fa-solid fa-table icon" aria-hidden="true"></i> Tabela Verdade — <code>and</code> / <code>or</code></h2>
+        <div class="columns">
+          <div>
+            <table style="font-size:0.72em;">
+              <thead>
+                <tr><th>A</th><th>B</th><th>A <code>and</code> B</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>True</td><td>True</td><td style="color:#27ae60;font-weight:700;">True ✅</td></tr>
+                <tr><td>True</td><td>False</td><td style="color:#c0392b;">False</td></tr>
+                <tr><td>False</td><td>True</td><td style="color:#c0392b;">False</td></tr>
+                <tr><td>False</td><td>False</td><td style="color:#c0392b;">False</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <table style="font-size:0.72em;">
+              <thead>
+                <tr><th>A</th><th>B</th><th>A <code>or</code> B</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>True</td><td>True</td><td style="color:#27ae60;font-weight:700;">True ✅</td></tr>
+                <tr><td>True</td><td>False</td><td style="color:#27ae60;font-weight:700;">True ✅</td></tr>
+                <tr><td>False</td><td>True</td><td style="color:#27ae60;font-weight:700;">True ✅</td></tr>
+                <tr><td>False</td><td>False</td><td style="color:#c0392b;">False</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 16 – MICRO FIXAÇÃO 4 ==================== -->
+      <section class="quiz-slide">
+        <h2><i class="fa-solid fa-brain icon" style="color:#e67e22;" aria-hidden="true"></i> Micro Fixação</h2>
+        <div class="quiz-card">
+          <p class="quiz-title"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Verdadeiro ou Falso?</p>
+          <p style="font-size:0.68em; color:#4a3520; margin:6px 0;">Considere: <code>idade = 16</code>, <code>acompanhado = True</code></p>
+          <div class="quiz-option fragment"><code>idade >= 18</code> → <strong>?</strong></div>
+          <div class="quiz-option fragment"><code>idade >= 18 or acompanhado</code> → <strong>?</strong></div>
+          <div class="quiz-option fragment"><code>idade >= 18 and acompanhado</code> → <strong>?</strong></div>
+          <div class="quiz-option fragment"><code>not idade >= 18</code> → <strong>?</strong></div>
+          <div class="quiz-answer fragment">
+            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+            <strong>Respostas:</strong> False, <strong>True</strong> (basta um ser verdade no <code>or</code>), False, True.
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 17 – ATIVIDADE LÓGICA ==================== -->
+      <section class="activity-slide">
+        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade Rápida</h2>
+        <div class="activity-card">
+          <p class="activity-title"><i class="fa-solid fa-car" aria-hidden="true"></i> Pode Dirigir?</p>
+          <p class="activity-question">Escreva um programa que leia a <strong>idade</strong> e se a pessoa tem <strong>CNH</strong> (<code>"s"</code> ou <code>"n"</code>).</p>
+          <p class="activity-question">Exiba <code>"Pode dirigir"</code> somente se idade ≥ 18 <strong>e</strong> tiver CNH.</p>
+          <p class="activity-question" style="margin-top:8px;"><i class="fa-solid fa-lightbulb" style="color:#e67e22;" aria-hidden="true"></i> <em>Dica: use <code>and</code> na condição.</em></p>
+        </div>
+      </section>
+
+      <!-- ============= SEÇÃO 5 – Condicionais Encadeadas ============= -->
+      <section class="section-divider" data-background-gradient="linear-gradient(135deg, #0d2550, #1a237e)">
+        <div class="section-number">Parte 5</div>
+        <h2><i class="fa-solid fa-sitemap icon" aria-hidden="true"></i> Condicionais Encadeadas</h2>
+        <p>Um <code style="color:#f1c40f;">if</code> dentro de outro <code style="color:#f1c40f;">if</code>.</p>
+      </section>
+
+      <!-- ==================== SLIDE 18 – ENCADEADA ==================== -->
+      <section>
+        <h2><i class="fa-solid fa-sitemap icon" aria-hidden="true"></i> Condicional Encadeada</h2>
+        <p>Podemos colocar um <code>if</code> <strong>dentro</strong> de outro para refinar a decisão:</p>
+        <pre><code class="language-python" data-trim data-noescape>
+usuario = input("Usuário: ")
+senha = input("Senha: ")
+
+if usuario == "admin":
+    if senha == "python123":
+        print("Acesso permitido ✅")
+    else:
+        print("Senha incorreta ❌")
+else:
+    print("Usuário inválido ❌")
+        </code></pre>
+        <div class="box-orange fragment">
+          <i class="fa-solid fa-triangle-exclamation icon" aria-hidden="true"></i>
+          Cada nível de <code>if</code> precisa de <strong>mais indentação</strong>. Cuidado para não se perder!
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 19 – MICRO FIXAÇÃO 5 ==================== -->
+      <section class="quiz-slide">
+        <h2><i class="fa-solid fa-brain icon" style="color:#e67e22;" aria-hidden="true"></i> Micro Fixação</h2>
+        <div class="quiz-card">
+          <p class="quiz-title"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Encontre os 2 erros</p>
+          <pre style="margin: 8px 0;"><code class="language-python" data-trim data-noescape>
+idade = int(input("Idade: "))
+
+if idade = 18:
+    print("Tem 18 anos")
+elif idade > 18
+    print("Maior de 18")
+else:
+    print("Menor de 18")
+          </code></pre>
+          <div class="quiz-answer fragment">
+            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+            <strong>Erros:</strong> Linha 3: usar <code>=</code> em vez de <code>==</code>. Linha 5: falta o <code>:</code> no final do <code>elif</code>.
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 20 – ATIVIDADE LOGIN ==================== -->
+      <section class="activity-slide">
+        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade Rápida</h2>
+        <div class="activity-card">
+          <p class="activity-title"><i class="fa-solid fa-lock" aria-hidden="true"></i> Login Simples</p>
+          <p class="activity-question">Escreva um programa que:</p>
+          <ul style="font-size:0.72em; color:#2b4352; margin-top:6px;">
+            <li>Leia <code>usuario</code> e <code>senha</code></li>
+            <li>Acesso válido se usuário = <code>"admin"</code> <strong>e</strong> senha = <code>"python123"</code></li>
+            <li>Exiba <code>"Acesso permitido"</code> ou <code>"Acesso negado"</code></li>
+          </ul>
+          <p class="activity-question" style="margin-top:8px;"><i class="fa-solid fa-lightbulb" style="color:#e67e22;" aria-hidden="true"></i> <em>Tente resolver de duas formas: com <code>and</code> e com <code>if</code> encadeado.</em></p>
+        </div>
+      </section>
+
+      <!-- ============= SEÇÃO 6 – Erros Comuns ============= -->
+      <section class="bg-warn">
+        <h2><i class="fa-solid fa-bug icon" aria-hidden="true"></i> Erros Comuns</h2>
+        <div class="columns">
+          <div>
+            <ul>
+              <li class="fragment">
+                <strong>Esquecer o <code>:</code></strong> após <code>if</code>, <code>elif</code> ou <code>else</code>.
+              </li>
+              <li class="fragment">
+                <strong>Indentação errada</strong> — o bloco não pertence ao <code>if</code>.
+              </li>
+              <li class="fragment">
+                Usar <strong><code>=</code></strong> (atribuição) em vez de <strong><code>==</code></strong> (comparação).
+              </li>
+              <li class="fragment">
+                Comparar texto sem padronizar <strong>maiúsculas/minúsculas</strong>.
+              </li>
+            </ul>
+          </div>
+          <div>
+            <pre class="fragment"><code class="language-python" data-trim data-noescape>
+# ❌ ERRADO
+if nota = 7
+    print("ok")
+
+# ✅ CORRETO
+if nota == 7:
+    print("ok")
+            </code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE – MICRO FIXAÇÃO 6 ==================== -->
+      <section class="quiz-slide">
+        <h2><i class="fa-solid fa-brain icon" style="color:#e67e22;" aria-hidden="true"></i> Micro Fixação</h2>
+        <div class="quiz-card">
+          <p class="quiz-title"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Complete o código</p>
+          <pre style="margin: 8px 0;"><code class="language-python" data-trim data-noescape>
+valor = float(input("Valor da compra: "))
+
+if valor > 200:
+    desconto = valor * ____
+elif valor > 100:
+    desconto = valor * ____
+else:
+    desconto = ____
+
+final = valor - desconto
+print(f"Valor final: R$ {final:.2f}")
+          </code></pre>
+          <div class="quiz-answer fragment">
+            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+            <strong>Resposta:</strong> <code>0.10</code>, <code>0.05</code>, <code>0</code> — desconto de 10%, 5% e sem desconto.
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE – ATIVIDADE DESCONTO ==================== -->
+      <section class="activity-slide">
+        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade Rápida</h2>
+        <div class="activity-card">
+          <p class="activity-title"><i class="fa-solid fa-tag" aria-hidden="true"></i> Desconto em Compra</p>
+          <p class="activity-question">Escreva o programa completo que:</p>
+          <ul style="font-size:0.72em; color:#2b4352; margin-top:6px;">
+            <li>Leia o valor total da compra</li>
+            <li>Aplique 10% se valor &gt; 200, 5% se valor &gt; 100, ou sem desconto</li>
+            <li>Exiba o valor original, o desconto e o valor final</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE – ATIVIDADE FAIXA ETÁRIA ==================== -->
+      <section class="activity-slide">
+        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade Rápida</h2>
+        <div class="activity-card">
+          <p class="activity-title"><i class="fa-solid fa-users" aria-hidden="true"></i> Classificação por Faixa Etária</p>
+          <p class="activity-question">Escreva um programa que leia a idade e classifique:</p>
+          <ul style="font-size:0.72em; color:#2b4352; margin-top:6px;">
+            <li><code>"Criança"</code> se idade &lt; 12</li>
+            <li><code>"Adolescente"</code> se 12 ≤ idade &lt; 18</li>
+            <li><code>"Adulto"</code> se 18 ≤ idade &lt; 60</li>
+            <li><code>"Idoso"</code> se idade ≥ 60</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE – DESAFIO ==================== -->
+      <section data-background-gradient="linear-gradient(135deg, #0e4f9b, #0d7377)">
+        <h2 style="color: white;"><i class="fa-solid fa-trophy icon" style="color: #f1c40f;"
+            aria-hidden="true"></i> Desafio</h2>
+        <p style="color: rgba(255,255,255,.92); font-size:.85em;">
+          Crie um programa que calcule o <strong>IMC</strong> e classifique:
+        </p>
+        <ul style="color: rgba(255,255,255,.9); font-size:.78em;">
+          <li class="fragment">Leia <strong>peso</strong> (kg) e <strong>altura</strong> (m)</li>
+          <li class="fragment">Calcule: <code>imc = peso / altura ** 2</code></li>
+          <li class="fragment"><code>IMC &lt; 18.5</code> → Abaixo do peso</li>
+          <li class="fragment"><code>18.5 ≤ IMC &lt; 25</code> → Peso normal</li>
+          <li class="fragment"><code>25 ≤ IMC &lt; 30</code> → Sobrepeso</li>
+          <li class="fragment"><code>IMC ≥ 30</code> → Obesidade</li>
+        </ul>
+        <div class="fragment" style="margin-top:14px; background:rgba(255,255,255,0.12); border-radius:10px; padding:10px 16px; border:1px solid rgba(255,255,255,0.2);">
+          <p style="color:rgba(255,255,255,.85); font-size:.72em; margin:0;">
+            <i class="fa-solid fa-lightbulb" style="color:#f1c40f;" aria-hidden="true"></i>
+            Exiba o IMC com 2 casas decimais e a classificação!
+          </p>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE – RESUMO ==================== -->
+      <section class="bg-light">
+        <h2><i class="fa-solid fa-clipboard-list icon" aria-hidden="true"></i> Resumo da Aula</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px;">
+          <div class="fragment" style="background:#fff; border:2px solid #1450a4; border-radius:12px; padding:14px; text-align:center;">
+            <p style="font-size:1.2em; margin:0 0 4px; font-weight:700; color:#1450a4;"><code>if</code></p>
+            <p style="font-size:0.68em; color:#555; margin:0;">Executa bloco quando a condição é verdadeira</p>
+          </div>
+          <div class="fragment" style="background:#fff; border:2px solid #0d7377; border-radius:12px; padding:14px; text-align:center;">
+            <p style="font-size:1.2em; margin:0 0 4px; font-weight:700; color:#0d7377;"><code>else</code></p>
+            <p style="font-size:0.68em; color:#555; margin:0;">Executa bloco alternativo (caso falso)</p>
+          </div>
+          <div class="fragment" style="background:#fff; border:2px solid #e67e22; border-radius:12px; padding:14px; text-align:center;">
+            <p style="font-size:1.2em; margin:0 0 4px; font-weight:700; color:#e67e22;"><code>elif</code></p>
+            <p style="font-size:0.68em; color:#555; margin:0;">Condições intermediárias extras</p>
+          </div>
+          <div class="fragment" style="background:#fff; border:2px solid #8e44ad; border-radius:12px; padding:14px; text-align:center;">
+            <p style="font-size:1.2em; margin:0 0 4px; font-weight:700; color:#8e44ad;"><code>and or not</code></p>
+            <p style="font-size:0.68em; color:#555; margin:0;">Combinam condições compostas</p>
+          </div>
+        </div>
+        <div class="box fragment" style="text-align:center; margin-top:16px;">
+          <i class="fa-solid fa-triangle-exclamation icon" style="color:#e67e22;" aria-hidden="true"></i>
+          Não esqueça: <strong>dois pontos <code>:</code></strong> no final e <strong>indentação</strong> no bloco!
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE – PRÓXIMA AULA ==================== -->
+      <section data-background-gradient="radial-gradient(#1f4b99, #16a085)">
+        <h2 style="color: white;">Próxima Aula</h2>
+        <p style="color: rgba(255,255,255,.9); font-size:.88em;">
+          Estruturas de repetição com <code style="color:#f1c40f;">while</code> e
+          <code style="color:#f1c40f;">for</code>.
+        </p>
+        <div style="margin-top:20px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+          <span style="background:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.26); border-radius:999px; color:#fff; font-size:0.5em; font-weight:500; padding:6px 14px;">while</span>
+          <span style="background:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.26); border-radius:999px; color:#fff; font-size:0.5em; font-weight:500; padding:6px 14px;">for</span>
+          <span style="background:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.26); border-radius:999px; color:#fff; font-size:0.5em; font-weight:500; padding:6px 14px;">range()</span>
+          <span style="background:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.26); border-radius:999px; color:#fff; font-size:0.5em; font-weight:500; padding:6px 14px;">break / continue</span>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="./dist/reveal.js"></script>
+  <script src="./plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({
+      center: false,
+      controls: true,
+      progress: true,
+      slideNumber: true,
+      history: true,
+      transition: 'convex',
+      plugins: [RevealHighlight]
+    });
+  </script>
+</body>
+
+</html>
