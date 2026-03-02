@@ -964,26 +964,109 @@
         </table>
       </section>
 
-      <!-- ==================== SLIDE 6 – Aritméticos: código ==================== -->
-      <section class="bg-light">
-        <h2><i class="fa-solid fa-code icon" aria-hidden="true"></i> Aritméticos na Prática</h2>
-        <pre><code class="language-python" data-trim data-noescape>
+<!-- =========================================================
+     ATIVIDADE (REVEAL.JS) — Operadores Aritméticos (bem gradual)
+     Ideia: pedir para o aluno criar a, b, resultado e imprimir,
+     avançando uma operação por vez.
+   ========================================================= -->
+
+<!-- ==================== SLIDE 1 — Enunciado ==================== -->
+<section class="bg-light">
+  <h2><i class="fa-solid fa-clipboard-check icon" aria-hidden="true"></i> Atividade: Aritméticos (passo a passo)</h2>
+  <p>Você vai montar um programa bem simples seguindo os passos abaixo.</p>
+  <ol>
+    <li class="fragment">Crie duas variáveis: <code>a</code> e <code>b</code></li>
+    <li class="fragment">Crie uma terceira variável: <code>resultado</code></li>
+    <li class="fragment">Guarde em <code>resultado</code> o valor de uma operação entre <code>a</code> e <code>b</code></li>
+    <li class="fragment">Imprima <code>resultado</code></li>
+  </ol>
+  <div class="box fragment">
+    Regras: faça <b>uma operação por vez</b> e rode o código a cada passo.
+  </div>
+</section>
+
+<!-- ==================== SLIDE 2 — Aluno: crie a e b ==================== -->
+<section class="bg-light">
+  <h2>Passo 1 — Crie <code>a</code> e <code>b</code></h2>
+
+  <p class="fragment">Digite no seu editor:</p>
+  <pre><code class="language-python" data-trim data-line-numbers="1-2">
 a = 15
 b = 4
+  </code></pre>
 
-print(a + b)   # 19   → soma
-print(a - b)   # 11   → subtração
-print(a * b)   # 60   → multiplicação
-print(a / b)   # 3.75 → divisão
-print(a // b)  # 3    → divisão inteira
-print(a % b)   # 3    → resto
-print(a ** b)  # 50625 → potência (15⁴)
-        </code></pre>
-        <div class="box fragment">
-          <i class="fa-solid fa-lightbulb icon" aria-hidden="true"></i> <code>/</code> sempre retorna
-          <code>float</code>. Use <code>//</code> quando quiser só a parte inteira.
-        </div>
-      </section>
+  <ul>
+    <li class="fragment">Agora <b>troque</b> os valores de <code>a</code> e <code>b</code> por outros números.</li>
+  </ul>
+</section>
+
+<!-- ==================== SLIDE 3 — Aluno: crie resultado ==================== -->
+<section class="bg-light" data-auto-animate>
+  <h2>Passo 2 — Crie <code>resultado</code> (sem imprimir ainda)</h2>
+
+  <p class="fragment">Complete o código adicionando a linha do <code>resultado</code>:</p>
+
+  <pre data-id="atividade-codigo"><code class="language-python" data-trim data-line-numbers="1-3|3">
+a = 15
+b = 4
+resultado = a + b
+  </code></pre>
+
+  <div class="box fragment">
+    <i class="fa-solid fa-lightbulb icon" aria-hidden="true"></i>
+    Antes de executar: qual valor você espera em <code>resultado</code>?
+  </div>
+</section>
+
+<!-- ==================== SLIDE 4 — Aluno: imprima resultado ==================== -->
+<section class="bg-light" data-auto-animate>
+  <h2>Passo 3 — Imprima <code>resultado</code></h2>
+
+  <p class="fragment">Agora adicione o <code>print</code>:</p>
+
+  <pre data-id="atividade-codigo"><code class="language-python" data-trim data-line-numbers="1-5|5">
+a = 15
+b = 4
+resultado = a + b
+
+print(resultado)
+  </code></pre>
+
+  <ul>
+    <li class="fragment">Execute e confira se bateu com sua previsão.</li>
+  </ul>
+</section>
+
+<!-- ==================== SLIDE 5 — Trocar só a operação: subtração ==================== -->
+<section class="bg-light" data-auto-animate>
+  <h2>Passo 4 — Subtração</h2>
+
+  <p class="fragment">Agora, sem mudar mais nada, troque apenas o operador para <code>-</code>:</p>
+
+  <pre data-id="atividade-codigo"><code class="language-python" data-trim data-line-numbers="3|1-5">
+a = 15
+b = 4
+resultado = a - b
+
+print(resultado)
+  </code></pre>
+</section>
+
+<!-- ==================== SLIDE 6 — Multiplicação ==================== -->
+<section class="bg-light" data-auto-animate>
+  <h2>Passo 5 — Multiplicação</h2>
+
+  <p class="fragment">Troque apenas o operador para <code>*</code>:</p>
+
+  <pre data-id="atividade-codigo"><code class="language-python" data-trim data-line-numbers="3">
+a = 15
+b = 4
+resultado = a * b
+
+print(resultado)
+  </code></pre>
+</section>
+
 
       <!-- ==================== SLIDE 7 – Diferença / e // ==================== -->
       <section>
@@ -1236,40 +1319,116 @@ x == 10  # x é igual a 10?
           Esse é um dos <strong>erros mais comuns</strong> de iniciantes!
         </p>
       </section>
+      
+<!-- ==================== SLIDE – Exercícios Aritméticos + Relacionais (Pergunta) ==================== -->
+<section class="bg-activity" data-auto-animate>
+  <div class="resolve-sheet">
+    <p class="resolve-head">
+      <strong>Resolva</strong> (use a precedência:
+      <em>parênteses → potência → mult/div/mod → soma/sub → relacionais</em>).
+    </p>
 
-      <!-- ==================== SLIDE 15 – Relacionais com input ==================== -->
-      <section class="bg-light">
-        <h2><i class="fa-solid fa-keyboard icon" aria-hidden="true"></i> Exemplo com Entrada do Usuário</h2>
-        <pre><code class="language-python" data-trim data-noescape>
-idade = int(input("Qual a sua idade? "))
+    <ol class="resolve-list" data-auto-animate-target=".resolve-list">
 
-print(f"Você é maior de idade? {idade >= 18}")
-print(f"Você tem exatamente 20 anos? {idade == 20}")
-print(f"Você tem menos de 16 anos? {idade < 16}")
-        </code></pre>
-        <div class="box fragment">
-          <i class="fa-solid fa-magnifying-glass icon" aria-hidden="true"></i> Cada expressão retorna
-          <code>True</code> ou <code>False</code> automaticamente.
-        </div>
-      </section>
+      <!-- Relacionais variados -->
+      <li class="resolve-item">
+        <span class="resolve-num">4</span>
+        <p class="resolve-exp">5 &gt; 3;</p>
+      </li>
 
-      <!-- ==================== SLIDE 16 – ATIVIDADE 2 ==================== -->
-      <section class="bg-activity">
-        <h2><i class="fa-solid fa-pen-ruler icon" aria-hidden="true"></i> Atividade 2 — Relacionais</h2>
-        <div class="box-purple">
-          <strong>Exercício D:</strong> Peça dois números ao usuário e exiba se o <strong>primeiro é maior</strong> que
-          o segundo.
-        </div>
-        <div class="box-purple fragment">
-          <strong>Exercício E:</strong> Peça a <strong>idade</strong> do usuário e exiba se ele <strong>pode
-            votar</strong> (idade >= 16).
-        </div>
-        <div class="box-purple fragment">
-          <strong>Exercício F:</strong> Peça um número e exiba se ele é <strong>par</strong>.
-          <br><em>Dica: use o operador <code>%</code></em>
-        </div>
-        
-      </section>
+      <li class="resolve-item">
+        <span class="resolve-num">5</span>
+        <p class="resolve-exp">10 &lt; 2 * 6;</p>
+      </li>
+
+      <li class="resolve-item">
+        <span class="resolve-num">6</span>
+        <p class="resolve-exp">4 + 4 == 2 * 4;</p>
+      </li>
+
+      <li class="resolve-item">
+        <span class="resolve-num">7</span>
+        <p class="resolve-exp">15 % 2 != 0;</p>
+      </li>
+
+      <li class="resolve-item">
+        <span class="resolve-num">8</span>
+        <p class="resolve-exp">3 ** 2 &gt;= 9;</p>
+      </li>
+
+      <li class="resolve-item">
+        <span class="resolve-num">9</span>
+        <p class="resolve-exp">7 - 2 &lt;= 4;</p>
+      </li>
+
+    </ol>
+
+    <p class="resolve-note">
+      Resolva primeiro no papel. Depois teste no Python.
+      Resultados relacionais devem ser <strong>True</strong> ou <strong>False</strong>.
+    </p>
+  </div>
+</section>
+
+
+
+<!-- ==================== SLIDE – Respostas ==================== -->
+<section class="bg-activity" data-auto-animate>
+  <div class="resolve-sheet">
+    <p class="resolve-head"><strong>Respostas</strong> ✓</p>
+
+    <ol class="resolve-list" data-auto-animate-target=".resolve-list">
+
+      <li class="resolve-item" style="display:grid; grid-template-columns:24px 1fr auto; gap:6px;">
+        <span class="resolve-num">4</span>
+        <p class="resolve-exp">5 &gt; 3;</p>
+        <p class="resolve-exp"><span style="color:#27ae60; font-weight:700;">= True</span></p>
+      </li>
+
+      <li class="resolve-item" style="display:grid; grid-template-columns:24px 1fr auto; gap:6px;">
+        <span class="resolve-num">5</span>
+        <p class="resolve-exp">10 &lt; 2 * 6;</p>
+        <p class="resolve-exp"><span style="color:#27ae60; font-weight:700;">= True</span></p>
+      </li>
+
+      <li class="resolve-item" style="display:grid; grid-template-columns:24px 1fr auto; gap:6px;">
+        <span class="resolve-num">6</span>
+        <p class="resolve-exp">4 + 4 == 2 * 4;</p>
+        <p class="resolve-exp"><span style="color:#27ae60; font-weight:700;">= True</span></p>
+      </li>
+
+      <li class="resolve-item" style="display:grid; grid-template-columns:24px 1fr auto; gap:6px;">
+        <span class="resolve-num">7</span>
+        <p class="resolve-exp">15 % 2 != 0;</p>
+        <p class="resolve-exp"><span style="color:#27ae60; font-weight:700;">= True</span></p>
+      </li>
+
+      <li class="resolve-item" style="display:grid; grid-template-columns:24px 1fr auto; gap:6px;">
+        <span class="resolve-num">8</span>
+        <p class="resolve-exp">3 ** 2 &gt;= 9;</p>
+        <p class="resolve-exp"><span style="color:#27ae60; font-weight:700;">= True</span></p>
+      </li>
+
+      <li class="resolve-item" style="display:grid; grid-template-columns:24px 1fr auto; gap:6px;">
+        <span class="resolve-num">9</span>
+        <p class="resolve-exp">7 - 2 &lt;= 4;</p>
+        <p class="resolve-exp"><span style="color:#27ae60; font-weight:700;">= False</span></p>
+      </li>
+
+    </ol>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
     </section>
 
     <section>
