@@ -1,0 +1,165 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazilian]{babel}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+
+\geometry{margin=1in}
+\setlength{\headheight}{15pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+
+\definecolor{primary}{HTML}{1F4E79}
+\definecolor{secondary}{HTML}{0B6E99}
+\definecolor{lightbg}{HTML}{F4F8FC}
+\definecolor{codebg}{HTML}{F7F7F7}
+\definecolor{codeframe}{HTML}{D3D3D3}
+
+\titleformat{\section}
+  {\Large\bfseries\color{primary}}
+  {}
+  {0pt}
+  {}
+
+\titleformat{\subsection}
+  {\large\bfseries\color{secondary}}
+  {}
+  {0pt}
+  {}
+
+\setlist[itemize]{leftmargin=1.4em,itemsep=2pt,topsep=3pt}
+\setlist[enumerate]{leftmargin=1.6em,itemsep=2pt,topsep=3pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{Programação em Python}}
+% \chead{Aula 01: Algoritmos e Variáveis}
+\rhead{Prof. Msc. Nator Junior Carvalho da Costa}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    backgroundcolor=\color{codebg},
+    frame=single,
+    rulecolor=\color{codeframe},
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{red},
+    breaklines=true,
+    showstringspaces=false,
+    tabsize=4
+}
+
+\begin{document}
+
+\begin{center}
+{\LARGE \textbf{Lista de Exercícios - Aula 01}}\\[4pt]
+{\large Algoritmos e Variáveis}\\[10pt]
+\textbf{Disciplina:} Lógica de Programação em Python\\
+\textbf{Professor:} Prof. Msc. Nator Junior Carvalho da Costa\\
+\textbf{Semestre:} 2026.1
+\end{center}
+
+\vspace{8pt}
+\colorbox{lightbg}{%
+\parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+\textbf{Instruções}\\
+Resolva os exercícios abaixo usando Python. Lembre-se:
+\begin{itemize}
+    \item Um \textbf{algoritmo} é uma sequência de passos para resolver um problema.
+    \item Uma \textbf{variável} é um espaço na memória que armazena um valor.
+    \item Use nomes descritivos para suas variáveis.
+\end{itemize}
+}}
+
+\section*{Exercícios}
+
+\subsection*{Exercício 1: Conversão de Temperatura}
+Escreva um programa que:
+\begin{enumerate}
+    \item Crie uma variável \texttt{celsius} com o valor 25
+    \item Converta para Fahrenheit usando a fórmula: $F = C \times \frac{9}{5} + 32$
+    \item Armazene o resultado em uma variável \texttt{fahrenheit}
+    \item Exiba o resultado no formato: \texttt{25°C equivale a 77°F}
+\end{enumerate}
+
+\subsection*{Exercício 2: Cálculo de Área}
+Escreva um programa que:
+\begin{enumerate}
+    \item Crie uma variável \texttt{lado} com o valor 5
+    \item Calcule a área de um quadrado usando $A = lado^2$
+    \item Armazene o resultado em uma variável \texttt{area}
+    \item Exiba a mensagem: \texttt{Um quadrado com lado 5 tem área de 25}
+\end{enumerate}
+
+\subsection*{Exercício 3: Operações com Variáveis}
+Crie um programa que:
+\begin{enumerate}
+    \item Crie uma variável \texttt{x} com valor 10
+    \item Crie uma variável \texttt{y} com valor 3
+    \item Calcule e exiba:
+    \begin{itemize}
+        \item A soma de x e y
+        \item A subtração de x por y
+        \item A multiplicação de x por y
+        \item A divisão de x por y (divisão inteira)
+        \item O resto da divisão de x por y
+    \end{itemize}
+\end{enumerate}
+
+\subsection*{Exercício 4: Custo Total}
+Escreva um programa que:
+\begin{enumerate}
+    \item Crie uma variável \texttt{preco\_unitario} com valor 15.50
+    \item Crie uma variável \texttt{quantidade} com valor 4
+    \item Calcule o custo total multiplicando preço por quantidade
+    \item Armazene em uma variável \texttt{custo\_total}
+    \item Exiba a mensagem: \texttt{4 unidades a R\$ 15.50 cada = R\$ 62.00}
+\end{enumerate}
+
+\subsection*{Exercício 5: Cálculo de Média}
+Escreva um programa que:
+\begin{enumerate}
+    \item Crie três variáveis: \texttt{nota1 = 8.5}, \texttt{nota2 = 9.0}, \texttt{nota3 = 7.5}
+    \item Calcule a média aritmética das três notas
+    \item Armazene em uma variável \texttt{media}
+    \item Exiba a mensagem: \texttt{A média das notas é 8.33}
+\end{enumerate}
+
+\subsection*{Exercício 6: Comprimento da Circunferência}
+Escreva um programa que:
+\begin{enumerate}
+    \item Crie uma variável \texttt{raio} com valor 5
+    \item Calcule o comprimento da circunferência usando $C = 2\pi r$
+    \item Use \texttt{math.pi} para o valor de $\pi$ (ou use 3.14159)
+    \item Armazene em uma variável \texttt{comprimento}
+    \item Exiba o resultado com 2 casas decimais
+\end{enumerate}
+
+\section*{Desafio Bônus}
+
+\subsection*{Desafio 1: IMC}
+Escreva um programa que calcule o Índice de Massa Corporal (IMC):
+\begin{enumerate}
+    \item Crie variáveis \texttt{peso = 70} (em kg) e \texttt{altura = 1.75} (em metros)
+    \item Calcule IMC usando a fórmula: $IMC = \frac{peso}{altura^2}$
+    \item Exiba o resultado formatado com 2 casas decimais
+\end{enumerate}
+
+\subsection*{Desafio 2: Conversão de Tempo}
+Escreva um programa que:
+\begin{enumerate}
+    \item Crie uma variável \texttt{segundos\_totais = 3665}
+    \item Converta para horas, minutos e segundos
+    \item Exiba no formato: \texttt{3665 segundos = 1 hora, 1 minuto e 5 segundos}
+\end{enumerate}
+
+\end{document}

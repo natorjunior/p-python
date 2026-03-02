@@ -1,0 +1,130 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazilian]{babel}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+
+\geometry{margin=1in}
+\setlength{\headheight}{15pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+
+\definecolor{primary}{HTML}{1F4E79}
+\definecolor{secondary}{HTML}{0B6E99}
+\definecolor{lightbg}{HTML}{F4F8FC}
+\definecolor{codebg}{HTML}{F7F7F7}
+\definecolor{codeframe}{HTML}{D3D3D3}
+
+\titleformat{\section}
+  {\Large\bfseries\color{primary}}
+  {}
+  {0pt}
+  {}
+
+\titleformat{\subsection}
+  {\large\bfseries\color{secondary}}
+  {}
+  {0pt}
+  {}
+
+\setlist[itemize]{leftmargin=1.4em,itemsep=2pt,topsep=3pt}
+\setlist[enumerate]{leftmargin=1.6em,itemsep=2pt,topsep=3pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{Programação em Python}}
+% \chead{Aula 02: Entrada e Conversão}
+\rhead{Prof. Msc. Nator Junior Carvalho da Costa}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    backgroundcolor=\color{codebg},
+    frame=single,
+    rulecolor=\color{codeframe},
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{red},
+    breaklines=true,
+    showstringspaces=false,
+    tabsize=4
+}
+
+\begin{document}
+
+\begin{center}
+{\LARGE \textbf{Lista de Atividades - Aula 02}}\\[4pt]
+{\large Entrada de Texto e Conversão de Tipos}\\[10pt]
+\textbf{Disciplina:} Lógica de Programação em Python\\
+\textbf{Professor:} Prof. Msc. Nator Junior Carvalho da Costa\\
+\textbf{Semestre:} 2026.1
+\end{center}
+
+\vspace{8pt}
+\colorbox{lightbg}{%
+\parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+\textbf{Instruções}\\
+Resolva as atividades abaixo usando Python. Lembre-se:
+\begin{itemize}
+    \item A função \texttt{input()} sempre retorna \texttt{str}.
+    \item Converta os dados quando necessário usando \texttt{int()}, \texttt{float()} e \texttt{str()}.
+    \item Use nomes claros para variáveis e exiba mensagens amigáveis ao usuário.
+\end{itemize}
+}}
+
+\section*{Atividades}
+
+\subsection*{Atividade 1: Cadastro Rápido}
+Escreva um programa que:
+\begin{enumerate}
+    \item Solicite ao usuário o \texttt{nome} e a \texttt{idade}
+    \item Converta a idade para inteiro com \texttt{int()}
+    \item Exiba: \texttt{Olá, <nome>! Você tem <idade> anos.}
+    \item Exiba também o tipo da variável idade usando \texttt{type()}
+\end{enumerate}
+
+\subsection*{Atividade 2: Soma de Dois Números}
+Escreva um programa que:
+\begin{enumerate}
+    \item Solicite dois números reais ao usuário
+    \item Converta ambos com \texttt{float()}
+    \item Calcule a soma e armazene em \texttt{resultado}
+    \item Exiba a soma com duas casas decimais
+\end{enumerate}
+
+\subsection*{Atividade 3: Conversor de Centímetros para Metros}
+Escreva um programa que:
+\begin{enumerate}
+    \item Solicite um valor em centímetros (entrada do usuário)
+    \item Converta o valor para \texttt{float}
+    \item Calcule o valor equivalente em metros usando: $m = \frac{cm}{100}$
+    \item Exiba no formato: \texttt{150 cm correspondem a 1.50 m}
+\end{enumerate}
+
+\subsection*{Atividade 4: Cálculo de Média com Entrada do Usuário}
+Escreva um programa que:
+\begin{enumerate}
+    \item Solicite três notas do aluno pelo teclado
+    \item Converta cada nota para \texttt{float}
+    \item Calcule a média aritmética
+    \item Exiba: \texttt{A média final é X.XX}
+\end{enumerate}
+
+\section*{Exemplo Base}
+\begin{lstlisting}
+nome = input("Digite seu nome: ")
+idade = int(input("Digite sua idade: "))
+
+print(f"Ola, {nome}! Voce tem {idade} anos.")
+print(type(nome), type(idade))
+\end{lstlisting}
+
+\end{document}

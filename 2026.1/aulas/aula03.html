@@ -1,0 +1,1830 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Aula 02 - Operadores aritméticos, relacionais e lógicos em Python. Atividades práticas.">
+  <title>Aula 02 - Operadores em Python</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <link rel="stylesheet" href="./dist/reveal.css">
+  <link rel="stylesheet" href="./dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="./plugin/highlight/atom-one-dark.css">
+
+  <style>
+    :root {
+      --primary-color: #0056b3;
+      --secondary-color: #2f2f2f;
+      --light-bg: #f2f7ff;
+      --accent-bg: #e7f6ec;
+      --warn-bg: #fff8e1;
+      --activity-bg: #f3e8ff;
+      --code-bg: #1f2937;
+      --transition-fragment: 0.3s ease;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .reveal h1,
+    .reveal h2,
+    .reveal h3 {
+      color: var(--primary-color);
+    }
+
+    .reveal p,
+    .reveal li {
+      color: var(--secondary-color);
+      font-size: 0.95em;
+    }
+
+    .reveal .icon {
+      color: currentColor;
+      margin-right: 0.28em;
+    }
+
+    .reveal .icon-only {
+      color: currentColor;
+      margin-right: 0;
+    }
+
+    .reveal pre code {
+      font-size: 0.85em;
+      background: var(--code-bg);
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    .fragment {
+      transition: all var(--transition-fragment);
+    }
+
+    .bg-light {
+      background-color: var(--light-bg) !important;
+    }
+
+    .bg-accent {
+      background-color: var(--accent-bg) !important;
+    }
+
+    .bg-warn {
+      background-color: var(--warn-bg) !important;
+    }
+
+    .bg-activity {
+      background-color: var(--activity-bg) !important;
+    }
+
+    .emoji-big {
+      font-size: 2.5em;
+      margin: 0;
+    }
+
+    .box {
+      background: var(--light-bg);
+      border-left: 5px solid var(--primary-color);
+      padding: 15px 20px;
+      border-radius: 6px;
+      margin: 15px 0;
+      text-align: left;
+    }
+
+    .box-green {
+      background: var(--accent-bg);
+      border-left: 5px solid #27ae60;
+      padding: 15px 20px;
+      border-radius: 6px;
+      margin: 15px 0;
+      text-align: left;
+    }
+
+    .box-purple {
+      background: var(--activity-bg);
+      border-left: 5px solid #8e44ad;
+      padding: 15px 20px;
+      border-radius: 6px;
+      margin: 15px 0;
+      text-align: left;
+    }
+
+    .box-orange {
+      background: #fff3e0;
+      border-left: 5px solid #e67e22;
+      padding: 15px 20px;
+      border-radius: 6px;
+      margin: 15px 0;
+      text-align: left;
+    }
+
+    .columns {
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+    }
+
+    .columns>div {
+      flex: 1;
+    }
+
+    .reveal table {
+      font-size: 0.8em;
+      margin: 20px auto;
+    }
+
+    .reveal table th {
+      background: var(--primary-color);
+      color: white;
+      padding: 8px 16px;
+    }
+
+    .reveal table td {
+      padding: 6px 16px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .hero-cover {
+      position: relative;
+      overflow: hidden;
+      padding: 40px !important;
+    }
+
+    .hero-cover::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(140deg, rgba(3, 15, 35, 0.5), rgba(11, 53, 112, 0.35), rgba(17, 126, 111, 0.25));
+      z-index: 1;
+    }
+
+    .hero-cover::after {
+      content: "";
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      right: -110px;
+      top: -100px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0));
+      z-index: 1;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero-content {
+      background: rgba(7, 24, 54, 0.48);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 24px 26px;
+      text-align: left;
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.22);
+      backdrop-filter: blur(2px);
+    }
+
+    .hero-kicker {
+      margin: 0 0 12px 0;
+      color: rgba(255, 255, 255, 0.9) !important;
+      font-size: 0.4em !important;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .hero-title {
+      margin: 0 0 12px 0 !important;
+      color: #fff !important;
+      font-size: 1.35em !important;
+      line-height: 1.12 !important;
+      text-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-title span {
+      color: rgba(230, 244, 255, 0.96);
+      font-weight: 500;
+      font-size: 0.88em;
+    }
+
+    .hero-subtitle {
+      margin: 0 0 16px 0;
+      color: rgba(255, 255, 255, 0.92) !important;
+      font-size: 0.5em !important;
+      line-height: 1.45;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 18px 0;
+    }
+
+    .hero-tags span {
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.26);
+      border-radius: 999px;
+      color: #fff;
+      font-size: 0.34em;
+      font-weight: 500;
+      padding: 4px 10px;
+    }
+
+    .hero-meta {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.88) !important;
+      font-size: 0.4em !important;
+      font-weight: 400;
+    }
+
+    .hero-mark {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-icon-wrap {
+      width: 180px;
+      height: 180px;
+      border-radius: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-size: 2em;
+      background: linear-gradient(150deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.08));
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.24);
+    }
+
+    .precedence-card {
+      background: #ffffff;
+      border: 1px solid #d5dde7;
+      border-left: 6px solid #1450a4;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 12px 0;
+      text-align: left;
+      box-shadow: 0 10px 24px rgba(12, 42, 84, 0.08);
+    }
+
+    .precedence-card p {
+      margin: 6px 0;
+      font-size: 0.84em !important;
+      line-height: 1.42;
+    }
+
+    .precedence-order {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .precedence-pill {
+      background: #f3f8ff;
+      border: 1px solid #bfd5ef;
+      color: #234154;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 0.72em;
+      font-weight: 600;
+    }
+
+    .resolve-sheet {
+      background: #f5f5f5;
+      border: 1px solid #d4d4d4;
+      border-radius: 12px;
+      padding: 10px 12px;
+      text-align: left;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .resolve-head {
+      margin: 0 0 4px 0;
+      font-size: 0.78em !important;
+      line-height: 1.25;
+      color: #1f2a33 !important;
+    }
+
+    .resolve-head strong {
+      font-weight: 800;
+    }
+
+    .resolve-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .resolve-item {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      align-items: baseline;
+      gap: 6px;
+      margin: 2px 0;
+    }
+
+    .resolve-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 3px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #cfcfcf;
+      color: #ffffff;
+      font-size: 0.65em;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .resolve-exp {
+      margin: 0;
+      font-family: 'Roboto Mono', Consolas, Monaco, monospace;
+      font-size: 0.70em;
+      color: #111;
+      letter-spacing: 0.01em;
+    }
+
+    .resolve-note {
+      margin: 4px 0 0 0;
+      font-size: 0.60em !important;
+      color: #4d5b66 !important;
+      font-style: italic;
+    }
+
+    .algo-recap {
+      background: #f3f3f3 !important;
+    }
+
+    .algo-shell {
+      text-align: left;
+      padding: 8px 16px 18px;
+      border-bottom: 2px solid #bfbfbf;
+    }
+
+    .algo-title {
+      margin: 0 0 8px 0 !important;
+      color: #ff5a24 !important;
+      font-size: 1.5em !important;
+      line-height: 1;
+      font-weight: 800 !important;
+    }
+
+    .algo-main {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .algo-main p,
+    .algo-main li {
+      font-size: 0.88em !important;
+      line-height: 1.35;
+      color: #171717 !important;
+    }
+
+    .algo-side-art {
+      min-height: 200px;
+      border-radius: 14px;
+      border: 1px solid #d5d5d5;
+      background: linear-gradient(150deg, #edf6f8, #f9fcff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0d7377;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+    }
+
+    .algo-side-art i {
+      font-size: 4.2em;
+      opacity: 0.9;
+    }
+
+    .algo-question {
+      margin: 8px 0 4px;
+      font-size: 0.95em !important;
+      color: #111 !important;
+    }
+
+    .algo-choice-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 16px;
+      align-items: center;
+      margin-top: 8px;
+    }
+
+    .algo-choice-card {
+      border-radius: 14px;
+      border: 1px solid #d4d4d4;
+      background: #fbfbfb;
+      min-height: 230px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-align: center;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+    }
+
+    .algo-choice-title {
+      margin: 0;
+      font-size: 0.9em !important;
+      font-weight: 700 !important;
+      color: #1c1c1c !important;
+    }
+
+    .algo-choice-card i {
+      font-size: 4.1em;
+    }
+
+    .algo-choice-card.wedding i {
+      color: #e85b93;
+    }
+
+    .algo-choice-card.bike i {
+      color: #ff4f8f;
+    }
+
+    .algo-ou {
+      font-size: 0.95em !important;
+      font-weight: 700;
+      color: #222 !important;
+      min-width: 40px;
+      text-align: center;
+    }
+
+    .algo-think-card {
+      margin: 14px auto 4px;
+      max-width: 900px;
+      border-radius: 24px;
+      border: 2px solid #2b5f98;
+      background: #ecebe3;
+      min-height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+    }
+
+    .algo-think-card p {
+      margin: 0;
+      color: #ff5a24 !important;
+      font-size: 1.2em !important;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .algo-flow-wrap {
+      margin-top: 8px;
+      border-radius: 14px;
+      border: 1px solid #d8d8d8;
+      background: #fbfbfb;
+      padding: 10px;
+    }
+
+    .algo-flow {
+      width: 100%;
+      max-width: 930px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .algo-flow-slide .algo-shell {
+      padding: 4px 12px 10px;
+    }
+
+    .algo-flow-slide .algo-title {
+      margin-bottom: 4px !important;
+      font-size: 1.2em !important;
+    }
+
+    .algo-flow-slide .algo-question {
+      margin: 0 0 6px;
+      font-size: 0.78em !important;
+      line-height: 1.15;
+    }
+
+    .algo-flow-slide .algo-flow-wrap {
+      margin-top: 0;
+      padding: 6px;
+    }
+
+    .algo-flow-slide .algo-flow {
+      max-width: 760px;
+    }
+
+    .algo-solution-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 20px;
+      align-items: center;
+      margin-top: 8px;
+    }
+
+    .algo-flow-placeholder {
+      min-height: 300px;
+      border-radius: 10px;
+      background: transparent;
+    }
+
+    @media (max-width: 768px) {
+      .reveal h2 {
+        font-size: 1.5em;
+      }
+
+      .reveal p,
+      .reveal li {
+        font-size: 0.85em;
+      }
+
+      .columns {
+        flex-direction: column;
+      }
+
+      .hero-cover {
+        padding: 18px !important;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .hero-content {
+        padding: 18px;
+      }
+
+      .hero-title {
+        font-size: 1.05em !important;
+      }
+
+      .hero-subtitle {
+        font-size: 0.46em !important;
+      }
+
+      .hero-icon-wrap {
+        width: 120px;
+        height: 120px;
+        font-size: 1.4em;
+      }
+
+      .resolve-sheet {
+        padding: 12px 12px;
+      }
+
+      .resolve-item {
+        grid-template-columns: 28px 1fr;
+        gap: 8px;
+      }
+
+      .resolve-num {
+        width: 26px;
+        height: 26px;
+        font-size: 0.75em;
+      }
+
+      .resolve-exp {
+        font-size: 0.78em;
+      }
+
+      .algo-main {
+        grid-template-columns: 1fr;
+      }
+
+      .algo-side-art {
+        min-height: 140px;
+      }
+
+      .algo-choice-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .algo-choice-card {
+        min-height: 150px;
+      }
+
+      .algo-ou {
+        min-width: auto;
+      }
+
+      .algo-think-card {
+        min-height: 180px;
+      }
+
+      .algo-think-card p {
+        font-size: 0.9em !important;
+      }
+
+      .algo-solution-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .algo-flow-placeholder {
+        min-height: 130px;
+      }
+
+      .algo-flow-slide .algo-flow {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ==================== SLIDE 1 – Capa ==================== -->
+      <section class="hero-cover" data-background-gradient="linear-gradient(140deg, #0d2550, #1450a4, #1ba37f)">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <p class="hero-kicker"><i class="fa-solid fa-laptop-code icon" aria-hidden="true"></i>Introdução à
+              Programação</p>
+            <h1 class="hero-title">Aula 02<br><span>Operadores em Python</span></h1>
+            <p class="hero-subtitle">Aritméticos, relacionais e lógicos — a base para tomar decisões no código.</p>
+            <div class="hero-tags">
+              <span>Operadores Aritméticos</span>
+              <span>Operadores Relacionais</span>
+              <span>Operadores Lógicos</span>
+              <span>Atividades</span>
+            </div>
+            <p class="hero-meta"><i class="fa-solid fa-user-tie icon" aria-hidden="true"></i>Prof. Msc. Nator Junior
+              Carvalho da Costa</p>
+          </div>
+          <div class="hero-mark">
+            <div class="hero-icon-wrap">
+              <i class="fa-solid fa-calculator icon-only" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 2 – Revisão rápida ==================== -->
+      <section class="bg-light">
+        <h2><i class="fa-solid fa-rotate-left icon" aria-hidden="true"></i> Revisão Rápida</h2>
+        <p class="fragment">Na aula passada, aprendemos:</p>
+        <ul>
+          <li class="fragment"><i class="fa-solid fa-check icon" aria-hidden="true"></i> Variáveis guardam valores
+            (<code>int</code>, <code>float</code>, <code>str</code>, <code>bool</code>)</li>
+          <li class="fragment"><i class="fa-solid fa-check icon" aria-hidden="true"></i> <code>print()</code> exibe
+            dados na tela</li>
+          <li class="fragment"><i class="fa-solid fa-check icon" aria-hidden="true"></i> <code>input()</code> lê dados
+            do usuário</li>
+        </ul>
+        <div class="box fragment">
+          <i class="fa-solid fa-lightbulb icon" aria-hidden="true"></i> Hoje vamos aprender a <strong>calcular</strong>,
+          <strong>comparar</strong> e <strong>combinar condições</strong> usando operadores!
+        </div>
+      </section>
+
+      <!-- ==================== SLIDES 2.x – Relembrando Algoritmo (auto-animate) ==================== -->
+      <section class="algo-recap" data-auto-animate data-auto-animate-duration="0.65">
+        <div class="algo-shell">
+          <h2 class="algo-title" data-id="algo-title">Algoritmo</h2>
+          <div class="algo-main">
+            <div>
+              <p data-id="algo-def">Um algoritmo é uma sequência de passos bem definidos para resolver um problema ou
+                realizar uma atividade.</p>
+              <p style="margin-top: 12px;">Exemplos:</p>
+              <ul>
+                <li>Fazer um bolo;</li>
+                <li>Trocar uma lâmpada;</li>
+                <li>Trocar o pneu de um carro.</li>
+              </ul>
+            </div>
+            <div class="algo-side-art" data-id="algo-art">
+              <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="algo-recap" data-auto-animate data-auto-animate-duration="0.65">
+        <div class="algo-shell">
+          <h2 class="algo-title" data-id="algo-title">Algoritmo</h2>
+          <p class="algo-question" data-id="algo-question">Imagine a seguinte questão:</p>
+        </div>
+      </section>
+
+      <section class="algo-recap" data-auto-animate data-auto-animate-duration="0.65">
+        <div class="algo-shell">
+          <h2 class="algo-title" data-id="algo-title">Algoritmo</h2>
+          <p class="algo-question" data-id="algo-question">Imagine a seguinte questão:</p>
+          <div class="algo-choice-grid">
+            <div class="algo-choice-card wedding" data-id="choice-wedding">
+              <p class="algo-choice-title">Casar</p>
+              <i class="fa-solid fa-heart" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="algo-recap" data-auto-animate data-auto-animate-duration="0.65">
+        <div class="algo-shell">
+          <h2 class="algo-title" data-id="algo-title">Algoritmo</h2>
+          <p class="algo-question" data-id="algo-question">Imagine a seguinte questão:</p>
+          <div class="algo-choice-grid">
+            <div class="algo-choice-card wedding" data-id="choice-wedding">
+              <p class="algo-choice-title">Casar</p>
+              <i class="fa-solid fa-heart" aria-hidden="true"></i>
+            </div>
+            <div class="algo-ou" data-id="choice-or">ou</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="algo-recap" data-auto-animate data-auto-animate-duration="0.65">
+        <div class="algo-shell">
+          <h2 class="algo-title" data-id="algo-title">Algoritmo</h2>
+          <p class="algo-question" data-id="algo-question">Imagine a seguinte questão:</p>
+          <div class="algo-choice-grid">
+            <div class="algo-choice-card wedding" data-id="choice-wedding">
+              <p class="algo-choice-title">Casar</p>
+              <i class="fa-solid fa-heart" aria-hidden="true"></i>
+            </div>
+            <div class="algo-ou" data-id="choice-or">ou</div>
+            <div class="algo-choice-card bike" data-id="choice-bike">
+              <p class="algo-choice-title">Comprar uma bicicleta</p>
+              <i class="fa-solid fa-bicycle" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="algo-recap" data-auto-animate data-auto-animate-duration="0.65">
+        <div class="algo-shell">
+          <h2 class="algo-title" data-id="algo-title">Algoritmo</h2>
+          <div class="algo-think-card">
+            <p>Como você resolveria a questão?</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="algo-recap algo-flow-slide" data-auto-animate data-auto-animate-duration="0.65">
+        <div class="algo-shell">
+          <h2 class="algo-title" data-id="algo-title">Algoritmo</h2>
+          <p class="algo-question" data-id="algo-solution-text">Podemos solucionar a questão de diversas maneiras. Uma
+            solução viável é:</p>
+          <div class="algo-solution-grid">
+            <div class="algo-flow-wrap" data-id="algo-flow-panel">
+              <div class="algo-flow-placeholder"></div>
+            </div>
+            <div class="algo-side-art" data-id="algo-solution-art">
+              <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="algo-recap algo-flow-slide" data-auto-animate data-auto-animate-duration="0.65">
+        <div class="algo-shell">
+          <h2 class="algo-title" data-id="algo-title">Algoritmo</h2>
+          <p class="algo-question" data-id="algo-solution-text">Podemos solucionar a questão de diversas maneiras. Uma
+            solução viável é:</p>
+          <div class="algo-solution-grid" style="grid-template-columns: 1fr;">
+            <div class="algo-flow-wrap" data-id="algo-flow-panel">
+              <svg class="algo-flow" viewBox="0 0 1200 740" xmlns="http://www.w3.org/2000/svg" role="img"
+                aria-label="Fluxograma completo de decisão">
+                <defs>
+                  <linearGradient id="algoNodeFill" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#f8e7b2" />
+                    <stop offset="100%" stop-color="#f2d36b" />
+                  </linearGradient>
+                  <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                    <polygon points="0 0, 8 3, 0 6" fill="#202020" />
+                  </marker>
+                </defs>
+
+                <rect x="330" y="20" width="540" height="80" rx="14" fill="url(#algoNodeFill)" stroke="#d5b459" stroke-width="2" />
+                <text x="600" y="71" text-anchor="middle" font-size="24" font-family="Roboto, sans-serif"
+                  fill="#111">Casar ou comprar uma bicicleta?</text>
+
+                <polygon points="600,145 700,245 600,345 500,245" fill="#efe5c6" stroke="#d2b05b" stroke-width="2" />
+                <text x="600" y="238" text-anchor="middle" font-size="24" font-family="Roboto, sans-serif" fill="#111">Você está</text>
+                <text x="600" y="292" text-anchor="middle" font-size="24" font-family="Roboto, sans-serif" fill="#111">gordo(a) ?</text>
+
+                <polygon points="160,285 280,405 160,525 40,405" fill="#efe5c6" stroke="#d2b05b" stroke-width="2" />
+                <text x="160" y="395" text-anchor="middle" font-size="24" font-family="Roboto, sans-serif" fill="#111">Quer</text>
+                <text x="160" y="445" text-anchor="middle" font-size="24" font-family="Roboto, sans-serif" fill="#111">emagrecer ?</text>
+
+                <polygon points="1040,285 1160,405 1040,525 920,405" fill="#efe5c6" stroke="#d2b05b" stroke-width="2" />
+                <text x="1040" y="395" text-anchor="middle" font-size="24" font-family="Roboto, sans-serif" fill="#111">Quer</text>
+                <text x="1040" y="445" text-anchor="middle" font-size="24" font-family="Roboto, sans-serif" fill="#111">Engordar ?</text>
+
+                <rect x="330" y="550" width="540" height="74" rx="14" fill="url(#algoNodeFill)" stroke="#d5b459" stroke-width="2" />
+                <text x="600" y="598" text-anchor="middle" font-size="24" font-family="Roboto, sans-serif" fill="#111">Case</text>
+
+                <rect x="330" y="640" width="540" height="74" rx="14" fill="url(#algoNodeFill)" stroke="#d5b459" stroke-width="2" />
+                <text x="600" y="688" text-anchor="middle" font-size="24" font-family="Roboto, sans-serif" fill="#111">Compre uma bicicleta !</text>
+
+                <line x1="600" y1="100" x2="600" y2="143" stroke="#202020" stroke-width="3" marker-end="url(#arrowhead)" />
+
+                <polyline points="500,245 160,245 160,284" fill="none" stroke="#202020" stroke-width="3" marker-end="url(#arrowhead)" />
+                <text x="300" y="225" text-anchor="middle" font-size="22" font-family="Roboto, sans-serif" fill="#111">Sim</text>
+
+                <polyline points="700,245 1040,245 1040,284" fill="none" stroke="#202020" stroke-width="3" marker-end="url(#arrowhead)" />
+                <text x="880" y="225" text-anchor="middle" font-size="22" font-family="Roboto, sans-serif" fill="#111">Não</text>
+
+                <polyline points="280,405 330,405 330,587" fill="none" stroke="#202020" stroke-width="3" marker-end="url(#arrowhead)" />
+                <text x="290" y="510" text-anchor="middle" font-size="22" font-family="Roboto, sans-serif" fill="#111">Não</text>
+
+                <polyline points="920,405 900,405 900,587 870,587" fill="none" stroke="#202020" stroke-width="3" marker-end="url(#arrowhead)" />
+                <text x="925" y="510" text-anchor="middle" font-size="22" font-family="Roboto, sans-serif" fill="#111">Sim</text>
+
+                <polyline points="160,525 160,677 330,677" fill="none" stroke="#202020" stroke-width="3" marker-end="url(#arrowhead)" />
+                <text x="92" y="610" text-anchor="middle" font-size="22" font-family="Roboto, sans-serif" fill="#111">Sim</text>
+
+                <polyline points="1040,525 1040,677 870,677" fill="none" stroke="#202020" stroke-width="3" marker-end="url(#arrowhead)" />
+                <text x="1078" y="610" text-anchor="middle" font-size="22" font-family="Roboto, sans-serif" fill="#111">Não</text>
+
+                <line x1="20" y1="712" x2="84" y2="712" stroke="#8a8a8a" stroke-width="3" />
+                <line x1="988" y1="712" x2="1180" y2="712" stroke="#8a8a8a" stroke-width="3" />
+                <text x="955" y="720" text-anchor="middle" font-size="22" font-family="Roboto, sans-serif" fill="#111">Fonte: icasei.com</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 3 – Objetivos ==================== -->
+      <section>
+        <h2><i class="fa-solid fa-bullseye icon" aria-hidden="true"></i> Objetivos da Aula</h2>
+        <ul>
+          <li class="fragment">Dominar os <strong>operadores aritméticos</strong></li>
+          <li class="fragment">Entender os <strong>operadores relacionais</strong> (comparação)</li>
+          <li class="fragment">Conhecer os <strong>operadores lógicos</strong></li>
+          <li class="fragment">Saber a <strong>precedência</strong> dos operadores</li>
+          <li class="fragment">Resolver <strong>atividades práticas</strong> com operadores</li>
+        </ul>
+      </section>
+
+      <!-- ==================== SLIDE 4 – O que são operadores? ==================== -->
+      <section class="bg-accent">
+        <h2><i class="fa-solid fa-gears icon" aria-hidden="true"></i> O que são Operadores?</h2>
+        <p class="fragment">Operadores são <strong>símbolos especiais</strong> que dizem ao Python para realizar uma
+          operação.</p>
+        <div class="columns">
+          <div class="fragment">
+            <div class="box">
+              <strong>Aritméticos</strong><br>
+              Fazem contas<br>
+              <code>+</code> <code>-</code> <code>*</code> <code>/</code>
+            </div>
+          </div>
+          <div class="fragment">
+            <div class="box">
+              <strong>Relacionais</strong><br>
+              Comparam valores<br>
+              <code>></code> <code><</code> <code>==</code> <code>!=</code>
+            </div>
+          </div>
+          <div class="fragment">
+            <div class="box">
+              <strong>Lógicos</strong><br>
+              Combinam condições<br>
+              <code>and</code> <code>or</code> <code>not</code>
+            </div>
+          </div>
+        </div>
+      </section>
+<section>
+
+      <!-- ==================== SLIDE 5 – Aritméticos: tabela ==================== -->
+      <section>
+        <h2><i class="fa-solid fa-calculator icon" aria-hidden="true"></i> Operadores Aritméticos</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Operação</th>
+              <th>Símbolo</th>
+              <th>Exemplo</th>
+              <th>Resultado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="fragment">
+              <td>Soma</td>
+              <td><code>+</code></td>
+              <td><code>5 + 3</code></td>
+              <td><code>8</code></td>
+            </tr>
+            <tr class="fragment">
+              <td>Subtração</td>
+              <td><code>-</code></td>
+              <td><code>10 - 4</code></td>
+              <td><code>6</code></td>
+            </tr>
+            <tr class="fragment">
+              <td>Multiplicação</td>
+              <td><code>*</code></td>
+              <td><code>3 * 7</code></td>
+              <td><code>21</code></td>
+            </tr>
+            <tr class="fragment">
+              <td>Divisão</td>
+              <td><code>/</code></td>
+              <td><code>10 / 3</code></td>
+              <td><code>3.333…</code></td>
+            </tr>
+            <tr class="fragment">
+              <td>Divisão inteira</td>
+              <td><code>//</code></td>
+              <td><code>10 // 3</code></td>
+              <td><code>3</code></td>
+            </tr>
+            <tr class="fragment">
+              <td>Resto (módulo)</td>
+              <td><code>%</code></td>
+              <td><code>10 % 3</code></td>
+              <td><code>1</code></td>
+            </tr>
+            <tr class="fragment">
+              <td>Potência</td>
+              <td><code>**</code></td>
+              <td><code>2 ** 3</code></td>
+              <td><code>8</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+<!-- =========================================================
+     ATIVIDADE (REVEAL.JS) — Operadores Aritméticos (bem gradual)
+     Ideia: pedir para o aluno criar a, b, resultado e imprimir,
+     avançando uma operação por vez.
+   ========================================================= -->
+
+<!-- ==================== SLIDE 1 — Enunciado ==================== -->
+<section class="bg-light">
+  <h2><i class="fa-solid fa-clipboard-check icon" aria-hidden="true"></i> Atividade: Aritméticos (passo a passo)</h2>
+  <p>Você vai montar um programa bem simples seguindo os passos abaixo.</p>
+  <ol>
+    <li class="fragment">Crie duas variáveis: <code>a</code> e <code>b</code></li>
+    <li class="fragment">Crie uma terceira variável: <code>resultado</code></li>
+    <li class="fragment">Guarde em <code>resultado</code> o valor de uma operação entre <code>a</code> e <code>b</code></li>
+    <li class="fragment">Imprima <code>resultado</code></li>
+  </ol>
+  <div class="box fragment">
+    Regras: faça <b>uma operação por vez</b> e rode o código a cada passo.
+  </div>
+</section>
+
+<!-- ==================== SLIDE 2 — Aluno: crie a e b ==================== -->
+<section class="bg-light">
+  <h2>Passo 1 — Crie <code>a</code> e <code>b</code></h2>
+
+  <p class="fragment">Digite no seu editor:</p>
+  <pre><code class="language-python" data-trim data-line-numbers="1-2">
+a = 15
+b = 4
+  </code></pre>
+
+  <ul>
+    <li class="fragment">Agora <b>troque</b> os valores de <code>a</code> e <code>b</code> por outros números.</li>
+  </ul>
+</section>
+
+<!-- ==================== SLIDE 3 — Aluno: crie resultado ==================== -->
+<section class="bg-light" data-auto-animate>
+  <h2>Passo 2 — Crie <code>resultado</code> (sem imprimir ainda)</h2>
+
+  <p class="fragment">Complete o código adicionando a linha do <code>resultado</code>:</p>
+
+  <pre data-id="atividade-codigo"><code class="language-python" data-trim data-line-numbers="1-3|3">
+a = 15
+b = 4
+resultado = a + b
+  </code></pre>
+
+  <div class="box fragment">
+    <i class="fa-solid fa-lightbulb icon" aria-hidden="true"></i>
+    Antes de executar: qual valor você espera em <code>resultado</code>?
+  </div>
+</section>
+
+<!-- ==================== SLIDE 4 — Aluno: imprima resultado ==================== -->
+<section class="bg-light" data-auto-animate>
+  <h2>Passo 3 — Imprima <code>resultado</code></h2>
+
+  <p class="fragment">Agora adicione o <code>print</code>:</p>
+
+  <pre data-id="atividade-codigo"><code class="language-python" data-trim data-line-numbers="1-5|5">
+a = 15
+b = 4
+resultado = a + b
+
+print(resultado)
+  </code></pre>
+
+  <ul>
+    <li class="fragment">Execute e confira se bateu com sua previsão.</li>
+  </ul>
+</section>
+
+<!-- ==================== SLIDE 5 — Trocar só a operação: subtração ==================== -->
+<section class="bg-light" data-auto-animate>
+  <h2>Passo 4 — Subtração</h2>
+
+  <p class="fragment">Agora, sem mudar mais nada, troque apenas o operador para <code>-</code>:</p>
+
+  <pre data-id="atividade-codigo"><code class="language-python" data-trim data-line-numbers="3|1-5">
+a = 15
+b = 4
+resultado = a - b
+
+print(resultado)
+  </code></pre>
+</section>
+
+<!-- ==================== SLIDE 6 — Multiplicação ==================== -->
+<section class="bg-light" data-auto-animate>
+  <h2>Passo 5 — Multiplicação</h2>
+
+  <p class="fragment">Troque apenas o operador para <code>*</code>:</p>
+
+  <pre data-id="atividade-codigo"><code class="language-python" data-trim data-line-numbers="3">
+a = 15
+b = 4
+resultado = a * b
+
+print(resultado)
+  </code></pre>
+</section>
+
+
+      <!-- ==================== SLIDE 7 – Diferença / e // ==================== -->
+      <section>
+        <h2><i class="fa-solid fa-divide icon" aria-hidden="true"></i> Divisão <code>/</code> vs <code>//</code></h2>
+        <div class="columns">
+          <div class="fragment">
+            <h4><code>/</code> Divisão real</h4>
+            <pre><code class="language-python" data-trim data-noescape>
+print(7 / 2)   # 3.5
+print(10 / 5)  # 2.0
+print(1 / 3)   # 0.333…
+            </code></pre>
+            <p style="font-size:.8em;">Sempre retorna <code>float</code></p>
+          </div>
+          <div class="fragment">
+            <h4><code>//</code> Divisão inteira</h4>
+            <pre><code class="language-python" data-trim data-noescape>
+print(7 // 2)   # 3
+print(10 // 5)  # 2
+print(1 // 3)   # 0
+            </code></pre>
+            <p style="font-size:.8em;">Descarta a parte decimal</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 8 – Operador % (módulo) ==================== -->
+      <section class="bg-accent">
+        <h2><i class="fa-solid fa-percent icon" aria-hidden="true"></i> O Operador <code>%</code> (Módulo / Resto)</h2>
+        <p class="fragment">Retorna o <strong>resto</strong> da divisão inteira.</p>
+        <pre class="fragment"><code class="language-python" data-trim data-noescape>
+print(10 % 3)  # 1  → 10 ÷ 3 = 3, resto 1
+print(10 % 2)  # 0  → 10 ÷ 2 = 5, resto 0
+print(7 % 4)   # 3  → 7 ÷ 4 = 1, resto 3
+        </code></pre>
+      </section>
+
+
+
+      <!-- ==================== SLIDE 9 – Exemplo prático aritméticos ==================== -->
+      <section>
+        <h2><i class="fa-solid fa-flask icon" aria-hidden="true"></i> Exemplo: Calculadora Simples</h2>
+        <pre><code class="language-python" data-trim data-noescape>
+n1 = float(input("Digite o 1º número: "))
+n2 = float(input("Digite o 2º número: "))
+
+print(f"Soma:           {n1 + n2}")
+print(f"Subtração:      {n1 - n2}")
+print(f"Multiplicação:  {n1 * n2}")
+print(f"Divisão:        {n1 / n2}")
+        </code></pre>
+        <div class="box fragment">
+          <i class="fa-solid fa-triangle-exclamation icon" aria-hidden="true"></i> Cuidado! Dividir por zero causa
+          erro: <code>ZeroDivisionError</code>.
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 10 – Precedência Aritmética ==================== -->
+      <section class="bg-light">
+        <h2><i class="fa-solid fa-sort-numeric-down icon" aria-hidden="true"></i> Precedência Aritmética</h2>
+        <div class="precedence-card fragment">
+          <p>Quando uma expressão tem vários operadores, o Python resolve em uma ordem padrão.</p>
+          <div class="precedence-order">
+            <span class="precedence-pill">1) <code>()</code> parênteses</span>
+            <span class="precedence-pill">2) <code>**</code> potência</span>
+            <span class="precedence-pill">3) <code>* / // %</code></span>
+            <span class="precedence-pill">4) <code>+ -</code></span>
+          </div>
+        </div>
+        <pre class="fragment"><code class="language-python" data-trim data-noescape>
+resultado1 = 2 + 3 * 4      # 14
+resultado2 = (2 + 3) * 4    # 20
+        </code></pre>
+      </section>
+
+      <!-- ==================== SLIDE 11 – Exercícios Aritméticos (Pergunta) ==================== -->
+      <section class="bg-activity" data-auto-animate>
+        <div class="resolve-sheet">
+          <p class="resolve-head"><strong>Resolva</strong> (use a precedência: <em>parênteses → potência → mult/div/mod → soma/sub</em>).</p>
+          <ol class="resolve-list" data-auto-animate-target=".resolve-list">
+            <li class="resolve-item">
+              <span class="resolve-num">1</span>
+              <p class="resolve-exp">2 + 3 * 4;</p>
+            </li>
+            <li class="resolve-item">
+              <span class="resolve-num">2</span>
+              <p class="resolve-exp">18 / 3 + 5 * 2;</p>
+            </li>
+            <li class="resolve-item">
+              <span class="resolve-num">3</span>
+              <p class="resolve-exp">(9 - 3) * (2 + 1);</p>
+            </li>
+            <li class="resolve-item">
+              <span class="resolve-num">4</span>
+              <p class="resolve-exp">20 // 3 + 20 % 3;</p>
+            </li>
+            <li class="resolve-item">
+              <span class="resolve-num">5</span>
+              <p class="resolve-exp">2 ** 3 + 4 * 2 - 5;</p>
+            </li>
+          </ol>
+          <p class="resolve-note">Atividade curta: Resolva primeiro sem executar e depois confira no Python.</p>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 11B – Exercícios Aritméticos (Respostas com Auto-Animate) ==================== -->
+      <section class="bg-activity" data-auto-animate>
+        <div class="resolve-sheet">
+          <p class="resolve-head"><strong>Respostas</strong> ✓</p>
+          <ol class="resolve-list" data-auto-animate-target=".resolve-list">
+            <li class="resolve-item" style="display: grid; grid-template-columns: 24px 1fr auto; gap: 6px; align-items: baseline;">
+              <span class="resolve-num">1</span>
+              <p class="resolve-exp">2 + 3 * 4;</p>
+              <p class="resolve-exp"><span style="color: #27ae60; font-weight: 700;">= 14</span></p>
+            </li>
+            <li class="resolve-item" style="display: grid; grid-template-columns: 24px 1fr auto; gap: 6px; align-items: baseline;">
+              <span class="resolve-num">2</span>
+              <p class="resolve-exp">18 / 3 + 5 * 2;</p>
+              <p class="resolve-exp"><span style="color: #27ae60; font-weight: 700;">= 16</span></p>
+            </li>
+            <li class="resolve-item" style="display: grid; grid-template-columns: 24px 1fr auto; gap: 6px; align-items: baseline;">
+              <span class="resolve-num">3</span>
+              <p class="resolve-exp">(9 - 3) * (2 + 1);</p>
+              <p class="resolve-exp"><span style="color: #27ae60; font-weight: 700;">= 18</span></p>
+            </li>
+            <li class="resolve-item" style="display: grid; grid-template-columns: 24px 1fr auto; gap: 6px; align-items: baseline;">
+              <span class="resolve-num">4</span>
+              <p class="resolve-exp">20 // 3 + 20 % 3;</p>
+              <p class="resolve-exp"><span style="color: #27ae60; font-weight: 700;">= 8</span></p>
+            </li>
+            <li class="resolve-item" style="display: grid; grid-template-columns: 24px 1fr auto; gap: 6px; align-items: baseline;">
+              <span class="resolve-num">5</span>
+              <p class="resolve-exp">2 ** 3 + 4 * 2 - 5;</p>
+              <p class="resolve-exp"><span style="color: #27ae60; font-weight: 700;">= 11</span></p>
+            </li>
+          </ol>
+        </div>
+      </section>
+    </section>
+
+    <section>
+
+      <!-- ==================== SLIDE 12 – Operadores Relacionais: intro ==================== -->
+      <section>
+        <h2><i class="fa-solid fa-not-equal icon" aria-hidden="true"></i> Operadores Relacionais</h2>
+        <p class="fragment">Servem para <strong>comparar</strong> dois valores.</p>
+        <p class="fragment">O resultado é sempre <code>True</code> ou <code>False</code> (tipo <code>bool</code>).</p>
+        <div class="box fragment">
+          <i class="fa-solid fa-lightbulb icon" aria-hidden="true"></i> São essenciais para criar
+          <strong>condições</strong> (<code>if</code>) nas próximas aulas!
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 13 – Relacionais: tabela ==================== -->
+      <section class="bg-light">
+        <h2><i class="fa-solid fa-table icon" aria-hidden="true"></i> Tabela de Operadores Relacionais</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Operador</th>
+              <th>Significado</th>
+              <th>Exemplo</th>
+              <th>Resultado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="fragment">
+              <td><code>==</code></td>
+              <td>Igual a</td>
+              <td><code>5 == 5</code></td>
+              <td><code>True</code></td>
+            </tr>
+            <tr class="fragment">
+              <td><code>!=</code></td>
+              <td>Diferente de</td>
+              <td><code>5 != 3</code></td>
+              <td><code>True</code></td>
+            </tr>
+            <tr class="fragment">
+              <td><code>></code></td>
+              <td>Maior que</td>
+              <td><code>7 > 3</code></td>
+              <td><code>True</code></td>
+            </tr>
+            <tr class="fragment">
+              <td><code><</code></td>
+              <td>Menor que</td>
+              <td><code>2 < 8</code></td>
+              <td><code>True</code></td>
+            </tr>
+            <tr class="fragment">
+              <td><code>>=</code></td>
+              <td>Maior ou igual</td>
+              <td><code>5 >= 5</code></td>
+              <td><code>True</code></td>
+            </tr>
+            <tr class="fragment">
+              <td><code><=</code></td>
+              <td>Menor ou igual</td>
+              <td><code>3 <= 2</code></td>
+              <td><code>False</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ==================== SLIDE 13 – Relacionais: código ==================== -->
+      <section>
+        <h2><i class="fa-solid fa-code icon" aria-hidden="true"></i> Relacionais na Prática</h2>
+        <pre><code class="language-python" data-trim data-noescape>
+a = 10
+b = 7
+
+print(a == b)   # False → 10 não é igual a 7
+print(a != b)   # True  → 10 é diferente de 7
+print(a > b)    # True  → 10 é maior que 7
+print(a < b)    # False → 10 não é menor que 7
+print(a >= 10)  # True  → 10 é maior ou igual a 10
+print(b <= 5)   # False → 7 não é menor ou igual a 5
+        </code></pre>
+      </section>
+
+      <!-- ==================== SLIDE 14 – Cuidado: = vs == ==================== -->
+      <section class="bg-warn">
+        <h2><i class="fa-solid fa-triangle-exclamation icon" aria-hidden="true"></i> Cuidado! <code>=</code> vs
+          <code>==</code>
+        </h2>
+        <div class="columns">
+          <div class="fragment">
+            <div class="box-orange">
+              <strong><code>=</code> (um igual)</strong><br>
+              <em>Atribuição</em> — guarda valor<br>
+              <pre><code class="language-python" data-trim>
+x = 10  # x recebe 10
+              </code></pre>
+            </div>
+          </div>
+          <div class="fragment">
+            <div class="box-green">
+              <strong><code>==</code> (dois iguais)</strong><br>
+              <em>Comparação</em> — verifica igualdade<br>
+              <pre><code class="language-python" data-trim>
+x == 10  # x é igual a 10?
+              </code></pre>
+            </div>
+          </div>
+        </div>
+        <p class="fragment" style="font-size:.85em;">
+          <i class="fa-solid fa-lightbulb icon" aria-hidden="true"></i>
+          Esse é um dos <strong>erros mais comuns</strong> de iniciantes!
+        </p>
+      </section>
+      
+<!-- ==================== SLIDE – Exercícios Aritméticos + Relacionais (Pergunta) ==================== -->
+<section class="bg-activity" data-auto-animate>
+  <div class="resolve-sheet">
+    <p class="resolve-head">
+      <strong>Resolva</strong> (use a precedência:
+      <em>parênteses → potência → mult/div/mod → soma/sub → relacionais</em>).
+    </p>
+
+    <ol class="resolve-list" data-auto-animate-target=".resolve-list">
+
+      <!-- Relacionais variados -->
+      <li class="resolve-item">
+        <span class="resolve-num">4</span>
+        <p class="resolve-exp">5 &gt; 3;</p>
+      </li>
+
+      <li class="resolve-item">
+        <span class="resolve-num">5</span>
+        <p class="resolve-exp">10 &lt; 2 * 6;</p>
+      </li>
+
+      <li class="resolve-item">
+        <span class="resolve-num">6</span>
+        <p class="resolve-exp">4 + 4 == 2 * 4;</p>
+      </li>
+
+      <li class="resolve-item">
+        <span class="resolve-num">7</span>
+        <p class="resolve-exp">15 % 2 != 0;</p>
+      </li>
+
+      <li class="resolve-item">
+        <span class="resolve-num">8</span>
+        <p class="resolve-exp">3 ** 2 &gt;= 9;</p>
+      </li>
+
+      <li class="resolve-item">
+        <span class="resolve-num">9</span>
+        <p class="resolve-exp">7 - 2 &lt;= 4;</p>
+      </li>
+
+    </ol>
+
+    <p class="resolve-note">
+      Resolva primeiro no papel. Depois teste no Python.
+      Resultados relacionais devem ser <strong>True</strong> ou <strong>False</strong>.
+    </p>
+  </div>
+</section>
+
+
+
+<!-- ==================== SLIDE – Respostas ==================== -->
+<section class="bg-activity" data-auto-animate>
+  <div class="resolve-sheet">
+    <p class="resolve-head"><strong>Respostas</strong> ✓</p>
+
+    <ol class="resolve-list" data-auto-animate-target=".resolve-list">
+
+      <li class="resolve-item" style="display:grid; grid-template-columns:24px 1fr auto; gap:6px;">
+        <span class="resolve-num">4</span>
+        <p class="resolve-exp">5 &gt; 3;</p>
+        <p class="resolve-exp"><span style="color:#27ae60; font-weight:700;">= True</span></p>
+      </li>
+
+      <li class="resolve-item" style="display:grid; grid-template-columns:24px 1fr auto; gap:6px;">
+        <span class="resolve-num">5</span>
+        <p class="resolve-exp">10 &lt; 2 * 6;</p>
+        <p class="resolve-exp"><span style="color:#27ae60; font-weight:700;">= True</span></p>
+      </li>
+
+      <li class="resolve-item" style="display:grid; grid-template-columns:24px 1fr auto; gap:6px;">
+        <span class="resolve-num">6</span>
+        <p class="resolve-exp">4 + 4 == 2 * 4;</p>
+        <p class="resolve-exp"><span style="color:#27ae60; font-weight:700;">= True</span></p>
+      </li>
+
+      <li class="resolve-item" style="display:grid; grid-template-columns:24px 1fr auto; gap:6px;">
+        <span class="resolve-num">7</span>
+        <p class="resolve-exp">15 % 2 != 0;</p>
+        <p class="resolve-exp"><span style="color:#27ae60; font-weight:700;">= True</span></p>
+      </li>
+
+      <li class="resolve-item" style="display:grid; grid-template-columns:24px 1fr auto; gap:6px;">
+        <span class="resolve-num">8</span>
+        <p class="resolve-exp">3 ** 2 &gt;= 9;</p>
+        <p class="resolve-exp"><span style="color:#27ae60; font-weight:700;">= True</span></p>
+      </li>
+
+      <li class="resolve-item" style="display:grid; grid-template-columns:24px 1fr auto; gap:6px;">
+        <span class="resolve-num">9</span>
+        <p class="resolve-exp">7 - 2 &lt;= 4;</p>
+        <p class="resolve-exp"><span style="color:#27ae60; font-weight:700;">= False</span></p>
+      </li>
+
+    </ol>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+    </section>
+
+    <section>
+
+      <!-- ==================== SLIDE 17 – Operadores Lógicos: intro ==================== -->
+      <section>
+        <h2><i class="fa-solid fa-code-branch icon" aria-hidden="true"></i> Operadores Lógicos</h2>
+        <p class="fragment">Servem para <strong>combinar</strong> duas ou mais condições.</p>
+        <p class="fragment">Resultado: sempre <code>True</code> ou <code>False</code>.</p>
+        <table class="fragment">
+          <thead>
+            <tr>
+              <th>Operador</th>
+              <th>Significado</th>
+              <th>Quando é <code>True</code>?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>and</code></td>
+              <td>E</td>
+              <td>Ambas as condições são verdadeiras</td>
+            </tr>
+            <tr>
+              <td><code>or</code></td>
+              <td>OU</td>
+              <td>Pelo menos uma condição é verdadeira</td>
+            </tr>
+            <tr>
+              <td><code>not</code></td>
+              <td>NÃO</td>
+              <td>Inverte o valor lógico</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ==================== SLIDE 18 – Tabela verdade AND ==================== -->
+      <section class="bg-accent">
+        <h2><i class="fa-solid fa-table icon" aria-hidden="true"></i> Tabela Verdade — <code>and</code></h2>
+        <p>Só é <code>True</code> quando <strong>as duas</strong> condições são verdadeiras.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>A</th>
+              <th>B</th>
+              <th>A <code>and</code> B</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="fragment">
+              <td><code>True</code></td>
+              <td><code>True</code></td>
+              <td><code style="color:#27ae60; font-weight:700;">True</code></td>
+            </tr>
+            <tr class="fragment">
+              <td><code>True</code></td>
+              <td><code>False</code></td>
+              <td><code style="color:#c0392b; font-weight:700;">False</code></td>
+            </tr>
+            <tr class="fragment">
+              <td><code>False</code></td>
+              <td><code>True</code></td>
+              <td><code style="color:#c0392b; font-weight:700;">False</code></td>
+            </tr>
+            <tr class="fragment">
+              <td><code>False</code></td>
+              <td><code>False</code></td>
+              <td><code style="color:#c0392b; font-weight:700;">False</code></td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- <pre class="fragment"><code class="language-python" data-trim data-noescape>
+idade = 20
+tem_carteira = True
+print(idade >= 18 and tem_carteira)  # True
+        </code></pre> -->
+      </section>
+
+      <!-- ==================== SLIDE 19 – Tabela verdade OR ==================== -->
+      <section class="bg-light">
+        <h2><i class="fa-solid fa-table icon" aria-hidden="true"></i> Tabela Verdade — <code>or</code></h2>
+        <p>É <code>True</code> quando <strong>pelo menos uma</strong> condição é verdadeira.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>A</th>
+              <th>B</th>
+              <th>A <code>or</code> B</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="fragment">
+              <td><code>True</code></td>
+              <td><code>True</code></td>
+              <td><code style="color:#27ae60; font-weight:700;">True</code></td>
+            </tr>
+            <tr class="fragment">
+              <td><code>True</code></td>
+              <td><code>False</code></td>
+              <td><code style="color:#27ae60; font-weight:700;">True</code></td>
+            </tr>
+            <tr class="fragment">
+              <td><code>False</code></td>
+              <td><code>True</code></td>
+              <td><code style="color:#27ae60; font-weight:700;">True</code></td>
+            </tr>
+            <tr class="fragment">
+              <td><code>False</code></td>
+              <td><code>False</code></td>
+              <td><code style="color:#c0392b; font-weight:700;">False</code></td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- <pre class="fragment"><code class="language-python" data-trim data-noescape>
+tem_rg = False
+tem_passaporte = True
+print(tem_rg or tem_passaporte)  # True
+        </code></pre> -->
+      </section>
+
+      <!-- ==================== SLIDE 20 – Tabela verdade NOT ==================== -->
+      <section>
+        <h2><i class="fa-solid fa-table icon" aria-hidden="true"></i> Tabela Verdade — <code>not</code></h2>
+        <p><strong>Inverte</strong> o valor lógico.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>A</th>
+              <th><code>not</code> A</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="fragment">
+              <td><code>True</code></td>
+              <td><code style="color:#c0392b; font-weight:700;">False</code></td>
+            </tr>
+            <tr class="fragment">
+              <td><code>False</code></td>
+              <td><code style="color:#27ae60; font-weight:700;">True</code></td>
+            </tr>
+          </tbody>
+        </table>
+        <pre class="fragment"><code class="language-python" data-trim data-noescape>
+chovendo = True
+print(not chovendo)  # False → "não está chovendo" é falso
+        </code></pre>
+      </section>
+
+      <!-- ==================== SLIDE 21 – Lógicos: exemplo completo ==================== -->
+      <section class="bg-accent">
+        <h2><i class="fa-solid fa-flask icon" aria-hidden="true"></i> Exemplo do Dia a Dia</h2>
+        <p style="font-size:.85em;">Imagine um sistema de cinema que dá desconto para <strong>estudantes menores de
+            25 anos</strong>:</p>
+        <pre><code class="language-python" data-trim data-noescape>
+estudante = input("Você é estudante? (s/n): ")
+idade = int(input("Qual a sua idade? "))
+
+tem_desconto = (estudante == "s") and (idade < 25)
+
+print(f"Tem desconto? {tem_desconto}")
+        </code></pre>
+        <div class="box fragment">
+          <i class="fa-solid fa-lightbulb icon" aria-hidden="true"></i> Usar parênteses deixa o código mais
+          <strong>legível</strong>, mesmo quando não são obrigatórios.
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 22 – Combinando operadores ==================== -->
+      <section class="bg-light">
+        <h2><i class="fa-solid fa-layer-group icon" aria-hidden="true"></i> Combinando Operadores</h2>
+        <p class="fragment">Você pode misturar aritméticos, relacionais e lógicos!</p>
+        <pre class="fragment"><code class="language-python" data-trim data-noescape>
+nota1 = 7.0
+nota2 = 5.0
+media = (nota1 + nota2) / 2          # aritmético
+faltas = 3
+
+aprovado = (media >= 6) and (faltas <= 5)  # relacional + lógico
+
+print(f"Média: {media}")
+print(f"Aprovado? {aprovado}")  # True
+        </code></pre>
+      </section>
+
+    </section>
+
+      <!-- ==================== SLIDE 23 – Precedência ==================== -->
+      <section>
+        <h2><i class="fa-solid fa-sort-numeric-down icon" aria-hidden="true"></i> Ordem de Precedência</h2>
+        <p class="fragment" style="font-size:.85em;">Python segue uma ordem para avaliar os operadores (do mais
+          prioritário ao menos):</p>
+        <table class="fragment">
+          <thead>
+            <tr>
+              <th>Prioridade</th>
+              <th>Operadores</th>
+              <th>Tipo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1ª (mais alta)</td>
+              <td><code>**</code></td>
+              <td>Potência</td>
+            </tr>
+            <tr>
+              <td>2ª</td>
+              <td><code>*</code> <code>/</code> <code>//</code> <code>%</code></td>
+              <td>Multiplicação, divisão</td>
+            </tr>
+            <tr>
+              <td>3ª</td>
+              <td><code>+</code> <code>-</code></td>
+              <td>Soma, subtração</td>
+            </tr>
+            <tr>
+              <td>4ª</td>
+              <td><code>==</code> <code>!=</code> <code>></code> <code><</code> <code>>=</code> <code><=</code></td>
+              <td>Relacionais</td>
+            </tr>
+            <tr>
+              <td>5ª</td>
+              <td><code>not</code></td>
+              <td>Lógico NÃO</td>
+            </tr>
+            <tr>
+              <td>6ª</td>
+              <td><code>and</code></td>
+              <td>Lógico E</td>
+            </tr>
+            <tr>
+              <td>7ª (mais baixa)</td>
+              <td><code>or</code></td>
+              <td>Lógico OU</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="fragment" style="font-size:.8em;"><i class="fa-solid fa-lightbulb icon"
+            aria-hidden="true"></i> Na dúvida, use <strong>parênteses</strong>!</p>
+      </section>
+
+      <!-- ==================== SLIDE 24 – Precedência: exemplo ==================== -->
+      <!-- <section class="bg-warn">
+        <h2><i class="fa-solid fa-magnifying-glass icon" aria-hidden="true"></i> Precedência na Prática</h2>
+        <pre><code class="language-python" data-trim data-noescape>
+# Sem parênteses — Python segue a precedência
+resultado = 2 + 3 * 4
+print(resultado)  # 14 (não 20!)
+
+# Com parênteses — você controla a ordem
+resultado = (2 + 3) * 4
+print(resultado)  # 20
+        </code></pre>
+        <pre class="fragment"><code class="language-python" data-trim data-noescape>
+# Exemplo com lógicos
+x = 5
+print(x > 3 and x < 10)        # True
+print(not (x > 3 and x < 10))  # False
+        </code></pre>
+      </section> -->
+
+      <!-- ==================== SLIDE 25 – ATIVIDADE 3 ==================== -->
+      <section class="bg-activity">
+        <h2><i class="fa-solid fa-pen-ruler icon" aria-hidden="true"></i> Atividade 3 — Lógicos</h2>
+        <div class="box-purple">
+          <strong>Exercício G:</strong> Peça <strong>idade</strong> e se a pessoa é <strong>estudante</strong> (s/n).
+          Exiba <code>True</code> se ela tiver <strong>menos de 18 anos ou for estudante</strong>.
+        </div>
+        <div class="box-purple fragment">
+          <strong>Exercício H:</strong> Peça um número e verifique se ele está no intervalo <strong>entre 1 e
+            100</strong> (inclusive).<br>
+          <em>Dica: use <code>and</code></em>
+        </div>
+        <div class="box-purple fragment">
+          <strong>Exercício I:</strong> Peça a <strong>média</strong> e o número de <strong>faltas</strong>. Exiba se o
+          aluno está <strong>aprovado</strong> (média >= 7 <code>and</code> faltas <= 10).
+        </div>
+        <p class="fragment" style="font-size:.8em;"><i class="fa-solid fa-clock icon"
+            aria-hidden="true"></i> Tempo sugerido: 10 minutos</p>
+      </section>
+
+      <!-- ==================== SLIDE 26 – Desafio final ==================== -->
+      <!-- <section data-background-gradient="linear-gradient(135deg, #667eea, #764ba2)">
+        <h2 style="color: white;"><i class="fa-solid fa-trophy icon" style="color: #f1c40f;"
+            aria-hidden="true"></i> Desafio Final!</h2>
+        <p style="color: rgba(255,255,255,.92); font-size: .85em;">
+          Crie um programa que simule uma <strong>verificação de acesso</strong> a um evento:
+        </p>
+        <ol style="color: rgba(255,255,255,.9); font-size: .82em;">
+          <li class="fragment">Pergunte a <strong>idade</strong></li>
+          <li class="fragment">Pergunte se tem <strong>convite</strong> (s/n)</li>
+          <li class="fragment">Pergunte se é <strong>acompanhante de responsável</strong> (s/n)</li>
+          <li class="fragment">
+            O acesso é permitido se:<br>
+            • idade >= 18 <strong>ou</strong><br>
+            • tem convite <strong>e</strong> acompanhante de responsável
+          </li>
+          <li class="fragment">Exiba <code>True</code> ou <code>False</code></li>
+        </ol>
+        <pre class="fragment"><code class="language-python" data-trim data-noescape>
+idade = int(input("Idade: "))
+convite = input("Tem convite? (s/n): ") == "s"
+acompanhante = input("Com responsável? (s/n): ") == "s"
+
+acesso = (idade >= 18) or (convite and acompanhante)
+print(f"Acesso permitido? {acesso}")
+        </code></pre>
+      </section> -->
+
+      <!-- ==================== SLIDE 27 – Erros comuns ==================== -->
+      <!-- <section class="bg-warn">
+        <h2><i class="fa-solid fa-bug icon" aria-hidden="true"></i> Erros Comuns desta Aula</h2>
+        <ul>
+          <li class="fragment">
+            Usar <code>=</code> quando deveria usar <code>==</code>:<br>
+            <code>if x = 5</code> <i class="fa-solid fa-xmark" style="color:#c0392b;" aria-hidden="true"></i> →
+            <code>if x == 5</code> <i class="fa-solid fa-check" style="color:#27ae60;" aria-hidden="true"></i>
+          </li>
+          <li class="fragment">
+            Esquecer de converter <code>input()</code>:<br>
+            <code>"5" > 3</code> <i class="fa-solid fa-xmark" style="color:#c0392b;" aria-hidden="true"></i> →
+            <code>int("5") > 3</code> <i class="fa-solid fa-check" style="color:#27ae60;" aria-hidden="true"></i>
+          </li>
+          <li class="fragment">
+            Usar <code>&&</code> ou <code>||</code> (de outras linguagens):<br>
+            Em Python é <code>and</code>, <code>or</code>, <code>not</code>
+          </li>
+          <li class="fragment">
+            Confundir precedência:<br>
+            <code>2 + 3 * 4</code> = <strong>14</strong>, não 20!
+          </li>
+        </ul>
+      </section> -->
+
+      <!-- ==================== SLIDE 28 – Resumo ==================== -->
+      <section class="bg-light">
+        <h2><i class="fa-solid fa-clipboard-list icon" aria-hidden="true"></i> Resumo da Aula</h2>
+        <ul>
+          <li class="fragment"><i class="fa-solid fa-calculator icon" aria-hidden="true"></i> <strong>Aritméticos</strong>:
+            <code>+</code> <code>-</code> <code>*</code> <code>/</code> <code>//</code> <code>%</code>
+            <code>**</code>
+          </li>
+          <li class="fragment"><i class="fa-solid fa-not-equal icon" aria-hidden="true"></i>
+            <strong>Relacionais</strong>:
+            <code>==</code> <code>!=</code> <code>></code> <code><</code> <code>>=</code> <code><=</code>
+          </li>
+          <li class="fragment"><i class="fa-solid fa-code-branch icon" aria-hidden="true"></i>
+            <strong>Lógicos</strong>:
+            <code>and</code> <code>or</code> <code>not</code>
+          </li>
+          <li class="fragment"><i class="fa-solid fa-sort-numeric-down icon" aria-hidden="true"></i>
+            <strong>Precedência</strong>: potência → mult/div → soma/sub → relacional → not → and → or
+          </li>
+          <li class="fragment"><i class="fa-solid fa-lightbulb icon" aria-hidden="true"></i> Na dúvida, use
+            <strong>parênteses</strong>!
+          </li>
+        </ul>
+      </section>
+
+      <!-- ==================== SLIDE 29 – Próxima aula ==================== -->
+      <!-- <section data-background-gradient="radial-gradient(#1f4b99, #16a085)">
+        <h2 style="color: white;">Próxima Aula</h2>
+        <p style="color: rgba(255,255,255,.85); font-size: .9em;">
+          Estruturas condicionais:
+          <code style="color: #f1c40f;">if</code>,
+          <code style="color: #f1c40f;">elif</code> e
+          <code style="color: #f1c40f;">else</code>
+        </p>
+        <p style="color: rgba(255,255,255,.75); font-size: .75em; margin-top: 10px;">
+          Agora que você sabe comparar e combinar condições, <br>
+          vamos fazer o programa <strong>tomar decisões</strong>!
+        </p>
+        <p class="emoji-big"><i class="fa-solid fa-hand-peace icon-only" style="color:white;"
+            aria-hidden="true"></i></p>
+        <p style="color: rgba(255,255,255,.7); font-size: .65em;">
+          Dúvidas? Me procure no e-mail ou no horário de atendimento.
+        </p>
+      </section> -->
+
+    </div>
+  </div>
+
+  <script src="./dist/reveal.js"></script>
+  <script src="./plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({
+      center: false,
+      controls: true,
+      progress: true,
+      slideNumber: true,
+      history: true,
+      transition: 'convex',
+      plugins: [RevealHighlight]
+    });
+  </script>
+</body>
+
+</html>

@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Aula 02 - Operadores aritméticos, relacionais e lógicos em Python. Atividades práticas.">
-  <title>Aula 02 - Operadores em Python</title>
+    content="Aula 01 - Primeiro contato com programação: o que é programar, algoritmos do dia a dia, variáveis e tipos básicos em Python.">
+  <title>Aula 01 - Bem-vindo à Programação!</title>
 
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -22,7 +22,6 @@
       --light-bg: #f2f7ff;
       --accent-bg: #e7f6ec;
       --warn-bg: #fff8e1;
-      --activity-bg: #f3e8ff;
       --code-bg: #1f2937;
       --transition-fragment: 0.3s ease;
     }
@@ -76,8 +75,429 @@
       background-color: var(--warn-bg) !important;
     }
 
-    .bg-activity {
-      background-color: var(--activity-bg) !important;
+    .bg-classroom,
+    .bg-syllabus,
+    .section-cover,
+    .syllabus-slide,
+    .professor-slide {
+      background: radial-gradient(circle at top right, #edf4ff 0%, #f7faff 45%, #eef5fb 100%) !important;
+    }
+
+    .classroom-intro {
+      text-align: left;
+      padding: 24px 34px !important;
+    }
+
+    .classroom-intro h2 {
+      text-align: center;
+      color: #114a82 !important;
+      font-size: 1.52em;
+      margin-bottom: 18px;
+      line-height: 1.2;
+      position: relative;
+    }
+
+    .classroom-intro h2::after {
+      content: "";
+      display: block;
+      width: 96px;
+      height: 3px;
+      margin: 12px auto 0;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #eb8a24, #f3af54);
+    }
+
+    .classroom-intro ul {
+      list-style: square;
+      margin: 0 auto;
+      max-width: 760px;
+      text-align: left;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid #d6e4f6;
+      border-left: 6px solid #1a5f9b;
+      border-radius: 14px;
+      padding: 18px 26px 18px 42px !important;
+      box-shadow: 0 14px 30px rgba(8, 41, 85, 0.08);
+    }
+
+    .classroom-intro li {
+      color: #27424f !important;
+      font-size: 0.86em;
+      margin: 10px 0;
+      line-height: 1.35;
+    }
+
+    .classroom-intro li::marker {
+      color: #1a5f9b;
+    }
+
+    .classroom-lead {
+      text-align: center;
+      color: #3a5a6c !important;
+      font-size: 0.72em !important;
+      margin: 0 0 18px;
+    }
+
+    .intro-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .intro-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid #d2e1f3;
+      border-radius: 12px;
+      padding: 12px 14px;
+      box-shadow: 0 6px 18px rgba(8, 41, 85, 0.07);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .intro-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(8, 41, 85, 0.13);
+    }
+
+    .intro-card:nth-child(4),
+    .intro-card:nth-child(5) {
+      grid-column: span 1;
+    }
+
+    .intro-cards > .intro-card:nth-child(4) {
+      grid-column: 1 / 2;
+      justify-self: end;
+      width: 100%;
+    }
+
+    .intro-cards > .intro-card:nth-child(5) {
+      grid-column: 2 / 4;
+      justify-self: start;
+      width: 100%;
+    }
+
+    .intro-card-icon {
+      flex-shrink: 0;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9em;
+      color: #fff;
+      background: linear-gradient(135deg, #1a5f9b, #0d7377);
+    }
+
+    .intro-card-text {
+      font-size: 0.58em;
+      color: #2c4350;
+      line-height: 1.35;
+    }
+
+    .intro-card-text strong {
+      color: #114a82;
+      font-size: 1.1em;
+    }
+
+    /* ---------- Critérios: Cards side by side ---------- */
+    .criteria-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 16px;
+    }
+
+    .criteria-card {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid #d4e2f2;
+      box-shadow: 0 10px 28px rgba(9, 43, 84, 0.08);
+      background: #fff;
+    }
+
+    .criteria-card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      color: #fff;
+      font-size: 0.68em;
+      font-weight: 700;
+    }
+
+    .criteria-blue {
+      background: linear-gradient(135deg, #1450a4, #0d7377);
+    }
+
+    .criteria-orange {
+      background: linear-gradient(135deg, #d97b1e, #e8a030);
+    }
+
+    .criteria-card-body {
+      padding: 14px 16px;
+      text-align: center;
+    }
+
+    .criteria-big-number {
+      color: #114a82 !important;
+      font-size: 2em !important;
+      font-weight: 800;
+      margin: 0 0 4px;
+      line-height: 1;
+    }
+
+    .criteria-desc {
+      color: #3a5a6c !important;
+      font-size: 0.62em !important;
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    /* ---------- Barras de avaliação ---------- */
+    .eval-bars {
+      margin: 18px 0 14px;
+    }
+
+    .eval-bar {
+      display: grid;
+      grid-template-columns: 160px 1fr 140px;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .eval-bar-label {
+      font-size: 0.66em;
+      color: #2b4251;
+      font-weight: 600;
+    }
+
+    .eval-bar-track {
+      height: 22px;
+      background: #e8eef6;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .eval-bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      transition: width 0.6s ease;
+    }
+
+    .eval-fill-blue {
+      background: linear-gradient(90deg, #1450a4, #1ba37f);
+    }
+
+    .eval-fill-orange {
+      background: linear-gradient(90deg, #d97b1e, #e8a030);
+    }
+
+    .eval-bar-value {
+      font-size: 0.64em;
+      color: #2b4251;
+    }
+
+    .eval-bar-value small {
+      color: #7696b5;
+      font-weight: 400;
+    }
+
+    .eval-total-row {
+      text-align: center;
+      font-size: 0.72em;
+      color: #114a82;
+      padding: 10px;
+      border-top: 2px solid #d5e3f2;
+      margin-top: 4px;
+    }
+
+    /* ---------- Instruções: lista com ícones ---------- */
+    .instructions-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .instruction-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid #d6e4f6;
+      border-radius: 12px;
+      padding: 12px 16px;
+    }
+
+    .instruction-item strong {
+      color: #114a82;
+      font-size: 0.72em;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .instruction-item p {
+      font-size: 0.62em !important;
+      color: #3a5a6c !important;
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    .instruction-icon {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85em;
+      color: #fff;
+    }
+
+    .instruction-icon-blue {
+      background: linear-gradient(135deg, #1450a4, #0d7377);
+    }
+
+    .instruction-icon-green {
+      background: linear-gradient(135deg, #27ae60, #1e8449);
+    }
+
+    .instruction-icon-red {
+      background: linear-gradient(135deg, #c0392b, #e74c3c);
+    }
+
+    /* ---------- AP1/AP2 lado a lado ---------- */
+    .ap-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 12px;
+    }
+
+    .ap-card {
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid #d4e2f2;
+      border-radius: 14px;
+      padding: 14px 16px;
+      box-shadow: 0 8px 20px rgba(9, 43, 84, 0.07);
+    }
+
+    .ap-card h3 {
+      font-size: 0.72em !important;
+      margin: 0 0 8px;
+    }
+
+    .ap-card .equation-row {
+      margin: 10px auto;
+    }
+
+    .ap-card .syllabus-list {
+      margin-top: 8px;
+    }
+
+    /* ---------- Avaliação escrita: 3 cards ---------- */
+    .ae-details {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .ae-detail-card {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid #d4e2f2;
+      border-radius: 14px;
+      padding: 18px 14px;
+      box-shadow: 0 8px 20px rgba(9, 43, 84, 0.07);
+    }
+
+    .ae-detail-card i {
+      font-size: 1.4em;
+      color: #1450a4;
+      margin-bottom: 8px;
+    }
+
+    .ae-detail-card strong {
+      display: block;
+      color: #114a82;
+      font-size: 0.72em;
+      margin-bottom: 4px;
+    }
+
+    .ae-detail-card p {
+      font-size: 0.6em !important;
+      color: #3a5a6c !important;
+      margin: 0;
+      line-height: 1.35;
+    }
+
+    /* ---------- Média: pills de restrições ---------- */
+    .media-constraints {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 16px 0 12px;
+    }
+
+    .constraint-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 0.6em;
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .constraint-blue {
+      background: linear-gradient(135deg, #1450a4, #0d7377);
+    }
+
+    .constraint-orange {
+      background: linear-gradient(135deg, #d97b1e, #e8a030);
+    }
+
+    .constraint-green {
+      background: linear-gradient(135deg, #27ae60, #1e8449);
+    }
+
+    .media-legend {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .media-legend span {
+      font-size: 0.56em;
+      color: #3a5a6c;
+    }
+
+    .media-legend strong {
+      color: #114a82;
+    }
+
+    /* ---------- Section cover kicker ---------- */
+    .section-cover-kicker {
+      color: #7696b5 !important;
+      font-size: 0.56em !important;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 700;
+      margin: 0 0 6px;
+      position: relative;
+      z-index: 2;
     }
 
     .emoji-big {
@@ -103,31 +523,13 @@
       text-align: left;
     }
 
-    .box-purple {
-      background: var(--activity-bg);
-      border-left: 5px solid #8e44ad;
-      padding: 15px 20px;
-      border-radius: 6px;
-      margin: 15px 0;
-      text-align: left;
-    }
-
-    .box-orange {
-      background: #fff3e0;
-      border-left: 5px solid #e67e22;
-      padding: 15px 20px;
-      border-radius: 6px;
-      margin: 15px 0;
-      text-align: left;
-    }
-
     .columns {
       display: flex;
       gap: 30px;
       align-items: flex-start;
     }
 
-    .columns>div {
+    .columns > div {
       flex: 1;
     }
 
@@ -266,281 +668,390 @@
       box-shadow: 0 18px 36px rgba(0, 0, 0, 0.24);
     }
 
-    .precedence-card {
-      background: #ffffff;
-      border: 1px solid #d5dde7;
-      border-left: 6px solid #1450a4;
-      border-radius: 12px;
-      padding: 16px 20px;
-      margin: 12px 0;
+    .professor-slide {
       text-align: left;
-      box-shadow: 0 10px 24px rgba(12, 42, 84, 0.08);
+      padding: 14px 20px !important;
     }
 
-    .precedence-card p {
-      margin: 6px 0;
-      font-size: 0.84em !important;
-      line-height: 1.42;
-    }
-
-    .precedence-order {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .precedence-pill {
-      background: #f3f8ff;
-      border: 1px solid #bfd5ef;
-      color: #234154;
-      border-radius: 999px;
-      padding: 6px 10px;
-      font-size: 0.72em;
-      font-weight: 600;
-    }
-
-    .resolve-sheet {
-      background: #f5f5f5;
-      border: 1px solid #d4d4d4;
-      border-radius: 12px;
-      padding: 10px 12px;
-      text-align: left;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-    }
-
-    .resolve-head {
-      margin: 0 0 4px 0;
-      font-size: 0.78em !important;
-      line-height: 1.25;
-      color: #1f2a33 !important;
-    }
-
-    .resolve-head strong {
-      font-weight: 800;
-    }
-
-    .resolve-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .resolve-item {
+    .professor-grid {
       display: grid;
-      grid-template-columns: 24px 1fr;
-      align-items: baseline;
-      gap: 6px;
-      margin: 2px 0;
-    }
-
-    .resolve-num {
-      width: 24px;
-      height: 24px;
-      border-radius: 3px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: #cfcfcf;
-      color: #ffffff;
-      font-size: 0.65em;
-      font-weight: 700;
-      line-height: 1;
-    }
-
-    .resolve-exp {
-      margin: 0;
-      font-family: 'Roboto Mono', Consolas, Monaco, monospace;
-      font-size: 0.70em;
-      color: #111;
-      letter-spacing: 0.01em;
-    }
-
-    .resolve-note {
-      margin: 4px 0 0 0;
-      font-size: 0.60em !important;
-      color: #4d5b66 !important;
-      font-style: italic;
-    }
-
-    .algo-recap {
-      background: #f3f3f3 !important;
-    }
-
-    .algo-shell {
-      text-align: left;
-      padding: 8px 16px 18px;
-      border-bottom: 2px solid #bfbfbf;
-    }
-
-    .algo-title {
-      margin: 0 0 8px 0 !important;
-      color: #ff5a24 !important;
-      font-size: 1.5em !important;
-      line-height: 1;
-      font-weight: 800 !important;
-    }
-
-    .algo-main {
-      display: grid;
-      grid-template-columns: 1.3fr 1fr;
-      gap: 20px;
-      align-items: center;
-    }
-
-    .algo-main p,
-    .algo-main li {
-      font-size: 0.88em !important;
-      line-height: 1.35;
-      color: #171717 !important;
-    }
-
-    .algo-side-art {
-      min-height: 200px;
-      border-radius: 14px;
-      border: 1px solid #d5d5d5;
-      background: linear-gradient(150deg, #edf6f8, #f9fcff);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #0d7377;
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.8);
-    }
-
-    .algo-side-art i {
-      font-size: 4.2em;
-      opacity: 0.9;
-    }
-
-    .algo-question {
-      margin: 8px 0 4px;
-      font-size: 0.95em !important;
-      color: #111 !important;
-    }
-
-    .algo-choice-grid {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
+      grid-template-columns: 1.8fr 1fr;
       gap: 16px;
-      align-items: center;
-      margin-top: 8px;
+      align-items: start;
     }
 
-    .algo-choice-card {
+    .professor-main,
+    .professor-aside {
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid #d2e1f3;
       border-radius: 14px;
-      border: 1px solid #d4d4d4;
-      background: #fbfbfb;
-      min-height: 230px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      text-align: center;
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 12px 28px rgba(9, 45, 90, 0.09);
     }
 
-    .algo-choice-title {
+    .professor-main {
+      padding: 14px 18px;
+    }
+
+    .professor-main h2 {
+      color: #124980 !important;
+      font-size: 0.82em;
+      margin: 0 0 6px;
+      line-height: 1.16;
+    }
+
+    .professor-main p {
+      color: #2c4350 !important;
+      font-size: 0.54em;
+      line-height: 1.38;
       margin: 0;
-      font-size: 0.9em !important;
-      font-weight: 700 !important;
-      color: #1c1c1c !important;
     }
 
-    .algo-choice-card i {
-      font-size: 4.1em;
+    .professor-main hr {
+      border: 0;
+      border-top: 2px solid #d5e3f2;
+      margin: 8px 0 10px;
     }
 
-    .algo-choice-card.wedding i {
-      color: #e85b93;
+    .professor-row {
+      display: grid;
+      grid-template-columns: minmax(110px, 140px) 1fr;
+      gap: 8px;
+      align-items: baseline;
+      margin-bottom: 6px;
     }
 
-    .algo-choice-card.bike i {
-      color: #ff4f8f;
-    }
-
-    .algo-ou {
-      font-size: 0.95em !important;
+    .professor-row h4 {
+      color: #124980 !important;
+      font-size: 0.5em;
+      margin: 0;
       font-weight: 700;
-      color: #222 !important;
-      min-width: 40px;
-      text-align: center;
     }
 
-    .algo-think-card {
-      margin: 14px auto 4px;
-      max-width: 900px;
-      border-radius: 24px;
-      border: 2px solid #2b5f98;
-      background: #ecebe3;
-      min-height: 280px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 24px;
+    .professor-row p {
+      font-size: 0.52em;
     }
 
-    .algo-think-card p {
+    .professor-aside {
+      text-align: center;
+      margin-top: 0;
+      padding: 10px 10px 12px;
+    }
+
+    .professor-aside img {
+      width: 140px;
+      height: 150px;
+      object-fit: cover;
+      margin: 0 auto 6px;
+      display: block;
+      border: 1px solid #cbd8e7;
+      border-radius: 10px;
+      box-shadow: 0 8px 18px rgba(10, 44, 86, 0.14);
+    }
+
+    .professor-aside h3 {
+      color: #124980 !important;
+      font-size: 0.52em;
+      margin: 4px 0 2px;
+      font-weight: 700;
+    }
+
+    .professor-aside .aside-strong {
+      color: #2c4350 !important;
+      font-size: 0.46em;
       margin: 0;
-      color: #ff5a24 !important;
-      font-size: 1.2em !important;
-      font-weight: 800;
       line-height: 1.2;
     }
 
-    .algo-flow-wrap {
-      margin-top: 8px;
-      border-radius: 14px;
-      border: 1px solid #d8d8d8;
-      background: #fbfbfb;
-      padding: 10px;
+    .professor-aside hr {
+      border: 0;
+      border-top: 2px solid #d7e4f2;
+      margin: 8px auto;
+      width: 70%;
     }
 
-    .algo-flow {
+    .professor-aside .muted-title {
+      color: #7696b5 !important;
+    }
+
+    .professor-aside .muted-text {
+      color: #6c8298 !important;
+      font-size: 0.44em;
+      margin: 0;
+    }
+
+    .section-cover {
+      text-align: left;
+      padding: 82px 40px !important;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-cover h2 {
+      color: #114a82 !important;
+      font-size: 1.26em;
+      margin: 0 0 16px;
+      position: relative;
+      z-index: 2;
+      line-height: 1.15;
+    }
+
+    .section-cover-line {
+      height: 2px;
       width: 100%;
-      max-width: 930px;
+      background: #d6deeb;
+      position: relative;
+      margin-top: 10px;
+      z-index: 2;
+    }
+
+    .section-cover-line span {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 72px;
+      height: 2px;
+      background: #eb8a24;
+    }
+
+    .section-cover::before {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      right: -150px;
+      top: -180px;
+      background: radial-gradient(circle, rgba(26, 95, 155, 0.16), rgba(26, 95, 155, 0));
+      z-index: 1;
+    }
+
+    .syllabus-slide {
+      text-align: left;
+      padding: 16px 24px 22px !important;
+      border-radius: 18px;
+      border: 1px solid #d4e2f2;
+      box-shadow: 0 18px 38px rgba(9, 43, 84, 0.1);
+      overflow: hidden;
+    }
+
+    .syllabus-topbar {
+      margin: -16px -24px 22px;
+      padding: 14px 24px;
+      background: linear-gradient(135deg, #123d73, #0f5a73);
+      color: #f3f8fc !important;
+      font-size: 0.84em;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .syllabus-slide h3 {
+      color: #114a82 !important;
+      font-size: 0.78em;
+      margin: 0 0 6px;
+    }
+
+    .syllabus-lead {
+      color: #2b4251 !important;
+      font-size: 0.69em !important;
+      margin: 0 0 12px;
+      line-height: 1.45;
+    }
+
+    .syllabus-list {
+      list-style: square;
+      margin: 0;
+      padding-left: 28px !important;
+    }
+
+    .syllabus-list li {
+      color: #2b4251 !important;
+      font-size: 0.68em;
+      line-height: 1.44;
+      margin-bottom: 7px;
+    }
+
+    .syllabus-list li::marker {
+      color: #1a5f9b;
+    }
+
+    .highlight-orange {
+      color: #df7e22;
+      font-weight: 700;
+    }
+
+    .equation-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      margin: 18px auto;
+      width: fit-content;
+      background: #f5f9ff;
+      border: 1px solid #d6e5f7;
+      border-radius: 12px;
+      padding: 12px 16px;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+    }
+
+    .equation-main {
+      color: #1f455f;
+      font-size: 0.8em;
+      font-style: italic;
+      margin: 0;
+    }
+
+    .equation-index {
+      color: #fff;
+      background: #1a5f9b;
+      border-radius: 999px;
+      font-size: 0.48em;
+      padding: 4px 10px;
+      margin: 0;
+    }
+
+    .equation-hero {
+      text-align: center;
+      margin: 18px auto;
+      padding: 12px 16px;
+      max-width: 560px;
+      background: #f5f9ff;
+      border: 1px solid #d6e5f7;
+      border-radius: 12px;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+    }
+
+    .equation-note {
+      color: #2b4251;
+      font-size: 0.66em;
+      line-height: 1.4;
+      margin: 0 0 5px;
+      text-align: center;
+    }
+
+    .equation-math {
+      color: #1f455f;
+      font-size: 0.72em;
+      margin: 0 0 10px;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .sets-slide {
+      background: radial-gradient(circle at top right, #eef5ff 0%, #f8fbff 42%, #eef4fb 100%) !important;
+    }
+
+    .sets-intro {
+      font-size: 0.82em !important;
+      color: #2d4352 !important;
+      margin: 0 auto 12px;
+      max-width: 840px;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    .sets-figure-shell {
+      margin-top: 10px;
+      padding: 14px 16px 12px;
+      border-radius: 18px;
+      border: 1px solid #d6e3f2;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(245, 250, 255, 0.98));
+      box-shadow: 0 16px 34px rgba(8, 43, 86, 0.11);
+    }
+
+    .sets-figure {
+      width: min(700px, 100%);
       height: auto;
       display: block;
       margin: 0 auto;
     }
 
-    .algo-flow-slide .algo-shell {
-      padding: 4px 12px 10px;
+    #sets-d3-diagram {
+      width: min(700px, 100%);
+      margin: 0 auto;
     }
 
-    .algo-flow-slide .algo-title {
-      margin-bottom: 4px !important;
-      font-size: 1.2em !important;
+    #sets-d3-diagram svg {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
-    .algo-flow-slide .algo-question {
-      margin: 0 0 6px;
-      font-size: 0.78em !important;
-      line-height: 1.15;
+    .sets-python-map {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 12px;
     }
 
-    .algo-flow-slide .algo-flow-wrap {
-      margin-top: 0;
-      padding: 6px;
+    .sets-tag {
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 0.68em;
+      font-weight: 600;
+      border: 1px solid transparent;
+      box-shadow: 0 7px 16px rgba(11, 44, 84, 0.1);
+      color: #264150 !important;
+      background: #f6fbff;
     }
 
-    .algo-flow-slide .algo-flow {
-      max-width: 760px;
+    .sets-tag code {
+      font-weight: 800;
+      background: rgba(255, 255, 255, 0.65);
+      border-radius: 6px;
+      padding: 1px 5px;
     }
 
-    .algo-solution-grid {
-      display: grid;
-      grid-template-columns: 1.35fr 1fr;
-      gap: 20px;
+    .sets-tag-int {
+      background: #edf8ef;
+      border-color: #9dd5a5;
+    }
+
+    .sets-tag-float {
+      background: #fff6eb;
+      border-color: #f4bc78;
+    }
+
+    .activity-slide {
+      background: radial-gradient(circle at top right, #eef6ff 0%, #f8fbff 44%, #eef4fb 100%) !important;
+      text-align: left;
+      padding: 20px 26px !important;
+    }
+
+    .activity-card {
+      max-width: 860px;
+      margin: 10px auto 0;
+      padding: 16px 18px;
+      border-radius: 14px;
+      border: 1px solid #bfd9f2;
+      border-left: 6px solid #1a5f9b;
+      background: linear-gradient(140deg, #f8fcff, #edf6ff);
+      box-shadow: 0 10px 24px rgba(9, 43, 84, 0.1);
+    }
+
+    .activity-title {
+      margin: 0 0 8px 0;
+      color: #124980 !important;
+      font-size: 0.86em !important;
+      font-weight: 700;
+      display: flex;
       align-items: center;
-      margin-top: 8px;
+      gap: 9px;
     }
 
-    .algo-flow-placeholder {
-      min-height: 300px;
-      border-radius: 10px;
-      background: transparent;
+    .activity-question {
+      margin: 0;
+      color: #2b4352 !important;
+      font-size: 0.74em !important;
+      line-height: 1.45;
+    }
+
+    .activity-question code {
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 6px;
+      padding: 2px 6px;
+      font-size: 0.95em;
+      white-space: nowrap;
     }
 
     @media (max-width: 768px) {
@@ -584,63 +1095,101 @@
         font-size: 1.4em;
       }
 
-      .resolve-sheet {
-        padding: 12px 12px;
+      .professor-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
       }
 
-      .resolve-item {
-        grid-template-columns: 28px 1fr;
+      .professor-slide,
+      .syllabus-slide {
+        padding: 14px !important;
+      }
+
+      .section-cover {
+        padding: 58px 18px !important;
+      }
+
+      .section-cover h2 {
+        font-size: 1.08em !important;
+      }
+
+      .professor-row {
+        grid-template-columns: 1fr;
+        gap: 5px;
+      }
+
+      .professor-aside img {
+        width: 120px;
+        height: 132px;
+      }
+
+      .syllabus-topbar {
+        margin: -14px -14px 18px;
+        padding: 12px 14px;
+      }
+
+      .equation-row {
+        flex-direction: column;
         gap: 8px;
+        width: auto;
       }
 
-      .resolve-num {
-        width: 26px;
-        height: 26px;
-        font-size: 0.75em;
-      }
-
-      .resolve-exp {
-        font-size: 0.78em;
-      }
-
-      .algo-main {
+      .intro-cards {
         grid-template-columns: 1fr;
       }
 
-      .algo-side-art {
-        min-height: 140px;
+      .intro-cards > .intro-card:nth-child(4),
+      .intro-cards > .intro-card:nth-child(5) {
+        grid-column: auto;
+        justify-self: auto;
       }
 
-      .algo-choice-grid {
+      .criteria-grid {
         grid-template-columns: 1fr;
       }
 
-      .algo-choice-card {
-        min-height: 150px;
-      }
-
-      .algo-ou {
-        min-width: auto;
-      }
-
-      .algo-think-card {
-        min-height: 180px;
-      }
-
-      .algo-think-card p {
-        font-size: 0.9em !important;
-      }
-
-      .algo-solution-grid {
+      .ap-grid {
         grid-template-columns: 1fr;
       }
 
-      .algo-flow-placeholder {
-        min-height: 130px;
+      .ae-details {
+        grid-template-columns: 1fr;
       }
 
-      .algo-flow-slide .algo-flow {
-        max-width: 100%;
+      .eval-bar {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .media-constraints {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .sets-figure-shell {
+        padding: 10px;
+      }
+
+      .sets-tag {
+        width: 100%;
+        max-width: 420px;
+        text-align: center;
+      }
+
+      .activity-slide {
+        padding: 14px !important;
+      }
+
+      .activity-card {
+        padding: 12px 14px;
+      }
+
+      .activity-title {
+        font-size: 0.78em !important;
+      }
+
+      .activity-question {
+        font-size: 0.68em !important;
       }
     }
   </style>
@@ -650,19 +1199,18 @@
   <div class="reveal">
     <div class="slides">
 
+
       <!-- ==================== SLIDE 1 – Capa ==================== -->
       <section class="hero-cover" data-background-gradient="linear-gradient(140deg, #0d2550, #1450a4, #1ba37f)">
         <div class="hero-grid">
           <div class="hero-content">
             <p class="hero-kicker"><i class="fa-solid fa-laptop-code icon" aria-hidden="true"></i>Introdução à
               Programação</p>
-            <h1 class="hero-title">Aula 02<br><span>Operadores em Python</span></h1>
-            <p class="hero-subtitle">Aritméticos, relacionais e lógicos — a base para tomar decisões no código.</p>
+            <h1 class="hero-title">Aula 02<br><span>Variáveis e Entrada de Dados</span></h1>
+            <p class="hero-subtitle">Variáveis int, float, str, boolean, print() e input()</p>
             <div class="hero-tags">
-              <span>Operadores Aritméticos</span>
-              <span>Operadores Relacionais</span>
-              <span>Operadores Lógicos</span>
-              <span>Atividades</span>
+                <span>Variáveis</span>
+                <span>Entrada de Dados</span>
             </div>
             <p class="hero-meta"><i class="fa-solid fa-user-tie icon" aria-hidden="true"></i>Prof. Msc. Nator Junior
               Carvalho da Costa</p>
@@ -680,1141 +1228,672 @@
         <h2><i class="fa-solid fa-rotate-left icon" aria-hidden="true"></i> Revisão Rápida</h2>
         <p class="fragment">Na aula passada, aprendemos:</p>
         <ul>
-          <li class="fragment"><i class="fa-solid fa-check icon" aria-hidden="true"></i> Variáveis guardam valores
-            (<code>int</code>, <code>float</code>, <code>str</code>, <code>bool</code>)</li>
-          <li class="fragment"><i class="fa-solid fa-check icon" aria-hidden="true"></i> <code>print()</code> exibe
-            dados na tela</li>
-          <li class="fragment"><i class="fa-solid fa-check icon" aria-hidden="true"></i> <code>input()</code> lê dados
-            do usuário</li>
-        </ul>
-        <div class="box fragment">
-          <i class="fa-solid fa-lightbulb icon" aria-hidden="true"></i> Hoje vamos aprender a <strong>calcular</strong>,
-          <strong>comparar</strong> e <strong>combinar condições</strong> usando operadores!
-        </div>
+          <li class="fragment">O que é um programa de computador</li>
+          <li class="fragment">O que é uma linguagem de programação</li>
+          <li class="fragment">Como usar o Google Colab para escrever código Python</li>
+
       </section>
 
-      <!-- ==================== SLIDES 2.x – Relembrando Algoritmo (auto-animate) ==================== -->
-      <section class="algo-recap" data-auto-animate data-auto-animate-duration="0.65">
-        <div class="algo-shell">
-          <h2 class="algo-title" data-id="algo-title">Algoritmo</h2>
-          <div class="algo-main">
-            <div>
-              <p data-id="algo-def">Um algoritmo é uma sequência de passos bem definidos para resolver um problema ou
-                realizar uma atividade.</p>
-              <p style="margin-top: 12px;">Exemplos:</p>
-              <ul>
-                <li>Fazer um bolo;</li>
-                <li>Trocar uma lâmpada;</li>
-                <li>Trocar o pneu de um carro.</li>
-              </ul>
-            </div>
-            <div class="algo-side-art" data-id="algo-art">
-              <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <section class="algo-recap" data-auto-animate data-auto-animate-duration="0.65">
-        <div class="algo-shell">
-          <h2 class="algo-title" data-id="algo-title">Algoritmo</h2>
-          <p class="algo-question" data-id="algo-question">Imagine a seguinte questão:</p>
-        </div>
-      </section>
 
-      <section class="algo-recap" data-auto-animate data-auto-animate-duration="0.65">
-        <div class="algo-shell">
-          <h2 class="algo-title" data-id="algo-title">Algoritmo</h2>
-          <p class="algo-question" data-id="algo-question">Imagine a seguinte questão:</p>
-          <div class="algo-choice-grid">
-            <div class="algo-choice-card wedding" data-id="choice-wedding">
-              <p class="algo-choice-title">Casar</p>
-              <i class="fa-solid fa-heart" aria-hidden="true"></i>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <section class="algo-recap" data-auto-animate data-auto-animate-duration="0.65">
-        <div class="algo-shell">
-          <h2 class="algo-title" data-id="algo-title">Algoritmo</h2>
-          <p class="algo-question" data-id="algo-question">Imagine a seguinte questão:</p>
-          <div class="algo-choice-grid">
-            <div class="algo-choice-card wedding" data-id="choice-wedding">
-              <p class="algo-choice-title">Casar</p>
-              <i class="fa-solid fa-heart" aria-hidden="true"></i>
-            </div>
-            <div class="algo-ou" data-id="choice-or">ou</div>
-          </div>
-        </div>
-      </section>
 
-      <section class="algo-recap" data-auto-animate data-auto-animate-duration="0.65">
-        <div class="algo-shell">
-          <h2 class="algo-title" data-id="algo-title">Algoritmo</h2>
-          <p class="algo-question" data-id="algo-question">Imagine a seguinte questão:</p>
-          <div class="algo-choice-grid">
-            <div class="algo-choice-card wedding" data-id="choice-wedding">
-              <p class="algo-choice-title">Casar</p>
-              <i class="fa-solid fa-heart" aria-hidden="true"></i>
-            </div>
-            <div class="algo-ou" data-id="choice-or">ou</div>
-            <div class="algo-choice-card bike" data-id="choice-bike">
-              <p class="algo-choice-title">Comprar uma bicicleta</p>
-              <i class="fa-solid fa-bicycle" aria-hidden="true"></i>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <section class="algo-recap" data-auto-animate data-auto-animate-duration="0.65">
-        <div class="algo-shell">
-          <h2 class="algo-title" data-id="algo-title">Algoritmo</h2>
-          <div class="algo-think-card">
-            <p>Como você resolveria a questão?</p>
-          </div>
-        </div>
-      </section>
 
-      <section class="algo-recap algo-flow-slide" data-auto-animate data-auto-animate-duration="0.65">
-        <div class="algo-shell">
-          <h2 class="algo-title" data-id="algo-title">Algoritmo</h2>
-          <p class="algo-question" data-id="algo-solution-text">Podemos solucionar a questão de diversas maneiras. Uma
-            solução viável é:</p>
-          <div class="algo-solution-grid">
-            <div class="algo-flow-wrap" data-id="algo-flow-panel">
-              <div class="algo-flow-placeholder"></div>
-            </div>
-            <div class="algo-side-art" data-id="algo-solution-art">
-              <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <section class="algo-recap algo-flow-slide" data-auto-animate data-auto-animate-duration="0.65">
-        <div class="algo-shell">
-          <h2 class="algo-title" data-id="algo-title">Algoritmo</h2>
-          <p class="algo-question" data-id="algo-solution-text">Podemos solucionar a questão de diversas maneiras. Uma
-            solução viável é:</p>
-          <div class="algo-solution-grid" style="grid-template-columns: 1fr;">
-            <div class="algo-flow-wrap" data-id="algo-flow-panel">
-              <svg class="algo-flow" viewBox="0 0 1200 740" xmlns="http://www.w3.org/2000/svg" role="img"
-                aria-label="Fluxograma completo de decisão">
-                <defs>
-                  <linearGradient id="algoNodeFill" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#f8e7b2" />
-                    <stop offset="100%" stop-color="#f2d36b" />
-                  </linearGradient>
-                  <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-                    <polygon points="0 0, 8 3, 0 6" fill="#202020" />
-                  </marker>
-                </defs>
+      
 
-                <rect x="330" y="20" width="540" height="80" rx="14" fill="url(#algoNodeFill)" stroke="#d5b459" stroke-width="2" />
-                <text x="600" y="71" text-anchor="middle" font-size="24" font-family="Roboto, sans-serif"
-                  fill="#111">Casar ou comprar uma bicicleta?</text>
-
-                <polygon points="600,145 700,245 600,345 500,245" fill="#efe5c6" stroke="#d2b05b" stroke-width="2" />
-                <text x="600" y="238" text-anchor="middle" font-size="24" font-family="Roboto, sans-serif" fill="#111">Você está</text>
-                <text x="600" y="292" text-anchor="middle" font-size="24" font-family="Roboto, sans-serif" fill="#111">gordo(a) ?</text>
-
-                <polygon points="160,285 280,405 160,525 40,405" fill="#efe5c6" stroke="#d2b05b" stroke-width="2" />
-                <text x="160" y="395" text-anchor="middle" font-size="24" font-family="Roboto, sans-serif" fill="#111">Quer</text>
-                <text x="160" y="445" text-anchor="middle" font-size="24" font-family="Roboto, sans-serif" fill="#111">emagrecer ?</text>
-
-                <polygon points="1040,285 1160,405 1040,525 920,405" fill="#efe5c6" stroke="#d2b05b" stroke-width="2" />
-                <text x="1040" y="395" text-anchor="middle" font-size="24" font-family="Roboto, sans-serif" fill="#111">Quer</text>
-                <text x="1040" y="445" text-anchor="middle" font-size="24" font-family="Roboto, sans-serif" fill="#111">Engordar ?</text>
-
-                <rect x="330" y="550" width="540" height="74" rx="14" fill="url(#algoNodeFill)" stroke="#d5b459" stroke-width="2" />
-                <text x="600" y="598" text-anchor="middle" font-size="24" font-family="Roboto, sans-serif" fill="#111">Case</text>
-
-                <rect x="330" y="640" width="540" height="74" rx="14" fill="url(#algoNodeFill)" stroke="#d5b459" stroke-width="2" />
-                <text x="600" y="688" text-anchor="middle" font-size="24" font-family="Roboto, sans-serif" fill="#111">Compre uma bicicleta !</text>
-
-                <line x1="600" y1="100" x2="600" y2="143" stroke="#202020" stroke-width="3" marker-end="url(#arrowhead)" />
-
-                <polyline points="500,245 160,245 160,284" fill="none" stroke="#202020" stroke-width="3" marker-end="url(#arrowhead)" />
-                <text x="300" y="225" text-anchor="middle" font-size="22" font-family="Roboto, sans-serif" fill="#111">Sim</text>
-
-                <polyline points="700,245 1040,245 1040,284" fill="none" stroke="#202020" stroke-width="3" marker-end="url(#arrowhead)" />
-                <text x="880" y="225" text-anchor="middle" font-size="22" font-family="Roboto, sans-serif" fill="#111">Não</text>
-
-                <polyline points="280,405 330,405 330,587" fill="none" stroke="#202020" stroke-width="3" marker-end="url(#arrowhead)" />
-                <text x="290" y="510" text-anchor="middle" font-size="22" font-family="Roboto, sans-serif" fill="#111">Não</text>
-
-                <polyline points="920,405 900,405 900,587 870,587" fill="none" stroke="#202020" stroke-width="3" marker-end="url(#arrowhead)" />
-                <text x="925" y="510" text-anchor="middle" font-size="22" font-family="Roboto, sans-serif" fill="#111">Sim</text>
-
-                <polyline points="160,525 160,677 330,677" fill="none" stroke="#202020" stroke-width="3" marker-end="url(#arrowhead)" />
-                <text x="92" y="610" text-anchor="middle" font-size="22" font-family="Roboto, sans-serif" fill="#111">Sim</text>
-
-                <polyline points="1040,525 1040,677 870,677" fill="none" stroke="#202020" stroke-width="3" marker-end="url(#arrowhead)" />
-                <text x="1078" y="610" text-anchor="middle" font-size="22" font-family="Roboto, sans-serif" fill="#111">Não</text>
-
-                <line x1="20" y1="712" x2="84" y2="712" stroke="#8a8a8a" stroke-width="3" />
-                <line x1="988" y1="712" x2="1180" y2="712" stroke="#8a8a8a" stroke-width="3" />
-                <text x="955" y="720" text-anchor="middle" font-size="22" font-family="Roboto, sans-serif" fill="#111">Fonte: icasei.com</text>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==================== SLIDE 3 – Objetivos ==================== -->
-      <section>
-        <h2><i class="fa-solid fa-bullseye icon" aria-hidden="true"></i> Objetivos da Aula</h2>
-        <ul>
-          <li class="fragment">Dominar os <strong>operadores aritméticos</strong></li>
-          <li class="fragment">Entender os <strong>operadores relacionais</strong> (comparação)</li>
-          <li class="fragment">Conhecer os <strong>operadores lógicos</strong></li>
-          <li class="fragment">Saber a <strong>precedência</strong> dos operadores</li>
-          <li class="fragment">Resolver <strong>atividades práticas</strong> com operadores</li>
-        </ul>
-      </section>
-
-      <!-- ==================== SLIDE 4 – O que são operadores? ==================== -->
-      <section class="bg-accent">
-        <h2><i class="fa-solid fa-gears icon" aria-hidden="true"></i> O que são Operadores?</h2>
-        <p class="fragment">Operadores são <strong>símbolos especiais</strong> que dizem ao Python para realizar uma
-          operação.</p>
-        <div class="columns">
-          <div class="fragment">
-            <div class="box">
-              <strong>Aritméticos</strong><br>
-              Fazem contas<br>
-              <code>+</code> <code>-</code> <code>*</code> <code>/</code>
-            </div>
-          </div>
-          <div class="fragment">
-            <div class="box">
-              <strong>Relacionais</strong><br>
-              Comparam valores<br>
-              <code>></code> <code><</code> <code>==</code> <code>!=</code>
-            </div>
-          </div>
-          <div class="fragment">
-            <div class="box">
-              <strong>Lógicos</strong><br>
-              Combinam condições<br>
-              <code>and</code> <code>or</code> <code>not</code>
-            </div>
-          </div>
-        </div>
-      </section>
 <section>
 
-      <!-- ==================== SLIDE 5 – Aritméticos: tabela ==================== -->
-      <section>
-        <h2><i class="fa-solid fa-calculator icon" aria-hidden="true"></i> Operadores Aritméticos</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Operação</th>
-              <th>Símbolo</th>
-              <th>Exemplo</th>
-              <th>Resultado</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="fragment">
-              <td>Soma</td>
-              <td><code>+</code></td>
-              <td><code>5 + 3</code></td>
-              <td><code>8</code></td>
-            </tr>
-            <tr class="fragment">
-              <td>Subtração</td>
-              <td><code>-</code></td>
-              <td><code>10 - 4</code></td>
-              <td><code>6</code></td>
-            </tr>
-            <tr class="fragment">
-              <td>Multiplicação</td>
-              <td><code>*</code></td>
-              <td><code>3 * 7</code></td>
-              <td><code>21</code></td>
-            </tr>
-            <tr class="fragment">
-              <td>Divisão</td>
-              <td><code>/</code></td>
-              <td><code>10 / 3</code></td>
-              <td><code>3.333…</code></td>
-            </tr>
-            <tr class="fragment">
-              <td>Divisão inteira</td>
-              <td><code>//</code></td>
-              <td><code>10 // 3</code></td>
-              <td><code>3</code></td>
-            </tr>
-            <tr class="fragment">
-              <td>Resto (módulo)</td>
-              <td><code>%</code></td>
-              <td><code>10 % 3</code></td>
-              <td><code>1</code></td>
-            </tr>
-            <tr class="fragment">
-              <td>Potência</td>
-              <td><code>**</code></td>
-              <td><code>2 ** 3</code></td>
-              <td><code>8</code></td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
 
-<!-- =========================================================
-     ATIVIDADE (REVEAL.JS) — Operadores Aritméticos (bem gradual)
-     Ideia: pedir para o aluno criar a, b, resultado e imprimir,
-     avançando uma operação por vez.
-   ========================================================= -->
-
-<!-- ==================== SLIDE 1 — Enunciado ==================== -->
-<section class="bg-light">
-  <h2><i class="fa-solid fa-clipboard-check icon" aria-hidden="true"></i> Atividade: Aritméticos (passo a passo)</h2>
-  <p>Você vai montar um programa bem simples seguindo os passos abaixo.</p>
-  <ol>
-    <li class="fragment">Crie duas variáveis: <code>a</code> e <code>b</code></li>
-    <li class="fragment">Crie uma terceira variável: <code>resultado</code></li>
-    <li class="fragment">Guarde em <code>resultado</code> o valor de uma operação entre <code>a</code> e <code>b</code></li>
-    <li class="fragment">Imprima <code>resultado</code></li>
-  </ol>
-  <div class="box fragment">
-    Regras: faça <b>uma operação por vez</b> e rode o código a cada passo.
-  </div>
-</section>
-
-<!-- ==================== SLIDE 2 — Aluno: crie a e b ==================== -->
-<section class="bg-light">
-  <h2>Passo 1 — Crie <code>a</code> e <code>b</code></h2>
-
-  <p class="fragment">Digite no seu editor:</p>
-  <pre><code class="language-python" data-trim data-line-numbers="1-2">
-a = 15
-b = 4
-  </code></pre>
-
-  <ul>
-    <li class="fragment">Agora <b>troque</b> os valores de <code>a</code> e <code>b</code> por outros números.</li>
-  </ul>
-</section>
-
-<!-- ==================== SLIDE 3 — Aluno: crie resultado ==================== -->
-<section class="bg-light" data-auto-animate>
-  <h2>Passo 2 — Crie <code>resultado</code> (sem imprimir ainda)</h2>
-
-  <p class="fragment">Complete o código adicionando a linha do <code>resultado</code>:</p>
-
-  <pre data-id="atividade-codigo"><code class="language-python" data-trim data-line-numbers="1-3|3">
-a = 15
-b = 4
-resultado = a + b
-  </code></pre>
-
-  <div class="box fragment">
-    <i class="fa-solid fa-lightbulb icon" aria-hidden="true"></i>
-    Antes de executar: qual valor você espera em <code>resultado</code>?
-  </div>
-</section>
-
-<!-- ==================== SLIDE 4 — Aluno: imprima resultado ==================== -->
-<section class="bg-light" data-auto-animate>
-  <h2>Passo 3 — Imprima <code>resultado</code></h2>
-
-  <p class="fragment">Agora adicione o <code>print</code>:</p>
-
-  <pre data-id="atividade-codigo"><code class="language-python" data-trim data-line-numbers="1-5|5">
-a = 15
-b = 4
-resultado = a + b
-
-print(resultado)
-  </code></pre>
-
-  <ul>
-    <li class="fragment">Execute e confira se bateu com sua previsão.</li>
-  </ul>
-</section>
-
-<!-- ==================== SLIDE 5 — Trocar só a operação: subtração ==================== -->
-<section class="bg-light" data-auto-animate>
-  <h2>Passo 4 — Subtração</h2>
-
-  <p class="fragment">Agora, sem mudar mais nada, troque apenas o operador para <code>-</code>:</p>
-
-  <pre data-id="atividade-codigo"><code class="language-python" data-trim data-line-numbers="3|1-5">
-a = 15
-b = 4
-resultado = a - b
-
-print(resultado)
-  </code></pre>
-</section>
-
-<!-- ==================== SLIDE 6 — Multiplicação ==================== -->
-<section class="bg-light" data-auto-animate>
-  <h2>Passo 5 — Multiplicação</h2>
-
-  <p class="fragment">Troque apenas o operador para <code>*</code>:</p>
-
-  <pre data-id="atividade-codigo"><code class="language-python" data-trim data-line-numbers="3">
-a = 15
-b = 4
-resultado = a * b
-
-print(resultado)
-  </code></pre>
-</section>
-
-
-      <!-- ==================== SLIDE 7 – Diferença / e // ==================== -->
-      <section>
-        <h2><i class="fa-solid fa-divide icon" aria-hidden="true"></i> Divisão <code>/</code> vs <code>//</code></h2>
-        <div class="columns">
-          <div class="fragment">
-            <h4><code>/</code> Divisão real</h4>
-            <pre><code class="language-python" data-trim data-noescape>
-print(7 / 2)   # 3.5
-print(10 / 5)  # 2.0
-print(1 / 3)   # 0.333…
-            </code></pre>
-            <p style="font-size:.8em;">Sempre retorna <code>float</code></p>
-          </div>
-          <div class="fragment">
-            <h4><code>//</code> Divisão inteira</h4>
-            <pre><code class="language-python" data-trim data-noescape>
-print(7 // 2)   # 3
-print(10 // 5)  # 2
-print(1 // 3)   # 0
-            </code></pre>
-            <p style="font-size:.8em;">Descarta a parte decimal</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==================== SLIDE 8 – Operador % (módulo) ==================== -->
-      <section class="bg-accent">
-        <h2><i class="fa-solid fa-percent icon" aria-hidden="true"></i> O Operador <code>%</code> (Módulo / Resto)</h2>
-        <p class="fragment">Retorna o <strong>resto</strong> da divisão inteira.</p>
+      <!-- ==================== SLIDE 10 – Variáveis ==================== -->
+      <section class="bg-light">
+        <h2><i class="fa-solid fa-box icon" aria-hidden="true"></i> O que é uma Variável?</h2>
+        <p class="fragment">Pense numa variável como uma <strong>caixa com etiqueta</strong>.</p>
+        <p class="fragment">Você dá um <strong>nome</strong> para a caixa e guarda um <strong>valor</strong> dentro.</p>
         <pre class="fragment"><code class="language-python" data-trim data-noescape>
-print(10 % 3)  # 1  → 10 ÷ 3 = 3, resto 1
-print(10 % 2)  # 0  → 10 ÷ 2 = 5, resto 0
-print(7 % 4)   # 3  → 7 ÷ 4 = 1, resto 3
-        </code></pre>
-      </section>
-
-
-
-      <!-- ==================== SLIDE 9 – Exemplo prático aritméticos ==================== -->
-      <section>
-        <h2><i class="fa-solid fa-flask icon" aria-hidden="true"></i> Exemplo: Calculadora Simples</h2>
-        <pre><code class="language-python" data-trim data-noescape>
-n1 = float(input("Digite o 1º número: "))
-n2 = float(input("Digite o 2º número: "))
-
-print(f"Soma:           {n1 + n2}")
-print(f"Subtração:      {n1 - n2}")
-print(f"Multiplicação:  {n1 * n2}")
-print(f"Divisão:        {n1 / n2}")
+nome = "Ana"
+idade = 19
         </code></pre>
         <div class="box fragment">
-          <i class="fa-solid fa-triangle-exclamation icon" aria-hidden="true"></i> Cuidado! Dividir por zero causa
-          erro: <code>ZeroDivisionError</code>.
+          <i class="fa-solid fa-thumbtack icon" aria-hidden="true"></i> O sinal <code>=</code> em Python não é "igual" da matemática. <br>
+          Ele significa <strong>"recebe"</strong> → <code>nome</code> <em>recebe</em> <code>"Ana"</code>.
         </div>
       </section>
 
-      <!-- ==================== SLIDE 10 – Precedência Aritmética ==================== -->
-      <section class="bg-light">
-        <h2><i class="fa-solid fa-sort-numeric-down icon" aria-hidden="true"></i> Precedência Aritmética</h2>
-        <div class="precedence-card fragment">
-          <p>Quando uma expressão tem vários operadores, o Python resolve em uma ordem padrão.</p>
-          <div class="precedence-order">
-            <span class="precedence-pill">1) <code>()</code> parênteses</span>
-            <span class="precedence-pill">2) <code>**</code> potência</span>
-            <span class="precedence-pill">3) <code>* / // %</code></span>
-            <span class="precedence-pill">4) <code>+ -</code></span>
-          </div>
-        </div>
-        <pre class="fragment"><code class="language-python" data-trim data-noescape>
-resultado1 = 2 + 3 * 4      # 14
-resultado2 = (2 + 3) * 4    # 20
-        </code></pre>
-      </section>
-
-      <!-- ==================== SLIDE 11 – Exercícios Aritméticos (Pergunta) ==================== -->
-      <section class="bg-activity" data-auto-animate>
-        <div class="resolve-sheet">
-          <p class="resolve-head"><strong>Resolva</strong> (use a precedência: <em>parênteses → potência → mult/div/mod → soma/sub</em>).</p>
-          <ol class="resolve-list" data-auto-animate-target=".resolve-list">
-            <li class="resolve-item">
-              <span class="resolve-num">1</span>
-              <p class="resolve-exp">2 + 3 * 4;</p>
-            </li>
-            <li class="resolve-item">
-              <span class="resolve-num">2</span>
-              <p class="resolve-exp">18 / 3 + 5 * 2;</p>
-            </li>
-            <li class="resolve-item">
-              <span class="resolve-num">3</span>
-              <p class="resolve-exp">(9 - 3) * (2 + 1);</p>
-            </li>
-            <li class="resolve-item">
-              <span class="resolve-num">4</span>
-              <p class="resolve-exp">20 // 3 + 20 % 3;</p>
-            </li>
-            <li class="resolve-item">
-              <span class="resolve-num">5</span>
-              <p class="resolve-exp">2 ** 3 + 4 * 2 - 5;</p>
-            </li>
-          </ol>
-          <p class="resolve-note">Atividade curta: Resolva primeiro sem executar e depois confira no Python.</p>
-        </div>
-      </section>
-
-      <!-- ==================== SLIDE 11B – Exercícios Aritméticos (Respostas com Auto-Animate) ==================== -->
-      <section class="bg-activity" data-auto-animate>
-        <div class="resolve-sheet">
-          <p class="resolve-head"><strong>Respostas</strong> ✓</p>
-          <ol class="resolve-list" data-auto-animate-target=".resolve-list">
-            <li class="resolve-item" style="display: grid; grid-template-columns: 24px 1fr auto; gap: 6px; align-items: baseline;">
-              <span class="resolve-num">1</span>
-              <p class="resolve-exp">2 + 3 * 4;</p>
-              <p class="resolve-exp"><span style="color: #27ae60; font-weight: 700;">= 14</span></p>
-            </li>
-            <li class="resolve-item" style="display: grid; grid-template-columns: 24px 1fr auto; gap: 6px; align-items: baseline;">
-              <span class="resolve-num">2</span>
-              <p class="resolve-exp">18 / 3 + 5 * 2;</p>
-              <p class="resolve-exp"><span style="color: #27ae60; font-weight: 700;">= 16</span></p>
-            </li>
-            <li class="resolve-item" style="display: grid; grid-template-columns: 24px 1fr auto; gap: 6px; align-items: baseline;">
-              <span class="resolve-num">3</span>
-              <p class="resolve-exp">(9 - 3) * (2 + 1);</p>
-              <p class="resolve-exp"><span style="color: #27ae60; font-weight: 700;">= 18</span></p>
-            </li>
-            <li class="resolve-item" style="display: grid; grid-template-columns: 24px 1fr auto; gap: 6px; align-items: baseline;">
-              <span class="resolve-num">4</span>
-              <p class="resolve-exp">20 // 3 + 20 % 3;</p>
-              <p class="resolve-exp"><span style="color: #27ae60; font-weight: 700;">= 8</span></p>
-            </li>
-            <li class="resolve-item" style="display: grid; grid-template-columns: 24px 1fr auto; gap: 6px; align-items: baseline;">
-              <span class="resolve-num">5</span>
-              <p class="resolve-exp">2 ** 3 + 4 * 2 - 5;</p>
-              <p class="resolve-exp"><span style="color: #27ae60; font-weight: 700;">= 11</span></p>
-            </li>
-          </ol>
-        </div>
-      </section>
-    </section>
-
-    <section>
-
-      <!-- ==================== SLIDE 12 – Operadores Relacionais: intro ==================== -->
+      <!-- ==================== SLIDE 11 – Regras de nomes ==================== -->
       <section>
-        <h2><i class="fa-solid fa-not-equal icon" aria-hidden="true"></i> Operadores Relacionais</h2>
-        <p class="fragment">Servem para <strong>comparar</strong> dois valores.</p>
-        <p class="fragment">O resultado é sempre <code>True</code> ou <code>False</code> (tipo <code>bool</code>).</p>
-        <div class="box fragment">
-          <i class="fa-solid fa-lightbulb icon" aria-hidden="true"></i> São essenciais para criar
-          <strong>condições</strong> (<code>if</code>) nas próximas aulas!
-        </div>
-      </section>
-
-      <!-- ==================== SLIDE 13 – Relacionais: tabela ==================== -->
-      <section class="bg-light">
-        <h2><i class="fa-solid fa-table icon" aria-hidden="true"></i> Tabela de Operadores Relacionais</h2>
+        <h2><i class="fa-solid fa-pen-to-square icon" aria-hidden="true"></i> Regras para Nomes de Variáveis</h2>
         <table>
           <thead>
             <tr>
-              <th>Operador</th>
-              <th>Significado</th>
-              <th>Exemplo</th>
-              <th>Resultado</th>
+              <th><i class="fa-solid fa-check icon" aria-hidden="true"></i> Válido</th>
+              <th><i class="fa-solid fa-xmark icon" aria-hidden="true"></i> Inválido</th>
+              <th>Motivo</th>
             </tr>
           </thead>
           <tbody>
             <tr class="fragment">
-              <td><code>==</code></td>
-              <td>Igual a</td>
-              <td><code>5 == 5</code></td>
-              <td><code>True</code></td>
+              <td><code>nome</code></td>
+              <td><code>1nome</code></td>
+              <td>Não pode começar com número</td>
             </tr>
             <tr class="fragment">
-              <td><code>!=</code></td>
-              <td>Diferente de</td>
-              <td><code>5 != 3</code></td>
-              <td><code>True</code></td>
+              <td><code>nota_final</code></td>
+              <td><code>nota final</code></td>
+              <td>Não pode ter espaço</td>
             </tr>
             <tr class="fragment">
-              <td><code>></code></td>
-              <td>Maior que</td>
-              <td><code>7 > 3</code></td>
-              <td><code>True</code></td>
-            </tr>
-            <tr class="fragment">
-              <td><code><</code></td>
-              <td>Menor que</td>
-              <td><code>2 < 8</code></td>
-              <td><code>True</code></td>
-            </tr>
-            <tr class="fragment">
-              <td><code>>=</code></td>
-              <td>Maior ou igual</td>
-              <td><code>5 >= 5</code></td>
-              <td><code>True</code></td>
-            </tr>
-            <tr class="fragment">
-              <td><code><=</code></td>
-              <td>Menor ou igual</td>
-              <td><code>3 <= 2</code></td>
-              <td><code>False</code></td>
+              <td><code>idade2</code></td>
+              <td><code>class</code></td>
+              <td>Palavra reservada do Python</td>
             </tr>
           </tbody>
         </table>
       </section>
 
-      <!-- ==================== SLIDE 13 – Relacionais: código ==================== -->
-      <section>
-        <h2><i class="fa-solid fa-code icon" aria-hidden="true"></i> Relacionais na Prática</h2>
-        <pre><code class="language-python" data-trim data-noescape>
-a = 10
-b = 7
-
-print(a == b)   # False → 10 não é igual a 7
-print(a != b)   # True  → 10 é diferente de 7
-print(a > b)    # True  → 10 é maior que 7
-print(a < b)    # False → 10 não é menor que 7
-print(a >= 10)  # True  → 10 é maior ou igual a 10
-print(b <= 5)   # False → 7 não é menor ou igual a 5
-        </code></pre>
-      </section>
-
-      <!-- ==================== SLIDE 14 – Cuidado: = vs == ==================== -->
-      <section class="bg-warn">
-        <h2><i class="fa-solid fa-triangle-exclamation icon" aria-hidden="true"></i> Cuidado! <code>=</code> vs
-          <code>==</code>
-        </h2>
-        <div class="columns">
-          <div class="fragment">
-            <div class="box-orange">
-              <strong><code>=</code> (um igual)</strong><br>
-              <em>Atribuição</em> — guarda valor<br>
-              <pre><code class="language-python" data-trim>
-x = 10  # x recebe 10
-              </code></pre>
-            </div>
-          </div>
-          <div class="fragment">
-            <div class="box-green">
-              <strong><code>==</code> (dois iguais)</strong><br>
-              <em>Comparação</em> — verifica igualdade<br>
-              <pre><code class="language-python" data-trim>
-x == 10  # x é igual a 10?
-              </code></pre>
-            </div>
-          </div>
+      <section class="activity-slide">
+        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade Rápida</h2>
+        <div class="activity-card">
+          <p class="activity-title"><i class="fa-solid fa-stopwatch" aria-hidden="true"></i>Criando a primeira Variável</p>
+          <p class="activity-question">Abra o <b>navegador no modo anônimo</b></p>
+          <ul>
+            <li>Vá até o site do Google Colab</li>
+            <li>Crie um novo notebook</li>
+          </ul>
+          <p class="activity-question">crie uma variável chamada <code>minha_variavel</code> e atribua o valor <code>10</code> a ela</p>
         </div>
-        <p class="fragment" style="font-size:.85em;">
-          <i class="fa-solid fa-lightbulb icon" aria-hidden="true"></i>
-          Esse é um dos <strong>erros mais comuns</strong> de iniciantes!
-        </p>
-      </section>
-      
-<!-- ==================== SLIDE – Exercícios Aritméticos + Relacionais (Pergunta) ==================== -->
-<section class="bg-activity" data-auto-animate>
-  <div class="resolve-sheet">
-    <p class="resolve-head">
-      <strong>Resolva</strong> (use a precedência:
-      <em>parênteses → potência → mult/div/mod → soma/sub → relacionais</em>).
-    </p>
-
-    <ol class="resolve-list" data-auto-animate-target=".resolve-list">
-
-      <!-- Relacionais variados -->
-      <li class="resolve-item">
-        <span class="resolve-num">4</span>
-        <p class="resolve-exp">5 &gt; 3;</p>
-      </li>
-
-      <li class="resolve-item">
-        <span class="resolve-num">5</span>
-        <p class="resolve-exp">10 &lt; 2 * 6;</p>
-      </li>
-
-      <li class="resolve-item">
-        <span class="resolve-num">6</span>
-        <p class="resolve-exp">4 + 4 == 2 * 4;</p>
-      </li>
-
-      <li class="resolve-item">
-        <span class="resolve-num">7</span>
-        <p class="resolve-exp">15 % 2 != 0;</p>
-      </li>
-
-      <li class="resolve-item">
-        <span class="resolve-num">8</span>
-        <p class="resolve-exp">3 ** 2 &gt;= 9;</p>
-      </li>
-
-      <li class="resolve-item">
-        <span class="resolve-num">9</span>
-        <p class="resolve-exp">7 - 2 &lt;= 4;</p>
-      </li>
-
-    </ol>
-
-    <p class="resolve-note">
-      Resolva primeiro no papel. Depois teste no Python.
-      Resultados relacionais devem ser <strong>True</strong> ou <strong>False</strong>.
-    </p>
-  </div>
-</section>
-
-
-
-<!-- ==================== SLIDE – Respostas ==================== -->
-<section class="bg-activity" data-auto-animate>
-  <div class="resolve-sheet">
-    <p class="resolve-head"><strong>Respostas</strong> ✓</p>
-
-    <ol class="resolve-list" data-auto-animate-target=".resolve-list">
-
-      <li class="resolve-item" style="display:grid; grid-template-columns:24px 1fr auto; gap:6px;">
-        <span class="resolve-num">4</span>
-        <p class="resolve-exp">5 &gt; 3;</p>
-        <p class="resolve-exp"><span style="color:#27ae60; font-weight:700;">= True</span></p>
-      </li>
-
-      <li class="resolve-item" style="display:grid; grid-template-columns:24px 1fr auto; gap:6px;">
-        <span class="resolve-num">5</span>
-        <p class="resolve-exp">10 &lt; 2 * 6;</p>
-        <p class="resolve-exp"><span style="color:#27ae60; font-weight:700;">= True</span></p>
-      </li>
-
-      <li class="resolve-item" style="display:grid; grid-template-columns:24px 1fr auto; gap:6px;">
-        <span class="resolve-num">6</span>
-        <p class="resolve-exp">4 + 4 == 2 * 4;</p>
-        <p class="resolve-exp"><span style="color:#27ae60; font-weight:700;">= True</span></p>
-      </li>
-
-      <li class="resolve-item" style="display:grid; grid-template-columns:24px 1fr auto; gap:6px;">
-        <span class="resolve-num">7</span>
-        <p class="resolve-exp">15 % 2 != 0;</p>
-        <p class="resolve-exp"><span style="color:#27ae60; font-weight:700;">= True</span></p>
-      </li>
-
-      <li class="resolve-item" style="display:grid; grid-template-columns:24px 1fr auto; gap:6px;">
-        <span class="resolve-num">8</span>
-        <p class="resolve-exp">3 ** 2 &gt;= 9;</p>
-        <p class="resolve-exp"><span style="color:#27ae60; font-weight:700;">= True</span></p>
-      </li>
-
-      <li class="resolve-item" style="display:grid; grid-template-columns:24px 1fr auto; gap:6px;">
-        <span class="resolve-num">9</span>
-        <p class="resolve-exp">7 - 2 &lt;= 4;</p>
-        <p class="resolve-exp"><span style="color:#27ae60; font-weight:700;">= False</span></p>
-      </li>
-
-    </ol>
-  </div>
-</section>
-
-
-
-
-
-
-
-
-
-
-
-    </section>
-
-    <section>
-
-      <!-- ==================== SLIDE 17 – Operadores Lógicos: intro ==================== -->
-      <section>
-        <h2><i class="fa-solid fa-code-branch icon" aria-hidden="true"></i> Operadores Lógicos</h2>
-        <p class="fragment">Servem para <strong>combinar</strong> duas ou mais condições.</p>
-        <p class="fragment">Resultado: sempre <code>True</code> ou <code>False</code>.</p>
-        <table class="fragment">
-          <thead>
-            <tr>
-              <th>Operador</th>
-              <th>Significado</th>
-              <th>Quando é <code>True</code>?</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>and</code></td>
-              <td>E</td>
-              <td>Ambas as condições são verdadeiras</td>
-            </tr>
-            <tr>
-              <td><code>or</code></td>
-              <td>OU</td>
-              <td>Pelo menos uma condição é verdadeira</td>
-            </tr>
-            <tr>
-              <td><code>not</code></td>
-              <td>NÃO</td>
-              <td>Inverte o valor lógico</td>
-            </tr>
-          </tbody>
-        </table>
       </section>
 
-      <!-- ==================== SLIDE 18 – Tabela verdade AND ==================== -->
+      <!-- ==================== SLIDE 12 – Tipos de dados: Introdução ==================== -->
       <section class="bg-accent">
-        <h2><i class="fa-solid fa-table icon" aria-hidden="true"></i> Tabela Verdade — <code>and</code></h2>
-        <p>Só é <code>True</code> quando <strong>as duas</strong> condições são verdadeiras.</p>
-        <table>
-          <thead>
-            <tr>
-              <th>A</th>
-              <th>B</th>
-              <th>A <code>and</code> B</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="fragment">
-              <td><code>True</code></td>
-              <td><code>True</code></td>
-              <td><code style="color:#27ae60; font-weight:700;">True</code></td>
-            </tr>
-            <tr class="fragment">
-              <td><code>True</code></td>
-              <td><code>False</code></td>
-              <td><code style="color:#c0392b; font-weight:700;">False</code></td>
-            </tr>
-            <tr class="fragment">
-              <td><code>False</code></td>
-              <td><code>True</code></td>
-              <td><code style="color:#c0392b; font-weight:700;">False</code></td>
-            </tr>
-            <tr class="fragment">
-              <td><code>False</code></td>
-              <td><code>False</code></td>
-              <td><code style="color:#c0392b; font-weight:700;">False</code></td>
-            </tr>
-          </tbody>
-        </table>
-        <!-- <pre class="fragment"><code class="language-python" data-trim data-noescape>
+        <h2><i class="fa-solid fa-shapes icon" aria-hidden="true"></i> Tipos de Dados</h2>
+        <p class="fragment">Todo valor que guardamos numa variável tem um <strong>tipo</strong>.</p>
+        <p class="fragment">Pense assim: uma gaveta de <strong>meias</strong> é diferente de uma gaveta de <strong>livros</strong>.</p>
+
+        <p class="fragment">O computador precisa saber <strong>o tipo</strong> do dado para saber como usá-lo.</p>
+        <div class="box fragment" style="text-align: center;">
+          <i class="fa-solid fa-lightbulb icon" aria-hidden="true"></i> Em Python existem 4 tipos básicos que usaremos bastante:
+          <br><br>
+          <span style="font-size: 1.3em;">
+            <code>int</code> &nbsp;·&nbsp; <code>float</code> &nbsp;·&nbsp; <code>str</code> &nbsp;·&nbsp; <code>bool</code>
+          </span>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 12.1 – Tipo int ==================== -->
+      <section>
+        <h2><i class="fa-solid fa-hashtag icon" aria-hidden="true"></i> Tipo <code>int</code> — Números Inteiros</h2>
+        <p class="fragment">Números <strong>sem casas decimais</strong>. Positivos, negativos ou zero.</p>
+        <pre class="fragment"><code class="language-python" data-trim data-noescape>
 idade = 20
-tem_carteira = True
-print(idade >= 18 and tem_carteira)  # True
-        </code></pre> -->
-      </section>
-
-      <!-- ==================== SLIDE 19 – Tabela verdade OR ==================== -->
-      <section class="bg-light">
-        <h2><i class="fa-solid fa-table icon" aria-hidden="true"></i> Tabela Verdade — <code>or</code></h2>
-        <p>É <code>True</code> quando <strong>pelo menos uma</strong> condição é verdadeira.</p>
-        <table>
-          <thead>
-            <tr>
-              <th>A</th>
-              <th>B</th>
-              <th>A <code>or</code> B</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="fragment">
-              <td><code>True</code></td>
-              <td><code>True</code></td>
-              <td><code style="color:#27ae60; font-weight:700;">True</code></td>
-            </tr>
-            <tr class="fragment">
-              <td><code>True</code></td>
-              <td><code>False</code></td>
-              <td><code style="color:#27ae60; font-weight:700;">True</code></td>
-            </tr>
-            <tr class="fragment">
-              <td><code>False</code></td>
-              <td><code>True</code></td>
-              <td><code style="color:#27ae60; font-weight:700;">True</code></td>
-            </tr>
-            <tr class="fragment">
-              <td><code>False</code></td>
-              <td><code>False</code></td>
-              <td><code style="color:#c0392b; font-weight:700;">False</code></td>
-            </tr>
-          </tbody>
-        </table>
-        <!-- <pre class="fragment"><code class="language-python" data-trim data-noescape>
-tem_rg = False
-tem_passaporte = True
-print(tem_rg or tem_passaporte)  # True
-        </code></pre> -->
-      </section>
-
-      <!-- ==================== SLIDE 20 – Tabela verdade NOT ==================== -->
-      <section>
-        <h2><i class="fa-solid fa-table icon" aria-hidden="true"></i> Tabela Verdade — <code>not</code></h2>
-        <p><strong>Inverte</strong> o valor lógico.</p>
-        <table>
-          <thead>
-            <tr>
-              <th>A</th>
-              <th><code>not</code> A</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="fragment">
-              <td><code>True</code></td>
-              <td><code style="color:#c0392b; font-weight:700;">False</code></td>
-            </tr>
-            <tr class="fragment">
-              <td><code>False</code></td>
-              <td><code style="color:#27ae60; font-weight:700;">True</code></td>
-            </tr>
-          </tbody>
-        </table>
-        <pre class="fragment"><code class="language-python" data-trim data-noescape>
-chovendo = True
-print(not chovendo)  # False → "não está chovendo" é falso
+temperatura = -5
+pontos = 0
         </code></pre>
+        <div class="fragment" style="margin-top: 16px;">
+          <p><i class="fa-solid fa-circle-question icon" aria-hidden="true" style="color: #df7e22;"></i> <strong>Onde usamos na vida real?</strong></p>
+          <div style="display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 8px;">
+            <span style="background: var(--light-bg); border: 1px solid #d4e2f2; border-radius: 10px; padding: 8px 14px; font-size: 0.75em;">🎂 Idade: <code>20</code></span>
+            <span style="background: var(--light-bg); border: 1px solid #d4e2f2; border-radius: 10px; padding: 8px 14px; font-size: 0.75em;">📦 Quantidade: <code>3</code></span>
+            <span style="background: var(--light-bg); border: 1px solid #d4e2f2; border-radius: 10px; padding: 8px 14px; font-size: 0.75em;">🏠 Andar: <code>-1</code></span>
+            <span style="background: var(--light-bg); border: 1px solid #d4e2f2; border-radius: 10px; padding: 8px 14px; font-size: 0.75em;">🎮 Pontos: <code>1500</code></span>
+          </div>
+        </div>
       </section>
 
-      <!-- ==================== SLIDE 21 – Lógicos: exemplo completo ==================== -->
-      <section class="bg-accent">
-        <h2><i class="fa-solid fa-flask icon" aria-hidden="true"></i> Exemplo do Dia a Dia</h2>
-        <p style="font-size:.85em;">Imagine um sistema de cinema que dá desconto para <strong>estudantes menores de
-            25 anos</strong>:</p>
-        <pre><code class="language-python" data-trim data-noescape>
-estudante = input("Você é estudante? (s/n): ")
-idade = int(input("Qual a sua idade? "))
+      <section class="activity-slide">
+        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade Rápida</h2>
+        <div class="activity-card">
+          <p class="activity-title"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Tipo <code>int</code></p>
+          <p class="activity-question">Escreva duas variáveis inteiras: uma positiva e uma negativa.</p>
+        </div>
+      </section>
 
-tem_desconto = (estudante == "s") and (idade < 25)
-
-print(f"Tem desconto? {tem_desconto}")
+      <!-- ==================== SLIDE 12.2 – Tipo float ==================== -->
+      <section class="bg-light">
+        <h2><i class="fa-solid fa-percent icon" aria-hidden="true"></i> Tipo <code>float</code> — Números Decimais</h2>
+        <p class="fragment">Números <strong>com casas decimais</strong> (ponto separando, não vírgula!).</p>
+        <pre class="fragment"><code class="language-python" data-trim data-noescape>
+altura = 1.75
+preco = 9.90
+nota = 7.5
         </code></pre>
         <div class="box fragment">
-          <i class="fa-solid fa-lightbulb icon" aria-hidden="true"></i> Usar parênteses deixa o código mais
-          <strong>legível</strong>, mesmo quando não são obrigatórios.
+          <i class="fa-solid fa-triangle-exclamation icon" aria-hidden="true" style="color: #df7e22;"></i> <strong>Atenção!</strong> Em Python usamos <strong>ponto</strong> (<code>1.75</code>), nunca vírgula (<code>1,75</code>).
+        </div>
+        <div class="fragment" style="margin-top: 12px;">
+          <div style="display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;">
+            <span style="background: #fff; border: 1px solid #d4e2f2; border-radius: 10px; padding: 8px 14px; font-size: 0.75em;">📏 Altura: <code>1.75</code></span>
+            <span style="background: #fff; border: 1px solid #d4e2f2; border-radius: 10px; padding: 8px 14px; font-size: 0.75em;">💰 Preço: <code>29.90</code></span>
+            <span style="background: #fff; border: 1px solid #d4e2f2; border-radius: 10px; padding: 8px 14px; font-size: 0.75em;">🌡️ Temperatura: <code>36.5</code></span>
+          </div>
         </div>
       </section>
 
-      <!-- ==================== SLIDE 22 – Combinando operadores ==================== -->
-      <section class="bg-light">
-        <h2><i class="fa-solid fa-layer-group icon" aria-hidden="true"></i> Combinando Operadores</h2>
-        <p class="fragment">Você pode misturar aritméticos, relacionais e lógicos!</p>
-        <pre class="fragment"><code class="language-python" data-trim data-noescape>
-nota1 = 7.0
-nota2 = 5.0
-media = (nota1 + nota2) / 2          # aritmético
-faltas = 3
 
-aprovado = (media >= 6) and (faltas <= 5)  # relacional + lógico
-
-print(f"Média: {media}")
-print(f"Aprovado? {aprovado}")  # True
-        </code></pre>
-      </section>
-
-    </section>
-
-      <!-- ==================== SLIDE 23 – Precedência ==================== -->
+      <!-- ==================== SLIDE 12.3 – int vs float ==================== -->
       <section>
-        <h2><i class="fa-solid fa-sort-numeric-down icon" aria-hidden="true"></i> Ordem de Precedência</h2>
-        <p class="fragment" style="font-size:.85em;">Python segue uma ordem para avaliar os operadores (do mais
-          prioritário ao menos):</p>
-        <table class="fragment">
-          <thead>
-            <tr>
-              <th>Prioridade</th>
-              <th>Operadores</th>
-              <th>Tipo</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1ª (mais alta)</td>
-              <td><code>**</code></td>
-              <td>Potência</td>
-            </tr>
-            <tr>
-              <td>2ª</td>
-              <td><code>*</code> <code>/</code> <code>//</code> <code>%</code></td>
-              <td>Multiplicação, divisão</td>
-            </tr>
-            <tr>
-              <td>3ª</td>
-              <td><code>+</code> <code>-</code></td>
-              <td>Soma, subtração</td>
-            </tr>
-            <tr>
-              <td>4ª</td>
-              <td><code>==</code> <code>!=</code> <code>></code> <code><</code> <code>>=</code> <code><=</code></td>
-              <td>Relacionais</td>
-            </tr>
-            <tr>
-              <td>5ª</td>
-              <td><code>not</code></td>
-              <td>Lógico NÃO</td>
-            </tr>
-            <tr>
-              <td>6ª</td>
-              <td><code>and</code></td>
-              <td>Lógico E</td>
-            </tr>
-            <tr>
-              <td>7ª (mais baixa)</td>
-              <td><code>or</code></td>
-              <td>Lógico OU</td>
-            </tr>
-          </tbody>
-        </table>
-        <p class="fragment" style="font-size:.8em;"><i class="fa-solid fa-lightbulb icon"
-            aria-hidden="true"></i> Na dúvida, use <strong>parênteses</strong>!</p>
+        <h2><i class="fa-solid fa-scale-balanced icon" aria-hidden="true"></i> <code>int</code> vs <code>float</code></h2>
+        <p class="fragment">Qual a diferença na prática?</p>
+        <pre class="fragment"><code class="language-python" data-trim data-noescape>
+a = 10     # int   (inteiro)
+b = 10.0   # float (decimal)
+
+print(type(a))  # &lt;class 'int'&gt;
+print(type(b))  # &lt;class 'float'&gt;
+        </code></pre>
+        <div class="box-green fragment">
+          <i class="fa-solid fa-lightbulb icon" aria-hidden="true"></i> <strong>Regra simples:</strong>
+          <br>Tem <strong>ponto</strong>? É <code>float</code>. <strong>Não tem</strong> ponto? É <code>int</code>.
+        </div>
       </section>
 
-      <!-- ==================== SLIDE 24 – Precedência: exemplo ==================== -->
-      <!-- <section class="bg-warn">
-        <h2><i class="fa-solid fa-magnifying-glass icon" aria-hidden="true"></i> Precedência na Prática</h2>
-        <pre><code class="language-python" data-trim data-noescape>
-# Sem parênteses — Python segue a precedência
-resultado = 2 + 3 * 4
-print(resultado)  # 14 (não 20!)
-
-# Com parênteses — você controla a ordem
-resultado = (2 + 3) * 4
-print(resultado)  # 20
-        </code></pre>
+      <!-- ==================== SLIDE 12.4 – Tipo str ==================== -->
+      <section class="bg-accent">
+        <h2><i class="fa-solid fa-font icon" aria-hidden="true"></i> Tipo <code>str</code> — Texto (String)</h2>
+        <p class="fragment">Qualquer coisa entre <strong>aspas</strong> é texto para o Python.</p>
         <pre class="fragment"><code class="language-python" data-trim data-noescape>
-# Exemplo com lógicos
-x = 5
-print(x > 3 and x < 10)        # True
-print(not (x > 3 and x < 10))  # False
+nome = "Maria"
+cidade = 'Fortaleza'
+frase = "Eu amo Python!"
         </code></pre>
-      </section> -->
-
-      <!-- ==================== SLIDE 25 – ATIVIDADE 3 ==================== -->
-      <section class="bg-activity">
-        <h2><i class="fa-solid fa-pen-ruler icon" aria-hidden="true"></i> Atividade 3 — Lógicos</h2>
-        <div class="box-purple">
-          <strong>Exercício G:</strong> Peça <strong>idade</strong> e se a pessoa é <strong>estudante</strong> (s/n).
-          Exiba <code>True</code> se ela tiver <strong>menos de 18 anos ou for estudante</strong>.
+        <div class="fragment" style="margin-top: 12px;">
+          <p><i class="fa-solid fa-circle-info icon" aria-hidden="true" style="color: #0056b3;"></i> Aspas <strong>duplas</strong> ou <strong>simples</strong>, tanto faz!</p>
+          <pre><code class="language-python" data-trim data-noescape>
+# Os dois são iguais:
+nome1 = "Ana"
+nome2 = 'Ana'
+          </code></pre>
         </div>
-        <div class="box-purple fragment">
-          <strong>Exercício H:</strong> Peça um número e verifique se ele está no intervalo <strong>entre 1 e
-            100</strong> (inclusive).<br>
-          <em>Dica: use <code>and</code></em>
-        </div>
-        <div class="box-purple fragment">
-          <strong>Exercício I:</strong> Peça a <strong>média</strong> e o número de <strong>faltas</strong>. Exiba se o
-          aluno está <strong>aprovado</strong> (média >= 7 <code>and</code> faltas <= 10).
-        </div>
-        <p class="fragment" style="font-size:.8em;"><i class="fa-solid fa-clock icon"
-            aria-hidden="true"></i> Tempo sugerido: 10 minutos</p>
       </section>
 
-      <!-- ==================== SLIDE 26 – Desafio final ==================== -->
-      <!-- <section data-background-gradient="linear-gradient(135deg, #667eea, #764ba2)">
-        <h2 style="color: white;"><i class="fa-solid fa-trophy icon" style="color: #f1c40f;"
-            aria-hidden="true"></i> Desafio Final!</h2>
-        <p style="color: rgba(255,255,255,.92); font-size: .85em;">
-          Crie um programa que simule uma <strong>verificação de acesso</strong> a um evento:
-        </p>
-        <ol style="color: rgba(255,255,255,.9); font-size: .82em;">
-          <li class="fragment">Pergunte a <strong>idade</strong></li>
-          <li class="fragment">Pergunte se tem <strong>convite</strong> (s/n)</li>
-          <li class="fragment">Pergunte se é <strong>acompanhante de responsável</strong> (s/n)</li>
-          <li class="fragment">
-            O acesso é permitido se:<br>
-            • idade >= 18 <strong>ou</strong><br>
-            • tem convite <strong>e</strong> acompanhante de responsável
-          </li>
-          <li class="fragment">Exiba <code>True</code> ou <code>False</code></li>
-        </ol>
+      <section class="activity-slide">
+        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade Rápida</h2>
+        <div class="activity-card">
+          <p class="activity-title"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Tipo <code>str</code></p>
+          <p class="activity-question">Crie uma variável <code>cidade</code> com o nome da sua cidade de naturalidade</p>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 12.5 – Juntando textos ==================== -->
+      <section>
+        <h2><i class="fa-solid fa-link icon" aria-hidden="true"></i> Juntando Textos</h2>
+        <p class="fragment">O operador <code>+</code> com strings <strong>une</strong> os textos (concatenação):</p>
         <pre class="fragment"><code class="language-python" data-trim data-noescape>
-idade = int(input("Idade: "))
-convite = input("Tem convite? (s/n): ") == "s"
-acompanhante = input("Com responsável? (s/n): ") == "s"
+primeiro = "Bom"
+segundo = "dia"
 
-acesso = (idade >= 18) or (convite and acompanhante)
-print(f"Acesso permitido? {acesso}")
+saudacao = primeiro + " " + segundo
+print(saudacao)  # Bom dia
         </code></pre>
-      </section> -->
+        <p class="fragment">E o <code>*</code> <strong>repete</strong> o texto:</p>
+        <pre class="fragment"><code class="language-python" data-trim data-noescape>
+print("Ha" * 3)    # HaHaHa
+print("-" * 20)    # --------------------
+        </code></pre>
+      </section>
 
-      <!-- ==================== SLIDE 27 – Erros comuns ==================== -->
-      <!-- <section class="bg-warn">
-        <h2><i class="fa-solid fa-bug icon" aria-hidden="true"></i> Erros Comuns desta Aula</h2>
-        <ul>
-          <li class="fragment">
-            Usar <code>=</code> quando deveria usar <code>==</code>:<br>
-            <code>if x = 5</code> <i class="fa-solid fa-xmark" style="color:#c0392b;" aria-hidden="true"></i> →
-            <code>if x == 5</code> <i class="fa-solid fa-check" style="color:#27ae60;" aria-hidden="true"></i>
-          </li>
-          <li class="fragment">
-            Esquecer de converter <code>input()</code>:<br>
-            <code>"5" > 3</code> <i class="fa-solid fa-xmark" style="color:#c0392b;" aria-hidden="true"></i> →
-            <code>int("5") > 3</code> <i class="fa-solid fa-check" style="color:#27ae60;" aria-hidden="true"></i>
-          </li>
-          <li class="fragment">
-            Usar <code>&&</code> ou <code>||</code> (de outras linguagens):<br>
-            Em Python é <code>and</code>, <code>or</code>, <code>not</code>
-          </li>
-          <li class="fragment">
-            Confundir precedência:<br>
-            <code>2 + 3 * 4</code> = <strong>14</strong>, não 20!
-          </li>
-        </ul>
-      </section> -->
+      <section class="activity-slide">
+        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade Rápida</h2>
+        <div class="activity-card">
+          <p class="activity-title"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Concatenação de Strings</p>
+          <p class="activity-question">Monte e exiba: <code>"Olá, "</code> + <code>seu_nome</code>.</p>
+        </div>
+      </section>
 
-      <!-- ==================== SLIDE 28 – Resumo ==================== -->
+      <!-- ==================== SLIDE 12.6 – Tipo bool ==================== -->
       <section class="bg-light">
-        <h2><i class="fa-solid fa-clipboard-list icon" aria-hidden="true"></i> Resumo da Aula</h2>
-        <ul>
-          <li class="fragment"><i class="fa-solid fa-calculator icon" aria-hidden="true"></i> <strong>Aritméticos</strong>:
-            <code>+</code> <code>-</code> <code>*</code> <code>/</code> <code>//</code> <code>%</code>
-            <code>**</code>
-          </li>
-          <li class="fragment"><i class="fa-solid fa-not-equal icon" aria-hidden="true"></i>
-            <strong>Relacionais</strong>:
-            <code>==</code> <code>!=</code> <code>></code> <code><</code> <code>>=</code> <code><=</code>
-          </li>
-          <li class="fragment"><i class="fa-solid fa-code-branch icon" aria-hidden="true"></i>
-            <strong>Lógicos</strong>:
-            <code>and</code> <code>or</code> <code>not</code>
-          </li>
-          <li class="fragment"><i class="fa-solid fa-sort-numeric-down icon" aria-hidden="true"></i>
-            <strong>Precedência</strong>: potência → mult/div → soma/sub → relacional → not → and → or
-          </li>
-          <li class="fragment"><i class="fa-solid fa-lightbulb icon" aria-hidden="true"></i> Na dúvida, use
-            <strong>parênteses</strong>!
-          </li>
-        </ul>
+        <h2><i class="fa-solid fa-toggle-on icon" aria-hidden="true"></i> Tipo <code>bool</code> — Verdadeiro ou Falso</h2>
+        <p class="fragment">Só existem <strong>dois valores</strong> possíveis:</p>
+        <div class="fragment" style="display: flex; gap: 20px; justify-content: center; margin: 16px 0;">
+          <div style="background: #e7f6ec; border: 2px solid #27ae60; border-radius: 12px; padding: 16px 28px; text-align: center;">
+            <p style="font-size: 1.4em; margin: 0; color: #27ae60; font-weight: 700;"><code>True</code></p>
+            <small style="color: #555;">Verdadeiro ✅</small>
+          </div>
+          <div style="background: #fde8e8; border: 2px solid #c0392b; border-radius: 12px; padding: 16px 28px; text-align: center;">
+            <p style="font-size: 1.4em; margin: 0; color: #c0392b; font-weight: 700;"><code>False</code></p>
+            <small style="color: #555;">Falso ❌</small>
+          </div>
+        </div>
+        <pre class="fragment"><code class="language-python" data-trim data-noescape>
+ativo = True
+aprovado = False
+        </code></pre>
       </section>
 
-      <!-- ==================== SLIDE 29 – Próxima aula ==================== -->
-      <!-- <section data-background-gradient="radial-gradient(#1f4b99, #16a085)">
-        <h2 style="color: white;">Próxima Aula</h2>
-        <p style="color: rgba(255,255,255,.85); font-size: .9em;">
-          Estruturas condicionais:
-          <code style="color: #f1c40f;">if</code>,
-          <code style="color: #f1c40f;">elif</code> e
-          <code style="color: #f1c40f;">else</code>
-        </p>
-        <p style="color: rgba(255,255,255,.75); font-size: .75em; margin-top: 10px;">
-          Agora que você sabe comparar e combinar condições, <br>
-          vamos fazer o programa <strong>tomar decisões</strong>!
-        </p>
-        <p class="emoji-big"><i class="fa-solid fa-hand-peace icon-only" style="color:white;"
-            aria-hidden="true"></i></p>
-        <p style="color: rgba(255,255,255,.7); font-size: .65em;">
-          Dúvidas? Me procure no e-mail ou no horário de atendimento.
-        </p>
+
+
+  <!-- ==================== SLIDE 6.6 – Jogo Interativo ==================== -->
+      <section class="bg-accent">
+        <h2><i class="fa-solid fa-gamepad icon" aria-hidden="true"></i> Hora de Praticar!</h2>
+        <p class="fragment" style="font-size: 0.95em; margin-bottom: 20px;">Agora vamos colocar a teoria em <strong>prática</strong> com um jogo interativo:</p>
+        
+        <div class="fragment">
+          <div style="background: rgba(255,255,255,0.95); border-radius: 16px; padding: 24px; margin: 16px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 2px solid #0056b3;">
+            <!-- <h3 style="color: #0056b3; font-size: 1.1em; margin: 0 0 12px; display: flex; align-items: center; gap: 10px;">
+              <i class="fa-solid fa-rocket" style="color: #df7e22;"></i> CodeAdventure
+            </h3> -->
+            <p style="color: #333; font-size: 0.85em; margin: 0 0 16px; line-height: 1.5;">
+              Um jogo onde você escreve <strong>comandos em código</strong> para controlar um personagem e resolver desafios. 
+              Aprenda na prática como os algoritmos funcionam! 🚀
+            </p>
+            
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px;">
+              <span style="background: linear-gradient(135deg, #1450a4, #0d7377); color: white; padding: 6px 12px; border-radius: 20px; font-size: 0.7em; font-weight: 600;">
+                <i class="fa-solid fa-brain" style="margin-right: 4px;"></i> Pensamento Lógico
+              </span>
+              <span style="background: linear-gradient(135deg, #27ae60, #1e8449); color: white; padding: 6px 12px; border-radius: 20px; font-size: 0.7em; font-weight: 600;">
+                <i class="fa-solid fa-code" style="margin-right: 4px;"></i> Sequências
+              </span>
+              <span style="background: linear-gradient(135deg, #d97b1e, #e8a030); color: white; padding: 6px 12px; border-radius: 20px; font-size: 0.7em; font-weight: 600;">
+                <i class="fa-solid fa-puzzle-piece" style="margin-right: 4px;"></i> Desafios
+              </span>
+            </div>
+
+            <a href="./jogo/fases/intro_fase4.html" style="display: inline-block; background: linear-gradient(135deg, #1450a4, #0d7377); color: white; padding: 12px 32px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.95em; transition: all 0.3s; box-shadow: 0 6px 16px rgba(20, 80, 164, 0.3);">
+              <i class="fa-solid fa-play" style="margin-right: 8px;"></i> Iniciar Jogo
+            </a>
+            <p><a href="https://natorjunior.github.io/p-python/2026.1/aulas/jogo/fases/intro_fase4.html" target="_blank">https://natorjunior.github.io/p-python/2026.1/aulas/jogo/fases/intro_fase4.html</a></p>
+            
+            <p style="font-size: 0.68em; color: #666; margin: 12px 0 0; font-style: italic;">
+              ⏱️ Tempo estimado: 15-20 minutos | 🎮 4 fases de aprendizado progressivo
+            </p>
+          </div>
+        </div>
+      </section>
+
+      
+      <!-- ==================== SLIDE 13 – Tipos na prática ==================== -->
+      <section>
+        <h2><i class="fa-solid fa-flask icon" aria-hidden="true"></i> Tipos na Prática</h2>
+        <p class="fragment">Use <code>type()</code> para <strong>descobrir</strong> o tipo de qualquer variável:</p>
+        <pre class="fragment"><code class="language-python" data-trim data-noescape>
+nome = "Maria"
+idade = 20
+altura = 1.65
+ativo = True
+
+print(type(nome))    # &lt;class 'str'&gt;
+print(type(idade))   # &lt;class 'int'&gt;
+print(type(altura))  # &lt;class 'float'&gt;
+print(type(ativo))   # &lt;class 'bool'&gt;
+        </code></pre>
+        <div class="box-green fragment">
+          <i class="fa-solid fa-graduation-cap icon" aria-hidden="true"></i> <strong>Dica:</strong> Quando estiver em dúvida sobre o tipo, use <code>type()</code> para verificar!
+        </div>
+      </section>
+
+
+      
+      <!-- ==================== SLIDE 14 – Convertendo tipos ==================== -->
+      <section>
+        <h2><i class="fa-solid fa-repeat icon" aria-hidden="true"></i> Convertendo Tipos</h2>
+        <p class="fragment">Às vezes o dado está em um tipo e você precisa em <strong>outro</strong>:</p>
+        <pre class="fragment"><code class="language-python" data-trim data-noescape>
+# Texto → Número inteiro
+texto = "42"
+numero = int(texto)
+print(numero + 8)  # 50 
+        </code></pre>
+        <pre class="fragment"><code class="language-python" data-trim data-noescape>
+# Número → Texto
+idade = 19
+mensagem = "Tenho " + str(idade) + " anos"
+print(mensagem)  # Tenho 19 anos 
+        </code></pre>
+        <pre class="fragment"><code class="language-python" data-trim data-noescape>
+# Texto → Número decimal
+preco_texto = "9.90"
+preco = float(preco_texto)
+print(preco * 2)  # 19.8 
+        </code></pre>
+      </section>
+      <!-- ==================== SLIDE 15 – Erros comuns ==================== -->
+      <!-- <section class="bg-warn">
+        <h2><i class="fa-solid fa-triangle-exclamation icon" aria-hidden="true"></i> Cuidado com os Tipos!</h2>
+        <p class="fragment" style="font-size: 0.9em;">O Python <strong>não mistura</strong> tipos automaticamente:</p>
+        
+        <div class="fragment" style="margin: 16px 0;">
+          <div style="background: #fde8e8; border-left: 5px solid #c0392b; padding: 12px 18px; border-radius: 6px; margin-bottom: 12px;">
+            <p style="color: #c0392b; font-weight: 700; margin: 0 0 6px; font-size: 0.85em;"><i class="fa-solid fa-xmark"></i> Isso dá ERRO:</p>
+            <pre style="margin: 0;"><code class="language-python" data-trim data-noescape style="font-size: 0.8em;">
+print("Idade: " + 19)  # ❌ TypeError!
+            </code></pre>
+          </div>
+        </div>
+
+        <div class="fragment" style="margin: 16px 0;">
+          <div style="background: #e7f6ec; border-left: 5px solid #27ae60; padding: 12px 18px; border-radius: 6px; margin-bottom: 12px;">
+            <p style="color: #27ae60; font-weight: 700; margin: 0 0 6px; font-size: 0.85em;"><i class="fa-solid fa-check"></i> Solução 1: converter com str()</p>
+            <pre style="margin: 0;"><code class="language-python" data-trim data-noescape style="font-size: 0.8em;">
+print("Idade: " + str(19))  # ✅ Idade: 19
+            </code></pre>
+          </div>
+        </div>
+
+        <div class="fragment" style="margin: 16px 0;">
+          <div style="background: #e7f6ec; border-left: 5px solid #27ae60; padding: 12px 18px; border-radius: 6px;">
+            <p style="color: #27ae60; font-weight: 700; margin: 0 0 6px; font-size: 0.85em;"><i class="fa-solid fa-star"></i> Solução 2: f-string (mais fácil!)</p>
+            <pre style="margin: 0;"><code class="language-python" data-trim data-noescape style="font-size: 0.8em;">
+idade = 19
+print(f"Idade: {idade}")  # ✅ Idade: 19
+            </code></pre>
+          </div>
+        </div>
+      </section>  -->
+
+      <!-- ==================== SLIDE 16 – f-strings ==================== -->
+      <!-- <section>
+        <h2><i class="fa-solid fa-wand-magic-sparkles icon" aria-hidden="true"></i> f-strings: Textos Inteligentes</h2>
+        <p class="fragment">Coloque um <code>f</code> antes das aspas e use <code>{variável}</code>:</p>
+        <pre class="fragment"><code class="language-python" data-trim data-noescape>
+nome = "Ana"
+idade = 20
+nota = 8.5
+
+print(f"Olá, {nome}!")
+# Olá, Ana!
+
+print(f"{nome} tem {idade} anos")
+# Ana tem 20 anos
+
+print(f"Sua nota foi {nota}")
+# Sua nota foi 8.5
+        </code></pre>
+        <div class="box-green fragment">
+          <i class="fa-solid fa-thumbs-up icon" aria-hidden="true"></i> <strong>f-strings</strong> são a forma mais fácil e moderna de montar textos com variáveis. <br>
+          <small>Funciona com qualquer tipo: int, float, str, bool!</small>
+        </div>
       </section> -->
+
+      <!-- ==================== SLIDE 17 – input() e tipos ==================== -->
+      <section class="bg-light">
+        <h2><i class="fa-solid fa-keyboard icon" aria-hidden="true"></i> input() Sempre Retorna Texto!</h2>
+        <p class="fragment">Quando o usuário digita algo, o Python recebe como <strong>string</strong>:</p>
+        <pre class="fragment"><code class="language-python" data-trim data-noescape>
+idade = input("Sua idade: ")
+print(type(idade))  # &lt;class 'str'&gt; ← texto!
+        </code></pre>
+        <p class="fragment"><strong>Para fazer conta, converta primeiro:</strong></p>
+        <pre class="fragment"><code class="language-python" data-trim data-noescape>
+# Converta para o tipo correto:
+idade = int(input("Sua idade: "))
+peso = float(input("Seu peso: "))
+        </code></pre>
+      </section>
+
+      <section class="activity-slide">
+        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade Rápida</h2>
+        <div class="activity-card">
+          <p class="activity-title"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Criação de duas variáveis</p>
+          <p class="activity-question">Use o commando <code>input()</code> para criar duas variáveis: <code>nome</code> e <code>idade</code>.</p>
+          <p class="activity-question">Imprima os valores dessas variáveis usando o commando <code>print()</code>.</p>
+        </div>
+      </section>
+
+
+      <!-- ==================== SLIDE 18 – Resumo visual ==================== -->
+      <section class="bg-accent">
+        <h2><i class="fa-solid fa-map icon" aria-hidden="true"></i> Resumo: Mapa dos Tipos</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px;">
+          <div class="fragment" style="background: #fff; border: 2px solid #1450a4; border-radius: 12px; padding: 14px; text-align: center;">
+            <p style="font-size: 1.2em; margin: 0 0 4px; font-weight: 700; color: #1450a4;"><code>int</code></p>
+            <p style="font-size: 0.72em; color: #555; margin: 0;">Números inteiros</p>
+            <p style="font-size: 0.8em; margin: 6px 0 0;"><code>42</code> · <code>-5</code> · <code>0</code></p>
+          </div>
+          <div class="fragment" style="background: #fff; border: 2px solid #0d7377; border-radius: 12px; padding: 14px; text-align: center;">
+            <p style="font-size: 1.2em; margin: 0 0 4px; font-weight: 700; color: #0d7377;"><code>float</code></p>
+            <p style="font-size: 0.72em; color: #555; margin: 0;">Números decimais</p>
+            <p style="font-size: 0.8em; margin: 6px 0 0;"><code>3.14</code> · <code>9.90</code></p>
+          </div>
+          <div class="fragment" style="background: #fff; border: 2px solid #27ae60; border-radius: 12px; padding: 14px; text-align: center;">
+            <p style="font-size: 1.2em; margin: 0 0 4px; font-weight: 700; color: #27ae60;"><code>str</code></p>
+            <p style="font-size: 0.72em; color: #555; margin: 0;">Texto (entre aspas)</p>
+            <p style="font-size: 0.8em; margin: 6px 0 0;"><code>"Olá"</code> · <code>'123'</code></p>
+          </div>
+          <div class="fragment" style="background: #fff; border: 2px solid #df7e22; border-radius: 12px; padding: 14px; text-align: center;">
+            <p style="font-size: 1.2em; margin: 0 0 4px; font-weight: 700; color: #df7e22;"><code>bool</code></p>
+            <p style="font-size: 0.72em; color: #555; margin: 0;">Verdadeiro ou Falso</p>
+            <p style="font-size: 0.8em; margin: 6px 0 0;"><code>True</code> · <code>False</code></p>
+          </div>
+        </div>
+        <div class="fragment" style="margin-top: 18px; text-align: center;">
+          <p style="font-size: 0.8em; color: #333; margin: 0;">
+            <i class="fa-solid fa-screwdriver-wrench icon" aria-hidden="true" style="color: #0056b3;"></i> 
+            <strong>Converter:</strong> <code>int()</code> · <code>float()</code> · <code>str()</code> &nbsp;&nbsp;|&nbsp;&nbsp;
+            <strong>Descobrir:</strong> <code>type()</code> &nbsp;&nbsp;|&nbsp;&nbsp;
+            <strong>Montar texto:</strong> <code>f"..."</code>
+          </p>
+        </div>
+      </section>
+
+<section class="bg-accent">
+        <h2><i class="fa-solid fa-gamepad icon" aria-hidden="true"></i> Hora de Praticar!</h2>
+        <p class="fragment" style="font-size: 0.95em; margin-bottom: 20px;">Agora vamos colocar a teoria em <strong>prática</strong> com um jogo interativo:</p>
+        
+        <div class="fragment">
+          <div style="background: rgba(255,255,255,0.95); border-radius: 16px; padding: 24px; margin: 16px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 2px solid #0056b3;">
+            <!-- <h3 style="color: #0056b3; font-size: 1.1em; margin: 0 0 12px; display: flex; align-items: center; gap: 10px;">
+              <i class="fa-solid fa-rocket" style="color: #df7e22;"></i> CodeAdventure
+            </h3> -->
+            <p style="color: #333; font-size: 0.85em; margin: 0 0 16px; line-height: 1.5;">
+              Um jogo onde você escreve <strong>comandos em código</strong> para controlar um personagem e resolver desafios. 
+              Aprenda na prática como os algoritmos funcionam! 🚀
+            </p>
+            
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px;">
+              <span style="background: linear-gradient(135deg, #1450a4, #0d7377); color: white; padding: 6px 12px; border-radius: 20px; font-size: 0.7em; font-weight: 600;">
+                <i class="fa-solid fa-brain" style="margin-right: 4px;"></i> Pensamento Lógico
+              </span>
+              <span style="background: linear-gradient(135deg, #27ae60, #1e8449); color: white; padding: 6px 12px; border-radius: 20px; font-size: 0.7em; font-weight: 600;">
+                <i class="fa-solid fa-code" style="margin-right: 4px;"></i> Sequências
+              </span>
+              <span style="background: linear-gradient(135deg, #d97b1e, #e8a030); color: white; padding: 6px 12px; border-radius: 20px; font-size: 0.7em; font-weight: 600;">
+                <i class="fa-solid fa-puzzle-piece" style="margin-right: 4px;"></i> Desafios
+              </span>
+            </div>
+
+            <a href="./jogo/fases/intro_fase5.html" style="display: inline-block; background: linear-gradient(135deg, #1450a4, #0d7377); color: white; padding: 12px 32px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.95em; transition: all 0.3s; box-shadow: 0 6px 16px rgba(20, 80, 164, 0.3);">
+              <i class="fa-solid fa-play" style="margin-right: 8px;"></i> Iniciar Jogo
+            </a>
+            <p><a href="https://natorjunior.github.io/p-python/2026.1/aulas/jogo/fases/intro_fase5.html" target="_blank">https://natorjunior.github.io/p-python/2026.1/aulas/jogo/fases/intro_fase5.html</a></p>
+
+          </div>
+        </div>
+      </section>
+</section>
 
     </div>
   </div>
 
   <script src="./dist/reveal.js"></script>
   <script src="./plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
   <script>
+    function renderSetsD3Diagram() {
+      const container = document.getElementById("sets-d3-diagram");
+      if (!container || typeof d3 === "undefined") return;
+
+      const containerWidth = Math.round(container.clientWidth || 0);
+      if (containerWidth < 220) return;
+
+      if (container.dataset.renderedWidth === String(containerWidth) && container.childElementCount > 0) {
+        return;
+      }
+
+      container.dataset.renderedWidth = String(containerWidth);
+      container.innerHTML = "";
+
+      const width = 740;
+      const height = 470;
+
+      const svg = d3.select(container)
+        .append("svg")
+        .attr("class", "sets-figure")
+        .attr("viewBox", `0 0 ${width} ${height}`)
+        .attr("role", "img")
+        .attr("aria-label", "Diagrama dos conjuntos numéricos e suas inclusões");
+
+      const defs = svg.append("defs");
+
+      const shadow = defs.append("filter")
+        .attr("id", "d3SoftShadow")
+        .attr("x", "-20%")
+        .attr("y", "-20%")
+        .attr("width", "140%")
+        .attr("height", "140%");
+
+      shadow.append("feDropShadow")
+        .attr("dx", 0)
+        .attr("dy", 8)
+        .attr("stdDeviation", 10)
+        .attr("flood-color", "#0b315f")
+        .attr("flood-opacity", 0.16);
+
+      function createGradient(id, from, to) {
+        const g = defs.append("linearGradient")
+          .attr("id", id)
+          .attr("x1", "0%")
+          .attr("y1", "0%")
+          .attr("x2", "100%")
+          .attr("y2", "100%");
+        g.append("stop").attr("offset", "0%").attr("stop-color", from);
+        g.append("stop").attr("offset", "100%").attr("stop-color", to);
+      }
+
+      createGradient("d3RealGrad", "#80cb91", "#60b577");
+      createGradient("d3RatGrad", "#f9ec96", "#efd85c");
+      createGradient("d3IntGrad", "#f8c26a", "#f2a23f");
+      createGradient("d3NatGrad", "#ec9fa3", "#df7c86");
+      createGradient("d3IrrGrad", "#9fd2ff", "#77b8ee");
+
+      const shapes = [
+        { cx: 370, cy: 238, rx: 328, ry: 206, fill: "#dce4ea", stroke: "#afbccb", sw: 2.5 },
+        { cx: 370, cy: 240, rx: 306, ry: 186, fill: "url(#d3RealGrad)", stroke: "#3fa952", sw: 3, shadow: true, className: "set-r" },
+        { cx: 340, cy: 258, rx: 250, ry: 146, fill: "url(#d3RatGrad)", stroke: "#f0c62e", sw: 3, className: "set-q" },
+        { cx: 320, cy: 278, rx: 198, ry: 112, fill: "url(#d3IntGrad)", stroke: "#f08f16", sw: 3, className: "set-z" },
+        { cx: 300, cy: 305, rx: 142, ry: 74, fill: "url(#d3NatGrad)", stroke: "#d96b73", sw: 3, className: "set-n" }
+      ];
+
+      const setLayer = svg.append("g").attr("class", "sets-layer");
+
+      setLayer.selectAll("ellipse.base")
+        .data(shapes)
+        .enter()
+        .append("ellipse")
+        .attr("class", d => d.className || "")
+        .attr("cx", d => d.cx)
+        .attr("cy", d => d.cy)
+        .attr("rx", 0)
+        .attr("ry", 0)
+        .attr("fill", d => d.fill)
+        .attr("stroke", d => d.stroke)
+        .attr("stroke-width", d => d.sw)
+        .attr("filter", d => d.shadow ? "url(#d3SoftShadow)" : null)
+        .style("cursor", d => d.className ? "pointer" : "default")
+        .transition()
+        .duration(750)
+        .delay((_, i) => i * 120)
+        .attr("rx", d => d.rx)
+        .attr("ry", d => d.ry);
+
+      const irr = svg.append("ellipse")
+        .attr("cx", 600)
+        .attr("cy", 145)
+        .attr("rx", 0)
+        .attr("ry", 0)
+        .attr("fill", "url(#d3IrrGrad)")
+        .attr("stroke", "#5ba7e8")
+        .attr("stroke-width", 3)
+        .attr("filter", "url(#d3SoftShadow)")
+        .style("cursor", "pointer");
+
+      irr.transition()
+        .duration(650)
+        .delay(700)
+        .attr("rx", 92)
+        .attr("ry", 58);
+
+      const link = svg.append("path")
+        .attr("d", "M516 152 C490 170, 474 178, 454 190")
+        .attr("fill", "none")
+        .attr("stroke", "#4d8fc6")
+        .attr("stroke-width", 2.2)
+        .attr("stroke-dasharray", "6 6")
+        .attr("stroke-dashoffset", 100);
+
+      link.transition()
+        .duration(900)
+        .delay(900)
+        .attr("stroke-dashoffset", 0);
+
+      const labels = [
+        { x: 500, y: 80, text: "ℝ", font: "serif", size: 42, weight: 900, color: "#1f6f2a" },
+        { x: 475, y: 108, text: "Reais", font: "Roboto, sans-serif", size: 28, weight: 700, color: "#1f6f2a" },
+        { x: 378, y: 170, text: "ℚ", font: "serif", size: 37, weight: 900, color: "#bf7d00" },
+        { x: 337, y: 196, text: "Racionais", font: "Roboto, sans-serif", size: 24, weight: 700, color: "#bf7d00" },
+        { x: 458, y: 225, text: "1/2, 22/7, 355/113", font: "Roboto, sans-serif", size: 21, weight: 400, color: "#8b6f00" },
+        { x: 312, y: 245, text: "ℤ", font: "serif", size: 35, weight: 900, color: "#cc5f00" },
+        { x: 277, y: 272, text: "Inteiros", font: "Roboto, sans-serif", size: 23, weight: 700, color: "#cc5f00" },
+        { x: 410, y: 280, text: "−2, −1, 0, 1, 2", font: "Roboto, sans-serif", size: 20, weight: 400, color: "#a75110" },
+        { x: 266, y: 296, text: "ℕ", font: "serif", size: 33, weight: 900, color: "#a82c31" },
+        { x: 230, y: 324, text: "Naturais", font: "Roboto, sans-serif", size: 22, weight: 700, color: "#a82c31" },
+        { x: 236, y: 349, text: "0, 1, 2, 3, 4", font: "Roboto, sans-serif", size: 20, weight: 400, color: "#9b262b" },
+        { x: 600, y: 132, text: "I", font: "serif", size: 30, weight: 900, color: "#0f4f98", anchor: "middle" },
+        { x: 600, y: 160, text: "Irracionais", font: "Roboto, sans-serif", size: 19, weight: 700, color: "#0f4f98", anchor: "middle" },
+        { x: 600, y: 184, text: "√2, √3, π", font: "Roboto, sans-serif", size: 18, weight: 400, color: "#155cae", anchor: "middle" }
+      ];
+
+      svg.append("g")
+        .selectAll("text")
+        .data(labels)
+        .enter()
+        .append("text")
+        .attr("x", d => d.x)
+        .attr("y", d => d.y)
+        .attr("font-family", d => d.font)
+        .attr("font-size", d => d.size)
+        .attr("font-weight", d => d.weight)
+        .attr("fill", d => d.color)
+        .attr("text-anchor", d => d.anchor || "start")
+        .style("opacity", 0)
+        .text(d => d.text)
+        .transition()
+        .duration(650)
+        .delay((_, i) => 500 + (i * 45))
+        .style("opacity", 1);
+
+      const interactiveSets = [
+        { selector: ".set-r", stroke: "#2b8f43" },
+        { selector: ".set-q", stroke: "#d7ad16" },
+        { selector: ".set-z", stroke: "#d97a08" },
+        { selector: ".set-n", stroke: "#c24c58" }
+      ];
+
+      interactiveSets.forEach((item) => {
+        const target = svg.select(item.selector);
+        target.on("mouseenter", function onEnter() {
+          d3.select(this).transition().duration(200).attr("stroke-width", 5).attr("stroke", item.stroke);
+        });
+        target.on("mouseleave", function onLeave() {
+          d3.select(this).transition().duration(220).attr("stroke-width", 3);
+        });
+      });
+
+      irr.on("mouseenter", function onEnter() {
+        d3.select(this).transition().duration(180).attr("stroke-width", 5).attr("stroke", "#3b95e5");
+      });
+      irr.on("mouseleave", function onLeave() {
+        d3.select(this).transition().duration(220).attr("stroke-width", 3).attr("stroke", "#5ba7e8");
+      });
+    }
+
+    let resizeTimer;
+    function refreshSetsDiagram() {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(renderSetsD3Diagram, 140);
+    }
+
     Reveal.initialize({
       center: false,
       controls: true,
@@ -1824,6 +1903,10 @@ print(f"Acesso permitido? {acesso}")
       transition: 'convex',
       plugins: [RevealHighlight]
     });
+
+    Reveal.on("ready", renderSetsD3Diagram);
+    Reveal.on("slidechanged", renderSetsD3Diagram);
+    window.addEventListener("resize", refreshSetsDiagram);
   </script>
 </body>
 
