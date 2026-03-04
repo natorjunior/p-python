@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1772479064.79212 "/Users/natorjunior/p-python/2026.1/aulas/atividades/aula01/aula01.tex" "aula01.pdf" "aula01" 1772479065.12563 0
-  "/Users/natorjunior/p-python/2026.1/aulas/atividades/aula01/aula01.tex" 1772479064.63449 5273 55100377ec621a6b3682345577a8821a ""
+["pdflatex"] 1772636696.00677 "/Users/natorjunior/p-python/2026.1/aulas/atividades/aula01/aula01.tex" "aula01.pdf" "aula01" 1772636696.36445 0
+  "/Users/natorjunior/p-python/2026.1/aulas/atividades/aula01/aula01.tex" 1772636695.79302 5235 9d2b1ebb08d58e217e70ea6d8cfd5b71 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -76,8 +76,8 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1755657899 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1755657882 3345739 914452131b2b398c8434cc60161dacad ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "aula01.aux" 1772479065.08209 172 66fe25796e6f1cb131881c984482c308 "pdflatex"
-  "aula01.tex" 1772479064.63449 5273 55100377ec621a6b3682345577a8821a ""
+  "aula01.aux" 1772636696.321 172 66fe25796e6f1cb131881c984482c308 "pdflatex"
+  "aula01.tex" 1772636695.79302 5235 9d2b1ebb08d58e217e70ea6d8cfd5b71 ""
   (generated)
   "aula01.aux"
   "aula01.log"

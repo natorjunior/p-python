@@ -1,0 +1,390 @@
+\documentclass[a4paper,12pt]{article}
+
+% ══════════════════════════════════════════════
+%   Pacotes
+% ══════════════════════════════════════════════
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage{geometry}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{colortbl}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{fontawesome5}
+\usepackage{tikz}
+\usepackage{calc}
+\usepackage{graphicx}
+\usepackage{ragged2e}
+
+\tcbuselibrary{skins,breakable}
+
+% ══════════════════════════════════════════════
+%   Layout
+% ══════════════════════════════════════════════
+\geometry{
+  left=2cm,
+  right=2cm,
+  top=2.3cm,
+  bottom=2cm
+}
+
+% ══════════════════════════════════════════════
+%   Cores
+% ══════════════════════════════════════════════
+\definecolor{corprimaria}{HTML}{0D2B45}
+\definecolor{corsecundaria}{HTML}{1A5276}
+\definecolor{coracento}{HTML}{2E86C1}
+\definecolor{corcaixa}{HTML}{F0F6FC}
+\definecolor{corlinha}{HTML}{BFD4E8}
+\definecolor{corsuave}{HTML}{E8F0F8}
+\definecolor{corverde}{HTML}{1D8348}
+\definecolor{corlaranja}{HTML}{E67E22}
+\definecolor{cortexto}{HTML}{2C3E50}
+\definecolor{corcabec}{HTML}{0D2B45}
+
+\color{cortexto}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=coracento,
+  urlcolor=coracento
+}
+
+% Elimina warnings de \faIcon nos bookmarks do PDF
+\pdfstringdefDisableCommands{%
+  \def\faIcon#1{}%
+  \def\hspace#1{ }%
+  \def\raisebox#1#2{#2}%
+}
+
+% ══════════════════════════════════════════════
+%   Tipografia e espaçamento
+% ══════════════════════════════════════════════
+\setstretch{1.15}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\setlength{\headheight}{14pt}
+
+\setlist[itemize]{
+  topsep=4pt,
+  itemsep=2pt,
+  leftmargin=1.3cm,
+  label={\textcolor{coracento}{\faAngleRight}}
+}
+\setlist[enumerate]{
+  topsep=4pt,
+  itemsep=4pt,
+  leftmargin=1.3cm
+}
+
+% ══════════════════════════════════════════════
+%   Seções e subseções
+% ══════════════════════════════════════════════
+\titleformat{\section}
+  {\Large\bfseries\color{corprimaria}}
+  {}{0pt}{\raisebox{-1pt}{\rule{4pt}{14pt}\hspace{6pt}}}
+  [\vspace{1pt}{\color{corlinha}\titlerule[0.8pt]}]
+\titlespacing*{\section}{0pt}{18pt}{8pt}
+
+\titleformat{\subsection}
+  {\normalsize\bfseries\color{corsecundaria}}
+  {}{0pt}{}
+\titlespacing*{\subsection}{0pt}{10pt}{4pt}
+
+% ══════════════════════════════════════════════
+%   Caixas (tcolorbox)
+% ══════════════════════════════════════════════
+\newtcolorbox{blocosimples}{
+  enhanced,
+  colback=corcaixa,
+  colframe=corlinha,
+  arc=2mm,
+  boxrule=0.4pt,
+  left=10pt, right=10pt, top=10pt, bottom=10pt,
+  shadow={0.5mm}{-0.5mm}{0mm}{black!8},
+  breakable
+}
+
+\newtcolorbox{bloco}[2][]{
+  enhanced,
+  colback=white,
+  colframe=corlinha!85!white,
+  arc=2.2mm,
+  boxrule=0.55pt,
+  left=11pt, right=11pt, top=10pt, bottom=10pt,
+  borderline west={1.6pt}{0pt}{coracento},
+  before skip=10pt,
+  after skip=10pt,
+  fonttitle=\bfseries\color{white},
+  title={\raisebox{-1pt}{#1}\hspace{4pt}#2},
+  coltitle=white,
+  attach boxed title to top left={xshift=0pt, yshift=-1.2mm},
+  boxed title style={
+    enhanced,
+    colback=corprimaria!92!black,
+    colframe=corprimaria!92!black,
+    boxrule=0pt,
+    arc=1.9mm,
+    left=8pt, right=8pt, top=3.5pt, bottom=3.5pt
+  },
+  shadow={0.8mm}{-0.8mm}{0mm}{black!10},
+  breakable
+}
+
+\newtcolorbox{blocobib}{
+  enhanced,
+  colback=white,
+  colframe=corlinha,
+  arc=2mm,
+  boxrule=0.4pt,
+  left=10pt, right=10pt, top=8pt, bottom=8pt,
+  shadow={0.5mm}{-0.5mm}{0mm}{black!8},
+  breakable
+}
+
+% ══════════════════════════════════════════════
+%   Cabeçalho e Rodapé
+% ══════════════════════════════════════════════
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textcolor{corsecundaria}{Ementa 2026.1}}
+\fancyhead[R]{\small\textcolor{corsecundaria}{Sistema de Cadastro em Python}}
+\fancyfoot[C]{%
+  \begin{tikzpicture}
+    \fill[coracento] (0,0) circle (3.5mm);
+    \node[text=white, font=\small\bfseries] at (0,0) {\thepage};
+  \end{tikzpicture}%
+}
+\renewcommand{\headrulewidth}{0.35pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% ══════════════════════════════════════════════
+%   Comando para unidades do conteúdo
+% ══════════════════════════════════════════════
+\newcommand{\unidade}[3]{%
+  \item \textbf{#1} \hfill
+  \tikz[baseline=(n.base)]{\node[fill=coracento, text=white, font=\small\bfseries,
+    rounded corners=2pt, inner sep=3pt, minimum width=2.2cm](n){#2};}%
+  \begin{itemize}#3\end{itemize}%
+}
+
+% ══════════════════════════════════════════════
+\begin{document}
+
+% ──────────────────────────────────────────────
+%   Título principal
+% ──────────────────────────────────────────────
+\begin{center}
+  {\LARGE\bfseries\color{corprimaria}EMENTA DA UNIDADE CURRICULAR}\\[3pt]
+  {\large\color{corsecundaria}Sistema de Cadastro em Python}
+\end{center}
+
+\vspace{0.2cm}
+
+% ──────────────────────────────────────────────
+%   Ficha de identificação
+% ──────────────────────────────────────────────
+\begin{tcolorbox}[
+  enhanced,
+  colback=white,
+  colframe=corprimaria!80!black,
+  arc=2.4mm,
+  boxrule=0.55pt,
+  left=8pt, right=8pt, top=7pt, bottom=7pt,
+  shadow={0.7mm}{-0.7mm}{0mm}{black!10}
+]
+  {
+    \setlength{\tabcolsep}{4pt}
+    \renewcommand{\arraystretch}{1.34}
+    \arrayrulecolor{corlinha!80!corprimaria}
+    \begin{tabularx}{\linewidth}{
+      @{}
+      >{\RaggedRight\arraybackslash\bfseries\color{corprimaria}}m{4.6cm}
+      >{\RaggedRight\arraybackslash}X
+      >{\RaggedRight\arraybackslash\bfseries\color{corprimaria}}m{3.0cm}
+      >{\RaggedRight\arraybackslash}m{2.8cm}
+      @{}
+    }
+      \rowcolor{corsuave!85}
+      \faIcon{book}\hspace{5pt}Unidade Curricular: &
+      Sistema de Cadastro em Python &
+      \faIcon{calendar-alt}\hspace{5pt}Semestre: &
+      \textbf{2026.1} \\
+      \specialrule{0.45pt}{0pt}{0pt}
+      \faIcon{clock}\hspace{5pt}Carga Horária: &
+      60 horas &
+      \faIcon{cogs}\hspace{5pt}Natureza: &
+      Teórico-prática \\
+    \end{tabularx}
+  }
+\end{tcolorbox}
+
+\vspace{0.3cm}
+
+% ──────────────────────────────────────────────
+%   Ementa
+% ──────────────────────────────────────────────
+\section{\faIcon{file-alt}\hspace{6pt}Ementa}
+
+Definição e importância dos algoritmos, ferramentas e fluxogramas; problemas clássicos de lógica; definição e uso de variáveis, tipos de dados, operadores aritméticos, relacionais e lógicos; estruturas condicionais (\texttt{if}, \texttt{else}, \texttt{elif}) e de repetição (\texttt{for}, \texttt{while}); aninhamento de estruturas de controle; conceito e uso de funções, parâmetros, valores de retorno e modularização do código; manipulação de arquivos e persistência de dados; estruturas de dados (listas, tuplas, dicionários e conjuntos); desenvolvimento de um sistema de cadastro completo em Python; práticas de elaboração e utilização em programas.
+
+% ──────────────────────────────────────────────
+%   Objetivos
+% ──────────────────────────────────────────────
+\section{\faIcon{bullseye}\hspace{6pt}Objetivos}
+Capacitar o(a) estudante a desenvolver, em Python, um sistema de cadastro simples e funcional, aplicando fundamentos de algoritmos e lógica de programação, estruturas de controle, funções e estruturas de dados, com foco em boas práticas de codificação e resolução de problemas.
+
+%Capacitar o aluno a Compreender lógica de programação, aplicando conceitos de estruturas de controle, funções e manipulação de dados.
+
+
+\begin{bloco}[\faIcon{list-ul}]{Objetivos Específicos}
+\begin{itemize}
+  \item Compreender os fundamentos de algoritmos e lógica de programação;
+  \item Utilizar variáveis, tipos de dados e operadores em Python;
+  \item Aplicar estruturas condicionais e de repetição na resolução de problemas;
+  \item Desenvolver funções para modularização e reutilização de código;
+  \item Manipular estruturas de dados como listas, tuplas e dicionários;
+%   \item Implementar persistência de dados utilizando arquivos;
+  \item Construir um sistema de cadastro funcional em Python.
+\end{itemize}
+\end{bloco}
+
+% ──────────────────────────────────────────────
+%   Conteúdo Programático
+% ──────────────────────────────────────────────
+\section{\faIcon{sitemap}\hspace{6pt}Conteúdo Programático}
+
+\begin{blocosimples}
+\begin{enumerate}[label=\textbf{Unidade \Roman*}, leftmargin=2.4cm, labelsep=0.4cm, itemsep=10pt]
+
+  \unidade{Introdução à Lógica de Programação e Python}{8 horas}{
+    \item Definição e importância dos algoritmos
+    \item Ferramentas de desenvolvimento (google colab)
+    \item Problemas clássicos de lógica
+    \item Primeiro programa em Python
+  }
+
+  \unidade{Variáveis, Tipos de Dados e Operadores}{8 horas}{
+    \item Definição e uso de variáveis
+    \item Tipos de dados: \texttt{int}, \texttt{float}, \texttt{str}, \texttt{bool}
+    \item Entrada e saída de dados (\texttt{input()}, \texttt{print()})
+    \item Operadores aritméticos, relacionais e lógicos
+    \item Conversão de tipos (casting)
+  }
+
+  \unidade{Estruturas Condicionais}{8 horas}{
+    \item Estruturas \texttt{if}, \texttt{if/else} e \texttt{if/elif/else}
+    \item Aninhamento de estruturas condicionais
+    \item Exercícios práticos
+  }
+
+  \unidade{Estruturas de Repetição}{8 horas}{
+    \item Estruturas \texttt{for} e \texttt{while}
+    \item Comandos \texttt{break}, \texttt{continue} e \texttt{pass}
+    \item Aninhamento de estruturas de repetição
+    \item Exercícios práticos
+  }
+
+  \unidade{Funções e Modularização}{8 horas}{
+    \item Conceito e definição de funções (\texttt{def})
+    \item Parâmetros e argumentos
+    \item Valores de retorno (\texttt{return})
+    \item Escopo de variáveis (local e global)
+    \item Funções com valores padrão
+    \item Modularização do código
+  }
+
+  \unidade{Estruturas de Dados}{10 horas}{
+    \item Listas: criação, acesso, métodos e iteração
+    \item Tuplas: conceito e utilização
+    \item Dicionários: chave-valor, métodos e iteração
+    \item Conjuntos (\texttt{set}): operações básicas
+    \item Lista de dicionários para cadastros
+  }
+
+  \unidade{Projeto: Sistema de Cadastro em Python}{Projeto Final}{
+    \item Planejamento e modelagem do sistema
+    \item Operações CRUD (Criar, Ler, Atualizar, Deletar)
+    \item Validação de dados de entrada
+    \item Apresentação do projeto final
+  }
+
+\end{enumerate}
+\end{blocosimples}
+
+\vspace{0.2cm}
+\begin{center}
+  \tikz{
+    \node[fill=corprimaria, text=white, font=\bfseries, rounded corners=3pt,
+      inner sep=6pt, minimum width=6cm]
+      {\faIcon{clock}\hspace{6pt}Carga Horária Total: 60 horas};
+  }
+\end{center}
+
+% ──────────────────────────────────────────────
+%   Metodologia
+% ──────────────────────────────────────────────
+\section{\faIcon{chalkboard-teacher}\hspace{6pt}Metodologia}
+
+\begin{bloco}[\faIcon{lightbulb}]{Estratégias de Ensino}
+\begin{itemize}
+  \item Aulas expositivas e dialogadas com auxílio de recursos audiovisuais;
+  \item Resolução de exercícios práticos em laboratório de informática;
+  \item Desenvolvimento de projetos individuais e em grupo;
+  \item Atividades de fixação e avaliações práticas.
+\end{itemize}
+\end{bloco}
+
+% ──────────────────────────────────────────────
+%   Avaliação
+% ──────────────────────────────────────────────
+\section{\faIcon{chart-bar}\hspace{6pt}Avaliação}
+
+\begin{bloco}[\faIcon{check-circle}]{Critérios e Instrumentos}
+A avaliação será realizada de forma contínua, considerando:
+\begin{itemize}
+%   \item Participação e envolvimento nas atividades em sala;
+  \item Exercícios e listas de atividades práticas;
+  \item Avaliações individuais (provas);
+  \item Projeto final: Sistema de Cadastro em Python.
+\end{itemize}
+\end{bloco}
+
+% ──────────────────────────────────────────────
+%   Bibliografia
+% ──────────────────────────────────────────────
+\section{\faIcon{book-open}\hspace{6pt}Bibliografia}
+
+\subsection{\faIcon{bookmark}\hspace{4pt}Bibliografia Básica}
+\begin{blocobib}
+\begin{enumerate}[leftmargin=1.1cm, label={\textcolor{coracento}{\textbf{[\arabic*]}}}]
+  \item FORBELLONE, A. L. V.; EBERSPACHER, H. F. \textbf{Lógica de programação}: a construção de algoritmos e estruturas de dados. São Paulo: Prentice Hall, 2005.
+  \item GUEDES, S. \textbf{Lógica de programação algorítmica}. São Paulo: Pearson, 2014.
+  \item XAVIER, G. F. C. \textbf{Lógica de programação}. São Paulo: Senac, 2014.
+\end{enumerate}
+\end{blocobib}
+
+\subsection{\faIcon{bookmark}\hspace{4pt}Bibliografia Complementar}
+\begin{blocobib}
+\begin{enumerate}[leftmargin=1.1cm, label={\textcolor{coracento}{\textbf{[\arabic*]}}}]
+  \item DEITEL, H. M. \textbf{C\#: como programar}. São Paulo: Pearson, 2003.
+  \item DEITEL, H. M.; DEITEL, P. J. \textbf{C++: como programar}. São Paulo: Pearson, 2006.
+  \item DEITEL, H. M.; DEITEL, P. J. \textbf{Java: como programar}. São Paulo: Pearson, 2010.
+  \item FLANAGAN, D. \textbf{JavaScript: o guia definitivo}. Porto Alegre: Bookman, 2013.
+  \item SOMMERVILLE, I. \textbf{Engenharia de software}. São Paulo: Pearson, 2011.
+\end{enumerate}
+\end{blocobib}
+
+\end{document}
