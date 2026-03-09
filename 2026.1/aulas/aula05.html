@@ -465,15 +465,18 @@
         flex-direction: column;
       }
 
-      .activity-card, .quiz-card {
+      .activity-card,
+      .quiz-card {
         padding: 12px 14px;
       }
 
-      .activity-title, .quiz-title {
+      .activity-title,
+      .quiz-title {
         font-size: 0.78em !important;
       }
 
-      .activity-question, .quiz-option {
+      .activity-question,
+      .quiz-option {
         font-size: 0.68em !important;
       }
     }
@@ -491,7 +494,8 @@
             <p class="hero-kicker"><i class="fa-solid fa-laptop-code icon" aria-hidden="true"></i>Introdução à
               Programação</p>
             <h1 class="hero-title">Aula 05<br><span>Prática de Decisões em Python</span></h1>
-            <p class="hero-subtitle">Aplicando <code>if</code>, <code>elif</code> e <code>else</code> em problemas práticos.</p>
+            <p class="hero-subtitle">Aplicando <code>if</code>, <code>elif</code> e <code>else</code> em problemas
+              práticos.</p>
             <div class="hero-tags">
               <span>if</span>
               <span>elif</span>
@@ -515,162 +519,169 @@
 
 
       <section>
-      <!-- ==================== SLIDE 3 – ANALOGIA ==================== -->
-      
-      <!-- ============= SEÇÃO 1 – if simples ============= -->
-      <section class="section-divider" data-background-gradient="linear-gradient(135deg, #1450a4, #0d7377)">
-        <div class="section-number">Parte 1</div>
-        <h2><i class="fa-solid fa-code icon" aria-hidden="true"></i> Estrutura <code style="color:#f1c40f;">if</code></h2>
-        <p>Executando código apenas quando a condição é verdadeira.</p>
-      </section>
+        <!-- ==================== SLIDE 3 – ANALOGIA ==================== -->
+
+        <!-- ============= SEÇÃO 1 – if simples ============= -->
+        <section class="section-divider" data-background-gradient="linear-gradient(135deg, #1450a4, #0d7377)">
+          <div class="section-number">Parte 1</div>
+          <h2><i class="fa-solid fa-code icon" aria-hidden="true"></i> Estrutura <code style="color:#f1c40f;">if</code>
+          </h2>
+          <p>Executando código apenas quando a condição é verdadeira.</p>
+        </section>
 
 
-      <section>
-        <h2><i class="fa-solid fa-circle-question icon" aria-hidden="true"></i> O Que é Condicional?</h2>
-        <p>Na vida real, tomamos decisões o tempo todo:</p>
-        <div class="analogy-card fragment">
-          <div class="analogy-icon">🌧️</div>
-          <div class="analogy-text">
-            <strong>Se</strong> estiver chovendo, levo o guarda-chuva.<br>
-            <strong>Senão</strong>, saio sem ele.
+        <section>
+          <h2><i class="fa-solid fa-circle-question icon" aria-hidden="true"></i> O Que é Condicional?</h2>
+          <p>Na vida real, tomamos decisões o tempo todo:</p>
+          <div class="analogy-card fragment">
+            <div class="analogy-icon">🌧️</div>
+            <div class="analogy-text">
+              <strong>Se</strong> estiver chovendo, levo o guarda-chuva.<br>
+              <strong>Senão</strong>, saio sem ele.
+            </div>
           </div>
-        </div>
-        <div class="analogy-card fragment">
-          <div class="analogy-icon">📝</div>
-          <div class="analogy-text">
-            <strong>Se</strong> a nota for ≥ 7, o aluno está aprovado.<br>
-            <strong>Senão</strong>, está reprovado.
+          <div class="analogy-card fragment">
+            <div class="analogy-icon">📝</div>
+            <div class="analogy-text">
+              <strong>Se</strong> a nota for ≥ 7, o aluno está aprovado.<br>
+              <strong>Senão</strong>, está reprovado.
+            </div>
           </div>
-        </div>
-        <div class="box-green fragment" style="text-align:center;">
-          Em Python, fazemos isso com <code>if</code>, <code>elif</code> e <code>else</code>.
-        </div>
-      </section>
+          <div class="box-green fragment" style="text-align:center;">
+            Em Python, fazemos isso com <code>if</code>, <code>elif</code> e <code>else</code>.
+          </div>
+        </section>
 
 
 
-      <!-- ==================== SLIDE 4 – FLUXO VISUAL ==================== -->
-      <section class="bg-light">
-        <h2><i class="fa-solid fa-diagram-project icon" aria-hidden="true"></i> Fluxo de Decisão</h2>
-        <p>O programa avalia uma condição e escolhe um caminho:</p>
+        <!-- ==================== SLIDE 4 – FLUXO VISUAL ==================== -->
+        <section class="bg-light">
+          <h2><i class="fa-solid fa-diagram-project icon" aria-hidden="true"></i> Fluxo de Decisão</h2>
+          <p>O programa avalia uma condição e escolhe um caminho:</p>
 
-        <div class="fragment" style="display:flex; justify-content:center; align-items:center;">
-          <svg viewBox="0 0 640 280" width="680" height="245" xmlns="http://www.w3.org/2000/svg" font-family="Roboto, sans-serif">
-            <defs>
-              <!-- Sombra -->
-              <filter id="sombra" x="-15%" y="-15%" width="130%" height="130%">
-                <feDropShadow dx="2" dy="3" stdDeviation="4" flood-color="#00000022"/>
-              </filter>
-              <!-- Gradiente início -->
-              <linearGradient id="gradInicio" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1"/>
-                <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1"/>
-              </linearGradient>
-              <!-- Gradiente decisão -->
-              <linearGradient id="gradDecisao" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1"/>
-                <stop offset="100%" style="stop-color:#d97706;stop-opacity:1"/>
-              </linearGradient>
-              <!-- Gradiente verdadeiro -->
-              <linearGradient id="gradVerd" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" style="stop-color:#22c55e;stop-opacity:1"/>
-                <stop offset="100%" style="stop-color:#16a34a;stop-opacity:1"/>
-              </linearGradient>
-              <!-- Gradiente falso -->
-              <linearGradient id="gradFalso" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" style="stop-color:#f87171;stop-opacity:1"/>
-                <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1"/>
-              </linearGradient>
-              <!-- Gradiente fim -->
-              <linearGradient id="gradFim" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1"/>
-                <stop offset="100%" style="stop-color:#6d28d9;stop-opacity:1"/>
-              </linearGradient>
-              <!-- Marcador de seta -->
-              <marker id="seta" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                <path d="M0,0 L0,6 L8,3 z" fill="#64748b"/>
-              </marker>
-              <marker id="setaVerd" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                <path d="M0,0 L0,6 L8,3 z" fill="#16a34a"/>
-              </marker>
-              <marker id="setaFalso" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                <path d="M0,0 L0,6 L8,3 z" fill="#dc2626"/>
-              </marker>
-              <marker id="setaFim" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                <path d="M0,0 L0,6 L8,3 z" fill="#6d28d9"/>
-              </marker>
-            </defs>
+          <div class="fragment" style="display:flex; justify-content:center; align-items:center;">
+            <svg viewBox="0 0 640 280" width="680" height="245" xmlns="http://www.w3.org/2000/svg"
+              font-family="Roboto, sans-serif">
+              <defs>
+                <!-- Sombra -->
+                <filter id="sombra" x="-15%" y="-15%" width="130%" height="130%">
+                  <feDropShadow dx="2" dy="3" stdDeviation="4" flood-color="#00000022" />
+                </filter>
+                <!-- Gradiente início -->
+                <linearGradient id="gradInicio" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1" />
+                </linearGradient>
+                <!-- Gradiente decisão -->
+                <linearGradient id="gradDecisao" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#d97706;stop-opacity:1" />
+                </linearGradient>
+                <!-- Gradiente verdadeiro -->
+                <linearGradient id="gradVerd" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" style="stop-color:#22c55e;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#16a34a;stop-opacity:1" />
+                </linearGradient>
+                <!-- Gradiente falso -->
+                <linearGradient id="gradFalso" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" style="stop-color:#f87171;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1" />
+                </linearGradient>
+                <!-- Gradiente fim -->
+                <linearGradient id="gradFim" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#6d28d9;stop-opacity:1" />
+                </linearGradient>
+                <!-- Marcador de seta -->
+                <marker id="seta" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                  <path d="M0,0 L0,6 L8,3 z" fill="#64748b" />
+                </marker>
+                <marker id="setaVerd" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                  <path d="M0,0 L0,6 L8,3 z" fill="#16a34a" />
+                </marker>
+                <marker id="setaFalso" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                  <path d="M0,0 L0,6 L8,3 z" fill="#dc2626" />
+                </marker>
+                <marker id="setaFim" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                  <path d="M0,0 L0,6 L8,3 z" fill="#6d28d9" />
+                </marker>
+              </defs>
 
-            <!-- ── INÍCIO (cápsula) ── -->
-            <rect x="255" y="8" width="130" height="36" rx="18" fill="url(#gradInicio)" filter="url(#sombra)"/>
-            <text x="320" y="31" text-anchor="middle" fill="white" font-size="13" font-weight="600">INÍCIO</text>
+              <!-- ── INÍCIO (cápsula) ── -->
+              <rect x="255" y="8" width="130" height="36" rx="18" fill="url(#gradInicio)" filter="url(#sombra)" />
+              <text x="320" y="31" text-anchor="middle" fill="white" font-size="13" font-weight="600">INÍCIO</text>
 
-            <!-- seta início → decisão -->
-            <line x1="320" y1="44" x2="320" y2="72" stroke="#64748b" stroke-width="2" marker-end="url(#seta)"/>
+              <!-- seta início → decisão -->
+              <line x1="320" y1="44" x2="320" y2="72" stroke="#64748b" stroke-width="2" marker-end="url(#seta)" />
 
-            <!-- ── DECISÃO (losango) ── -->
-            <polygon points="320,75 415,130 320,185 225,130" fill="url(#gradDecisao)" filter="url(#sombra)"/>
-            <text x="320" y="124" text-anchor="middle" fill="white" font-size="12" font-weight="700">condição</text>
-            <text x="320" y="141" text-anchor="middle" fill="white" font-size="11">verdadeira?</text>
+              <!-- ── DECISÃO (losango) ── -->
+              <polygon points="320,75 415,130 320,185 225,130" fill="url(#gradDecisao)" filter="url(#sombra)" />
+              <text x="320" y="124" text-anchor="middle" fill="white" font-size="12" font-weight="700">condição</text>
+              <text x="320" y="141" text-anchor="middle" fill="white" font-size="11">verdadeira?</text>
 
-            <!-- Label Sim -->
-            <text x="430" y="123" text-anchor="start" fill="#16a34a" font-size="11" font-weight="700">Sim</text>
-            <!-- Label Não -->
-            <text x="165" y="123" text-anchor="end" fill="#dc2626" font-size="11" font-weight="700">Não</text>
+              <!-- Label Sim -->
+              <text x="430" y="123" text-anchor="start" fill="#16a34a" font-size="11" font-weight="700">Sim</text>
+              <!-- Label Não -->
+              <text x="165" y="123" text-anchor="end" fill="#dc2626" font-size="11" font-weight="700">Não</text>
 
-            <!-- seta decisão → bloco Verdadeiro (direita) -->
-            <line x1="415" y1="130" x2="465" y2="130" stroke="#16a34a" stroke-width="2" marker-end="url(#setaVerd)"/>
+              <!-- seta decisão → bloco Verdadeiro (direita) -->
+              <line x1="415" y1="130" x2="465" y2="130" stroke="#16a34a" stroke-width="2" marker-end="url(#setaVerd)" />
 
-            <!-- ── BLOCO VERDADEIRO ── -->
-            <rect x="466" y="100" width="148" height="60" rx="10" fill="url(#gradVerd)" filter="url(#sombra)"/>
-            <text x="540" y="124" text-anchor="middle" fill="white" font-size="12" font-weight="700">✔ Bloco A</text>
-            <text x="540" y="141" text-anchor="middle" fill="white" font-size="10">(if verdadeiro)</text>
+              <!-- ── BLOCO VERDADEIRO ── -->
+              <rect x="466" y="100" width="148" height="60" rx="10" fill="url(#gradVerd)" filter="url(#sombra)" />
+              <text x="540" y="124" text-anchor="middle" fill="white" font-size="12" font-weight="700">✔ Bloco A</text>
+              <text x="540" y="141" text-anchor="middle" fill="white" font-size="10">(if verdadeiro)</text>
 
-            <!-- seta decisão → bloco Falso (esquerda) -->
-            <line x1="225" y1="130" x2="175" y2="130" stroke="#dc2626" stroke-width="2" marker-end="url(#setaFalso)"/>
+              <!-- seta decisão → bloco Falso (esquerda) -->
+              <line x1="225" y1="130" x2="175" y2="130" stroke="#dc2626" stroke-width="2"
+                marker-end="url(#setaFalso)" />
 
-            <!-- ── BLOCO FALSO ── -->
-            <rect x="26" y="100" width="148" height="60" rx="10" fill="url(#gradFalso)" filter="url(#sombra)"/>
-            <text x="100" y="124" text-anchor="middle" fill="white" font-size="12" font-weight="700">✘ Bloco B</text>
-            <text x="100" y="141" text-anchor="middle" fill="white" font-size="10">(else / falso)</text>
+              <!-- ── BLOCO FALSO ── -->
+              <rect x="26" y="100" width="148" height="60" rx="10" fill="url(#gradFalso)" filter="url(#sombra)" />
+              <text x="100" y="124" text-anchor="middle" fill="white" font-size="12" font-weight="700">✘ Bloco B</text>
+              <text x="100" y="141" text-anchor="middle" fill="white" font-size="10">(else / falso)</text>
 
-            <!-- seta Bloco A → baixo até junção -->
-            <polyline points="540,160 540,240 320,240" fill="none" stroke="#6d28d9" stroke-width="2" stroke-dasharray="5,3"/>
-            <!-- seta Bloco B → baixo até junção -->
-            <polyline points="100,160 100,240 320,240" fill="none" stroke="#6d28d9" stroke-width="2" stroke-dasharray="5,3"/>
-            <!-- seta junção → FIM -->
-            <line x1="320" y1="240" x2="320" y2="255" stroke="#6d28d9" stroke-width="2" marker-end="url(#setaFim)"/>
+              <!-- seta Bloco A → baixo até junção -->
+              <polyline points="540,160 540,240 320,240" fill="none" stroke="#6d28d9" stroke-width="2"
+                stroke-dasharray="5,3" />
+              <!-- seta Bloco B → baixo até junção -->
+              <polyline points="100,160 100,240 320,240" fill="none" stroke="#6d28d9" stroke-width="2"
+                stroke-dasharray="5,3" />
+              <!-- seta junção → FIM -->
+              <line x1="320" y1="240" x2="320" y2="255" stroke="#6d28d9" stroke-width="2" marker-end="url(#setaFim)" />
 
-            <!-- ── FIM (cápsula) ── -->
-            <rect x="255" y="244" width="130" height="36" rx="18" fill="url(#gradFim)" filter="url(#sombra)"/>
-            <text x="320" y="267" text-anchor="middle" fill="white" font-size="13" font-weight="600">FIM</text>
-          </svg>
-        </div>
+              <!-- ── FIM (cápsula) ── -->
+              <rect x="255" y="244" width="130" height="36" rx="18" fill="url(#gradFim)" filter="url(#sombra)" />
+              <text x="320" y="267" text-anchor="middle" fill="white" font-size="13" font-weight="600">FIM</text>
+            </svg>
+          </div>
 
-        <div class="box fragment" style="text-align:center; margin-top:4px;">
-          <i class="fa-solid fa-triangle-exclamation icon" style="color:#e67e22;" aria-hidden="true"></i>
-          Em Python, o <strong>bloco</strong> de código é definido pela <strong>indentação</strong> (4 espaços).
-        </div>
-      </section>
+          <div class="box fragment" style="text-align:center; margin-top:4px;">
+            <i class="fa-solid fa-triangle-exclamation icon" style="color:#e67e22;" aria-hidden="true"></i>
+            Em Python, o <strong>bloco</strong> de código é definido pela <strong>indentação</strong> (4 espaços).
+          </div>
+        </section>
 
-      <!-- ==================== SLIDE 5 – IF SIMPLES ==================== -->
-      <section>
-        <h2><i class="fa-solid fa-code icon" aria-hidden="true"></i> Estrutura <code>if</code></h2>
-        <p>O <code>if</code> executa um bloco <strong>somente se</strong> a condição for verdadeira:</p>
-        <pre><code class="language-python" data-trim data-noescape>
+        <!-- ==================== SLIDE 5 – IF SIMPLES ==================== -->
+        <section>
+          <h2><i class="fa-solid fa-code icon" aria-hidden="true"></i> Estrutura <code>if</code></h2>
+          <p>O <code>if</code> executa um bloco <strong>somente se</strong> a condição for verdadeira:</p>
+          <pre><code class="language-python" data-trim data-noescape>
 idade = int(input("Digite sua idade: "))
 
 if idade >= 18:
     print("Maior de idade")
         </code></pre>
-        <div class="box fragment">
-          <i class="fa-solid fa-circle-info icon" style="color:#0056b3;" aria-hidden="true"></i>
-          Se a condição for <strong>falsa</strong>, nada acontece — o programa simplesmente continua.
-        </div>
-      </section>
+          <div class="box fragment">
+            <i class="fa-solid fa-circle-info icon" style="color:#0056b3;" aria-hidden="true"></i>
+            Se a condição for <strong>falsa</strong>, nada acontece — o programa simplesmente continua.
+          </div>
+        </section>
 
-      <!-- ==================== SLIDE 6 – MICRO FIXAÇÃO 1 ==================== -->
-      <section class="quiz-slide">
+
+
+        <!-- ==================== SLIDE 6 – MICRO FIXAÇÃO 1 ==================== -->
+        <!-- <section class="quiz-slide">
         <h2><i class="fa-solid fa-brain icon" style="color:#e67e22;" aria-hidden="true"></i> Micro Fixação</h2>
         <div class="quiz-card">
           <p class="quiz-title"><i class="fa-solid fa-bolt" aria-hidden="true"></i> O que será exibido?</p>
@@ -689,55 +700,76 @@ print("Fim")
             <strong>Resposta: b)</strong> — <code>x > 20</code> é falso, então o <code>print("Grande")</code> não roda. Mas <code>print("Fim")</code> está <strong>fora</strong> do <code>if</code>.
           </div>
         </div>
+      </section> -->
+
+
+<section class="activity-slide">
+  <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade Rápida</h2>
+  
+  <div class="activity-card">
+    <p class="activity-title">
+      <i class="fa-solid fa-bolt" aria-hidden="true"></i> Maior ou Menor
+    </p>
+
+    <p class="activity-question">Escreva um programa que:</p>
+
+    <ul style="font-size:0.72em; color:#2b4352; margin-top:6px;">
+      <li>Leia um número com <code>input()</code></li>
+      <li>Verifique se o número é <strong>Maior</strong> ou <strong>Menor</strong> que 10</li>
+      <li>Mostre o resultado na tela</li>
+    </ul>
+  </div>
+</section>
+
+
       </section>
 
-    </section>
 
 
-
-<section>
-      <!-- ============= SEÇÃO 2 – if/else ============= -->
-      <section class="section-divider" data-background-gradient="linear-gradient(135deg, #0e4f9b, #2c3e50)">
-        <div class="section-number">Parte 2</div>
-        <h2><i class="fa-solid fa-right-left icon" aria-hidden="true"></i> Estrutura <code style="color:#f1c40f;">if / else</code></h2>
-        <p>Dois caminhos: um para verdadeiro, outro para falso.</p>
-      </section>
-
-
-<!-- ==================== SLIDE 7 – IF/ELSE ==================== -->
       <section>
-        <h2><i class="fa-solid fa-right-left icon" aria-hidden="true"></i> Estrutura <code>if / else</code></h2>
-        <p>Quando queremos que algo aconteça <strong>nos dois casos</strong>:</p>
-        <pre><code class="language-python" data-trim data-noescape>
+        <!-- ============= SEÇÃO 2 – if/else ============= -->
+        <section class="section-divider" data-background-gradient="linear-gradient(135deg, #0e4f9b, #2c3e50)">
+          <div class="section-number">Parte 2</div>
+          <h2><i class="fa-solid fa-right-left icon" aria-hidden="true"></i> Estrutura <code
+              style="color:#f1c40f;">if / else</code></h2>
+          <p>Dois caminhos: um para verdadeiro, outro para falso.</p>
+        </section>
+
+
+        <!-- ==================== SLIDE 7 – IF/ELSE ==================== -->
+        <section>
+          <h2><i class="fa-solid fa-right-left icon" aria-hidden="true"></i> Estrutura <code>if / else</code></h2>
+          <p>Quando queremos que algo aconteça <strong>nos dois casos</strong>:</p>
+          <pre><code class="language-python" data-trim data-noescape>
 nota = float(input("Digite a nota: "))
 
 if nota >= 7:
-    print("Aprovado ✅")
+    print("Aprovado")
 else:
-    print("Reprovado ❌")
+    print("Reprovado")
         </code></pre>
-        <div class="box-green fragment">
-          <i class="fa-solid fa-lightbulb icon" aria-hidden="true"></i>
-          O <code>else</code> pega <strong>todos os outros casos</strong> que o <code>if</code> não pegou.
-        </div>
-      </section>
+          <div class="box-green fragment">
+            <i class="fa-solid fa-lightbulb icon" aria-hidden="true"></i>
+            O <code>else</code> pega <strong>todos os outros casos</strong> que o <code>if</code> não pegou.
+          </div>
+        </section>
 
-      <!-- ==================== SLIDE 8 – MICRO FIXAÇÃO 2 ==================== -->
-      <section class="activity-slide">
-        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade Rápida</h2>
-        <div class="activity-card">
-          <p class="activity-title"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Maior ou Menor de Idade</p>
-          <p class="activity-question">Escreva um programa que:</p>
-          <ul style="font-size:0.72em; color:#2b4352; margin-top:6px;">
-            <li>Leia a idade do usuário com <code>input()</code></li>
-            <li>Se idade ≥ 18, exiba <code>"Maior de idade"</code></li>
-            <li>Caso contrário, exiba <code>"Menor de idade"</code></li>
-          </ul>
-        </div>
-      </section>
+        <!-- ==================== SLIDE 8 – MICRO FIXAÇÃO 2 ==================== -->
+        <section class="activity-slide">
+          <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade Rápida</h2>
+          <div class="activity-card">
+            <p class="activity-title"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Maior ou Menor de Idade</p>
+            <p class="activity-question">Escreva um programa que:</p>
+            <ul style="font-size:0.72em; color:#2b4352; margin-top:6px;">
+              <li>Leia a idade do usuário com <code>input()</code></li>
+              <li>Se idade ≥ 18, exiba <code>"Maior de idade"</code></li>
+              <li>Caso contrário, exiba <code>"Menor de idade"</code></li>
+            </ul>
+          </div>
+        </section>
 
-      <!-- ==================== SLIDE 9 – QUIZ IF/ELSE ==================== -->
-      <section class="quiz-slide">
+        <!-- ==================== SLIDE 9 – QUIZ IF/ELSE ==================== -->
+        <!-- <section class="quiz-slide">
         <h2><i class="fa-solid fa-brain icon" style="color:#e67e22;" aria-hidden="true"></i> Micro Fixação</h2>
         <div class="quiz-card">
           <p class="quiz-title"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Qual a saída para cada valor?</p>
@@ -756,24 +788,26 @@ else:
             <strong>Respostas:</strong> Par, Ímpar, Par — zero é par porque <code>0 % 2 == 0</code> é verdadeiro.
           </div>
         </div>
+      </section> -->
+
       </section>
 
-</section>
 
-
-<section>
- <!-- ============= SEÇÃO 3 – if/elif/else ============= -->
-      <section class="section-divider" data-background-gradient="linear-gradient(135deg, #1a237e, #0d7377)">
-        <div class="section-number">Parte 3</div>
-        <h2><i class="fa-solid fa-layer-group icon" aria-hidden="true"></i> Estrutura <code style="color:#f1c40f;">if / elif / else</code></h2>
-        <p>Múltiplos caminhos para múltiplas condições.</p>
-      </section>
-
-      <!-- ==================== SLIDE 10 – IF/ELIF/ELSE ==================== -->
       <section>
-        <h2><i class="fa-solid fa-layer-group icon" aria-hidden="true"></i> Estrutura <code>if / elif / else</code></h2>
-        <p>Quando temos <strong>mais de dois cenários</strong>:</p>
-        <pre><code class="language-python" data-trim data-noescape>
+        <!-- ============= SEÇÃO 3 – if/elif/else ============= -->
+        <section class="section-divider" data-background-gradient="linear-gradient(135deg, #1a237e, #0d7377)">
+          <div class="section-number">Parte 3</div>
+          <h2><i class="fa-solid fa-layer-group icon" aria-hidden="true"></i> Estrutura <code
+              style="color:#f1c40f;">if / elif / else</code></h2>
+          <p>Múltiplos caminhos para múltiplas condições.</p>
+        </section>
+
+        <!-- ==================== SLIDE 10 – IF/ELIF/ELSE ==================== -->
+        <section>
+          <h2><i class="fa-solid fa-layer-group icon" aria-hidden="true"></i> Estrutura <code>if / elif / else</code>
+          </h2>
+          <p>Quando temos <strong>mais de dois cenários</strong>:</p>
+          <pre><code class="language-python" data-trim data-noescape>
 media = float(input("Média final: "))
 
 if media >= 7:
@@ -783,84 +817,88 @@ elif media >= 5:
 else:
     print("Reprovado")
         </code></pre>
-        <div class="box fragment">
-          <i class="fa-solid fa-circle-info icon" style="color:#0056b3;" aria-hidden="true"></i>
-          O Python testa <strong>de cima para baixo</strong>. Assim que encontra uma condição verdadeira, executa aquele bloco e <strong>ignora o resto</strong>.
-        </div>
+          <div class="box fragment">
+            <i class="fa-solid fa-circle-info icon" style="color:#0056b3;" aria-hidden="true"></i>
+            O Python testa <strong>de cima para baixo</strong>. Assim que encontra uma condição verdadeira, executa
+            aquele bloco e <strong>ignora o resto</strong>.
+          </div>
+        </section>
+
+        <!-- ==================== SLIDE 11 – TABELA FLUXO ==================== -->
+        <section class="bg-light">
+          <h2><i class="fa-solid fa-table-list icon" aria-hidden="true"></i> Fluxo de Decisão — Notas</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Situação</th>
+                <th>Condição</th>
+                <th>Saída</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="fragment">
+                <td>Aprovado</td>
+                <td><code>media >= 7</code></td>
+                <td><code>"Aprovado"</code></td>
+              </tr>
+              <tr class="fragment">
+                <td>Recuperação</td>
+                <td><code>media >= 5</code> (e &lt; 7)</td>
+                <td><code>"Recuperação"</code></td>
+              </tr>
+              <tr class="fragment">
+                <td>Reprovado</td>
+                <td>Nenhuma das anteriores</td>
+                <td><code>"Reprovado"</code></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="box-orange fragment">
+            <i class="fa-solid fa-triangle-exclamation icon" aria-hidden="true"></i>
+            No <code>elif</code> não precisa colocar <code>media &lt; 7</code> porque se chegou ali, o primeiro
+            <code>if</code> já foi falso!
+          </div>
+        </section>
+
       </section>
 
-      <!-- ==================== SLIDE 11 – TABELA FLUXO ==================== -->
-      <section class="bg-light">
-        <h2><i class="fa-solid fa-table-list icon" aria-hidden="true"></i> Fluxo de Decisão — Notas</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Situação</th>
-              <th>Condição</th>
-              <th>Saída</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="fragment">
-              <td>Aprovado</td>
-              <td><code>media >= 7</code></td>
-              <td><code>"Aprovado"</code></td>
-            </tr>
-            <tr class="fragment">
-              <td>Recuperação</td>
-              <td><code>media >= 5</code> (e &lt; 7)</td>
-              <td><code>"Recuperação"</code></td>
-            </tr>
-            <tr class="fragment">
-              <td>Reprovado</td>
-              <td>Nenhuma das anteriores</td>
-              <td><code>"Reprovado"</code></td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="box-orange fragment">
-          <i class="fa-solid fa-triangle-exclamation icon" aria-hidden="true"></i>
-          No <code>elif</code> não precisa colocar <code>media &lt; 7</code> porque se chegou ali, o primeiro <code>if</code> já foi falso!
-        </div>
-      </section>
 
-</section>
-      
 
-     
 
-<section>
- <!-- ── Divisor do bloco ── -->
-      <section class="section-divider" data-background-gradient="linear-gradient(135deg, #134e5e, #71b280)">
-        <div class="section-number">Prática</div>
-        <h2><i class="fa-solid fa-dumbbell icon" aria-hidden="true"></i> Atividades de Decisão</h2>
-        <p>Vamos praticar decisões com <code>if</code>, <code>if/else</code> e <code>if/elif/else</code>.</p>
-      </section>
+      <section>
+        <!-- ── Divisor do bloco ── -->
+        <section class="section-divider" data-background-gradient="linear-gradient(135deg, #134e5e, #71b280)">
+          <div class="section-number">Prática</div>
+          <h2><i class="fa-solid fa-dumbbell icon" aria-hidden="true"></i> Atividades de Decisão</h2>
+          <p>Vamos praticar decisões com <code>if</code>, <code>if/else</code> e <code>if/elif/else</code>.</p>
+        </section>
 
-      <!-- ══ ATIVIDADE 1 – Classificação de idade ══ -->
-      <section class="activity-slide">
-        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade de Decisão 1 de 3</h2>
-        <div class="activity-card">
-          <p class="activity-title"><i class="fa-solid fa-user-check" aria-hidden="true"></i> Classificação por Idade</p>
-          <p class="activity-question">Leia a idade de uma pessoa e classifique:</p>
-          <ul style="font-size:0.72em; color:#2b4352; margin-top:4px;">
-            <li><strong>Menor de idade</strong> se idade &lt; 18</li>
-            <li><strong>Adulto</strong> se idade entre 18 e 59</li>
-            <li><strong>Idoso</strong> se idade &gt;= 60</li>
-          </ul>
-          <p class="activity-question">Exiba apenas a classificação final.</p>
-          <p class="activity-question" style="margin-top:10px;">
-            <i class="fa-solid fa-lightbulb" style="color:#e67e22;" aria-hidden="true"></i>
-            <em>Dica: use <code>if / elif / else</code> para cobrir os três cenários.</em>
-          </p>
-        </div>
-      </section>
+        <!-- ══ ATIVIDADE 1 – Classificação de idade ══ -->
+        <section class="activity-slide">
+          <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade de Decisão 1 de 3</h2>
+          <div class="activity-card">
+            <p class="activity-title"><i class="fa-solid fa-user-check" aria-hidden="true"></i> Classificação por Idade
+            </p>
+            <p class="activity-question">Leia a idade de uma pessoa e classifique:</p>
+            <ul style="font-size:0.72em; color:#2b4352; margin-top:4px;">
+              <li><strong>Menor de idade</strong> se idade &lt; 18</li>
+              <li><strong>Adulto</strong> se idade entre 18 e 59</li>
+              <li><strong>Idoso</strong> se idade &gt;= 60</li>
+            </ul>
+            <p class="activity-question">Exiba apenas a classificação final.</p>
+            <p class="activity-question" style="margin-top:10px;">
+              <i class="fa-solid fa-lightbulb" style="color:#e67e22;" aria-hidden="true"></i>
+              <em>Dica: use <code>if / elif / else</code> para cobrir os três cenários.</em>
+            </p>
+          </div>
+        </section>
 
-      <section class="quiz-slide">
-        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta — Atividade de Decisão 1</h2>
-        <div class="quiz-card">
-          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solução</p>
-          <pre style="margin:8px 0;"><code class="language-python" data-trim data-noescape>
+        <section class="quiz-slide">
+          <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta —
+            Atividade de Decisão 1</h2>
+          <div class="quiz-card">
+            <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solução</p>
+            <pre style="margin:8px 0;"><code class="language-python" data-trim data-noescape>
 idade = int(input("Digite a idade: "))
 
 if idade < 18:
@@ -870,37 +908,40 @@ elif idade < 60:
 else:
     print("Idoso")
           </code></pre>
-          <div class="quiz-answer">
-            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-            <strong>Pontos-chave:</strong> a ordem das condições importa. Ao entrar em um bloco verdadeiro, os próximos não são avaliados.
+            <div class="quiz-answer">
+              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+              <strong>Pontos-chave:</strong> a ordem das condições importa. Ao entrar em um bloco verdadeiro, os
+              próximos não são avaliados.
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- ══ ATIVIDADE 2 – Desconto na compra ══ -->
-      <section class="activity-slide">
-        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade de Decisão 2 de 3</h2>
-        <div class="activity-card">
-          <p class="activity-title"><i class="fa-solid fa-receipt" aria-hidden="true"></i> Desconto por Valor da Compra</p>
-          <p class="activity-question">Leia o valor de uma compra.</p>
-          <p class="activity-question">Aplique as regras:</p>
-          <ul style="font-size:0.72em; color:#2b4352; margin-top:4px;">
-            <li>Se valor for <strong>maior ou igual a 200</strong>, desconto de <strong>10%</strong></li>
-            <li>Caso contrário, desconto de <strong>5%</strong></li>
-          </ul>
-          <p class="activity-question">Exiba o valor final com desconto.</p>
-          <p class="activity-question" style="margin-top:10px;">
-            <i class="fa-solid fa-lightbulb" style="color:#e67e22;" aria-hidden="true"></i>
-            <em>Dica: guarde o percentual em uma variável e reutilize no cálculo.</em>
-          </p>
-        </div>
-      </section>
+        <!-- ══ ATIVIDADE 2 – Desconto na compra ══ -->
+        <section class="activity-slide">
+          <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade de Decisão 2 de 3</h2>
+          <div class="activity-card">
+            <p class="activity-title"><i class="fa-solid fa-receipt" aria-hidden="true"></i> Desconto por Valor da
+              Compra</p>
+            <p class="activity-question">Leia o valor de uma compra.</p>
+            <p class="activity-question">Aplique as regras:</p>
+            <ul style="font-size:0.72em; color:#2b4352; margin-top:4px;">
+              <li>Se valor for <strong>maior ou igual a 200</strong>, desconto de <strong>10%</strong></li>
+              <li>Caso contrário, desconto de <strong>5%</strong></li>
+            </ul>
+            <p class="activity-question">Exiba o valor final com desconto.</p>
+            <p class="activity-question" style="margin-top:10px;">
+              <i class="fa-solid fa-lightbulb" style="color:#e67e22;" aria-hidden="true"></i>
+              <em>Dica: guarde o percentual em uma variável e reutilize no cálculo.</em>
+            </p>
+          </div>
+        </section>
 
-      <section class="quiz-slide">
-        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta — Atividade de Decisão 2</h2>
-        <div class="quiz-card">
-          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solução</p>
-          <pre style="margin:8px 0;"><code class="language-python" data-trim data-noescape>
+        <section class="quiz-slide">
+          <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta —
+            Atividade de Decisão 2</h2>
+          <div class="quiz-card">
+            <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solução</p>
+            <pre style="margin:8px 0;"><code class="language-python" data-trim data-noescape>
 valor = float(input("Valor da compra: R$ "))
 
 if valor >= 200:
@@ -913,42 +954,45 @@ total = valor * (1 - desconto)
 print(f"Desconto aplicado: {desconto * 100:.0f}%")
 print(f"Valor final: R$ {total:.2f}")
           </code></pre>
-          <div class="quiz-answer">
-            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-            <strong>Pontos-chave:</strong> a decisão define o percentual. O cálculo final usa o fator <code>(1 - desconto)</code>.
+            <div class="quiz-answer">
+              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+              <strong>Pontos-chave:</strong> a decisão define o percentual. O cálculo final usa o fator
+              <code>(1 - desconto)</code>.
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- ══ ATIVIDADE 3 – Situação do aluno ══ -->
-      <section class="activity-slide">
-        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade de Decisão 3 de 3</h2>
-        <div class="activity-card">
-          <p class="activity-title"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Situação Final do Aluno</p>
-          <p class="activity-question">Leia a média final e exiba a situação:</p>
-          <ul style="font-size:0.72em; color:#2b4352; margin-top:4px;">
-            <li><strong>Aprovado</strong> se média &gt;= 7</li>
-            <li><strong>Recuperação</strong> se média &gt;= 5 e &lt; 7</li>
-            <li><strong>Reprovado</strong> caso contrário</li>
-          </ul>
-          <p class="activity-question" style="margin-top:8px;">
-            <i class="fa-solid fa-lightbulb" style="color:#e67e22;" aria-hidden="true"></i>
-            <em>Dica: no <code>elif</code>, não precisa repetir tudo que o primeiro <code>if</code> já descartou.</em>
-          </p>
-        </div>
-      </section>
+        <!-- ══ ATIVIDADE 3 – Situação do aluno ══ -->
+        <section class="activity-slide">
+          <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade de Decisão 3 de 3</h2>
+          <div class="activity-card">
+            <p class="activity-title"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Situação Final do
+              Aluno</p>
+            <p class="activity-question">Leia a média final e exiba a situação:</p>
+            <ul style="font-size:0.72em; color:#2b4352; margin-top:4px;">
+              <li><strong>Aprovado</strong> se média &gt;= 7</li>
+              <li><strong>Recuperação</strong> se média &gt;= 5 e &lt; 7</li>
+              <li><strong>Reprovado</strong> caso contrário</li>
+            </ul>
+            <p class="activity-question" style="margin-top:8px;">
+              <i class="fa-solid fa-lightbulb" style="color:#e67e22;" aria-hidden="true"></i>
+              <em>Dica: no <code>elif</code>, não precisa repetir tudo que o primeiro <code>if</code> já descartou.</em>
+            </p>
+          </div>
+        </section>
 
 
-      <!-- ══════════════════════════════════════════════════════
+        <!-- ══════════════════════════════════════════════════════
            BLOCO DE ATIVIDADES DE DECISÃO (3 atividades + respostas)
            ══════════════════════════════════════════════════════ -->
 
 
-      <section class="quiz-slide">
-        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta — Atividade de Decisão 3</h2>
-        <div class="quiz-card">
-          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solução</p>
-          <pre style="margin:8px 0;"><code class="language-python" data-trim data-noescape>
+        <section class="quiz-slide">
+          <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta —
+            Atividade de Decisão 3</h2>
+          <div class="quiz-card">
+            <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solução</p>
+            <pre style="margin:8px 0;"><code class="language-python" data-trim data-noescape>
 media = float(input("Média final: "))
 
 if media >= 7:
@@ -958,34 +1002,38 @@ elif media >= 5:
 else:
     print("Reprovado")
           </code></pre>
-          <div class="quiz-answer">
-            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-            <strong>Pontos-chave:</strong> a leitura é sequencial: primeiro testa <code>&gt;= 7</code>, depois <code>&gt;= 5</code>, e o restante cai no <code>else</code>.
+            <div class="quiz-answer">
+              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+              <strong>Pontos-chave:</strong> a leitura é sequencial: primeiro testa <code>&gt;= 7</code>, depois
+              <code>&gt;= 5</code>, e o restante cai no <code>else</code>.
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- ══════════════════════════════════════════════════════
+        <!-- ══════════════════════════════════════════════════════
            FIM DO BLOCO DE ATIVIDADES DE DECISÃO
            ══════════════════════════════════════════════════════ -->
 
-</section>
-     
+      </section>
+
 
 
       <!-- ==================== SLIDE – RESUMO ==================== -->
       <section class="bg-light">
         <h2><i class="fa-solid fa-clipboard-list icon" aria-hidden="true"></i> Resumo da Aula</h2>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px;">
-          <div class="fragment" style="background:#fff; border:2px solid #1450a4; border-radius:12px; padding:14px; text-align:center;">
+          <div class="fragment"
+            style="background:#fff; border:2px solid #1450a4; border-radius:12px; padding:14px; text-align:center;">
             <p style="font-size:1.2em; margin:0 0 4px; font-weight:700; color:#1450a4;"><code>if</code></p>
             <p style="font-size:0.68em; color:#555; margin:0;">Executa bloco quando a condição é verdadeira</p>
           </div>
-          <div class="fragment" style="background:#fff; border:2px solid #0d7377; border-radius:12px; padding:14px; text-align:center;">
+          <div class="fragment"
+            style="background:#fff; border:2px solid #0d7377; border-radius:12px; padding:14px; text-align:center;">
             <p style="font-size:1.2em; margin:0 0 4px; font-weight:700; color:#0d7377;"><code>else</code></p>
             <p style="font-size:0.68em; color:#555; margin:0;">Executa bloco alternativo (caso falso)</p>
           </div>
-          <div class="fragment" style="background:#fff; border:2px solid #e67e22; border-radius:12px; padding:14px; text-align:center;">
+          <div class="fragment"
+            style="background:#fff; border:2px solid #e67e22; border-radius:12px; padding:14px; text-align:center;">
             <p style="font-size:1.2em; margin:0 0 4px; font-weight:700; color:#e67e22;"><code>elif</code></p>
             <p style="font-size:0.68em; color:#555; margin:0;">Condições intermediárias extras</p>
           </div>

@@ -25,10 +25,18 @@
   },
   {
     "numero": 4,
-    "titulo": "Aula 04 - Estruturas Condicionais",
-    "subtitulo": "if, elif, else e Operadores Lógicos",
-    "descricao": "Tomando decisões com estruturas condicionais, operadores relacionais e lógicos, validações de entrada.",
+    "titulo": "Aula 04 - Atividades Iniciais",
+    "subtitulo": "Prática guiada",
+    "descricao": "Aula dedicada somente às atividades iniciais, com exercícios práticos de fixação.",
     "link": "./aulas/aula04.html",
-    "topicos": ["if / elif / else", "Operadores relacionais", "Operadores lógicos", "Condicionais encadeadas", "Indentação"]
+    "topicos": ["Atividades práticas", "Fixação de conteúdo", "Resolução guiada", "Exercícios iniciais"]
+  },
+  {
+    "numero": 5,
+    "titulo": "Aula 05 - Prática de Decisões em Python",
+    "subtitulo": "if, if/else e if/elif/else",
+    "descricao": "Prática guiada de estruturas condicionais com exercícios de decisão e resolução de cenários.",
+    "link": "./aulas/aula05.html",
+    "topicos": ["if", "if/else", "if/elif/else", "Tomada de decisão", "Exercícios práticos"]
   }
 ]

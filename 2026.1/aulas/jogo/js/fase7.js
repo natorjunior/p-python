@@ -935,13 +935,11 @@
     }
 
     /* ===== PARSER ===== */
-    function parseIndentedCommand(rawLine, lineNum, ifLine) {
-        if (!/^\s+/.test(rawLine)) {
-            throw new Error("Ln " + lineNum + ": bloco do if na linha " + ifLine + " exige indentação.");
-        }
+    function getIndent(rawLine) {
+        return (rawLine.match(/^\s*/) || [""])[0].length;
+    }
 
-        const line = rawLine.trim();
-
+    function parseSimpleCommand(line, lineNum) {
         const rightMatch = line.match(/^move_right\s*\(\s*(\d+)\s*\)$/);
         if (rightMatch) {
             const steps = Number(rightMatch[1]);
@@ -968,126 +966,155 @@
             return { type: "jump", line: lineNum };
         }
 
-        throw new Error("Ln " + lineNum + ": comando inválido dentro do bloco if: \"" + line + "\"");
+        return null;
+    }
+
+    function isCrystalIfLine(line) {
+        return /^if\s+is_crystal_ahead\s*\(\s*\)\s*:\s*$/.test(line);
+    }
+
+    function skipIgnorable(lines, index) {
+        let i = index;
+        while (i < lines.length) {
+            const trimmed = lines[i].trim();
+            if (trimmed && !trimmed.startsWith("#")) break;
+            i++;
+        }
+        return i;
+    }
+
+    function parseStatement(lines, index, expectedIndent) {
+        const rawLine = lines[index];
+        const lineNum = index + 1;
+        const line = rawLine.trim();
+        const indent = getIndent(rawLine);
+
+        if (indent !== expectedIndent) {
+            throw new Error("Ln " + lineNum + ": indentação inesperada neste bloco.");
+        }
+
+        if (line === "else:") {
+            throw new Error("Ln " + lineNum + ': "else:" sem if correspondente.');
+        }
+
+        const simple = parseSimpleCommand(line, lineNum);
+        if (simple) {
+            return { command: simple, nextIndex: index + 1 };
+        }
+
+        if (isCrystalIfLine(line)) {
+            const parsedIf = parseIfElseAt(lines, index, expectedIndent);
+            return { command: parsedIf.command, nextIndex: parsedIf.nextIndex };
+        }
+
+        throw new Error("Ln " + lineNum + ': comando inválido "' + line + '"');
+    }
+
+    function parseBlock(lines, startIndex, parentIndent, opts) {
+        const options = opts || {};
+        const stopAtElse = !!options.stopAtElse;
+        const commands = [];
+        let i = startIndex;
+        let blockIndent = -1;
+
+        while (i < lines.length) {
+            const rawLine = lines[i];
+            const line = rawLine.trim();
+            const indent = getIndent(rawLine);
+
+            if (!line || line.startsWith("#")) {
+                i++;
+                continue;
+            }
+
+            if (stopAtElse && line === "else:" && indent === parentIndent) {
+                break;
+            }
+
+            if (indent <= parentIndent) {
+                break;
+            }
+
+            if (blockIndent < 0) {
+                blockIndent = indent;
+            }
+
+            if (indent !== blockIndent) {
+                throw new Error("Ln " + (i + 1) + ": indentação inconsistente no bloco.");
+            }
+
+            const parsed = parseStatement(lines, i, blockIndent);
+            commands.push(parsed.command);
+            i = parsed.nextIndex;
+        }
+
+        return { commands: commands, nextIndex: i };
+    }
+
+    function parseIfElseAt(lines, ifIndex, ifIndent) {
+        const ifLineNum = ifIndex + 1;
+        const thenParsed = parseBlock(lines, ifIndex + 1, ifIndent, { stopAtElse: true });
+
+        if (thenParsed.commands.length === 0) {
+            throw new Error("Ln " + ifLineNum + ": bloco do if não pode ficar vazio.");
+        }
+
+        let elseIndex = skipIgnorable(lines, thenParsed.nextIndex);
+        if (elseIndex >= lines.length) {
+            throw new Error("Ln " + ifLineNum + ": if is_crystal_ahead() exige um else:.");
+        }
+
+        const elseRaw = lines[elseIndex];
+        const elseLine = elseRaw.trim();
+        const elseIndent = getIndent(elseRaw);
+
+        if (elseLine !== "else:" || elseIndent !== ifIndent) {
+            throw new Error("Ln " + ifLineNum + ": if is_crystal_ahead() exige um else:.");
+        }
+
+        const elseLineNum = elseIndex + 1;
+        const elseParsed = parseBlock(lines, elseIndex + 1, ifIndent);
+
+        if (elseParsed.commands.length === 0) {
+            throw new Error("Ln " + elseLineNum + ": bloco do else não pode ficar vazio.");
+        }
+
+        return {
+            command: {
+                type: "if_else_crystal_block",
+                line: ifLineNum,
+                elseLine: elseLineNum,
+                thenCommands: thenParsed.commands,
+                elseCommands: elseParsed.commands,
+            },
+            nextIndex: elseParsed.nextIndex,
+        };
+    }
+
+    function countCommandsRecursive(commands) {
+        let total = 0;
+        for (let i = 0; i < commands.length; i++) {
+            total++;
+            const cmd = commands[i];
+            if (cmd.type === "if_else_crystal_block") {
+                total += countCommandsRecursive(cmd.thenCommands);
+                total += countCommandsRecursive(cmd.elseCommands);
+            }
+        }
+        return total;
     }
 
     function parseCode(code) {
-        const commands = [];
         const lines = code.split("\n");
+        const parsed = parseBlock(lines, 0, -1);
+        const commands = parsed.commands;
 
-        for (let i = 0; i < lines.length; i++) {
-            const lineNum = i + 1;
-            const line = lines[i].trim();
-            if (!line || line.startsWith("#")) continue;
-
-            const rightMatch = line.match(/^move_right\s*\(\s*(\d+)\s*\)$/);
-            if (rightMatch) {
-                const steps = Number(rightMatch[1]);
-                if (steps < 1 || steps > MAX_MOVE_STEPS) {
-                    throw new Error("Ln " + lineNum + ": move_right(n) deve usar n entre 1 e " + MAX_MOVE_STEPS + ".");
-                }
-                commands.push({ type: "right", steps: steps, line: lineNum });
-                continue;
-            }
-
-            const leftMatch = line.match(/^move_left\s*\(\s*(\d+)\s*\)$/);
-            if (leftMatch) {
-                const steps = Number(leftMatch[1]);
-                if (steps < 1 || steps > MAX_MOVE_STEPS) {
-                    throw new Error("Ln " + lineNum + ": move_left(n) deve usar n entre 1 e " + MAX_MOVE_STEPS + ".");
-                }
-                commands.push({ type: "left", steps: steps, line: lineNum });
-                continue;
-            }
-
-            if (/^interact\s*\(\s*\)$/.test(line)) {
-                commands.push({ type: "interact", line: lineNum });
-                continue;
-            }
-
-            if (/^jump\s*\(\s*\)$/.test(line)) {
-                commands.push({ type: "jump", line: lineNum });
-                continue;
-            }
-
-            if (/^if\s+is_crystal_ahead\s*\(\s*\)\s*:\s*$/.test(line)) {
-                const ifIndent = (lines[i].match(/^\s*/) || [""])[0].length;
-                let j = i + 1;
-                let elseLineNum = -1;
-                const thenCommands = [];
-
-                while (j < lines.length) {
-                    const rawThen = lines[j];
-                    const trimmedThen = rawThen.trim();
-                    const indentThen = (rawThen.match(/^\s*/) || [""])[0].length;
-
-                    if (!trimmedThen || trimmedThen.startsWith("#")) {
-                        j++;
-                        continue;
-                    }
-
-                    if (trimmedThen === "else:" && indentThen === ifIndent) {
-                        elseLineNum = j + 1;
-                        break;
-                    }
-
-                    if (indentThen <= ifIndent) {
-                        throw new Error("Ln " + (j + 1) + ": esperado bloco indentado ou else: após if is_crystal_ahead().");
-                    }
-
-                    thenCommands.push(parseIndentedCommand(rawThen, j + 1, lineNum));
-                    j++;
-                }
-
-                if (elseLineNum < 0) {
-                    throw new Error("Ln " + lineNum + ": if is_crystal_ahead() exige um else:.");
-                }
-
-                j += 1; // primeira linha do else
-                const elseCommands = [];
-
-                while (j < lines.length) {
-                    const rawElse = lines[j];
-                    const trimmedElse = rawElse.trim();
-                    const indentElse = (rawElse.match(/^\s*/) || [""])[0].length;
-
-                    if (!trimmedElse || trimmedElse.startsWith("#")) {
-                        j++;
-                        continue;
-                    }
-
-                    if (indentElse <= ifIndent) {
-                        break;
-                    }
-
-                    elseCommands.push(parseIndentedCommand(rawElse, j + 1, lineNum));
-                    j++;
-                }
-
-                if (thenCommands.length === 0) {
-                    throw new Error("Ln " + lineNum + ": bloco do if não pode ficar vazio.");
-                }
-                if (elseCommands.length === 0) {
-                    throw new Error("Ln " + elseLineNum + ": bloco do else não pode ficar vazio.");
-                }
-
-                commands.push({
-                    type: "if_else_crystal_block",
-                    line: lineNum,
-                    elseLine: elseLineNum,
-                    thenCommands: thenCommands,
-                    elseCommands: elseCommands,
-                });
-
-                i = j - 1;
-                continue;
-            }
-
-            throw new Error("Ln " + lineNum + ': comando inválido "' + line + '"');
+        if (commands.length === 0) {
+            throw new Error("Nenhum comando encontrado.");
         }
 
-        if (commands.length === 0) throw new Error("Nenhum comando encontrado.");
-        if (commands.length > MAX_COMMANDS) {
+        const totalCommands = countCommandsRecursive(commands);
+        if (totalCommands > MAX_COMMANDS) {
             throw new Error("Máximo de " + MAX_COMMANDS + " comandos permitidos nesta fase.");
         }
 
@@ -1162,7 +1189,7 @@
 
             if (isCrystalAhead()) {
                 for (let i = 0; i < cmd.thenCommands.length; i++) {
-                    await executeSimpleCommand(cmd.thenCommands[i], id, moveSpeed);
+                    await executeCommand(cmd.thenCommands[i], id, moveSpeed);
                     if (hasWon || id !== execId) return;
                 }
             } else {
@@ -1172,7 +1199,7 @@
                     '<span class="term-cmd">Linha ' + cmd.elseLine + ':</span> else:'
                 );
                 for (let j = 0; j < cmd.elseCommands.length; j++) {
-                    await executeSimpleCommand(cmd.elseCommands[j], id, moveSpeed);
+                    await executeCommand(cmd.elseCommands[j], id, moveSpeed);
                     if (hasWon || id !== execId) return;
                 }
             }
