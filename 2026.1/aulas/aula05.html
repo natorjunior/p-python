@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Aula 05 - Estruturas condicionais em Python: if, elif, else, operadores lógicos e validações.">
-  <title>Aula 05 - Estruturas Condicionais em Python</title>
+    content="Aula 04 - Estruturas condicionais em Python: if, elif, else, operadores lógicos e validações.">
+  <title>Aula 04 - Estruturas Condicionais em Python</title>
 
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -490,7 +490,7 @@
           <div class="hero-content">
             <p class="hero-kicker"><i class="fa-solid fa-laptop-code icon" aria-hidden="true"></i>Introdução à
               Programação</p>
-            <h1 class="hero-title">Aula 05<br><span>Estruturas Condicionais em Python</span></h1>
+            <h1 class="hero-title">Aula 04<br><span>Estruturas Condicionais em Python</span></h1>
             <p class="hero-subtitle">Tomando decisões com <code>if</code>, <code>elif</code> e <code>else</code>.</p>
             <div class="hero-tags">
               <span>if</span>
@@ -511,22 +511,276 @@
         </div>
       </section>
 
-      <!-- ==================== SLIDE 2 – REVISÃO ==================== -->
+
+<section>
+
+      <!-- ══════════════════════════════════════════════════════
+           BLOCO: F-STRINGS
+           ══════════════════════════════════════════════════════ -->
+
+      <!-- ── Divisor f-string ── -->
+      <section class="section-divider" data-background-gradient="linear-gradient(135deg, #1a237e, #6a1b9a)">
+        <div class="section-number">Conceito</div>
+        <h2><i class="fa-solid fa-quote-left icon" aria-hidden="true"></i> F-Strings em Python</h2>
+        <p>A forma moderna e elegante de formatar texto com variáveis.</p>
+      </section>
+
+      <!-- ── O que é uma f-string ── -->
       <section class="bg-light">
-        <h2><i class="fa-solid fa-rotate-left icon" aria-hidden="true"></i> Revisão Rápida</h2>
-        <ul>
-          <li class="fragment">Usamos <strong>operadores aritméticos</strong> para calcular valores.</li>
-          <li class="fragment">Usamos <strong>operadores relacionais</strong> para comparar resultados.</li>
-          <li class="fragment">Usamos <strong>operadores lógicos</strong> para combinar condições.</li>
-        </ul>
-        <div class="box fragment">
-          <i class="fa-solid fa-lightbulb icon" style="color:#e67e22;" aria-hidden="true"></i>
-          Com isso, já conseguimos montar condições. Agora vamos decidir <strong>qual caminho</strong> o programa deve
-          seguir!
+        <h2><i class="fa-solid fa-font icon" aria-hidden="true"></i> O que é uma F-String?</h2>
+        <p>Uma <strong>f-string</strong> é uma string especial que permite <strong>inserir variáveis e expressões diretamente dentro do texto</strong>.</p>
+        <div class="columns" style="margin-top:16px;">
+          <div>
+            <div class="box-orange">
+              <pre style="margin:8px 0;"><code class="language-python" data-trim data-noescape>
+valor = 10
+print(f"Olá, {valor}!")
+              </code></pre>
+            </div>
+          </div>
+          <div>
+            <div class="box-green">
+              <pre style="margin:8px 0;"><code class="language-python" data-trim data-noescape>
+nome = "Ana"
+print(f"Olá, {nome}!")
+              </code></pre>
+            </div>
+          </div>
         </div>
       </section>
 
+      <!-- ── Sintaxe básica ── -->
+      <section>
+        <h2><i class="fa-solid fa-code icon" aria-hidden="true"></i> Sintaxe da F-String</h2>
+        <p>O <code>f</code> antes das aspas "ativa" a interpolação. As chaves <code>{ }</code> são avaliadas em tempo real:</p>
+        <pre><code class="language-python" data-trim data-noescape>
+nome  = "Carlos"
+idade = 22
+curso = "Python"
+
+# Variáveis dentro das chaves
+print(f"Nome: {nome}")
+print(f"Idade: {idade} anos")
+print(f"{nome} tem {idade} anos e estuda {curso}.")
+
+# Saída:
+# Nome: Carlos
+# Idade: 22 anos
+# Carlos tem 22 anos e estuda Python.
+        </code></pre>
+      </section>
+
+      
+      <!-- ── Formatação de números ── -->
+      <section>
+        <h2><i class="fa-solid fa-hashtag icon" aria-hidden="true"></i> Formatando Números</h2>
+        <p>Após o valor, use <code>:</code> seguido de um <strong>especificador de formato</strong>:</p>
+        <pre><code class="language-python" data-trim data-noescape>
+preco  = 1234.5678
+pi     = 3.14159265
+taxa   = 0.1525
+numero = 42
+
+print(f"2 casas decimais:  R$ {preco:.2f}")   # R$ 1234.57
+print(f"4 casas decimais:  {pi:.4f}")         # 3.1416
+print(f"Percentual:        {taxa:.1%}")       # 15.2%
+print(f"Inteiro sem fração:{preco:.0f}")      # 1235
+        </code></pre>
+      </section>
+</section>
+
+
+<section>
+ <!-- ── Divisor do bloco ── -->
+      <section class="section-divider" data-background-gradient="linear-gradient(135deg, #134e5e, #71b280)">
+        <div class="section-number">Aquecimento</div>
+        <h2><i class="fa-solid fa-dumbbell icon" aria-hidden="true"></i> Atividades de Revisão</h2>
+        <p>Vamos praticar variáveis, operadores e entrada de dados antes de entrar nas condicionais.</p>
+      </section>
+
+      <!-- ══ ATIVIDADE 1 – Média de três notas ══ -->
+      <section class="activity-slide">
+        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade 1 de 5</h2>
+        <div class="activity-card">
+          <p class="activity-title"><i class="fa-solid fa-calculator" aria-hidden="true"></i> Média de Três Notas</p>
+          <p class="activity-question">Crie três variáveis: <code>nota1</code>, <code>nota2</code> e <code>nota3</code>.</p>
+          <p class="activity-question">Calcule a <strong>média aritmética</strong> das três notas e armazene em uma variável chamada <code>media</code>.</p>
+          <p class="activity-question">Exiba o resultado com a mensagem: <code>"A média é: X.XX"</code></p>
+          <p class="activity-question" style="margin-top:10px;">
+            <i class="fa-solid fa-lightbulb" style="color:#e67e22;" aria-hidden="true"></i>
+            <em>Dica: use <code>print(f"A média é: {media:.2f}")</code> para formatar com 2 casas decimais.</em>
+          </p>
+        </div>
+      </section>
+
+      <section class="quiz-slide">
+        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta — Atividade 1</h2>
+        <div class="quiz-card">
+          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solução</p>
+          <pre style="margin:8px 0;"><code class="language-python" data-trim data-noescape>
+nota1 = 8.0
+nota2 = 6.5
+nota3 = 9.0
+
+media = (nota1 + nota2 + nota3) / 3
+
+print(f"A média é: {media:.2f}")
+# Saída: A média é: 7.83
+          </code></pre>
+          <div class="quiz-answer">
+            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+            <strong>Pontos-chave:</strong> os parênteses garantem que a soma ocorra <em>antes</em> da divisão, e <code>:.2f</code> formata com 2 casas decimais.
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ ATIVIDADE 2 – Converter temperatura ══ -->
+      <section class="activity-slide">
+        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade 2 de 5</h2>
+        <div class="activity-card">
+          <p class="activity-title"><i class="fa-solid fa-temperature-half" aria-hidden="true"></i> Conversor de Temperatura</p>
+          <p class="activity-question">Leia uma temperatura em <strong>Celsius</strong> com <code>input()</code>.</p>
+          <p class="activity-question">Converta para <strong>Fahrenheit</strong> usando a fórmula:</p>
+          <p class="activity-question" style="text-align:center; font-size:0.8em !important;">
+            <code>F = C × 1.8 + 32</code>
+          </p>
+          <p class="activity-question">Exiba: <code>"X C equivale a Y F"</code></p>
+          <p class="activity-question" style="margin-top:10px;">
+            <i class="fa-solid fa-lightbulb" style="color:#e67e22;" aria-hidden="true"></i>
+            <em>Dica: converta a entrada para <code>float</code> antes de calcular.</em>
+          </p>
+        </div>
+      </section>
+
+      <section class="quiz-slide">
+        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta — Atividade 2</h2>
+        <div class="quiz-card">
+          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solução</p>
+          <pre style="margin:8px 0;"><code class="language-python" data-trim data-noescape>
+celsius = float(input("Digite a temperatura em °C: "))
+
+fahrenheit = celsius * 1.8 + 32
+
+print(f"{celsius}C equivale a {fahrenheit:.1f}F")
+# Exemplo: 100C equivale a 212.0F
+          </code></pre>
+          <div class="quiz-answer">
+            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+            <strong>Pontos-chave:</strong> <code>float(input())</code> converte a string para número decimal. A fórmula deve ser aplicada antes do <code>print</code>.
+          </div>
+        </div>
+      </section>
+
+      
+
+      <!-- ══ ATIVIDADE 4 – Área e perímetro ══ -->
+      <section class="activity-slide">
+        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade 4 de 5</h2>
+        <div class="activity-card">
+          <p class="activity-title"><i class="fa-solid fa-square" aria-hidden="true"></i> Área e Perímetro do Retângulo</p>
+          <p class="activity-question">Leia a <strong>largura</strong> e a <strong>altura</strong> de um retângulo.</p>
+          <p class="activity-question">Calcule e exiba:</p>
+          <ul style="font-size:0.72em; color:#2b4352; margin-top:4px;">
+            <li><strong>Área</strong> = largura × altura</li>
+            <li><strong>Perímetro</strong> = 2 × (largura + altura)</li>
+            <li>Se a área é <strong>maior que 50</strong>: exiba <code>True</code> ou <code>False</code></li>
+          </ul>
+          <p class="activity-question" style="margin-top:8px;">
+            <i class="fa-solid fa-lightbulb" style="color:#e67e22;" aria-hidden="true"></i>
+            <em>Dica: use <code>**</code> e <code>*</code> para calcular. Mostre os resultados com f-string.</em>
+          </p>
+        </div>
+      </section>
+
+
+      <!-- ══════════════════════════════════════════════════════
+           BLOCO DE ATIVIDADES INICIAIS (5 atividades + respostas)
+           ══════════════════════════════════════════════════════ -->
+
+
+      <section class="quiz-slide">
+        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta — Atividade 4</h2>
+        <div class="quiz-card">
+          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solução</p>
+          <pre style="margin:8px 0;"><code class="language-python" data-trim data-noescape>
+largura = float(input("Largura: "))
+altura  = float(input("Altura: "))
+
+area       = largura * altura
+perimetro  = 2 * (largura + altura)
+area_grande = area > 50
+
+print(f"Área: {area:.2f}")
+print(f"Perímetro: {perimetro:.2f}")
+print(f"Área maior que 50? {area_grande}")
+          </code></pre>
+          <div class="quiz-answer">
+            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+            <strong>Pontos-chave:</strong> a expressão <code>area > 50</code> já retorna um booleano (<code>True</code>/<code>False</code>) que pode ser armazenado em variável e exibido normalmente.
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ ATIVIDADE 5 – Salário com bônus ══ -->
+      <section class="activity-slide">
+        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade 5 de 5</h2>
+        <div class="activity-card">
+          <p class="activity-title"><i class="fa-solid fa-wallet" aria-hidden="true"></i> Salário com Bônus</p>
+          <p class="activity-question">Leia o <strong>salário base</strong> e o <strong>percentual de bônus</strong> de um funcionário.</p>
+          <p class="activity-question">Calcule e exiba:</p>
+          <ul style="font-size:0.72em; color:#2b4352; margin-top:4px;">
+            <li>O <strong>valor do bônus</strong> = salário × (percentual / 100)</li>
+            <li>O <strong>salário final</strong> = salário + bônus</li>
+            <li>Se o salário final <strong>supera R$ 5.000</strong>: <code>True</code> ou <code>False</code></li>
+          </ul>
+          <p class="activity-question" style="margin-top:8px;">
+            <i class="fa-solid fa-lightbulb" style="color:#e67e22;" aria-hidden="true"></i>
+            <em>Dica: exiba todos os valores com 2 casas decimais usando <code>:.2f</code>.</em>
+          </p>
+        </div>
+      </section>
+
+      <section class="quiz-slide">
+        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta — Atividade 5</h2>
+        <div class="quiz-card">
+          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solução</p>
+          <pre style="margin:8px 0;"><code class="language-python" data-trim data-noescape>
+salario    = float(input("Salário base: R$ "))
+percentual = float(input("Percentual de bônus (%): "))
+
+bonus        = salario * (percentual / 100)
+salario_final = salario + bonus
+acima_5000   = salario_final > 5000
+
+print(f"Bônus:         R$ {bonus:.2f}")
+print(f"Salário final: R$ {salario_final:.2f}")
+print(f"Acima de R$5.000? {acima_5000}")
+          </code></pre>
+          <div class="quiz-answer">
+            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+            <strong>Pontos-chave:</strong> dividir por 100 converte o percentual para fator decimal. As expressões aritméticas e relacionais podem ser combinadas em sequência de forma natural.
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════════════
+           FIM DO BLOCO DE ATIVIDADES INICIAIS
+           ══════════════════════════════════════════════════════ -->
+
+</section>
+     
+
+      <section>
       <!-- ==================== SLIDE 3 – ANALOGIA ==================== -->
+      
+      <!-- ============= SEÇÃO 1 – if simples ============= -->
+      <section class="section-divider" data-background-gradient="linear-gradient(135deg, #1450a4, #0d7377)">
+        <div class="section-number">Parte 1</div>
+        <h2><i class="fa-solid fa-code icon" aria-hidden="true"></i> Estrutura <code style="color:#f1c40f;">if</code></h2>
+        <p>Executando código apenas quando a condição é verdadeira.</p>
+      </section>
+
+
       <section>
         <h2><i class="fa-solid fa-circle-question icon" aria-hidden="true"></i> O Que é Condicional?</h2>
         <p>Na vida real, tomamos decisões o tempo todo:</p>
@@ -549,35 +803,110 @@
         </div>
       </section>
 
+
+
       <!-- ==================== SLIDE 4 – FLUXO VISUAL ==================== -->
       <section class="bg-light">
         <h2><i class="fa-solid fa-diagram-project icon" aria-hidden="true"></i> Fluxo de Decisão</h2>
         <p>O programa avalia uma condição e escolhe um caminho:</p>
-        <div class="flow-diagram fragment">
-          <div class="flow-box flow-condition">
-            <i class="fa-solid fa-question" aria-hidden="true"></i><br>Condição
-          </div>
-          <div class="flow-arrow">→</div>
-          <div>
-            <div class="flow-box flow-true" style="margin-bottom:8px;">
-              ✅ Verdadeiro<br><small>executa bloco A</small>
-            </div>
-            <div class="flow-box flow-false">
-              ❌ Falso<br><small>executa bloco B</small>
-            </div>
-          </div>
+
+        <div class="fragment" style="display:flex; justify-content:center; align-items:center;">
+          <svg viewBox="0 0 640 280" width="680" height="245" xmlns="http://www.w3.org/2000/svg" font-family="Roboto, sans-serif">
+            <defs>
+              <!-- Sombra -->
+              <filter id="sombra" x="-15%" y="-15%" width="130%" height="130%">
+                <feDropShadow dx="2" dy="3" stdDeviation="4" flood-color="#00000022"/>
+              </filter>
+              <!-- Gradiente início -->
+              <linearGradient id="gradInicio" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1"/>
+                <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1"/>
+              </linearGradient>
+              <!-- Gradiente decisão -->
+              <linearGradient id="gradDecisao" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1"/>
+                <stop offset="100%" style="stop-color:#d97706;stop-opacity:1"/>
+              </linearGradient>
+              <!-- Gradiente verdadeiro -->
+              <linearGradient id="gradVerd" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#22c55e;stop-opacity:1"/>
+                <stop offset="100%" style="stop-color:#16a34a;stop-opacity:1"/>
+              </linearGradient>
+              <!-- Gradiente falso -->
+              <linearGradient id="gradFalso" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#f87171;stop-opacity:1"/>
+                <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1"/>
+              </linearGradient>
+              <!-- Gradiente fim -->
+              <linearGradient id="gradFim" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1"/>
+                <stop offset="100%" style="stop-color:#6d28d9;stop-opacity:1"/>
+              </linearGradient>
+              <!-- Marcador de seta -->
+              <marker id="seta" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#64748b"/>
+              </marker>
+              <marker id="setaVerd" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#16a34a"/>
+              </marker>
+              <marker id="setaFalso" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#dc2626"/>
+              </marker>
+              <marker id="setaFim" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#6d28d9"/>
+              </marker>
+            </defs>
+
+            <!-- ── INÍCIO (cápsula) ── -->
+            <rect x="255" y="8" width="130" height="36" rx="18" fill="url(#gradInicio)" filter="url(#sombra)"/>
+            <text x="320" y="31" text-anchor="middle" fill="white" font-size="13" font-weight="600">INÍCIO</text>
+
+            <!-- seta início → decisão -->
+            <line x1="320" y1="44" x2="320" y2="72" stroke="#64748b" stroke-width="2" marker-end="url(#seta)"/>
+
+            <!-- ── DECISÃO (losango) ── -->
+            <polygon points="320,75 415,130 320,185 225,130" fill="url(#gradDecisao)" filter="url(#sombra)"/>
+            <text x="320" y="124" text-anchor="middle" fill="white" font-size="12" font-weight="700">condição</text>
+            <text x="320" y="141" text-anchor="middle" fill="white" font-size="11">verdadeira?</text>
+
+            <!-- Label Sim -->
+            <text x="430" y="123" text-anchor="start" fill="#16a34a" font-size="11" font-weight="700">Sim</text>
+            <!-- Label Não -->
+            <text x="165" y="123" text-anchor="end" fill="#dc2626" font-size="11" font-weight="700">Não</text>
+
+            <!-- seta decisão → bloco Verdadeiro (direita) -->
+            <line x1="415" y1="130" x2="465" y2="130" stroke="#16a34a" stroke-width="2" marker-end="url(#setaVerd)"/>
+
+            <!-- ── BLOCO VERDADEIRO ── -->
+            <rect x="466" y="100" width="148" height="60" rx="10" fill="url(#gradVerd)" filter="url(#sombra)"/>
+            <text x="540" y="124" text-anchor="middle" fill="white" font-size="12" font-weight="700">✔ Bloco A</text>
+            <text x="540" y="141" text-anchor="middle" fill="white" font-size="10">(if verdadeiro)</text>
+
+            <!-- seta decisão → bloco Falso (esquerda) -->
+            <line x1="225" y1="130" x2="175" y2="130" stroke="#dc2626" stroke-width="2" marker-end="url(#setaFalso)"/>
+
+            <!-- ── BLOCO FALSO ── -->
+            <rect x="26" y="100" width="148" height="60" rx="10" fill="url(#gradFalso)" filter="url(#sombra)"/>
+            <text x="100" y="124" text-anchor="middle" fill="white" font-size="12" font-weight="700">✘ Bloco B</text>
+            <text x="100" y="141" text-anchor="middle" fill="white" font-size="10">(else / falso)</text>
+
+            <!-- seta Bloco A → baixo até junção -->
+            <polyline points="540,160 540,240 320,240" fill="none" stroke="#6d28d9" stroke-width="2" stroke-dasharray="5,3"/>
+            <!-- seta Bloco B → baixo até junção -->
+            <polyline points="100,160 100,240 320,240" fill="none" stroke="#6d28d9" stroke-width="2" stroke-dasharray="5,3"/>
+            <!-- seta junção → FIM -->
+            <line x1="320" y1="240" x2="320" y2="255" stroke="#6d28d9" stroke-width="2" marker-end="url(#setaFim)"/>
+
+            <!-- ── FIM (cápsula) ── -->
+            <rect x="255" y="244" width="130" height="36" rx="18" fill="url(#gradFim)" filter="url(#sombra)"/>
+            <text x="320" y="267" text-anchor="middle" fill="white" font-size="13" font-weight="600">FIM</text>
+          </svg>
         </div>
-        <div class="box fragment" style="text-align:center;">
+
+        <div class="box fragment" style="text-align:center; margin-top:4px;">
           <i class="fa-solid fa-triangle-exclamation icon" style="color:#e67e22;" aria-hidden="true"></i>
           Em Python, o <strong>bloco</strong> de código é definido pela <strong>indentação</strong> (4 espaços).
         </div>
-      </section>
-
-      <!-- ============= SEÇÃO 1 – if simples ============= -->
-      <section class="section-divider" data-background-gradient="linear-gradient(135deg, #1450a4, #0d7377)">
-        <div class="section-number">Parte 1</div>
-        <h2><i class="fa-solid fa-code icon" aria-hidden="true"></i> Estrutura <code style="color:#f1c40f;">if</code></h2>
-        <p>Executando código apenas quando a condição é verdadeira.</p>
       </section>
 
       <!-- ==================== SLIDE 5 – IF SIMPLES ==================== -->
@@ -618,6 +947,11 @@ print("Fim")
         </div>
       </section>
 
+    </section>
+
+
+
+<section>
       <!-- ============= SEÇÃO 2 – if/else ============= -->
       <section class="section-divider" data-background-gradient="linear-gradient(135deg, #0e4f9b, #2c3e50)">
         <div class="section-number">Parte 2</div>
@@ -625,7 +959,8 @@ print("Fim")
         <p>Dois caminhos: um para verdadeiro, outro para falso.</p>
       </section>
 
-      <!-- ==================== SLIDE 7 – IF/ELSE ==================== -->
+
+<!-- ==================== SLIDE 7 – IF/ELSE ==================== -->
       <section>
         <h2><i class="fa-solid fa-right-left icon" aria-hidden="true"></i> Estrutura <code>if / else</code></h2>
         <p>Quando queremos que algo aconteça <strong>nos dois casos</strong>:</p>
@@ -679,7 +1014,11 @@ else:
         </div>
       </section>
 
-      <!-- ============= SEÇÃO 3 – if/elif/else ============= -->
+</section>
+
+
+<section>
+ <!-- ============= SEÇÃO 3 – if/elif/else ============= -->
       <section class="section-divider" data-background-gradient="linear-gradient(135deg, #1a237e, #0d7377)">
         <div class="section-number">Parte 3</div>
         <h2><i class="fa-solid fa-layer-group icon" aria-hidden="true"></i> Estrutura <code style="color:#f1c40f;">if / elif / else</code></h2>
@@ -741,319 +1080,11 @@ else:
         </div>
       </section>
 
-      <!-- ==================== SLIDE 12 – MICRO FIXAÇÃO 3 ==================== -->
-      <section class="quiz-slide">
-        <h2><i class="fa-solid fa-brain icon" style="color:#e67e22;" aria-hidden="true"></i> Micro Fixação</h2>
-        <div class="quiz-card">
-          <p class="quiz-title"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Qual a saída?</p>
-          <pre style="margin: 8px 0;"><code class="language-python" data-trim data-noescape>
-temperatura = 35
+</section>
+      
 
-if temperatura > 30:
-    print("Muito quente 🔥")
-elif temperatura > 20:
-    print("Agradável 😊")
-else:
-    print("Frio 🥶")
-          </code></pre>
-          <div class="quiz-option fragment">a) <code>Muito quente 🔥</code></div>
-          <div class="quiz-option fragment">b) <code>Agradável 😊</code></div>
-          <div class="quiz-option fragment">c) <code>Frio 🥶</code></div>
-          <div class="quiz-option fragment">d) <code>Muito quente 🔥</code> e <code>Agradável 😊</code></div>
-          <div class="quiz-answer fragment">
-            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-            <strong>Resposta: a)</strong> — 35 > 30 é verdadeiro, então executa só o primeiro bloco. O <code>elif</code> nem é testado!
-          </div>
-        </div>
-      </section>
+     
 
-      <!-- ==================== SLIDE 13 – ATIVIDADE NOTAS ==================== -->
-      <section class="activity-slide">
-        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade Rápida</h2>
-        <div class="activity-card">
-          <p class="activity-title"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Situação do Aluno</p>
-          <p class="activity-question">Escreva um programa que leia a nota de um aluno e exiba:</p>
-          <ul style="font-size:0.72em; color:#2b4352; margin-top:6px;">
-            <li><code>"Aprovado"</code> se nota ≥ 7</li>
-            <li><code>"Recuperação"</code> se nota ≥ 5 e &lt; 7</li>
-            <li><code>"Reprovado"</code> se nota &lt; 5</li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- ============= SEÇÃO 4 – Operadores Lógicos ============= -->
-      <section class="section-divider" data-background-gradient="linear-gradient(135deg, #2c3e50, #8e44ad)">
-        <div class="section-number">Parte 4</div>
-        <h2><i class="fa-solid fa-gears icon" aria-hidden="true"></i> Condições Compostas</h2>
-        <p>Combinando condições com <code style="color:#f1c40f;">and</code>, <code style="color:#f1c40f;">or</code> e <code style="color:#f1c40f;">not</code>.</p>
-      </section>
-
-      <!-- ==================== SLIDE 14 – AND / OR / NOT ==================== -->
-      <section class="bg-accent">
-        <h2><i class="fa-solid fa-gears icon" aria-hidden="true"></i> Operadores Lógicos</h2>
-        <div class="columns">
-          <div>
-            <div class="box">
-              <strong><code>and</code></strong> — <strong>todas</strong> as condições precisam ser verdadeiras.
-            </div>
-            <div class="box">
-              <strong><code>or</code></strong> — basta <strong>uma</strong> condição ser verdadeira.
-            </div>
-            <div class="box">
-              <strong><code>not</code></strong> — <strong>inverte</strong> o valor lógico.
-            </div>
-          </div>
-          <div>
-            <pre><code class="language-python" data-trim data-noescape>
-idade = 20
-tem_cnh = True
-
-if idade >= 18 and tem_cnh:
-    print("Pode dirigir 🚗")
-else:
-    print("Não pode dirigir")
-            </code></pre>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==================== SLIDE 15 – TABELA VERDADE ==================== -->
-      <section>
-        <h2><i class="fa-solid fa-table icon" aria-hidden="true"></i> Tabela Verdade — <code>and</code> / <code>or</code></h2>
-        <div class="columns">
-          <div>
-            <table style="font-size:0.72em;">
-              <thead>
-                <tr><th>A</th><th>B</th><th>A <code>and</code> B</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>True</td><td>True</td><td style="color:#27ae60;font-weight:700;">True ✅</td></tr>
-                <tr><td>True</td><td>False</td><td style="color:#c0392b;">False</td></tr>
-                <tr><td>False</td><td>True</td><td style="color:#c0392b;">False</td></tr>
-                <tr><td>False</td><td>False</td><td style="color:#c0392b;">False</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div>
-            <table style="font-size:0.72em;">
-              <thead>
-                <tr><th>A</th><th>B</th><th>A <code>or</code> B</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>True</td><td>True</td><td style="color:#27ae60;font-weight:700;">True ✅</td></tr>
-                <tr><td>True</td><td>False</td><td style="color:#27ae60;font-weight:700;">True ✅</td></tr>
-                <tr><td>False</td><td>True</td><td style="color:#27ae60;font-weight:700;">True ✅</td></tr>
-                <tr><td>False</td><td>False</td><td style="color:#c0392b;">False</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==================== SLIDE 16 – MICRO FIXAÇÃO 4 ==================== -->
-      <section class="quiz-slide">
-        <h2><i class="fa-solid fa-brain icon" style="color:#e67e22;" aria-hidden="true"></i> Micro Fixação</h2>
-        <div class="quiz-card">
-          <p class="quiz-title"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Verdadeiro ou Falso?</p>
-          <p style="font-size:0.68em; color:#4a3520; margin:6px 0;">Considere: <code>idade = 16</code>, <code>acompanhado = True</code></p>
-          <div class="quiz-option fragment"><code>idade >= 18</code> → <strong>?</strong></div>
-          <div class="quiz-option fragment"><code>idade >= 18 or acompanhado</code> → <strong>?</strong></div>
-          <div class="quiz-option fragment"><code>idade >= 18 and acompanhado</code> → <strong>?</strong></div>
-          <div class="quiz-option fragment"><code>not idade >= 18</code> → <strong>?</strong></div>
-          <div class="quiz-answer fragment">
-            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-            <strong>Respostas:</strong> False, <strong>True</strong> (basta um ser verdade no <code>or</code>), False, True.
-          </div>
-        </div>
-      </section>
-
-      <!-- ==================== SLIDE 17 – ATIVIDADE LÓGICA ==================== -->
-      <section class="activity-slide">
-        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade Rápida</h2>
-        <div class="activity-card">
-          <p class="activity-title"><i class="fa-solid fa-car" aria-hidden="true"></i> Pode Dirigir?</p>
-          <p class="activity-question">Escreva um programa que leia a <strong>idade</strong> e se a pessoa tem <strong>CNH</strong> (<code>"s"</code> ou <code>"n"</code>).</p>
-          <p class="activity-question">Exiba <code>"Pode dirigir"</code> somente se idade ≥ 18 <strong>e</strong> tiver CNH.</p>
-          <p class="activity-question" style="margin-top:8px;"><i class="fa-solid fa-lightbulb" style="color:#e67e22;" aria-hidden="true"></i> <em>Dica: use <code>and</code> na condição.</em></p>
-        </div>
-      </section>
-
-      <!-- ============= SEÇÃO 5 – Condicionais Encadeadas ============= -->
-      <section class="section-divider" data-background-gradient="linear-gradient(135deg, #0d2550, #1a237e)">
-        <div class="section-number">Parte 5</div>
-        <h2><i class="fa-solid fa-sitemap icon" aria-hidden="true"></i> Condicionais Encadeadas</h2>
-        <p>Um <code style="color:#f1c40f;">if</code> dentro de outro <code style="color:#f1c40f;">if</code>.</p>
-      </section>
-
-      <!-- ==================== SLIDE 18 – ENCADEADA ==================== -->
-      <section>
-        <h2><i class="fa-solid fa-sitemap icon" aria-hidden="true"></i> Condicional Encadeada</h2>
-        <p>Podemos colocar um <code>if</code> <strong>dentro</strong> de outro para refinar a decisão:</p>
-        <pre><code class="language-python" data-trim data-noescape>
-usuario = input("Usuário: ")
-senha = input("Senha: ")
-
-if usuario == "admin":
-    if senha == "python123":
-        print("Acesso permitido ✅")
-    else:
-        print("Senha incorreta ❌")
-else:
-    print("Usuário inválido ❌")
-        </code></pre>
-        <div class="box-orange fragment">
-          <i class="fa-solid fa-triangle-exclamation icon" aria-hidden="true"></i>
-          Cada nível de <code>if</code> precisa de <strong>mais indentação</strong>. Cuidado para não se perder!
-        </div>
-      </section>
-
-      <!-- ==================== SLIDE 19 – MICRO FIXAÇÃO 5 ==================== -->
-      <section class="quiz-slide">
-        <h2><i class="fa-solid fa-brain icon" style="color:#e67e22;" aria-hidden="true"></i> Micro Fixação</h2>
-        <div class="quiz-card">
-          <p class="quiz-title"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Encontre os 2 erros</p>
-          <pre style="margin: 8px 0;"><code class="language-python" data-trim data-noescape>
-idade = int(input("Idade: "))
-
-if idade = 18:
-    print("Tem 18 anos")
-elif idade > 18
-    print("Maior de 18")
-else:
-    print("Menor de 18")
-          </code></pre>
-          <div class="quiz-answer fragment">
-            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-            <strong>Erros:</strong> Linha 3: usar <code>=</code> em vez de <code>==</code>. Linha 5: falta o <code>:</code> no final do <code>elif</code>.
-          </div>
-        </div>
-      </section>
-
-      <!-- ==================== SLIDE 20 – ATIVIDADE LOGIN ==================== -->
-      <section class="activity-slide">
-        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade Rápida</h2>
-        <div class="activity-card">
-          <p class="activity-title"><i class="fa-solid fa-lock" aria-hidden="true"></i> Login Simples</p>
-          <p class="activity-question">Escreva um programa que:</p>
-          <ul style="font-size:0.72em; color:#2b4352; margin-top:6px;">
-            <li>Leia <code>usuario</code> e <code>senha</code></li>
-            <li>Acesso válido se usuário = <code>"admin"</code> <strong>e</strong> senha = <code>"python123"</code></li>
-            <li>Exiba <code>"Acesso permitido"</code> ou <code>"Acesso negado"</code></li>
-          </ul>
-          <p class="activity-question" style="margin-top:8px;"><i class="fa-solid fa-lightbulb" style="color:#e67e22;" aria-hidden="true"></i> <em>Tente resolver de duas formas: com <code>and</code> e com <code>if</code> encadeado.</em></p>
-        </div>
-      </section>
-
-      <!-- ============= SEÇÃO 6 – Erros Comuns ============= -->
-      <section class="bg-warn">
-        <h2><i class="fa-solid fa-bug icon" aria-hidden="true"></i> Erros Comuns</h2>
-        <div class="columns">
-          <div>
-            <ul>
-              <li class="fragment">
-                <strong>Esquecer o <code>:</code></strong> após <code>if</code>, <code>elif</code> ou <code>else</code>.
-              </li>
-              <li class="fragment">
-                <strong>Indentação errada</strong> — o bloco não pertence ao <code>if</code>.
-              </li>
-              <li class="fragment">
-                Usar <strong><code>=</code></strong> (atribuição) em vez de <strong><code>==</code></strong> (comparação).
-              </li>
-              <li class="fragment">
-                Comparar texto sem padronizar <strong>maiúsculas/minúsculas</strong>.
-              </li>
-            </ul>
-          </div>
-          <div>
-            <pre class="fragment"><code class="language-python" data-trim data-noescape>
-# ❌ ERRADO
-if nota = 7
-    print("ok")
-
-# ✅ CORRETO
-if nota == 7:
-    print("ok")
-            </code></pre>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==================== SLIDE – MICRO FIXAÇÃO 6 ==================== -->
-      <section class="quiz-slide">
-        <h2><i class="fa-solid fa-brain icon" style="color:#e67e22;" aria-hidden="true"></i> Micro Fixação</h2>
-        <div class="quiz-card">
-          <p class="quiz-title"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Complete o código</p>
-          <pre style="margin: 8px 0;"><code class="language-python" data-trim data-noescape>
-valor = float(input("Valor da compra: "))
-
-if valor > 200:
-    desconto = valor * ____
-elif valor > 100:
-    desconto = valor * ____
-else:
-    desconto = ____
-
-final = valor - desconto
-print(f"Valor final: R$ {final:.2f}")
-          </code></pre>
-          <div class="quiz-answer fragment">
-            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-            <strong>Resposta:</strong> <code>0.10</code>, <code>0.05</code>, <code>0</code> — desconto de 10%, 5% e sem desconto.
-          </div>
-        </div>
-      </section>
-
-      <!-- ==================== SLIDE – ATIVIDADE DESCONTO ==================== -->
-      <section class="activity-slide">
-        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade Rápida</h2>
-        <div class="activity-card">
-          <p class="activity-title"><i class="fa-solid fa-tag" aria-hidden="true"></i> Desconto em Compra</p>
-          <p class="activity-question">Escreva o programa completo que:</p>
-          <ul style="font-size:0.72em; color:#2b4352; margin-top:6px;">
-            <li>Leia o valor total da compra</li>
-            <li>Aplique 10% se valor &gt; 200, 5% se valor &gt; 100, ou sem desconto</li>
-            <li>Exiba o valor original, o desconto e o valor final</li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- ==================== SLIDE – ATIVIDADE FAIXA ETÁRIA ==================== -->
-      <section class="activity-slide">
-        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade Rápida</h2>
-        <div class="activity-card">
-          <p class="activity-title"><i class="fa-solid fa-users" aria-hidden="true"></i> Classificação por Faixa Etária</p>
-          <p class="activity-question">Escreva um programa que leia a idade e classifique:</p>
-          <ul style="font-size:0.72em; color:#2b4352; margin-top:6px;">
-            <li><code>"Criança"</code> se idade &lt; 12</li>
-            <li><code>"Adolescente"</code> se 12 ≤ idade &lt; 18</li>
-            <li><code>"Adulto"</code> se 18 ≤ idade &lt; 60</li>
-            <li><code>"Idoso"</code> se idade ≥ 60</li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- ==================== SLIDE – DESAFIO ==================== -->
-      <section data-background-gradient="linear-gradient(135deg, #0e4f9b, #0d7377)">
-        <h2 style="color: white;"><i class="fa-solid fa-trophy icon" style="color: #f1c40f;"
-            aria-hidden="true"></i> Desafio</h2>
-        <p style="color: rgba(255,255,255,.92); font-size:.85em;">
-          Crie um programa que calcule o <strong>IMC</strong> e classifique:
-        </p>
-        <ul style="color: rgba(255,255,255,.9); font-size:.78em;">
-          <li class="fragment">Leia <strong>peso</strong> (kg) e <strong>altura</strong> (m)</li>
-          <li class="fragment">Calcule: <code>imc = peso / altura ** 2</code></li>
-          <li class="fragment"><code>IMC &lt; 18.5</code> → Abaixo do peso</li>
-          <li class="fragment"><code>18.5 ≤ IMC &lt; 25</code> → Peso normal</li>
-          <li class="fragment"><code>25 ≤ IMC &lt; 30</code> → Sobrepeso</li>
-          <li class="fragment"><code>IMC ≥ 30</code> → Obesidade</li>
-        </ul>
-        <div class="fragment" style="margin-top:14px; background:rgba(255,255,255,0.12); border-radius:10px; padding:10px 16px; border:1px solid rgba(255,255,255,0.2);">
-          <p style="color:rgba(255,255,255,.85); font-size:.72em; margin:0;">
-            <i class="fa-solid fa-lightbulb" style="color:#f1c40f;" aria-hidden="true"></i>
-            Exiba o IMC com 2 casas decimais e a classificação!
-          </p>
-        </div>
-      </section>
 
       <!-- ==================== SLIDE – RESUMO ==================== -->
       <section class="bg-light">
@@ -1071,10 +1102,7 @@ print(f"Valor final: R$ {final:.2f}")
             <p style="font-size:1.2em; margin:0 0 4px; font-weight:700; color:#e67e22;"><code>elif</code></p>
             <p style="font-size:0.68em; color:#555; margin:0;">Condições intermediárias extras</p>
           </div>
-          <div class="fragment" style="background:#fff; border:2px solid #8e44ad; border-radius:12px; padding:14px; text-align:center;">
-            <p style="font-size:1.2em; margin:0 0 4px; font-weight:700; color:#8e44ad;"><code>and or not</code></p>
-            <p style="font-size:0.68em; color:#555; margin:0;">Combinam condições compostas</p>
-          </div>
+
         </div>
         <div class="box fragment" style="text-align:center; margin-top:16px;">
           <i class="fa-solid fa-triangle-exclamation icon" style="color:#e67e22;" aria-hidden="true"></i>
@@ -1082,20 +1110,6 @@ print(f"Valor final: R$ {final:.2f}")
         </div>
       </section>
 
-      <!-- ==================== SLIDE – PRÓXIMA AULA ==================== -->
-      <section data-background-gradient="radial-gradient(#1f4b99, #16a085)">
-        <h2 style="color: white;">Próxima Aula</h2>
-        <p style="color: rgba(255,255,255,.9); font-size:.88em;">
-          Estruturas de repetição com <code style="color:#f1c40f;">while</code> e
-          <code style="color:#f1c40f;">for</code>.
-        </p>
-        <div style="margin-top:20px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-          <span style="background:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.26); border-radius:999px; color:#fff; font-size:0.5em; font-weight:500; padding:6px 14px;">while</span>
-          <span style="background:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.26); border-radius:999px; color:#fff; font-size:0.5em; font-weight:500; padding:6px 14px;">for</span>
-          <span style="background:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.26); border-radius:999px; color:#fff; font-size:0.5em; font-weight:500; padding:6px 14px;">range()</span>
-          <span style="background:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.26); border-radius:999px; color:#fff; font-size:0.5em; font-weight:500; padding:6px 14px;">break / continue</span>
-        </div>
-      </section>
 
     </div>
   </div>
