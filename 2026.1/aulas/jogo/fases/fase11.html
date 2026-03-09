@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fase 11 — Dupla Decisão com If | CodeAdventure</title>
+    <script src="https://cdn.jsdelivr.net/npm/craftyjs@0.9.0/dist/crafty-min.js"></script>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/game.css">
+</head>
+<body class="game-page fase11-page">
+
+<div class="game-layout">
+
+    <div class="game-area">
+        <div id="game-canvas-wrap">
+            <div id="game"></div>
+        </div>
+
+        <div class="game-hud">
+            <a href="../index.html" class="hud-back">← Menu</a>
+            <a href="intro_fase11.html" class="hud-intro" title="Rever introdução">intro</a>
+            <span class="hud-badge">Fase 11 · Dupla Decisão com If</span>
+        </div>
+
+        <div class="victory-overlay" id="victory-overlay">
+            <div class="victory-content">
+                <span class="victory-emoji">✅</span>
+                <h2>Fase 11 Completa!</h2>
+                <p>Você resolveu dois eventos com if/else e completou o percurso.</p>
+                <div class="victory-actions">
+                    <a href="intro_fase12.html" class="btn btn-primary">Ir para Fase 12</a>
+                    <button class="btn btn-secondary" onclick="resetPlayer()">Jogar Novamente</button>
+                    <a href="../index.html" class="btn btn-secondary">Voltar ao Menu</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ide-panel">
+        <div class="ide-titlebar">
+            <div class="ide-titlebar-left">
+                <div class="ide-window-controls">
+                    <span class="wc-close"></span>
+                    <span class="wc-minimize"></span>
+                    <span class="wc-maximize"></span>
+                </div>
+            </div>
+            <span class="ide-titlebar-label">fase_11.py — CodeAdventure IDE</span>
+            <div style="width: 52px;"></div>
+        </div>
+
+        <div class="ide-tabs">
+            <div class="ide-tab active" data-tab-target="code">
+                <span class="ide-tab-icon">🐍</span>
+                <span>fase_11.py</span>
+                <span class="ide-tab-close">×</span>
+            </div>
+            <div class="ide-tab ide-tab-link" data-tab-target="readme" data-readme-src="../docs/fases/fase11.md" title="Abrir README da fase">
+                <span class="ide-tab-icon">📋</span>
+                <span>README.md</span>
+                <span class="ide-tab-close">↗</span>
+            </div>
+        </div>
+
+        <div class="ide-breadcrumb">
+            <span>📁 code_adventure</span>
+            <span class="bc-sep">›</span>
+            <span>📁 fases</span>
+            <span class="bc-sep">›</span>
+            <span class="bc-current">fase_11.py</span>
+        </div>
+
+        <div class="ide-objective">
+            <span class="ide-objective-icon">🧠</span>
+            <div class="ide-objective-text">
+                <strong>Objetivo:</strong> resolver <strong>2 eventos</strong> com <code>if/else</code>.
+                Em cada evento: se for cristal, use <code>interact()</code>; se for obstáculo, use <code>jump()</code>.
+                Depois, avance até a bandeira.
+            </div>
+        </div>
+
+        <div class="ide-editor-body">
+            <div class="ide-gutter" id="gutter"></div>
+            <div class="ide-editor-area">
+                <div class="ide-active-line" id="active-line-highlight"></div>
+                <div id="code-highlight"></div>
+                <textarea id="code-editor" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="# Fase 11 — Dupla decisão com if
+# Comandos disponíveis:
+# move_right(n)
+# move_left(n)
+# interact()
+# jump()
+# if is_crystal_ahead():
+#     interact()
+# else:
+#     jump()
+
+move_right(1)
+if is_crystal_ahead():
+    interact()
+else:
+    jump()
+move_right(1)
+if is_crystal_ahead():
+    interact()
+else:
+    jump()
+move_right(3)"></textarea>
+            </div>
+        </div>
+
+        <div class="ide-run-bar">
+            <div class="ide-speed-control" role="group" aria-label="Velocidade da execução">
+                <span class="speed-label">Speed</span>
+                <button id="speed-slow-btn" class="speed-btn active" type="button" aria-pressed="true">Slow</button>
+                <button id="speed-fast-btn" class="speed-btn" type="button" aria-pressed="false">Fast</button>
+            </div>
+            <button id="run-btn" class="btn btn-run">▶ Run</button>
+            <button id="step-btn" class="btn btn-step" type="button">⏭ Step</button>
+            <button id="reset-btn" class="btn btn-reset">↺ Reset</button>
+        </div>
+
+        <div class="ide-bottom-panel">
+            <div class="ide-bottom-tabs">
+                <div class="ide-bottom-tab active">Terminal</div>
+                <div class="ide-bottom-tab">Output</div>
+            </div>
+            <div class="ide-terminal" id="terminal">
+                <div><span class="term-prompt">❯</span> <span class="term-cmd">python fase_11.py</span></div>
+                <div class="term-output" id="terminal-output">Pronto. Resolva os 2 eventos com if/else e finalize a fase.</div>
+            </div>
+        </div>
+
+        <div class="ide-statusbar">
+            <div class="ide-statusbar-left">
+                <span class="sb-remote">⚡ CodeAdventure</span>
+                <span class="sb-item" id="sb-errors">
+                    <span>✓</span> <span id="sb-errors-text">0 erros</span>
+                </span>
+            </div>
+            <div class="ide-statusbar-right">
+                <span class="sb-item">Ln <span id="sb-line">1</span>, Col <span id="sb-col">1</span></span>
+                <span class="sb-item">UTF-8</span>
+                <span class="sb-item">Python</span>
+                <span class="sb-item">🐍 3.11</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="../js/fase11.js"></script>
+<script src="../js/ide-tabs.js"></script>
+</body>
+</html>

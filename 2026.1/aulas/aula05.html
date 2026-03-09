@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Aula 04 - Estruturas condicionais em Python: if, elif, else, operadores lógicos e validações.">
-  <title>Aula 04 - Estruturas Condicionais em Python</title>
+    content="Aula 05 - Prática de estruturas condicionais em Python: if, if/else e if/elif/else com exercícios de decisão.">
+  <title>Aula 05 - Prática de Decisões em Python</title>
 
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -490,15 +490,15 @@
           <div class="hero-content">
             <p class="hero-kicker"><i class="fa-solid fa-laptop-code icon" aria-hidden="true"></i>Introdução à
               Programação</p>
-            <h1 class="hero-title">Aula 04<br><span>Estruturas Condicionais em Python</span></h1>
-            <p class="hero-subtitle">Tomando decisões com <code>if</code>, <code>elif</code> e <code>else</code>.</p>
+            <h1 class="hero-title">Aula 05<br><span>Prática de Decisões em Python</span></h1>
+            <p class="hero-subtitle">Aplicando <code>if</code>, <code>elif</code> e <code>else</code> em problemas práticos.</p>
             <div class="hero-tags">
               <span>if</span>
               <span>elif</span>
               <span>else</span>
-              <span>Operadores Lógicos</span>
-              <span>Indentação</span>
-              <span>Validações</span>
+              <span>Tomada de Decisão</span>
+              <span>Fluxo</span>
+              <span>Prática</span>
             </div>
             <p class="hero-meta"><i class="fa-solid fa-user-tie icon" aria-hidden="true"></i>Prof. Msc. Nator Junior
               Carvalho da Costa</p>
@@ -512,263 +512,7 @@
       </section>
 
 
-<section>
 
-      <!-- ══════════════════════════════════════════════════════
-           BLOCO: F-STRINGS
-           ══════════════════════════════════════════════════════ -->
-
-      <!-- ── Divisor f-string ── -->
-      <section class="section-divider" data-background-gradient="linear-gradient(135deg, #1a237e, #6a1b9a)">
-        <div class="section-number">Conceito</div>
-        <h2><i class="fa-solid fa-quote-left icon" aria-hidden="true"></i> F-Strings em Python</h2>
-        <p>A forma moderna e elegante de formatar texto com variáveis.</p>
-      </section>
-
-      <!-- ── O que é uma f-string ── -->
-      <section class="bg-light">
-        <h2><i class="fa-solid fa-font icon" aria-hidden="true"></i> O que é uma F-String?</h2>
-        <p>Uma <strong>f-string</strong> é uma string especial que permite <strong>inserir variáveis e expressões diretamente dentro do texto</strong>.</p>
-        <div class="columns" style="margin-top:16px;">
-          <div>
-            <div class="box-orange">
-              <pre style="margin:8px 0;"><code class="language-python" data-trim data-noescape>
-valor = 10
-print(f"Olá, {valor}!")
-              </code></pre>
-            </div>
-          </div>
-          <div>
-            <div class="box-green">
-              <pre style="margin:8px 0;"><code class="language-python" data-trim data-noescape>
-nome = "Ana"
-print(f"Olá, {nome}!")
-              </code></pre>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ── Sintaxe básica ── -->
-      <section>
-        <h2><i class="fa-solid fa-code icon" aria-hidden="true"></i> Sintaxe da F-String</h2>
-        <p>O <code>f</code> antes das aspas "ativa" a interpolação. As chaves <code>{ }</code> são avaliadas em tempo real:</p>
-        <pre><code class="language-python" data-trim data-noescape>
-nome  = "Carlos"
-idade = 22
-curso = "Python"
-
-# Variáveis dentro das chaves
-print(f"Nome: {nome}")
-print(f"Idade: {idade} anos")
-print(f"{nome} tem {idade} anos e estuda {curso}.")
-
-# Saída:
-# Nome: Carlos
-# Idade: 22 anos
-# Carlos tem 22 anos e estuda Python.
-        </code></pre>
-      </section>
-
-      
-      <!-- ── Formatação de números ── -->
-      <section>
-        <h2><i class="fa-solid fa-hashtag icon" aria-hidden="true"></i> Formatando Números</h2>
-        <p>Após o valor, use <code>:</code> seguido de um <strong>especificador de formato</strong>:</p>
-        <pre><code class="language-python" data-trim data-noescape>
-preco  = 1234.5678
-pi     = 3.14159265
-taxa   = 0.1525
-numero = 42
-
-print(f"2 casas decimais:  R$ {preco:.2f}")   # R$ 1234.57
-print(f"4 casas decimais:  {pi:.4f}")         # 3.1416
-print(f"Percentual:        {taxa:.1%}")       # 15.2%
-print(f"Inteiro sem fração:{preco:.0f}")      # 1235
-        </code></pre>
-      </section>
-</section>
-
-
-<section>
- <!-- ── Divisor do bloco ── -->
-      <section class="section-divider" data-background-gradient="linear-gradient(135deg, #134e5e, #71b280)">
-        <div class="section-number">Aquecimento</div>
-        <h2><i class="fa-solid fa-dumbbell icon" aria-hidden="true"></i> Atividades de Revisão</h2>
-        <p>Vamos praticar variáveis, operadores e entrada de dados antes de entrar nas condicionais.</p>
-      </section>
-
-      <!-- ══ ATIVIDADE 1 – Média de três notas ══ -->
-      <section class="activity-slide">
-        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade 1 de 5</h2>
-        <div class="activity-card">
-          <p class="activity-title"><i class="fa-solid fa-calculator" aria-hidden="true"></i> Média de Três Notas</p>
-          <p class="activity-question">Crie três variáveis: <code>nota1</code>, <code>nota2</code> e <code>nota3</code>.</p>
-          <p class="activity-question">Calcule a <strong>média aritmética</strong> das três notas e armazene em uma variável chamada <code>media</code>.</p>
-          <p class="activity-question">Exiba o resultado com a mensagem: <code>"A média é: X.XX"</code></p>
-          <p class="activity-question" style="margin-top:10px;">
-            <i class="fa-solid fa-lightbulb" style="color:#e67e22;" aria-hidden="true"></i>
-            <em>Dica: use <code>print(f"A média é: {media:.2f}")</code> para formatar com 2 casas decimais.</em>
-          </p>
-        </div>
-      </section>
-
-      <section class="quiz-slide">
-        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta — Atividade 1</h2>
-        <div class="quiz-card">
-          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solução</p>
-          <pre style="margin:8px 0;"><code class="language-python" data-trim data-noescape>
-nota1 = 8.0
-nota2 = 6.5
-nota3 = 9.0
-
-media = (nota1 + nota2 + nota3) / 3
-
-print(f"A média é: {media:.2f}")
-# Saída: A média é: 7.83
-          </code></pre>
-          <div class="quiz-answer">
-            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-            <strong>Pontos-chave:</strong> os parênteses garantem que a soma ocorra <em>antes</em> da divisão, e <code>:.2f</code> formata com 2 casas decimais.
-          </div>
-        </div>
-      </section>
-
-      <!-- ══ ATIVIDADE 2 – Converter temperatura ══ -->
-      <section class="activity-slide">
-        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade 2 de 5</h2>
-        <div class="activity-card">
-          <p class="activity-title"><i class="fa-solid fa-temperature-half" aria-hidden="true"></i> Conversor de Temperatura</p>
-          <p class="activity-question">Leia uma temperatura em <strong>Celsius</strong> com <code>input()</code>.</p>
-          <p class="activity-question">Converta para <strong>Fahrenheit</strong> usando a fórmula:</p>
-          <p class="activity-question" style="text-align:center; font-size:0.8em !important;">
-            <code>F = C × 1.8 + 32</code>
-          </p>
-          <p class="activity-question">Exiba: <code>"X C equivale a Y F"</code></p>
-          <p class="activity-question" style="margin-top:10px;">
-            <i class="fa-solid fa-lightbulb" style="color:#e67e22;" aria-hidden="true"></i>
-            <em>Dica: converta a entrada para <code>float</code> antes de calcular.</em>
-          </p>
-        </div>
-      </section>
-
-      <section class="quiz-slide">
-        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta — Atividade 2</h2>
-        <div class="quiz-card">
-          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solução</p>
-          <pre style="margin:8px 0;"><code class="language-python" data-trim data-noescape>
-celsius = float(input("Digite a temperatura em °C: "))
-
-fahrenheit = celsius * 1.8 + 32
-
-print(f"{celsius}C equivale a {fahrenheit:.1f}F")
-# Exemplo: 100C equivale a 212.0F
-          </code></pre>
-          <div class="quiz-answer">
-            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-            <strong>Pontos-chave:</strong> <code>float(input())</code> converte a string para número decimal. A fórmula deve ser aplicada antes do <code>print</code>.
-          </div>
-        </div>
-      </section>
-
-      
-
-      <!-- ══ ATIVIDADE 4 – Área e perímetro ══ -->
-      <section class="activity-slide">
-        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade 4 de 5</h2>
-        <div class="activity-card">
-          <p class="activity-title"><i class="fa-solid fa-square" aria-hidden="true"></i> Área e Perímetro do Retângulo</p>
-          <p class="activity-question">Leia a <strong>largura</strong> e a <strong>altura</strong> de um retângulo.</p>
-          <p class="activity-question">Calcule e exiba:</p>
-          <ul style="font-size:0.72em; color:#2b4352; margin-top:4px;">
-            <li><strong>Área</strong> = largura × altura</li>
-            <li><strong>Perímetro</strong> = 2 × (largura + altura)</li>
-            <li>Se a área é <strong>maior que 50</strong>: exiba <code>True</code> ou <code>False</code></li>
-          </ul>
-          <p class="activity-question" style="margin-top:8px;">
-            <i class="fa-solid fa-lightbulb" style="color:#e67e22;" aria-hidden="true"></i>
-            <em>Dica: use <code>**</code> e <code>*</code> para calcular. Mostre os resultados com f-string.</em>
-          </p>
-        </div>
-      </section>
-
-
-      <!-- ══════════════════════════════════════════════════════
-           BLOCO DE ATIVIDADES INICIAIS (5 atividades + respostas)
-           ══════════════════════════════════════════════════════ -->
-
-
-      <section class="quiz-slide">
-        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta — Atividade 4</h2>
-        <div class="quiz-card">
-          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solução</p>
-          <pre style="margin:8px 0;"><code class="language-python" data-trim data-noescape>
-largura = float(input("Largura: "))
-altura  = float(input("Altura: "))
-
-area       = largura * altura
-perimetro  = 2 * (largura + altura)
-area_grande = area > 50
-
-print(f"Área: {area:.2f}")
-print(f"Perímetro: {perimetro:.2f}")
-print(f"Área maior que 50? {area_grande}")
-          </code></pre>
-          <div class="quiz-answer">
-            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-            <strong>Pontos-chave:</strong> a expressão <code>area > 50</code> já retorna um booleano (<code>True</code>/<code>False</code>) que pode ser armazenado em variável e exibido normalmente.
-          </div>
-        </div>
-      </section>
-
-      <!-- ══ ATIVIDADE 5 – Salário com bônus ══ -->
-      <section class="activity-slide">
-        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade 5 de 5</h2>
-        <div class="activity-card">
-          <p class="activity-title"><i class="fa-solid fa-wallet" aria-hidden="true"></i> Salário com Bônus</p>
-          <p class="activity-question">Leia o <strong>salário base</strong> e o <strong>percentual de bônus</strong> de um funcionário.</p>
-          <p class="activity-question">Calcule e exiba:</p>
-          <ul style="font-size:0.72em; color:#2b4352; margin-top:4px;">
-            <li>O <strong>valor do bônus</strong> = salário × (percentual / 100)</li>
-            <li>O <strong>salário final</strong> = salário + bônus</li>
-            <li>Se o salário final <strong>supera R$ 5.000</strong>: <code>True</code> ou <code>False</code></li>
-          </ul>
-          <p class="activity-question" style="margin-top:8px;">
-            <i class="fa-solid fa-lightbulb" style="color:#e67e22;" aria-hidden="true"></i>
-            <em>Dica: exiba todos os valores com 2 casas decimais usando <code>:.2f</code>.</em>
-          </p>
-        </div>
-      </section>
-
-      <section class="quiz-slide">
-        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta — Atividade 5</h2>
-        <div class="quiz-card">
-          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solução</p>
-          <pre style="margin:8px 0;"><code class="language-python" data-trim data-noescape>
-salario    = float(input("Salário base: R$ "))
-percentual = float(input("Percentual de bônus (%): "))
-
-bonus        = salario * (percentual / 100)
-salario_final = salario + bonus
-acima_5000   = salario_final > 5000
-
-print(f"Bônus:         R$ {bonus:.2f}")
-print(f"Salário final: R$ {salario_final:.2f}")
-print(f"Acima de R$5.000? {acima_5000}")
-          </code></pre>
-          <div class="quiz-answer">
-            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-            <strong>Pontos-chave:</strong> dividir por 100 converte o percentual para fator decimal. As expressões aritméticas e relacionais podem ser combinadas em sequência de forma natural.
-          </div>
-        </div>
-      </section>
-
-      <!-- ══════════════════════════════════════════════════════
-           FIM DO BLOCO DE ATIVIDADES INICIAIS
-           ══════════════════════════════════════════════════════ -->
-
-</section>
-     
 
       <section>
       <!-- ==================== SLIDE 3 – ANALOGIA ==================== -->
@@ -1083,6 +827,149 @@ else:
 </section>
       
 
+     
+
+<section>
+ <!-- ── Divisor do bloco ── -->
+      <section class="section-divider" data-background-gradient="linear-gradient(135deg, #134e5e, #71b280)">
+        <div class="section-number">Prática</div>
+        <h2><i class="fa-solid fa-dumbbell icon" aria-hidden="true"></i> Atividades de Decisão</h2>
+        <p>Vamos praticar decisões com <code>if</code>, <code>if/else</code> e <code>if/elif/else</code>.</p>
+      </section>
+
+      <!-- ══ ATIVIDADE 1 – Classificação de idade ══ -->
+      <section class="activity-slide">
+        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade de Decisão 1 de 3</h2>
+        <div class="activity-card">
+          <p class="activity-title"><i class="fa-solid fa-user-check" aria-hidden="true"></i> Classificação por Idade</p>
+          <p class="activity-question">Leia a idade de uma pessoa e classifique:</p>
+          <ul style="font-size:0.72em; color:#2b4352; margin-top:4px;">
+            <li><strong>Menor de idade</strong> se idade &lt; 18</li>
+            <li><strong>Adulto</strong> se idade entre 18 e 59</li>
+            <li><strong>Idoso</strong> se idade &gt;= 60</li>
+          </ul>
+          <p class="activity-question">Exiba apenas a classificação final.</p>
+          <p class="activity-question" style="margin-top:10px;">
+            <i class="fa-solid fa-lightbulb" style="color:#e67e22;" aria-hidden="true"></i>
+            <em>Dica: use <code>if / elif / else</code> para cobrir os três cenários.</em>
+          </p>
+        </div>
+      </section>
+
+      <section class="quiz-slide">
+        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta — Atividade de Decisão 1</h2>
+        <div class="quiz-card">
+          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solução</p>
+          <pre style="margin:8px 0;"><code class="language-python" data-trim data-noescape>
+idade = int(input("Digite a idade: "))
+
+if idade < 18:
+    print("Menor de idade")
+elif idade < 60:
+    print("Adulto")
+else:
+    print("Idoso")
+          </code></pre>
+          <div class="quiz-answer">
+            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+            <strong>Pontos-chave:</strong> a ordem das condições importa. Ao entrar em um bloco verdadeiro, os próximos não são avaliados.
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ ATIVIDADE 2 – Desconto na compra ══ -->
+      <section class="activity-slide">
+        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade de Decisão 2 de 3</h2>
+        <div class="activity-card">
+          <p class="activity-title"><i class="fa-solid fa-receipt" aria-hidden="true"></i> Desconto por Valor da Compra</p>
+          <p class="activity-question">Leia o valor de uma compra.</p>
+          <p class="activity-question">Aplique as regras:</p>
+          <ul style="font-size:0.72em; color:#2b4352; margin-top:4px;">
+            <li>Se valor for <strong>maior ou igual a 200</strong>, desconto de <strong>10%</strong></li>
+            <li>Caso contrário, desconto de <strong>5%</strong></li>
+          </ul>
+          <p class="activity-question">Exiba o valor final com desconto.</p>
+          <p class="activity-question" style="margin-top:10px;">
+            <i class="fa-solid fa-lightbulb" style="color:#e67e22;" aria-hidden="true"></i>
+            <em>Dica: guarde o percentual em uma variável e reutilize no cálculo.</em>
+          </p>
+        </div>
+      </section>
+
+      <section class="quiz-slide">
+        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta — Atividade de Decisão 2</h2>
+        <div class="quiz-card">
+          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solução</p>
+          <pre style="margin:8px 0;"><code class="language-python" data-trim data-noescape>
+valor = float(input("Valor da compra: R$ "))
+
+if valor >= 200:
+    desconto = 0.10
+else:
+    desconto = 0.05
+
+total = valor * (1 - desconto)
+
+print(f"Desconto aplicado: {desconto * 100:.0f}%")
+print(f"Valor final: R$ {total:.2f}")
+          </code></pre>
+          <div class="quiz-answer">
+            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+            <strong>Pontos-chave:</strong> a decisão define o percentual. O cálculo final usa o fator <code>(1 - desconto)</code>.
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ ATIVIDADE 3 – Situação do aluno ══ -->
+      <section class="activity-slide">
+        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade de Decisão 3 de 3</h2>
+        <div class="activity-card">
+          <p class="activity-title"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Situação Final do Aluno</p>
+          <p class="activity-question">Leia a média final e exiba a situação:</p>
+          <ul style="font-size:0.72em; color:#2b4352; margin-top:4px;">
+            <li><strong>Aprovado</strong> se média &gt;= 7</li>
+            <li><strong>Recuperação</strong> se média &gt;= 5 e &lt; 7</li>
+            <li><strong>Reprovado</strong> caso contrário</li>
+          </ul>
+          <p class="activity-question" style="margin-top:8px;">
+            <i class="fa-solid fa-lightbulb" style="color:#e67e22;" aria-hidden="true"></i>
+            <em>Dica: no <code>elif</code>, não precisa repetir tudo que o primeiro <code>if</code> já descartou.</em>
+          </p>
+        </div>
+      </section>
+
+
+      <!-- ══════════════════════════════════════════════════════
+           BLOCO DE ATIVIDADES DE DECISÃO (3 atividades + respostas)
+           ══════════════════════════════════════════════════════ -->
+
+
+      <section class="quiz-slide">
+        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta — Atividade de Decisão 3</h2>
+        <div class="quiz-card">
+          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solução</p>
+          <pre style="margin:8px 0;"><code class="language-python" data-trim data-noescape>
+media = float(input("Média final: "))
+
+if media >= 7:
+    print("Aprovado")
+elif media >= 5:
+    print("Recuperação")
+else:
+    print("Reprovado")
+          </code></pre>
+          <div class="quiz-answer">
+            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+            <strong>Pontos-chave:</strong> a leitura é sequencial: primeiro testa <code>&gt;= 7</code>, depois <code>&gt;= 5</code>, e o restante cai no <code>else</code>.
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════════════
+           FIM DO BLOCO DE ATIVIDADES DE DECISÃO
+           ══════════════════════════════════════════════════════ -->
+
+</section>
      
 
 

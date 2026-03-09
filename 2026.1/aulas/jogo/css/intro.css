@@ -201,6 +201,8 @@ body.intro-page {
     font-family: var(--font-mono);
     font-size: clamp(16px, 3vw, 22px);
     font-weight: 600;
+    font-variant-ligatures: none;
+    font-feature-settings: "liga" 0, "calt" 0;
     color: #cdd6f4;
     backdrop-filter: blur(10px);
     margin: 8px 0;
@@ -237,6 +239,18 @@ body.intro-page {
 
 .code-bubble .cb-number {
     color: #fab387;
+}
+
+/* Python block helper (used in intro_fase6) */
+.code-bubble-python {
+    display: inline-block;
+    text-align: left;
+    line-height: 1.45;
+}
+
+.cb-indent {
+    display: inline-block;
+    width: 4ch;
 }
 
 /* Speech callout */

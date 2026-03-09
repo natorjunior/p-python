@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introdução Fase 7 — CodeAdventure</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/intro.css">
+</head>
+<body class="intro-page">
+
+<div class="intro-container">
+
+    <a href="fase7.html" class="intro-skip">Pular introdução →</a>
+
+    <div class="intro-slide active" data-slide="0">
+        <span class="slide-emoji">🧠</span>
+        <h1 class="slide-title">Fase 7: <span class="highlight">Dupla Decisão com If</span></h1>
+        <p class="slide-text">
+            Esta fase estende a Fase 6: agora você precisa resolver <strong>2 eventos aleatórios</strong> com <code>if/else</code>.
+        </p>
+    </div>
+
+    <div class="intro-slide" data-slide="1">
+        <h1 class="slide-title">Cenário estendido</h1>
+        <div class="slide-illustration">
+            <div class="speech-bubble">
+                Dois checkpoints aparecem no caminho. Em cada execução, cada checkpoint pode ser <strong>cristal</strong> ou <strong>obstáculo</strong>.
+            </div>
+        </div>
+    </div>
+
+    <div class="intro-slide" data-slide="2">
+        <h1 class="slide-title">Regra da decisão</h1>
+        <div class="slide-illustration">
+            <div class="code-bubble code-bubble-python" style="font-size: clamp(14px, 2.4vw, 18px);">
+                <span class="cb-keyword">if</span> <span class="cb-func">is_crystal_ahead</span><span class="cb-paren">()</span><span class="cb-keyword">:</span><br>
+                <span class="cb-indent"></span><span class="cb-func">interact</span><span class="cb-paren">()</span><br>
+                <span class="cb-keyword">else</span><span class="cb-keyword">:</span><br>
+                <span class="cb-indent"></span><span class="cb-func">jump</span><span class="cb-paren">()</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="intro-slide" data-slide="3">
+        <h1 class="slide-title">Comandos da fase</h1>
+        <div class="slide-illustration">
+            <div class="code-bubble" style="font-size: clamp(14px, 2.4vw, 18px);">
+                <span class="cb-func">move_right</span><span class="cb-paren">(n)</span><br>
+                <span class="cb-func">move_left</span><span class="cb-paren">(n)</span><br>
+                <span class="cb-func">interact</span><span class="cb-paren">()</span><br>
+                <span class="cb-func">jump</span><span class="cb-paren">()</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="intro-slide" data-slide="4">
+        <h1 class="slide-title">Objetivo</h1>
+        <div class="slide-illustration">
+            <div class="speech-bubble">
+                1) Resolver os <strong>2 eventos</strong> com <code>if/else</code>.<br>
+                2) Avançar até a bandeira final.<br>
+                3) Preparar-se para a Fase 8.
+            </div>
+        </div>
+    </div>
+
+    <div class="intro-slide" data-slide="5">
+        <span class="slide-emoji">🚀</span>
+        <h1 class="slide-title">Pronto para a Fase 7</h1>
+        <p class="slide-text">
+            Tome duas decisões corretas seguidas e finalize o percurso.
+        </p>
+        <a href="fase7.html" class="intro-cta">Iniciar Fase 7 ▶</a>
+    </div>
+
+    <div class="intro-dots">
+        <div class="intro-dot active"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+        <div class="intro-dot"></div>
+    </div>
+
+    <nav class="intro-nav">
+        <button class="intro-nav-btn" id="prev-btn" disabled aria-label="Anterior">‹</button>
+        <span class="intro-progress" id="progress-text">1 de 6</span>
+        <button class="intro-nav-btn" id="next-btn" aria-label="Próximo">›</button>
+    </nav>
+
+</div>
+
+<script src="../js/intro.js"></script>
+</body>
+</html>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fase 7 — Dupla Decisão com If | CodeAdventure</title>
+    <script src="https://cdn.jsdelivr.net/npm/craftyjs@0.9.0/dist/crafty-min.js"></script>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/game.css">
+    <style>
+        .fase7-page {
+            background:
+                radial-gradient(1080px 560px at 0% -10%, rgba(56, 189, 248, 0.16), transparent 65%),
+                radial-gradient(860px 520px at 100% 0%, rgba(251, 191, 36, 0.12), transparent 65%),
+                #0b1021;
+        }
+
+        .fase7-page .game-layout {
+            grid-template-columns: minmax(540px, 1fr) minmax(390px, 520px);
+        }
+
+        .fase7-page .game-area {
+            background:
+                radial-gradient(circle at 25% 30%, rgba(56, 189, 248, 0.06), transparent 50%),
+                radial-gradient(circle at 72% 64%, rgba(250, 204, 21, 0.05), transparent 52%),
+                #060a19;
+        }
+
+        .fase7-page .game-area::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.2;
+            background:
+                repeating-linear-gradient(
+                    90deg,
+                    transparent 0 98px,
+                    rgba(148, 163, 184, 0.06) 98px 99px
+                );
+        }
+
+        .fase7-page #game-canvas-wrap {
+            padding: 20px clamp(10px, 2vw, 24px) 18px;
+        }
+
+        .fase7-page #game > div[id^="cr-stage"] {
+            border-radius: 16px;
+            border: 1px solid rgba(148, 163, 184, 0.22);
+            box-shadow:
+                0 24px 44px rgba(2, 8, 23, 0.55),
+                0 0 0 1px rgba(148, 163, 184, 0.14) inset;
+        }
+
+        .fase7-page .game-hud {
+            top: 12px;
+            left: 12px;
+            gap: 8px;
+        }
+
+        .fase7-page .hud-intro {
+            color: rgba(226, 232, 240, 0.88);
+            background: rgba(15, 23, 42, 0.74);
+            border: 1px solid rgba(148, 163, 184, 0.28);
+            padding: 6px 10px;
+            border-radius: 9px;
+        }
+
+        .fase7-page .hud-intro:hover {
+            color: #e2e8f0;
+            background: rgba(30, 41, 59, 0.86);
+            border-color: rgba(148, 163, 184, 0.44);
+        }
+
+        .fase7-page .hud-badge {
+            color: #fef08a;
+            border-color: rgba(253, 224, 71, 0.24);
+            background: linear-gradient(140deg, rgba(15, 23, 42, 0.88), rgba(24, 38, 66, 0.82));
+        }
+
+        .fase7-page .ide-panel {
+            background: linear-gradient(180deg, #171d37, #17162c 28%, #151527 100%);
+            border-left-color: rgba(148, 163, 184, 0.24);
+        }
+
+        .fase7-page .ide-titlebar,
+        .fase7-page .ide-tabs {
+            background: #121833;
+        }
+
+        .fase7-page .ide-objective {
+            background: linear-gradient(140deg, rgba(56, 189, 248, 0.12), rgba(251, 191, 36, 0.08));
+            border-bottom-color: rgba(148, 163, 184, 0.24);
+        }
+
+        .ide-quickbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+            padding: 10px 12px;
+            background: rgba(12, 18, 35, 0.72);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+        }
+
+        .ide-chip {
+            border: 1px solid rgba(148, 163, 184, 0.34);
+            background: rgba(15, 23, 42, 0.74);
+            color: #cbd5e1;
+            border-radius: 999px;
+            padding: 5px 10px;
+            font-size: 11px;
+            font-family: var(--font-mono);
+            cursor: pointer;
+            transition: all 0.16s ease;
+        }
+
+        .ide-chip:hover {
+            transform: translateY(-1px);
+            color: #e2e8f0;
+            border-color: rgba(56, 189, 248, 0.58);
+            background: rgba(30, 41, 59, 0.94);
+        }
+
+        .ide-shortcuts {
+            margin-left: auto;
+            font-size: 11px;
+            color: #94a3b8;
+            letter-spacing: 0.01em;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 1320px) {
+            .fase7-page .game-layout {
+                grid-template-columns: minmax(480px, 1fr) minmax(360px, 44vw);
+            }
+
+            .ide-shortcuts {
+                width: 100%;
+                margin-left: 0;
+            }
+        }
+
+        @media (max-width: 1100px) {
+            .fase7-page .game-layout {
+                grid-template-columns: 1fr;
+                grid-template-rows: 48vh 52vh;
+            }
+
+            .fase7-page .ide-panel {
+                border-left: 0;
+                border-top: 1px solid rgba(148, 163, 184, 0.24);
+            }
+        }
+
+        @media (max-width: 760px) {
+            .fase7-page .game-layout {
+                grid-template-rows: 44vh 56vh;
+            }
+
+            .fase7-page .game-hud {
+                top: 8px;
+                left: 8px;
+            }
+
+            .fase7-page .hud-badge {
+                font-size: 11px;
+                padding: 5px 9px;
+            }
+
+            .fase7-page .ide-run-bar {
+                flex-wrap: wrap;
+            }
+
+            .fase7-page .ide-speed-control {
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            .fase7-page .ide-run-bar .btn {
+                min-width: 140px;
+            }
+
+            .ide-shortcuts {
+                white-space: normal;
+                line-height: 1.35;
+            }
+        }
+    </style>
+</head>
+<body class="game-page fase7-page">
+
+<div class="game-layout">
+
+    <div class="game-area">
+        <div id="game-canvas-wrap">
+            <div id="game"></div>
+        </div>
+
+        <div class="game-hud">
+            <a href="intro_fase7.html" class="hud-intro" title="Rever introdução">intro</a>
+            <span class="hud-badge">Fase 7 · Dupla Decisão com If</span>
+        </div>
+
+        <div class="victory-overlay" id="victory-overlay">
+            <div class="victory-content">
+                <span class="victory-emoji">✅</span>
+                <h2>Fase 7 Completa!</h2>
+                <p>Você resolveu dois eventos com if/else e chegou ao final do percurso.</p>
+                <div class="victory-actions">
+                    <a href="intro_fase8.html" class="btn btn-primary">Ir para Fase 8</a>
+                    <button class="btn btn-secondary" onclick="resetPlayer()">Jogar Novamente</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ide-panel">
+        <div class="ide-titlebar">
+            <div class="ide-titlebar-left">
+                <div class="ide-window-controls">
+                    <span class="wc-close"></span>
+                    <span class="wc-minimize"></span>
+                    <span class="wc-maximize"></span>
+                </div>
+            </div>
+            <span class="ide-titlebar-label">fase_7.py — CodeAdventure IDE</span>
+            <div style="width: 52px;"></div>
+        </div>
+
+        <div class="ide-tabs">
+            <div class="ide-tab active" data-tab-target="code">
+                <span class="ide-tab-icon">🐍</span>
+                <span>fase_7.py</span>
+                <span class="ide-tab-close">×</span>
+            </div>
+            <div class="ide-tab ide-tab-link" data-tab-target="readme" data-readme-src="../docs/fases/fase7.md" title="Abrir README da fase">
+                <span class="ide-tab-icon">📋</span>
+                <span>README.md</span>
+                <span class="ide-tab-close">↗</span>
+            </div>
+        </div>
+
+        <div class="ide-breadcrumb">
+            <span>📁 code_adventure</span>
+            <span class="bc-sep">›</span>
+            <span>📁 fases</span>
+            <span class="bc-sep">›</span>
+            <span class="bc-current">fase_7.py</span>
+        </div>
+
+        <div class="ide-objective">
+            <span class="ide-objective-icon">🧠</span>
+            <div class="ide-objective-text">
+                <strong>Objetivo:</strong> resolver <strong>2 eventos</strong> com <code>if/else</code>.
+                Em cada evento: se for cristal, use <code>interact()</code>; se for obstáculo, use <code>jump()</code>.
+                Depois, avance até a bandeira.
+            </div>
+        </div>
+
+        <div class="ide-quickbar" aria-label="Atalhos de código">
+            <button class="ide-chip" type="button" data-snippet="move_right">move_right(1)</button>
+            <button class="ide-chip" type="button" data-snippet="if_else">if/else base</button>
+            <button class="ide-chip" type="button" data-snippet="checkpoint_block">checkpoint completo</button>
+            <button class="ide-chip" type="button" data-snippet="interact">interact()</button>
+            <button class="ide-chip" type="button" data-snippet="jump">jump()</button>
+            <span class="ide-shortcuts">Atalhos: Ctrl+Enter Run · Ctrl+Shift+R Reset · Alt+1/2 Speed · Alt+3 Step · Shift+Enter Run</span>
+        </div>
+
+        <div class="ide-editor-body">
+            <div class="ide-gutter" id="gutter"></div>
+            <div class="ide-editor-area">
+                <div class="ide-active-line" id="active-line-highlight"></div>
+                <div id="code-highlight"></div>
+                <textarea id="code-editor" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="# Fase 7 — Dupla decisão com if
+# Comandos disponíveis:
+# move_right(n)
+# move_left(n)
+# interact()
+# jump()
+# if is_crystal_ahead():
+#     interact()
+# else:
+#     jump()
+
+move_right(1)
+if is_crystal_ahead():
+    interact()
+else:
+    jump()
+move_right(1)
+if is_crystal_ahead():
+    interact()
+else:
+    jump()
+move_right(3)"></textarea>
+            </div>
+        </div>
+
+        <div class="ide-run-bar">
+            <div class="ide-speed-control" role="group" aria-label="Velocidade da execução">
+                <span class="speed-label">Speed</span>
+                <button id="speed-slow-btn" class="speed-btn active" type="button" aria-pressed="true">Slow</button>
+                <button id="speed-fast-btn" class="speed-btn" type="button" aria-pressed="false">Fast</button>
+            </div>
+            <button id="run-btn" class="btn btn-run">▶ Run</button>
+            <button id="step-btn" class="btn btn-step" type="button">⏭ Step</button>
+            <button id="reset-btn" class="btn btn-reset">↺ Reset</button>
+        </div>
+
+        <div class="ide-bottom-panel">
+            <div class="ide-bottom-tabs">
+                <div class="ide-bottom-tab active">Terminal</div>
+                <div class="ide-bottom-tab">Output</div>
+            </div>
+            <div class="ide-terminal" id="terminal">
+                <div><span class="term-prompt">❯</span> <span class="term-cmd">python fase_7.py</span></div>
+                <div class="term-output" id="terminal-output">Pronto. Resolva os 2 eventos com if/else e finalize a fase.</div>
+            </div>
+        </div>
+
+        <div class="ide-statusbar">
+            <div class="ide-statusbar-left">
+                <span class="sb-remote">⚡ CodeAdventure</span>
+                <span class="sb-item" id="sb-errors">
+                    <span>✓</span> <span id="sb-errors-text">0 erros</span>
+                </span>
+            </div>
+            <div class="ide-statusbar-right">
+                <span class="sb-item">Ln <span id="sb-line">1</span>, Col <span id="sb-col">1</span></span>
+                <span class="sb-item">UTF-8</span>
+                <span class="sb-item">Python</span>
+                <span class="sb-item">🐍 3.11</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="../js/fase7.js"></script>
+<script src="../js/fase7-enhancements.js"></script>
+<script src="../js/ide-tabs.js"></script>
+</body>
+</html>

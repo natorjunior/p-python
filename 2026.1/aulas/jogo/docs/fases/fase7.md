@@ -1,13 +1,23 @@
-# Fase 7 — Cenário Dinâmico
+# Fase 7 — Dupla Decisão com If
 
 ## Objetivo
-Ativar os 4 pontos de interação e alcançar a bandeira no mapa com câmera dinâmica.
+Resolver dois eventos aleatórios usando `if/else` e chegar à bandeira.
 
 ## Comandos
 - `move_right(n)`
 - `move_left(n)`
-- `jump()`
 - `interact()`
+- `jump()`
+- `if is_crystal_ahead():`
+- `else:`
+
+## Mecânica
+- Dois eventos aparecem na rota (checkpoint 1 e checkpoint 2).
+- Em cada execução, cada checkpoint pode virar cristal ou obstáculo.
+- Para cada checkpoint:
+  - Se for cristal, use `interact()`.
+  - Se for obstáculo, use `jump()`.
+- Só é possível avançar para o fim após resolver os dois checkpoints.
 
 ## Dica
-Interaja quando estiver próximo do objeto e pule obstáculos no timing certo.
+Teste o mesmo código várias vezes: o padrão dos eventos alterna a cada execução e seu `if/else` precisa funcionar em ambos os cenários.
