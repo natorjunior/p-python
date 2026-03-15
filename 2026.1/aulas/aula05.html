@@ -815,6 +815,7 @@ else:
         Abrir Jogo — Fase 6
       </a>
     </p>
+    https://natorjunior.github.io/p-python/2026.1/aulas/jogo/fases/fase6.html
   </div>
 </section>
       </section>
@@ -913,163 +914,12 @@ else:
         Abrir Jogo — Fase 7
       </a>
     </p>
+          https://natorjunior.github.io/p-python/2026.1/aulas/jogo/fases/fase7.html
+
   </div>
 </section>
       </section>
 
-
-
-
-      <section>
-        <!-- ── Divisor do bloco ── -->
-        <section class="section-divider" data-background-gradient="linear-gradient(135deg, #134e5e, #71b280)">
-          <div class="section-number">Prática</div>
-          <h2><i class="fa-solid fa-dumbbell icon" aria-hidden="true"></i> Atividades de Decisão</h2>
-          <p>Vamos praticar decisões com <code>if</code>, <code>if/else</code> e <code>if/elif/else</code>.</p>
-        </section>
-
-        <!-- ══ ATIVIDADE 1 – Classificação de idade ══ -->
-        <section class="activity-slide">
-          <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade de Decisão 1 de 3</h2>
-          <div class="activity-card">
-            <p class="activity-title"><i class="fa-solid fa-user-check" aria-hidden="true"></i> Classificação por Idade
-            </p>
-            <p class="activity-question">Leia a idade de uma pessoa e classifique:</p>
-            <ul style="font-size:0.72em; color:#2b4352; margin-top:4px;">
-              <li><strong>Menor de idade</strong> se idade &lt; 18</li>
-              <li><strong>Adulto</strong> se idade entre 18 e 59</li>
-              <li><strong>Idoso</strong> se idade &gt;= 60</li>
-            </ul>
-            <p class="activity-question">Exiba apenas a classificação final.</p>
-            <p class="activity-question" style="margin-top:10px;">
-              <i class="fa-solid fa-lightbulb" style="color:#e67e22;" aria-hidden="true"></i>
-              <em>Dica: use <code>if / elif / else</code> para cobrir os três cenários.</em>
-            </p>
-          </div>
-        </section>
-
-        <section class="quiz-slide">
-          <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta —
-            Atividade de Decisão 1</h2>
-          <div class="quiz-card">
-            <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solução</p>
-            <pre style="margin:8px 0;"><code class="language-python" data-trim data-noescape>
-idade = int(input("Digite a idade: "))
-
-if idade < 18:
-    print("Menor de idade")
-elif idade < 60:
-    print("Adulto")
-else:
-    print("Idoso")
-          </code></pre>
-            <div class="quiz-answer">
-              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-              <strong>Pontos-chave:</strong> a ordem das condições importa. Ao entrar em um bloco verdadeiro, os
-              próximos não são avaliados.
-            </div>
-          </div>
-        </section>
-
-        <!-- ══ ATIVIDADE 2 – Desconto na compra ══ -->
-        <section class="activity-slide">
-          <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade de Decisão 2 de 3</h2>
-          <div class="activity-card">
-            <p class="activity-title"><i class="fa-solid fa-receipt" aria-hidden="true"></i> Desconto por Valor da
-              Compra</p>
-            <p class="activity-question">Leia o valor de uma compra.</p>
-            <p class="activity-question">Aplique as regras:</p>
-            <ul style="font-size:0.72em; color:#2b4352; margin-top:4px;">
-              <li>Se valor for <strong>maior ou igual a 200</strong>, desconto de <strong>10%</strong></li>
-              <li>Caso contrário, desconto de <strong>5%</strong></li>
-            </ul>
-            <p class="activity-question">Exiba o valor final com desconto.</p>
-            <p class="activity-question" style="margin-top:10px;">
-              <i class="fa-solid fa-lightbulb" style="color:#e67e22;" aria-hidden="true"></i>
-              <em>Dica: guarde o percentual em uma variável e reutilize no cálculo.</em>
-            </p>
-          </div>
-        </section>
-
-        <section class="quiz-slide">
-          <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta —
-            Atividade de Decisão 2</h2>
-          <div class="quiz-card">
-            <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solução</p>
-            <pre style="margin:8px 0;"><code class="language-python" data-trim data-noescape>
-valor = float(input("Valor da compra: R$ "))
-
-if valor >= 200:
-    desconto = 0.10
-else:
-    desconto = 0.05
-
-total = valor * (1 - desconto)
-
-print(f"Desconto aplicado: {desconto * 100:.0f}%")
-print(f"Valor final: R$ {total:.2f}")
-          </code></pre>
-            <div class="quiz-answer">
-              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-              <strong>Pontos-chave:</strong> a decisão define o percentual. O cálculo final usa o fator
-              <code>(1 - desconto)</code>.
-            </div>
-          </div>
-        </section>
-
-        <!-- ══ ATIVIDADE 3 – Situação do aluno ══ -->
-        <section class="activity-slide">
-          <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade de Decisão 3 de 3</h2>
-          <div class="activity-card">
-            <p class="activity-title"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Situação Final do
-              Aluno</p>
-            <p class="activity-question">Leia a média final e exiba a situação:</p>
-            <ul style="font-size:0.72em; color:#2b4352; margin-top:4px;">
-              <li><strong>Aprovado</strong> se média &gt;= 7</li>
-              <li><strong>Recuperação</strong> se média &gt;= 5 e &lt; 7</li>
-              <li><strong>Reprovado</strong> caso contrário</li>
-            </ul>
-            <p class="activity-question" style="margin-top:8px;">
-              <i class="fa-solid fa-lightbulb" style="color:#e67e22;" aria-hidden="true"></i>
-              <em>Dica: no <code>elif</code>, não precisa repetir tudo que o primeiro <code>if</code> já descartou.</em>
-            </p>
-          </div>
-        </section>
-
-
-        <!-- ══════════════════════════════════════════════════════
-           BLOCO DE ATIVIDADES DE DECISÃO (3 atividades + respostas)
-           ══════════════════════════════════════════════════════ -->
-
-
-        <section class="quiz-slide">
-          <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta —
-            Atividade de Decisão 3</h2>
-          <div class="quiz-card">
-            <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solução</p>
-            <pre style="margin:8px 0;"><code class="language-python" data-trim data-noescape>
-media = float(input("Média final: "))
-
-if media >= 7:
-    print("Aprovado")
-elif media >= 5:
-    print("Recuperação")
-else:
-    print("Reprovado")
-          </code></pre>
-            <div class="quiz-answer">
-              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-              <strong>Pontos-chave:</strong> a leitura é sequencial: primeiro testa <code>&gt;= 7</code>, depois
-              <code>&gt;= 5</code>, e o restante cai no <code>else</code>.
-            </div>
-          </div>
-        </section>
-
-        <!-- ══════════════════════════════════════════════════════
-           FIM DO BLOCO DE ATIVIDADES DE DECISÃO
-           ══════════════════════════════════════════════════════ -->
-
-      </section>
 
 
 

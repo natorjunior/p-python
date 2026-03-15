@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Aula 06 - Prática de estruturas condicionais em Python: if, if/else e if/elif/else com exercícios de decisão.">
+  <title>Aula 06 - Prática de Decisões em Python</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <link rel="stylesheet" href="./dist/reveal.css">
+  <link rel="stylesheet" href="./dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="./plugin/highlight/atom-one-dark.css">
+
+  <style>
+    :root {
+      --primary-color: #0056b3;
+      --secondary-color: #2f2f2f;
+      --light-bg: #f2f7ff;
+      --accent-bg: #e7f6ec;
+      --warn-bg: #fff8e1;
+      --activity-bg: #f3e8ff;
+      --code-bg: #1f2937;
+      --transition-fragment: 0.3s ease;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .reveal h1,
+    .reveal h2,
+    .reveal h3 {
+      color: var(--primary-color);
+    }
+
+    .reveal p,
+    .reveal li {
+      color: var(--secondary-color);
+      font-size: 0.95em;
+    }
+
+    .reveal .icon {
+      color: currentColor;
+      margin-right: 0.28em;
+    }
+
+    .reveal .icon-only {
+      color: currentColor;
+      margin-right: 0;
+    }
+
+    .reveal pre code {
+      font-size: 0.85em;
+      background: var(--code-bg);
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    .fragment {
+      transition: all var(--transition-fragment);
+    }
+
+    .bg-light {
+      background-color: var(--light-bg) !important;
+    }
+
+    .bg-accent {
+      background-color: var(--accent-bg) !important;
+    }
+
+    .bg-warn {
+      background-color: var(--warn-bg) !important;
+    }
+
+    .bg-activity {
+      background-color: var(--activity-bg) !important;
+    }
+
+    /* ── Hero Cover ── */
+    .hero-cover {
+      position: relative;
+      overflow: hidden;
+      padding: 40px !important;
+    }
+
+    .hero-cover::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(140deg, rgba(3, 15, 35, 0.55), rgba(11, 53, 112, 0.4), rgba(17, 126, 111, 0.28));
+      z-index: 1;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero-content {
+      background: rgba(7, 24, 54, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 24px 26px;
+      text-align: left;
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.22);
+      backdrop-filter: blur(2px);
+    }
+
+    .hero-kicker {
+      margin: 0 0 12px 0;
+      color: rgba(255, 255, 255, 0.9) !important;
+      font-size: 0.4em !important;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .hero-title {
+      margin: 0 0 12px 0 !important;
+      color: #fff !important;
+      font-size: 1.35em !important;
+      line-height: 1.12 !important;
+      text-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-title span {
+      color: rgba(230, 244, 255, 0.96);
+      font-weight: 500;
+      font-size: 0.88em;
+    }
+
+    .hero-subtitle {
+      margin: 0 0 16px 0;
+      color: rgba(255, 255, 255, 0.92) !important;
+      font-size: 0.5em !important;
+      line-height: 1.45;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 18px 0;
+    }
+
+    .hero-tags span {
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.26);
+      border-radius: 999px;
+      color: #fff;
+      font-size: 0.34em;
+      font-weight: 500;
+      padding: 4px 10px;
+    }
+
+    .hero-meta {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.88) !important;
+      font-size: 0.4em !important;
+      font-weight: 400;
+    }
+
+    .hero-mark {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-icon-wrap {
+      width: 180px;
+      height: 180px;
+      border-radius: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.24);
+      color: #fff;
+      font-size: 3.4em;
+    }
+
+    /* ── Boxes ── */
+    .box {
+      background: var(--light-bg);
+      border-left: 5px solid var(--primary-color);
+      padding: 14px 18px;
+      border-radius: 8px;
+      margin: 14px 0;
+      text-align: left;
+    }
+
+    .box-green {
+      background: var(--accent-bg);
+      border-left: 5px solid #27ae60;
+      padding: 14px 18px;
+      border-radius: 8px;
+      margin: 14px 0;
+      text-align: left;
+    }
+
+    .box-orange {
+      background: #fff3e0;
+      border-left: 5px solid #e67e22;
+      padding: 14px 18px;
+      border-radius: 8px;
+      margin: 14px 0;
+      text-align: left;
+    }
+
+    .box-purple {
+      background: var(--activity-bg);
+      border-left: 5px solid #8e44ad;
+      padding: 14px 18px;
+      border-radius: 8px;
+      margin: 14px 0;
+      text-align: left;
+    }
+
+    .columns {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .columns>div {
+      flex: 1;
+    }
+
+    /* ── Tables ── */
+    .reveal table {
+      font-size: 0.78em;
+      margin: 20px auto;
+    }
+
+    .reveal table th {
+      background: var(--primary-color);
+      color: #fff;
+      padding: 8px 14px;
+    }
+
+    .reveal table td {
+      padding: 6px 14px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    /* ── Activity Slide (micro atividades) ── */
+    .activity-slide {
+      background: radial-gradient(circle at top right, #eef6ff 0%, #f8fbff 44%, #eef4fb 100%) !important;
+      text-align: left;
+      padding: 20px 26px !important;
+    }
+
+    .activity-card {
+      max-width: 860px;
+      margin: 10px auto 0;
+      padding: 16px 18px;
+      border-radius: 14px;
+      border: 1px solid #bfd9f2;
+      border-left: 6px solid #1a5f9b;
+      background: linear-gradient(140deg, #f8fcff, #edf6ff);
+      box-shadow: 0 10px 24px rgba(9, 43, 84, 0.1);
+    }
+
+    .activity-title {
+      margin: 0 0 8px 0;
+      color: #124980 !important;
+      font-size: 0.86em !important;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .activity-question {
+      margin: 4px 0;
+      color: #2b4352 !important;
+      font-size: 0.74em !important;
+      line-height: 1.45;
+    }
+
+    .activity-question code {
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 6px;
+      padding: 2px 6px;
+      font-size: 0.95em;
+      white-space: nowrap;
+    }
+
+    /* ── Quiz / Fixação ── */
+    .quiz-slide {
+      background: radial-gradient(circle at bottom left, #fef9f0 0%, #fff7eb 40%, #fef5e7 100%) !important;
+      text-align: left;
+      padding: 20px 26px !important;
+    }
+
+    .quiz-card {
+      max-width: 860px;
+      margin: 10px auto 0;
+      padding: 16px 18px;
+      border-radius: 14px;
+      border: 1px solid #f5d6a7;
+      border-left: 6px solid #e67e22;
+      background: linear-gradient(140deg, #fffcf7, #fef6ea);
+      box-shadow: 0 10px 24px rgba(120, 60, 5, 0.08);
+    }
+
+    .quiz-title {
+      margin: 0 0 10px 0;
+      color: #b45309 !important;
+      font-size: 0.86em !important;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .quiz-option {
+      margin: 6px 0;
+      color: #4a3520 !important;
+      font-size: 0.72em !important;
+      line-height: 1.5;
+      padding: 6px 10px;
+      border-radius: 8px;
+      border: 1px solid #eddcc8;
+      background: rgba(255, 255, 255, 0.7);
+      cursor: default;
+    }
+
+    .quiz-option code {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 5px;
+      padding: 2px 6px;
+      font-size: 0.95em;
+    }
+
+    .quiz-answer {
+      margin: 10px 0 0 0;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: #e7f6ec;
+      border: 1px solid #a3d9b1;
+      color: #1a6b3a !important;
+      font-size: 0.68em !important;
+      font-weight: 500;
+    }
+
+    /* ── Section Divider ── */
+    .section-divider {
+      position: relative;
+      padding: 40px !important;
+    }
+
+    .section-divider h2 {
+      color: #fff !important;
+      font-size: 1.6em;
+      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .section-divider p {
+      color: rgba(255, 255, 255, 0.9) !important;
+      font-size: 0.85em;
+    }
+
+    .section-number {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 16px;
+      padding: 6px 20px;
+      color: #fff;
+      font-size: 0.5em;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+
+    /* ── Analogy card ── */
+    .analogy-card {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      background: #fff;
+      border: 1px solid #d4e2f2;
+      border-radius: 14px;
+      padding: 18px 22px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+      margin: 16px 0;
+      text-align: left;
+    }
+
+    .analogy-icon {
+      font-size: 2.4em;
+      flex-shrink: 0;
+    }
+
+    .analogy-text {
+      font-size: 0.82em !important;
+      color: #334155 !important;
+      line-height: 1.5;
+    }
+
+    /* ── Visual flow ── */
+    .flow-diagram {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin: 18px 0;
+      flex-wrap: wrap;
+    }
+
+    .flow-box {
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 0.72em;
+      font-weight: 600;
+      text-align: center;
+      min-width: 80px;
+    }
+
+    .flow-condition {
+      background: #fff3e0;
+      border: 2px solid #e67e22;
+      color: #b45309;
+    }
+
+    .flow-true {
+      background: #e7f6ec;
+      border: 2px solid #27ae60;
+      color: #1a6b3a;
+    }
+
+    .flow-false {
+      background: #fde8e8;
+      border: 2px solid #c0392b;
+      color: #922b21;
+    }
+
+    .flow-arrow {
+      font-size: 1.2em;
+      color: #94a3b8;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-icon-wrap {
+        width: 130px;
+        height: 130px;
+        font-size: 2.4em;
+      }
+
+      .columns {
+        flex-direction: column;
+      }
+
+      .activity-card,
+      .quiz-card {
+        padding: 12px 14px;
+      }
+
+      .activity-title,
+      .quiz-title {
+        font-size: 0.78em !important;
+      }
+
+      .activity-question,
+      .quiz-option {
+        font-size: 0.68em !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ==================== SLIDE 1 – CAPA ==================== -->
+      <section class="hero-cover" data-background-gradient="linear-gradient(140deg, #0d2550, #1450a4, #1ba37f)">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <p class="hero-kicker"><i class="fa-solid fa-laptop-code icon" aria-hidden="true"></i>Introdução à
+              Programação</p>
+            <h1 class="hero-title">Aula 06<br><span>Prática de Decisões em Python</span></h1>
+            <p class="hero-subtitle">Aplicando <code>if</code>, <code>elif</code> e <code>else</code> em problemas
+              práticos.</p>
+            <div class="hero-tags">
+              <span>if</span>
+              <span>elif</span>
+              <span>else</span>
+              <span>Tomada de Decisão</span>
+              <span>Fluxo</span>
+              <span>Prática</span>
+            </div>
+            <p class="hero-meta"><i class="fa-solid fa-user-tie icon" aria-hidden="true"></i>Prof. Msc. Nator Junior
+              Carvalho da Costa</p>
+          </div>
+          <div class="hero-mark">
+            <div class="hero-icon-wrap">
+              <i class="fa-solid fa-code-branch icon-only" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+
+
+      <section>
+        <!-- ── Divisor do bloco ── -->
+        <section class="section-divider" data-background-gradient="linear-gradient(135deg, #134e5e, #71b280)">
+          <div class="section-number">Prática</div>
+          <h2><i class="fa-solid fa-dumbbell icon" aria-hidden="true"></i> Atividades de Decisão</h2>
+          <p>Vamos praticar decisões com <code>if</code>, <code>if/else</code> e <code>if/elif/else</code>.</p>
+        </section>
+
+        <!-- ══ ATIVIDADE 1 – Classificação de idade ══ -->
+        <section class="activity-slide">
+          <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade de Decisão 1 de 3</h2>
+          <div class="activity-card">
+            <p class="activity-title"><i class="fa-solid fa-user-check" aria-hidden="true"></i> Classificação por Idade
+            </p>
+            <p class="activity-question">Leia a idade de uma pessoa e classifique:</p>
+            <ul style="font-size:0.72em; color:#2b4352; margin-top:4px;">
+              <li><strong>Menor de idade</strong> se idade &lt; 18</li>
+              <li><strong>Adulto</strong> se idade entre 18 e 59</li>
+              <li><strong>Idoso</strong> se idade &gt;= 60</li>
+            </ul>
+            <p class="activity-question">Exiba apenas a classificação final.</p>
+            <p class="activity-question" style="margin-top:10px;">
+              <i class="fa-solid fa-lightbulb" style="color:#e67e22;" aria-hidden="true"></i>
+              <em>Dica: use <code>if / elif / else</code> para cobrir os três cenários.</em>
+            </p>
+          </div>
+        </section>
+
+        <section class="quiz-slide">
+          <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta —
+            Atividade de Decisão 1</h2>
+          <div class="quiz-card">
+            <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solução</p>
+            <pre style="margin:8px 0;"><code class="language-python" data-trim data-noescape>
+idade = int(input("Digite a idade: "))
+
+if idade < 18:
+    print("Menor de idade")
+elif idade < 60:
+    print("Adulto")
+else:
+    print("Idoso")
+          </code></pre>
+            <div class="quiz-answer">
+              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+              <strong>Pontos-chave:</strong> a ordem das condições importa. Ao entrar em um bloco verdadeiro, os
+              próximos não são avaliados.
+            </div>
+          </div>
+        </section>
+
+        <!-- ══ ATIVIDADE 2 – Desconto na compra ══ -->
+        <section class="activity-slide">
+          <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade de Decisão 2 de 3</h2>
+          <div class="activity-card">
+            <p class="activity-title"><i class="fa-solid fa-receipt" aria-hidden="true"></i> Desconto por Valor da
+              Compra</p>
+            <p class="activity-question">Leia o valor de uma compra.</p>
+            <p class="activity-question">Aplique as regras:</p>
+            <ul style="font-size:0.72em; color:#2b4352; margin-top:4px;">
+              <li>Se valor for <strong>maior ou igual a 200</strong>, desconto de <strong>10%</strong></li>
+              <li>Caso contrário, desconto de <strong>5%</strong></li>
+            </ul>
+            <p class="activity-question">Exiba o valor final com desconto.</p>
+            <p class="activity-question" style="margin-top:10px;">
+              <i class="fa-solid fa-lightbulb" style="color:#e67e22;" aria-hidden="true"></i>
+              <em>Dica: guarde o percentual em uma variável e reutilize no cálculo.</em>
+            </p>
+          </div>
+        </section>
+
+        <section class="quiz-slide">
+          <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta —
+            Atividade de Decisão 2</h2>
+          <div class="quiz-card">
+            <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solução</p>
+            <pre style="margin:8px 0;"><code class="language-python" data-trim data-noescape>
+valor = float(input("Valor da compra: R$ "))
+
+if valor >= 200:
+    desconto = 0.10
+else:
+    desconto = 0.05
+
+total = valor * (1 - desconto)
+
+print(f"Desconto aplicado: {desconto * 100:.0f}%")
+print(f"Valor final: R$ {total:.2f}")
+          </code></pre>
+            <div class="quiz-answer">
+              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+              <strong>Pontos-chave:</strong> a decisão define o percentual. O cálculo final usa o fator
+              <code>(1 - desconto)</code>.
+            </div>
+          </div>
+        </section>
+
+        <!-- ══ ATIVIDADE 3 – Situação do aluno ══ -->
+        <section class="activity-slide">
+          <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade de Decisão 3 de 3</h2>
+          <div class="activity-card">
+            <p class="activity-title"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Situação Final do
+              Aluno</p>
+            <p class="activity-question">Leia a média final e exiba a situação:</p>
+            <ul style="font-size:0.72em; color:#2b4352; margin-top:4px;">
+              <li><strong>Aprovado</strong> se média &gt;= 7</li>
+              <li><strong>Recuperação</strong> se média &gt;= 5 e &lt; 7</li>
+              <li><strong>Reprovado</strong> caso contrário</li>
+            </ul>
+            <p class="activity-question" style="margin-top:8px;">
+              <i class="fa-solid fa-lightbulb" style="color:#e67e22;" aria-hidden="true"></i>
+              <em>Dica: no <code>elif</code>, não precisa repetir tudo que o primeiro <code>if</code> já descartou.</em>
+            </p>
+          </div>
+        </section>
+
+
+        <!-- ══════════════════════════════════════════════════════
+           BLOCO DE ATIVIDADES DE DECISÃO (3 atividades + respostas)
+           ══════════════════════════════════════════════════════ -->
+
+
+        <section class="quiz-slide">
+          <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta —
+            Atividade de Decisão 3</h2>
+          <div class="quiz-card">
+            <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solução</p>
+            <pre style="margin:8px 0;"><code class="language-python" data-trim data-noescape>
+media = float(input("Média final: "))
+
+if media >= 7:
+    print("Aprovado")
+elif media >= 5:
+    print("Recuperação")
+else:
+    print("Reprovado")
+          </code></pre>
+            <div class="quiz-answer">
+              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+              <strong>Pontos-chave:</strong> a leitura é sequencial: primeiro testa <code>&gt;= 7</code>, depois
+              <code>&gt;= 5</code>, e o restante cai no <code>else</code>.
+            </div>
+          </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════════════
+           FIM DO BLOCO DE ATIVIDADES DE DECISÃO
+           ══════════════════════════════════════════════════════ -->
+
+      </section>
+
+
+
+      <!-- ==================== SLIDE – RESUMO ==================== -->
+      <section class="bg-light">
+        <h2><i class="fa-solid fa-clipboard-list icon" aria-hidden="true"></i> Resumo da Aula</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px;">
+          <div class="fragment"
+            style="background:#fff; border:2px solid #1450a4; border-radius:12px; padding:14px; text-align:center;">
+            <p style="font-size:1.2em; margin:0 0 4px; font-weight:700; color:#1450a4;"><code>if</code></p>
+            <p style="font-size:0.68em; color:#555; margin:0;">Executa bloco quando a condição é verdadeira</p>
+          </div>
+          <div class="fragment"
+            style="background:#fff; border:2px solid #0d7377; border-radius:12px; padding:14px; text-align:center;">
+            <p style="font-size:1.2em; margin:0 0 4px; font-weight:700; color:#0d7377;"><code>else</code></p>
+            <p style="font-size:0.68em; color:#555; margin:0;">Executa bloco alternativo (caso falso)</p>
+          </div>
+          <div class="fragment"
+            style="background:#fff; border:2px solid #e67e22; border-radius:12px; padding:14px; text-align:center;">
+            <p style="font-size:1.2em; margin:0 0 4px; font-weight:700; color:#e67e22;"><code>elif</code></p>
+            <p style="font-size:0.68em; color:#555; margin:0;">Condições intermediárias extras</p>
+          </div>
+
+        </div>
+        <div class="box fragment" style="text-align:center; margin-top:16px;">
+          <i class="fa-solid fa-triangle-exclamation icon" style="color:#e67e22;" aria-hidden="true"></i>
+          Não esqueça: <strong>dois pontos <code>:</code></strong> no final e <strong>indentação</strong> no bloco!
+        </div>
+      </section>
+
+
+    </div>
+  </div>
+
+  <script src="./dist/reveal.js"></script>
+  <script src="./plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({
+      center: false,
+      controls: true,
+      progress: true,
+      slideNumber: true,
+      history: true,
+      transition: 'convex',
+      plugins: [RevealHighlight]
+    });
+  </script>
+</body>
+
+</html>
