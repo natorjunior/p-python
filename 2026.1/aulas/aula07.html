@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aula 07 - Laços de repetição em Python: while, for, break e continue.">
+  <title>Aula 07 - Laços de Repetição em Python</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="./dist/reveal.css">
+  <link rel="stylesheet" href="./dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="./plugin/highlight/atom-one-dark.css">
+
+  <style>
+    :root {
+      --primary-color: #0056b3;
+      --secondary-color: #2f2f2f;
+      --light-bg: #f2f7ff;
+      --accent-bg: #e7f6ec;
+      --warn-bg: #fff8e1;
+      --activity-bg: #f3e8ff;
+      --code-bg: #1f2937;
+      --transition-fragment: 0.3s ease;
+    }
+
+    body { font-family: 'Roboto', sans-serif; }
+
+    .reveal h1, .reveal h2, .reveal h3 { color: var(--primary-color); }
+
+    .reveal p, .reveal li {
+      color: var(--secondary-color);
+      font-size: 0.95em;
+    }
+
+    .reveal .icon      { color: currentColor; margin-right: 0.28em; }
+    .reveal .icon-only { color: currentColor; margin-right: 0; }
+
+    .reveal pre code {
+      font-size: 0.84em;
+      background: var(--code-bg);
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    .fragment { transition: all var(--transition-fragment); }
+
+    /* ── Backgrounds ── */
+    .bg-light    { background-color: var(--light-bg)    !important; }
+    .bg-accent   { background-color: var(--accent-bg)   !important; }
+    .bg-warn     { background-color: var(--warn-bg)     !important; }
+    .bg-activity { background-color: var(--activity-bg) !important; }
+
+    /* ── Hero Cover ── */
+    .hero-cover {
+      position: relative;
+      overflow: hidden;
+      padding: 40px !important;
+    }
+
+    .hero-cover::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(140deg, rgba(3,15,35,.55), rgba(11,53,112,.4), rgba(17,126,111,.28));
+      z-index: 1;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero-content {
+      background: rgba(7,24,54,.5);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 16px;
+      padding: 24px 26px;
+      text-align: left;
+      box-shadow: 0 18px 44px rgba(0,0,0,.22);
+      backdrop-filter: blur(2px);
+    }
+
+    .hero-kicker {
+      margin: 0 0 12px;
+      color: rgba(255,255,255,.9) !important;
+      font-size: 0.4em !important;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .hero-title {
+      margin: 0 0 12px !important;
+      color: #fff !important;
+      font-size: 1.35em !important;
+      line-height: 1.12 !important;
+      text-shadow: 0 10px 20px rgba(0,0,0,.35);
+    }
+
+    .hero-title span {
+      color: rgba(230,244,255,.96);
+      font-weight: 500;
+      font-size: 0.88em;
+    }
+
+    .hero-subtitle {
+      margin: 0 0 16px;
+      color: rgba(255,255,255,.92) !important;
+      font-size: 0.5em !important;
+      line-height: 1.45;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 18px;
+    }
+
+    .hero-tags span {
+      background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.26);
+      border-radius: 999px;
+      color: #fff;
+      font-size: 0.34em;
+      font-weight: 500;
+      padding: 4px 10px;
+    }
+
+    .hero-meta {
+      margin: 0;
+      color: rgba(255,255,255,.88) !important;
+      font-size: 0.4em !important;
+    }
+
+    .hero-mark { display: flex; justify-content: center; align-items: center; }
+
+    .hero-icon-wrap {
+      width: 180px;
+      height: 180px;
+      border-radius: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.35);
+      box-shadow: 0 18px 42px rgba(0,0,0,.24);
+      color: #fff;
+      font-size: 3.4em;
+    }
+
+    /* ── Boxes ── */
+    .box, .box-green, .box-orange {
+      padding: 14px 18px;
+      border-radius: 8px;
+      margin: 14px 0;
+      text-align: left;
+    }
+
+    .box        { background: var(--light-bg); border-left: 5px solid var(--primary-color); }
+    .box-green  { background: var(--accent-bg); border-left: 5px solid #27ae60; }
+    .box-orange { background: #fff3e0;          border-left: 5px solid #e67e22; }
+
+    /* ── Layout ── */
+    .columns { display: flex; gap: 24px; align-items: flex-start; }
+    .columns > div { flex: 1; }
+
+    /* ── Section Divider ── */
+    .section-divider { position: relative; padding: 40px !important; }
+    .section-divider h2 { color: #fff !important; font-size: 1.6em; text-shadow: 0 4px 16px rgba(0,0,0,.3); }
+    .section-divider p  { color: rgba(255,255,255,.9) !important; font-size: 0.85em; }
+
+    .section-number {
+      display: inline-block;
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 16px;
+      padding: 6px 20px;
+      color: #fff;
+      font-size: 0.5em;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+
+    /* ── Flow Diagram ── */
+    .flow-diagram {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin: 18px 0;
+      flex-wrap: wrap;
+    }
+
+    .flow-box {
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 0.72em;
+      font-weight: 600;
+      text-align: center;
+      min-width: 100px;
+    }
+
+    .flow-start     { background: #e8f0ff; border: 2px solid #2d6cdf; color: #0d3a87; }
+    .flow-condition { background: #fff3e0; border: 2px solid #e67e22; color: #b45309; }
+    .flow-action    { background: #e7f6ec; border: 2px solid #27ae60; color: #1a6b3a; }
+    .flow-end       { background: #fde8e8; border: 2px solid #c0392b; color: #922b21; }
+    .flow-arrow     { font-size: 1.2em; color: #94a3b8; }
+
+    /* ── Activity Slides ── */
+    .activity-slide {
+      background: radial-gradient(circle at top right, #eef6ff 0%, #f8fbff 44%, #eef4fb 100%) !important;
+      text-align: left;
+      padding: 20px 26px !important;
+    }
+
+    .activity-card {
+      max-width: 880px;
+      margin: 10px auto 0;
+      padding: 16px 18px;
+      border-radius: 14px;
+      border: 1px solid #bfd9f2;
+      border-left: 6px solid #1a5f9b;
+      background: linear-gradient(140deg, #f8fcff, #edf6ff);
+      box-shadow: 0 10px 24px rgba(9,43,84,.1);
+    }
+
+    .activity-title {
+      margin: 0 0 8px;
+      color: #124980 !important;
+      font-size: 0.84em !important;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .activity-question {
+      margin: 4px 0;
+      color: #2b4352 !important;
+      font-size: 0.72em !important;
+      line-height: 1.45;
+    }
+
+    .activity-question code {
+      background: rgba(255,255,255,.92);
+      border-radius: 6px;
+      padding: 2px 6px;
+      font-size: 0.95em;
+      white-space: nowrap;
+    }
+
+    /* ── Quiz Slides ── */
+    .quiz-slide {
+      background: radial-gradient(circle at bottom left, #fef9f0 0%, #fff7eb 40%, #fef5e7 100%) !important;
+      text-align: left;
+      padding: 20px 26px !important;
+    }
+
+    .quiz-card {
+      max-width: 880px;
+      margin: 10px auto 0;
+      padding: 16px 18px;
+      border-radius: 14px;
+      border: 1px solid #f5d6a7;
+      border-left: 6px solid #e67e22;
+      background: linear-gradient(140deg, #fffcf7, #fef6ea);
+      box-shadow: 0 10px 24px rgba(120,60,5,.08);
+    }
+
+    .quiz-title {
+      margin: 0 0 10px;
+      color: #b45309 !important;
+      font-size: 0.84em !important;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .quiz-answer {
+      margin: 10px 0 0;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: #e7f6ec;
+      border: 1px solid #a3d9b1;
+      color: #1a6b3a !important;
+      font-size: 0.68em !important;
+      font-weight: 500;
+    }
+
+    /* ── Summary Grid ── */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .summary-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 12px;
+    }
+
+    .summary-card p:first-child { margin: 0; font-size: 0.86em; }
+    .summary-card p:last-child  { margin: 6px 0 0; font-size: 0.68em; }
+
+    .summary-card.while    { border: 2px solid #2c7da0; }
+    .summary-card.for-loop { border: 2px solid #6c43bf; }
+    .summary-card.break    { border: 2px solid #c56b2f; }
+    .summary-card.continue { border: 2px solid #2d8f5a; }
+
+    /* ── Flowchart Diagram Slides ── */
+    .fc-slide {
+      background: radial-gradient(circle at top left, #142850 0%, #0b1a37 45%, #071126 100%) !important;
+      padding: 20px 26px !important;
+      text-align: left;
+    }
+
+    .fc-slide h2 {
+      color: #e8f1ff !important;
+      font-size: 1.08em;
+      margin: 0 0 10px 0;
+      letter-spacing: .01em;
+    }
+
+    .fc-kicker {
+      margin: 0 0 8px 0;
+      color: #9ec4ff !important;
+      font-size: .46em !important;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .fc-wrap {
+      display: grid;
+      grid-template-columns: minmax(360px, 430px) minmax(300px, 1fr);
+      gap: 18px;
+      align-items: start;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .fc-panel {
+      background: linear-gradient(145deg, rgba(8, 20, 44, 0.92), rgba(6, 15, 34, 0.92));
+      border: 1px solid rgba(157, 187, 244, 0.28);
+      border-radius: 14px;
+      box-shadow: 0 12px 28px rgba(2, 8, 21, 0.45);
+      padding: 10px;
+    }
+
+    .fc-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      max-height: 380px;
+    }
+
+    .fc-svg line,
+    .fc-svg polyline {
+      stroke: #a8ccff;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      marker-end: url(#fc-arr);
+    }
+
+    .fc-explain {
+      text-align: left;
+      background: rgba(5, 17, 40, 0.52);
+      border: 1px solid rgba(151, 178, 230, 0.24);
+      border-radius: 12px;
+      padding: 12px 14px;
+    }
+
+    .fc-explain p, .fc-explain li {
+      color: #d8e6ff !important;
+      font-size: 0.71em !important;
+      line-height: 1.54;
+    }
+
+    .fc-explain code {
+      background: rgba(255,255,255,.1);
+      color: #ffd08a;
+      padding: 2px 6px;
+      border-radius: 5px;
+    }
+
+    .fc-answer {
+      background: rgba(20, 44, 90, 0.55);
+      border: 1px solid #3f66b7;
+      border-left: 4px solid #7da9ff;
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+    }
+
+    .fc-output {
+      background: rgba(4, 13, 29, 0.9);
+      border: 1px solid rgba(82, 114, 170, 0.55);
+      border-radius: 8px;
+      padding: 9px 12px;
+    }
+
+    .fc-output code {
+      display: block;
+      color: #91f2b6 !important;
+      font-size: 0.85em !important;
+      background: none !important;
+      padding: 2px 0 !important;
+    }
+
+    .fc-output code.muted { color: #ffb485 !important; }
+
+    .fc-code {
+      margin: 10px 0;
+      background: rgba(4, 13, 29, 0.9);
+      border: 1px solid rgba(82, 114, 170, 0.55);
+      border-radius: 8px;
+      padding: 8px;
+    }
+
+    .fc-code-title {
+      margin: 0 0 6px 0;
+      color: #a9cbff !important;
+      font-size: 0.62em !important;
+      font-weight: 600;
+      letter-spacing: .02em;
+    }
+
+    .fc-code pre {
+      margin: 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+
+    .fc-code pre code {
+      font-size: 0.69em !important;
+      border-radius: 6px;
+    }
+
+    .fc-code-collapsed {
+      height: 0;
+      padding: 0;
+      margin: 0;
+      border-color: transparent;
+      opacity: 0;
+      overflow: hidden;
+    }
+
+    .fc-code-only-wrap {
+      max-width: 860px;
+      margin: 8px auto 0;
+    }
+
+    /* ── Table ── */
+    .reveal table { font-size: 0.75em; margin: 16px auto; }
+    .reveal table th { background: var(--primary-color); color: #fff; padding: 8px 14px; }
+    .reveal table td { padding: 7px 12px; border-bottom: 1px solid #ddd; text-align: left; }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .hero-grid       { grid-template-columns: 1fr; }
+      .hero-icon-wrap  { width: 130px; height: 130px; font-size: 2.4em; }
+      .columns         { flex-direction: column; }
+      .summary-grid    { grid-template-columns: 1fr; }
+      .fc-wrap         { grid-template-columns: 1fr; }
+      .fc-svg          { max-height: none; }
+      .fc-slide h2     { font-size: 0.94em; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- shared SVG arrow marker for flowchart diagrams -->
+  <svg style="display:none" aria-hidden="true" width="0" height="0">
+    <defs>
+      <marker id="fc-arr" viewBox="0 0 12 12" refX="10.5" refY="6"
+              markerUnits="strokeWidth" markerWidth="12" markerHeight="10" orient="auto">
+        <path d="M0 0 L12 6 L0 12 z" fill="#d6e7ff"/>
+      </marker>
+    </defs>
+  </svg>
+
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Capa -->
+      <section class="hero-cover" data-background-gradient="linear-gradient(140deg, #0d2550, #1450a4, #1ba37f)">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <p class="hero-kicker"><i class="fa-solid fa-laptop-code icon" aria-hidden="true"></i>Introdução à Programação</p>
+            <h1 class="hero-title">Aula 07<br><span>Laços de Repetição em Python</span></h1>
+            <p class="hero-subtitle">Começando com <code>while</code> e avançando para <code>for</code> com exemplos bem didáticos.</p>
+            <div class="hero-tags">
+              <span>while</span><span>for</span><span>break</span><span>continue</span><span>range()</span>
+            </div>
+            <p class="hero-meta"><i class="fa-solid fa-user-tie icon" aria-hidden="true"></i>Prof. Msc. Nator Junior Carvalho da Costa</p>
+          </div>
+          <div class="hero-mark">
+            <div class="hero-icon-wrap">
+              <i class="fa-solid fa-rotate-right icon-only" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+<section>
+      <!-- Seção 1: while -->
+      <section class="section-divider" data-background-gradient="linear-gradient(135deg, #0f4c81, #2c7da0, #61a5c2)">
+        <div class="section-number">Parte 1</div>
+        <h2><i class="fa-solid fa-clock-rotate-left icon" aria-hidden="true"></i> Laço <code>while</code></h2>
+        <p>Repete um bloco <strong>enquanto</strong> uma condição for verdadeira.</p>
+      </section>
+
+      <!-- while: sintaxe -->
+      <section class="bg-light">
+        <h2><i class="fa-solid fa-code icon" aria-hidden="true"></i> Sintaxe do <code>while</code></h2>
+        <pre><code class="language-python" data-trim data-noescape>
+while condicao:
+    # bloco de repetição
+    # atualização da variável de iteração
+        </code></pre>
+        <div class="box fragment">
+          <p><strong>Leitura:</strong> "enquanto a condição for verdadeira, execute este bloco."</p>
+        </div>
+        <div class="box-orange fragment">
+          <p><strong>Ponto-chave:</strong> a variável de iteração precisa mudar a cada repetição.</p>
+        </div>
+      </section>
+
+
+
+
+
+      <!-- Diagrama 1: n=0 → condicional simples -->
+      <section class="fc-slide" data-auto-animate>
+        <p class="fc-kicker">Fluxograma 1</p>
+        <h2><i class="fa-solid fa-code-branch icon" aria-hidden="true"></i> Condicional simples (<code>if</code>)</h2>
+        <div class="fc-wrap">
+          <div class="fc-panel">
+            <svg class="fc-svg" viewBox="0 0 420 450" xmlns="http://www.w3.org/2000/svg">
+            <rect width="420" height="450" fill="#081734" rx="10"/>
+            <!-- Start: n = 0 -->
+            <rect x="110" y="12" width="200" height="46" rx="5" fill="#2b54d4"/>
+            <text x="210" y="41" text-anchor="middle" fill="white" font-weight="bold" font-size="20" font-family="'Courier New',monospace">n = 0</text>
+            <!-- Arrow: start → diamond -->
+            <line x1="210" y1="58" x2="210" y2="92" stroke="#8cb8ff" stroke-width="2.5" marker-end="url(#fc-arr)"/>
+            <!-- Diamond: n > 0 ? -->
+            <polygon points="210,95 322,152 210,209 98,152" fill="#324ca0"/>
+            <text x="210" y="157" text-anchor="middle" fill="#ffb27d" font-weight="bold" font-size="17" font-family="'Courier New',monospace">n &gt; 0 ?</text>
+            <!-- Não / Sim labels -->
+            <text x="40" y="146" fill="white" font-size="16" font-family="Roboto,sans-serif" font-weight="500">Não ←</text>
+            <text x="345" y="146" fill="white" font-size="16" font-family="Roboto,sans-serif" font-weight="500">Sim →</text>
+            <!-- Não path → end -->
+            <polyline points="98,152 40,152 40,380 110,380" fill="none" stroke="#8cb8ff" stroke-width="2.5" marker-end="url(#fc-arr)"/>
+            <!-- Sim path → action1 -->
+            <polyline points="322,152 380,152 380,258" fill="none" stroke="#8cb8ff" stroke-width="2.5" marker-end="url(#fc-arr)"/>
+            <!-- Action1: print('Ensaboar') -->
+            <rect x="255" y="258" width="155" height="46" rx="5" fill="#2b54d4"/>
+            <text x="332" y="282" text-anchor="middle" fill="white" font-size="12" font-family="'Courier New',monospace">print(<tspan fill="#ff5500">'Ensaboar'</tspan>)</text>
+            <!-- Arrow: action1 → action2 -->
+            <line x1="332" y1="304" x2="332" y2="330" stroke="#8cb8ff" stroke-width="2.5" marker-end="url(#fc-arr)"/>
+            <!-- Action2: print('Enxaguar') -->
+            <rect x="255" y="330" width="155" height="46" rx="5" fill="#2b54d4"/>
+            <text x="332" y="354" text-anchor="middle" fill="white" font-size="12" font-family="'Courier New',monospace">print(<tspan fill="#ff5500">'Enxaguar'</tspan>)</text>
+            <!-- Saída do ramo Sim para o fim -->
+            <polyline points="332,376 332,380 210,380" fill="none" stroke="#8cb8ff" stroke-width="2.5" marker-end="url(#fc-arr)"/>
+            <!-- End: print('Secar!') -->
+            <rect x="110" y="380" width="200" height="46" rx="5" fill="#2b54d4"/>
+            <text x="210" y="408" text-anchor="middle" fill="white" font-size="14" font-family="'Courier New',monospace">print(<tspan fill="#ff5500">'Secar!'</tspan>)</text>
+            </svg>
+          </div>
+          <div class="fc-explain fragment">
+            <div class="fc-answer">
+              <p><strong>n = 0</strong>, então <code>n &gt; 0</code> é <strong>falsa desde o início</strong>.</p>
+              <p>O bloco do <code>if</code> <strong>não executa</strong>.</p>
+              <p>O programa pula direto para <code>print('Secar!')</code>.</p>
+            </div>
+            <div class="fc-code fc-code-collapsed" data-id="fc1-code"></div>
+            <div class="fc-output">
+              <code>Secar!</code>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="fc-slide" data-auto-animate>
+        <p class="fc-kicker">Fluxograma 1</p>
+        <h2><i class="fa-solid fa-code-branch icon" aria-hidden="true"></i> Condicional simples (<code>if</code>) — Código</h2>
+        <div class="fc-code-only-wrap">
+          <div class="fc-code" data-id="fc1-code">
+            <p class="fc-code-title"><i class="fa-solid fa-code icon" aria-hidden="true"></i>Código do fluxograma</p>
+            <pre><code class="language-python" data-trim data-noescape>
+n = 0
+if n > 0:
+    print("Ensaboar")
+    print("Enxaguar")
+print("Secar!")
+            </code></pre>
+          </div>
+        </div>
+      </section>
+
+<!-- Diagrama 2: n=5, com n=n-1 → contagem regressiva -->
+      <section class="fc-slide" data-auto-animate>
+        <p class="fc-kicker">Fluxograma 2</p>
+        <h2><i class="fa-solid fa-circle-check icon" aria-hidden="true"></i> <code>loop</code></h2>
+        <div class="fc-wrap">
+          <div class="fc-panel">
+            <svg class="fc-svg" viewBox="0 0 420 515" xmlns="http://www.w3.org/2000/svg">
+            <rect width="420" height="515" fill="#081734" rx="10"/>
+            <!-- Start: n = 5 -->
+            <rect x="110" y="12" width="200" height="46" rx="5" fill="#2b54d4"/>
+            <text x="210" y="41" text-anchor="middle" fill="white" font-weight="bold" font-size="20" font-family="'Courier New',monospace">n = 5</text>
+            <line x1="210" y1="58" x2="210" y2="92" stroke="#8cb8ff" stroke-width="2.5" marker-end="url(#fc-arr)"/>
+            <polygon points="210,95 322,152 210,209 98,152" fill="#324ca0"/>
+            <text x="210" y="157" text-anchor="middle" fill="#ffb27d" font-weight="bold" font-size="17" font-family="'Courier New',monospace">n &gt; 0 ?</text>
+            <text x="40" y="146" fill="white" font-size="16" font-family="Roboto,sans-serif" font-weight="500">Não ←</text>
+            <text x="345" y="146" fill="white" font-size="16" font-family="Roboto,sans-serif" font-weight="500">Sim →</text>
+            <text x="44" y="308" fill="#a9cbff" font-size="12" font-family="Roboto,sans-serif">saída do laço ↓</text>
+            <text x="158" y="337" fill="#a9cbff" font-size="12" font-family="Roboto,sans-serif">volta ao teste ↖</text>
+            <polyline points="98,152 32,152 32,465 110,465" fill="none" stroke="#8cb8ff" stroke-width="2.5" marker-end="url(#fc-arr)"/>
+            <polyline points="322,152 385,152 385,258" fill="none" stroke="#8cb8ff" stroke-width="2.5" marker-end="url(#fc-arr)"/>
+            <!-- Action1: print(n) -->
+            <rect x="255" y="258" width="155" height="46" rx="5" fill="#2b54d4"/>
+            <text x="332" y="282" text-anchor="middle" fill="white" font-size="14" font-family="'Courier New',monospace">print(<tspan fill="#ff5500">n</tspan>)</text>
+            <line x1="332" y1="304" x2="332" y2="330" stroke="#8cb8ff" stroke-width="2.5" marker-end="url(#fc-arr)"/>
+            <!-- Action2: n = n - 1 -->
+            <rect x="255" y="330" width="155" height="46" rx="5" fill="#2b54d4"/>
+            <text x="332" y="354" text-anchor="middle" fill="white" font-size="15" font-family="'Courier New',monospace">n = n - 1</text>
+            <!-- Loop back -->
+            <polyline points="255,353 155,353 155,209 210,209" fill="none" stroke="#8cb8ff" stroke-width="2.5" marker-end="url(#fc-arr)"/>
+            <!-- End: print('Fim!') -->
+            <rect x="110" y="465" width="200" height="46" rx="5" fill="#2b54d4"/>
+            <text x="210" y="493" text-anchor="middle" fill="white" font-size="14" font-family="'Courier New',monospace">print(<tspan fill="#ff5500">'Fim!'</tspan>)</text>
+            </svg>
+          </div>
+          <div class="fc-explain fragment">
+            <div class="fc-answer">
+              <p>Agora <code>n</code> é decrementado a cada volta.</p>
+              <p>O laço roda enquanto <code>n &gt; 0</code>: valores 5, 4, 3, 2, 1.</p>
+              <p>Quando <code>n = 0</code>, a condição falha — o laço termina.</p>
+            </div>
+            <div class="fc-code fc-code-collapsed" data-id="fc2-code"></div>
+            <div class="fc-output">
+              <code>5,4,3,2,1</code>
+              <code>Fim!</code>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="fc-slide" data-auto-animate>
+        <p class="fc-kicker">Fluxograma 2</p>
+        <h2><i class="fa-solid fa-circle-check icon" aria-hidden="true"></i> Loop controlado — Código</h2>
+        <div class="fc-code-only-wrap">
+          <div class="fc-code" data-id="fc2-code">
+            <p class="fc-code-title"><i class="fa-solid fa-code icon" aria-hidden="true"></i>Código do fluxograma</p>
+            <pre><code class="language-python" data-trim data-noescape>
+n = 5
+while n > 0:
+    print(n)
+    n = n - 1
+print("Fim!")
+            </code></pre>
+          </div>
+        </div>
+      </section>
+
+<!-- Diagrama 3: n=5, sem update → laço infinito -->
+      <section class="fc-slide" data-auto-animate>
+        <p class="fc-kicker">Fluxograma 3</p>
+        <h2><i class="fa-solid fa-triangle-exclamation icon" aria-hidden="true"></i> <code>loop</code></h2>
+        <div class="fc-wrap">
+          <div class="fc-panel">
+            <svg class="fc-svg" viewBox="0 0 420 515" xmlns="http://www.w3.org/2000/svg">
+            <rect width="420" height="515" fill="#081734" rx="10"/>
+            <!-- Start: n = 5 -->
+            <rect x="110" y="12" width="200" height="46" rx="5" fill="#2b54d4"/>
+            <text x="210" y="41" text-anchor="middle" fill="white" font-weight="bold" font-size="20" font-family="'Courier New',monospace">n = 5</text>
+            <line x1="210" y1="58" x2="210" y2="92" stroke="#8cb8ff" stroke-width="2.5" marker-end="url(#fc-arr)"/>
+            <polygon points="210,95 322,152 210,209 98,152" fill="#324ca0"/>
+            <text x="210" y="157" text-anchor="middle" fill="#ffb27d" font-weight="bold" font-size="17" font-family="'Courier New',monospace">n &gt; 0 ?</text>
+            <text x="40" y="146" fill="white" font-size="16" font-family="Roboto,sans-serif" font-weight="500">Não ←</text>
+            <text x="345" y="146" fill="white" font-size="16" font-family="Roboto,sans-serif" font-weight="500">Sim →</text>
+            <text x="35" y="308" fill="#a9cbff" font-size="12" font-family="Roboto,sans-serif">saída ↓</text>
+            <text x="158" y="337" fill="#a9cbff" font-size="12" font-family="Roboto,sans-serif">volta ao teste ↖</text>
+            <polyline points="98,152 32,152 32,465 110,465" fill="none" stroke="#8cb8ff" stroke-width="2.5" marker-end="url(#fc-arr)"/>
+            <polyline points="322,152 385,152 385,258" fill="none" stroke="#8cb8ff" stroke-width="2.5" marker-end="url(#fc-arr)"/>
+            <rect x="255" y="258" width="155" height="46" rx="5" fill="#2b54d4"/>
+            <text x="332" y="282" text-anchor="middle" fill="white" font-size="12" font-family="'Courier New',monospace">print(<tspan fill="#ff5500">'Ensaboar'</tspan>)</text>
+            <line x1="332" y1="304" x2="332" y2="330" stroke="#8cb8ff" stroke-width="2.5" marker-end="url(#fc-arr)"/>
+            <rect x="255" y="330" width="155" height="46" rx="5" fill="#2b54d4"/>
+            <text x="332" y="354" text-anchor="middle" fill="white" font-size="12" font-family="'Courier New',monospace">print(<tspan fill="#ff5500">'Enxaguar'</tspan>)</text>
+            <!-- Loop back (sem atualização de n) -->
+            <polyline points="255,353 155,353 155,209 210,209" fill="none" stroke="#8cb8ff" stroke-width="2.5" marker-end="url(#fc-arr)"/>
+            <rect x="110" y="465" width="200" height="46" rx="5" fill="#2b54d4" opacity="0.35"/>
+            <text x="210" y="493" text-anchor="middle" fill="white" font-size="14" font-family="'Courier New',monospace" opacity="0.4">print(<tspan fill="#ff5500">'Secar!'</tspan>)</text>
+            </svg>
+          </div>
+          <div class="fc-explain fragment">
+            <div class="fc-answer">
+              <p><strong>n = 5</strong>, então <code>n &gt; 0</code> é <strong>verdadeira</strong>.</p>
+              <p>O laço executa... mas <code>n</code> <strong>nunca muda</strong>!</p>
+              <!-- <p>A condição continua verdadeira para sempre.</p> -->
+              <p>→ <strong>Laço infinito.</strong> O programa trava.</p>
+            </div>
+            <div class="fc-code fc-code-collapsed" data-id="fc3-code"></div>
+            <div class="fc-output">
+              <code>Ensaboar</code>
+              <code>Enxaguar</code>
+              <code>Ensaboar</code>
+              <code>Enxaguar</code>
+              <code class="muted">... (nunca termina)</code>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="fc-slide" data-auto-animate>
+        <p class="fc-kicker">Fluxograma 3</p>
+        <h2><i class="fa-solid fa-triangle-exclamation icon" aria-hidden="true"></i> Laço infinito — Código</h2>
+        <div class="fc-code-only-wrap">
+          <div class="fc-code" data-id="fc3-code">
+            <p class="fc-code-title"><i class="fa-solid fa-code icon" aria-hidden="true"></i>Código do fluxograma</p>
+            <pre><code class="language-python" data-trim data-noescape>
+n = 5
+while n > 0:
+    print("Ensaboar")
+    print("Enxaguar")
+print("Secar!")
+            </code></pre>
+          </div>
+        </div>
+      </section>
+
+</section>
+
+
+
+      
+
+
+      
+
+      
+
+      <!-- Atividade 1 -->
+      <section class="activity-slide">
+        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade 1 — <code>while</code></h2>
+        <div class="activity-card">
+          <p class="activity-title"><i class="fa-solid fa-list-ol" aria-hidden="true"></i> Contagem de 1 até N</p>
+          <p class="activity-question">Leia <code>n</code> e mostre os números de <code>1</code> até <code>n</code> usando <code>while</code>.</p>
+          <p class="activity-question">Exemplo: se <code>n = 5</code>, a saída deve ser <code>1 2 3 4 5</code>.</p>
+          <p class="activity-question" style="margin-top:10px;"><strong>Pseudocódigo:</strong></p>
+          <pre style="margin:6px 0 0;"><code class="language-text" data-trim data-noescape>
+ler n
+contador ← 1
+
+enquanto contador ≤ n faça
+    imprimir contador
+    contador ← contador + 1
+fim_enquanto
+          </code></pre>
+          <p class="activity-question" style="margin-top:10px;">
+            <i class="fa-solid fa-lightbulb" style="color:#e67e22;" aria-hidden="true"></i>
+            <em>Comece em <code>1</code> e aumente de <code>1 em 1</code> até chegar em <code>n</code>.</em>
+          </p>
+        </div>
+      </section>
+
+      <!-- Resposta Atividade 1 -->
+      <section class="quiz-slide">
+        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta — Atividade 1</h2>
+        <div class="quiz-card">
+          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solução com <code>while</code></p>
+          <pre style="margin:8px 0;"><code class="language-python" data-trim data-noescape>
+n = int(input("Digite n: "))
+contador = 1
+
+while contador <= n:
+    print(contador)
+    contador += 1
+          </code></pre>
+          <div class="quiz-answer">
+            Fluxo: inicializar → testar condição → mostrar valor → atualizar → repetir.
+          </div>
+        </div>
+      </section>
+
+      <!-- Atividade 2 -->
+      <section class="activity-slide">
+        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade 2 — <code>while</code></h2>
+        <div class="activity-card">
+          <p class="activity-title"><i class="fa-solid fa-arrow-down-1-9" aria-hidden="true"></i> Contagem regressiva</p>
+          <p class="activity-question">Leia <code>n</code> e exiba uma contagem regressiva de <code>n</code> até <code>1</code> usando <code>while</code>.</p>
+          <p class="activity-question">Exemplo: se <code>n = 4</code>, saída: <code>4 3 2 1</code>.</p>
+          <p class="activity-question" style="margin-top:10px;"><strong>Pseudocódigo:</strong></p>
+          <pre style="margin:6px 0 0;"><code class="language-text" data-trim data-noescape>
+ler n
+enquanto n ≥ 1 faça
+    imprimir n
+    n ← n - 1
+fim_enquanto
+          </code></pre>
+        </div>
+      </section>
+
+      <!-- Resposta Atividade 2 -->
+      <section class="quiz-slide">
+        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta — Atividade 2</h2>
+        <div class="quiz-card">
+          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solução com <code>while</code></p>
+          <pre style="margin:8px 0;"><code class="language-python" data-trim data-noescape>
+n = int(input("Digite n: "))
+
+while n >= 1:
+    print(n)
+    n -= 1
+          </code></pre>
+          <div class="quiz-answer">
+            Mesma lógica do laço: testa condição, executa, atualiza e repete.
+          </div>
+        </div>
+      </section>
+
+      <!-- Atividade 3 -->
+      <section class="activity-slide">
+        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade 3 — <code>while</code></h2>
+        <div class="activity-card">
+          <p class="activity-title"><i class="fa-solid fa-plus" aria-hidden="true"></i> Soma até digitar 0</p>
+          <p class="activity-question">Leia números inteiros e some todos até o usuário digitar <code>0</code>.</p>
+          <p class="activity-question">No final, mostre a soma total.</p>
+          <p class="activity-question" style="margin-top:10px;"><strong>Pseudocódigo:</strong></p>
+          <pre style="margin:6px 0 0;"><code class="language-text" data-trim data-noescape>
+soma ← 0
+ler numero
+enquanto numero ≠ 0 faça
+    soma ← soma + numero
+    ler numero
+fim_enquanto
+imprimir soma
+          </code></pre>
+        </div>
+      </section>
+
+      <!-- Resposta Atividade 3 -->
+      <section class="quiz-slide">
+        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta — Atividade 3</h2>
+        <div class="quiz-card">
+          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solução com <code>while</code></p>
+          <pre style="margin:8px 0;"><code class="language-python" data-trim data-noescape>
+soma = 0
+numero = int(input("Digite um número (0 para sair): "))
+
+while numero != 0:
+    soma += numero
+    numero = int(input("Digite um número (0 para sair): "))
+
+print(f"Soma total: {soma}")
+          </code></pre>
+          <div class="quiz-answer">
+            Aqui usamos <code>0</code> como valor sentinela para encerrar o laço.
+          </div>
+        </div>
+      </section>
+
+
+
+
+<section>
+      <!-- Seção 2: for -->
+      <section class="section-divider" data-background-gradient="linear-gradient(135deg, #3f1c7a, #6c43bf, #9551e0)">
+        <div class="section-number">Parte 2</div>
+        <h2><i class="fa-solid fa-forward-fast icon" aria-hidden="true"></i> Laço <code>for</code></h2>
+        <p>Mais indicado quando a quantidade de repetições é conhecida.</p>
+      </section>
+
+
+      <!-- for: sintaxe -->
+      <section class="bg-light">
+        <h2><i class="fa-solid fa-code icon" aria-hidden="true"></i> Sintaxe do <code>for</code> com <code>range()</code></h2>
+        <pre><code class="language-python" data-trim data-noescape>
+for variavel in range(inicio, fim, passo):
+    # bloco de repetição
+        </code></pre>
+        <div class="box">
+          <ul>
+            <li><code>inicio</code>: opcional, padrão 0.</li>
+            <li><code>fim</code>: limite superior (não incluído).</li>
+            <li><code>passo</code>: opcional, padrão 1.</li>
+          </ul>
+        </div>
+      </section>
+
+
+      <!-- for: exemplos de range -->
+      <section>
+        <h2><i class="fa-solid fa-list-ol icon" aria-hidden="true"></i> Exemplos de <code>range()</code></h2>
+        <pre><code class="language-python" data-trim data-noescape>
+for i in range(5):
+    print(i)        # 0, 1, 2, 3, 4
+
+for i in range(1, 6):
+    print(i)        # 1, 2, 3, 4, 5
+
+for i in range(10, 0, -2):
+    print(i)        # 10, 8, 6, 4, 2
+        </code></pre>
+      </section>
+
+
+      <!-- for: percorrendo string -->
+      <section>
+        <h2><i class="fa-solid fa-font icon" aria-hidden="true"></i> Exemplo: percorrendo caracteres</h2>
+        <pre><code class="language-python" data-trim data-noescape>
+nome = "python"
+for letra in nome:
+    print(letra)
+        </code></pre>
+      </section>
+
+
+</section>
+
+
+
+
+
+      <!-- Atividade 2 -->
+      <section class="activity-slide">
+        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade 4 — <code>for</code></h2>
+        <div class="activity-card">
+          <p class="activity-title"><i class="fa-solid fa-list-ol" aria-hidden="true"></i> Contagem de 1 até 10 com <code>for</code></p>
+          <p class="activity-question">Mostre os números de <code>1</code> até <code>10</code>, um por linha, usando <code>for</code>.</p>
+          <p class="activity-question" style="margin-top:10px;"><strong>Pseudocódigo:</strong></p>
+          <pre style="margin:6px 0 0;"><code class="language-text" data-trim data-noescape>
+para numero de 1 até 10 faça
+    escrever numero
+fim_para
+          </code></pre>
+          <p class="activity-question" style="margin-top:10px;">
+            <i class="fa-solid fa-lightbulb" style="color:#e67e22;" aria-hidden="true"></i>
+            <em>Dica: use <code>range(1, 11)</code>.</em>
+          </p>
+        </div>
+      </section>
+
+      <!-- Resposta Atividade 2 -->
+      <section class="quiz-slide">
+        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta — Atividade 4</h2>
+        <div class="quiz-card">
+          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solução com <code>for</code></p>
+          <pre style="margin:8px 0;"><code class="language-python" data-trim data-noescape>
+for numero in range(1, 11):
+    print(numero)
+          </code></pre>
+          <div class="quiz-answer">
+            Quando a repetição é fixa, o <code>for</code> é a forma mais simples de resolver.
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção 3: break e continue -->
+      <section class="section-divider" data-background-gradient="linear-gradient(135deg, #7a3d16, #c56b2f, #f2a65a)">
+        <div class="section-number">Parte 3</div>
+        <h2><i class="fa-solid fa-code-branch icon" aria-hidden="true"></i> <code>break</code> e <code>continue</code></h2>
+        <p>Controle fino de fluxo dentro dos laços.</p>
+      </section>
+
+      <!-- break -->
+      <section class="bg-light">
+        <h2><i class="fa-solid fa-hand icon" aria-hidden="true"></i> <code>break</code>: encerra o laço</h2>
+        <pre><code class="language-python" data-trim data-noescape>
+while True:
+    linha = input("> ")
+    if linha == "fim":
+        break
+    print(linha)
+print("Agora é o fim!")
+        </code></pre>
+        <div class="box">
+          <code>break</code> interrompe o laço corrente e segue para a próxima instrução após ele.
+        </div>
+      </section>
+
+      <!-- continue -->
+      <section class="bg-light">
+        <h2><i class="fa-solid fa-forward icon" aria-hidden="true"></i> <code>continue</code>: pula a iteração atual</h2>
+        <pre><code class="language-python" data-trim data-noescape>
+while True:
+    linha = input("> ")
+    if linha.startswith("#"):
+        continue
+    if linha == "fim":
+        break
+    print(linha)
+print("Agora é o fim!")
+        </code></pre>
+        <div class="box">
+          <code>continue</code> encerra só a iteração atual e retorna ao teste da condição.
+        </div>
+      </section>
+
+      <!-- Comparativo -->
+      <section>
+        <h2><i class="fa-solid fa-scale-balanced icon" aria-hidden="true"></i> Escolha da estrutura</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Cenário</th>
+              <th>Estrutura indicada</th>
+              <th>Exemplo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Quantidade desconhecida de repetições</td>
+              <td><code>while</code></td>
+              <td>Validar senha</td>
+            </tr>
+            <tr>
+              <td>Quantidade fixa de repetições</td>
+              <td><code>for</code></td>
+              <td>Tabuada de 1 a 10</td>
+            </tr>
+            <tr>
+              <td>Interromper o laço imediatamente</td>
+              <td><code>break</code></td>
+              <td>Sair ao digitar "fim"</td>
+            </tr>
+            <tr>
+              <td>Ignorar apenas uma iteração</td>
+              <td><code>continue</code></td>
+              <td>Ignorar linhas de comentário</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Desafio -->
+      <section class="activity-slide">
+        <h2><i class="fa-solid fa-gamepad icon" aria-hidden="true"></i> Desafio rápido (em dupla)</h2>
+        <div class="activity-card">
+          <p class="activity-title"><i class="fa-solid fa-people-group" aria-hidden="true"></i> Contador de linhas válidas</p>
+          <p class="activity-question">Crie um programa que:</p>
+          <p class="activity-question">1. Leia entradas em loop com <code>while True</code>.</p>
+          <p class="activity-question">2. Ignore linhas que começam com <code>#</code> usando <code>continue</code>.</p>
+          <p class="activity-question">3. Finalize ao receber <code>fim</code> com <code>break</code>.</p>
+          <p class="activity-question">4. Mostre no final quantas linhas válidas foram processadas.</p>
+        </div>
+      </section>
+
+      <!-- Resumo -->
+      <section class="bg-light">
+        <h2><i class="fa-solid fa-clipboard-list icon" aria-hidden="true"></i> Resumo da Aula</h2>
+        <div class="summary-grid">
+          <div class="summary-card while">
+            <p><strong><code>while</code></strong></p>
+            <p>Repete enquanto a condição for verdadeira.</p>
+          </div>
+          <div class="summary-card for-loop">
+            <p><strong><code>for</code></strong></p>
+            <p>Percorre sequências com sintaxe enxuta.</p>
+          </div>
+          <div class="summary-card break">
+            <p><strong><code>break</code></strong></p>
+            <p>Interrompe o laço imediatamente.</p>
+          </div>
+          <div class="summary-card continue">
+            <p><strong><code>continue</code></strong></p>
+            <p>Pula apenas a iteração atual.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Referências -->
+      <section class="bg-light">
+        <h2><i class="fa-solid fa-book icon" aria-hidden="true"></i> Referências</h2>
+        <div class="box">
+          <p><strong>22-Laco_While.pdf</strong> — Prof. Alberto Costa Neto.</p>
+          <p><strong>23-Comandos_Break_Continue.pdf</strong> — Prof. Alberto Costa Neto.</p>
+          <p>Conceitos: variável de iteração, laço infinito, <code>while True</code>, <code>break</code> e <code>continue</code>.</p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="./dist/reveal.js"></script>
+  <script src="./plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({
+      center: false,
+      controls: true,
+      progress: true,
+      slideNumber: true,
+      history: true,
+      transition: 'convex',
+      plugins: [RevealHighlight]
+    });
+  </script>
+</body>
+
+</html>

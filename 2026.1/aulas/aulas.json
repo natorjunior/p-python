@@ -38,5 +38,21 @@
     "descricao": "Prática guiada de estruturas condicionais com exercícios de decisão e resolução de cenários.",
     "link": "./aulas/aula05.html",
     "topicos": ["if", "if/else", "if/elif/else", "Tomada de decisão", "Exercícios práticos"]
+  },
+  {
+    "numero": 6,
+    "titulo": "Aula 06 - Prática de Decisões em Python",
+    "subtitulo": "Aplicações com estruturas condicionais",
+    "descricao": "Exercícios práticos com if, elif e else para consolidar a lógica de decisão em Python.",
+    "link": "./aulas/aula06.html",
+    "topicos": ["if", "elif", "else", "Estruturas condicionais", "Prática guiada"]
+  },
+  {
+    "numero": 7,
+    "titulo": "Aula 07 - Laços de Repetição em Python",
+    "subtitulo": "while, for, break e continue",
+    "descricao": "Introdução aos laços de repetição começando com while e for, incluindo break e continue, com exemplos e atividades práticas.",
+    "link": "./aulas/aula07.html",
+    "topicos": ["while", "for", "range()", "break", "continue", "Repetição"]
   }
 ]
