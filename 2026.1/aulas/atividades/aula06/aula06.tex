@@ -1,0 +1,149 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazilian]{babel}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+
+\geometry{margin=1in}
+\setlength{\headheight}{15pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+
+\definecolor{primary}{HTML}{1F4E79}
+\definecolor{secondary}{HTML}{0B6E99}
+\definecolor{lightbg}{HTML}{F4F8FC}
+\definecolor{codebg}{HTML}{F7F7F7}
+\definecolor{codeframe}{HTML}{D3D3D3}
+
+\titleformat{\section}
+  {\Large\bfseries\color{primary}}
+  {}
+  {0pt}
+  {}
+
+\titleformat{\subsection}
+  {\large\bfseries\color{secondary}}
+  {}
+  {0pt}
+  {}
+
+\setlist[itemize]{leftmargin=1.4em,itemsep=2pt,topsep=3pt}
+\setlist[enumerate]{leftmargin=1.6em,itemsep=2pt,topsep=3pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{Programação em Python}}
+% \chead{Aula 06: Laços de Repetição}
+\rhead{Prof. Msc. Nator Junior Carvalho da Costa}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    backgroundcolor=\color{codebg},
+    frame=single,
+    rulecolor=\color{codeframe},
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{red},
+    breaklines=true,
+    showstringspaces=false,
+    tabsize=4
+}
+
+\begin{document}
+
+\begin{center}
+{\LARGE \textbf{Lista de Atividades - Aula 06}}\\[4pt]
+{\large Laços de Repetição (\texttt{while} e \texttt{for})}\\[10pt]
+\textbf{Disciplina:} Lógica de Programação em Python\\
+\textbf{Professor:} Prof. Msc. Nator Junior Carvalho da Costa\\
+\textbf{Semestre:} 2026.1
+\end{center}
+
+\vspace{8pt}
+\colorbox{lightbg}{%
+\parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+\textbf{Instruções}\\
+Resolva as atividades abaixo em Python. Lembre-se:
+\begin{itemize}
+    \item Use \texttt{while} quando não souber quantas repetições serão feitas.
+    \item Use \texttt{for} quando o intervalo de repetição for conhecido.
+    \item Atualize sempre a variável de controle para evitar laço infinito.
+\end{itemize}
+}}
+
+\section*{Parte 1: Atividades com \texttt{while}}
+
+\subsection*{Atividade 1: Contagem Crescente}
+Leia um número inteiro \texttt{n} e exiba os números de \texttt{1} até \texttt{n}, um por linha.
+
+\subsection*{Atividade 2: Contagem Regressiva}
+Leia um número inteiro \texttt{n} e faça uma contagem de \texttt{n} até \texttt{1}. Ao final, exiba \texttt{Fim!}.
+
+\subsection*{Atividade 3: Soma com Sentinela}
+Leia números inteiros e acumule a soma até que o usuário digite \texttt{0}. Mostre a soma final.
+
+\subsection*{Atividade 4: Senha}
+Defina uma senha correta (\texttt{"python123"}) e continue pedindo a senha até o usuário acertar. Ao acertar, exiba \texttt{Acesso liberado}.
+
+\subsection*{Atividade 5: Média de Notas}
+Leia notas enquanto o usuário digitar valores maiores ou iguais a \texttt{0}. Quando ele digitar \texttt{-1}, encerre e mostre a média das notas informadas.
+
+\section*{Parte 2: Atividades com \texttt{for}}
+
+\subsection*{Atividade 6: Números Pares}
+Use \texttt{for} para mostrar apenas os números pares de \texttt{1} até \texttt{50}.
+
+\subsection*{Atividade 7: Tabuada}
+Leia um número inteiro e mostre a tabuada desse número de \texttt{1} a \texttt{10}.
+
+\subsection*{Atividade 8: Soma de 1 até n}
+Leia um número inteiro \texttt{n} e calcule a soma de \texttt{1 + 2 + ... + n} usando \texttt{for}.
+
+\subsection*{Atividade 9: Contador de Vogais}
+Leia uma palavra e conte quantas vogais (\texttt{a, e, i, o, u}) ela possui usando \texttt{for}.
+
+\section*{Parte 3: Escolha do Laço}
+
+\subsection*{Atividade 10: Menu Simples}
+Crie um menu com as opções:
+\begin{enumerate}
+    \item Somar dois números
+    \item Mostrar os números de 1 a 5
+    \item Sair
+\end{enumerate}
+Repita o menu até o usuário escolher a opção \texttt{3}.
+
+\subsection*{Atividade 11: Jogo de Adivinhação}
+Defina um número secreto (por exemplo, \texttt{7}) e peça tentativas até o usuário acertar. Ao final, exiba a quantidade de tentativas.
+
+\section*{Exemplo Base}
+\begin{lstlisting}
+n = 5
+while n > 0:
+    print(n)
+    n -= 1
+
+print("Fim!")
+\end{lstlisting}
+
+\section*{Desafio Bônus}
+\subsection*{Atividade 12: Triângulo de Asteriscos}
+Leia um número inteiro \texttt{n} e exiba um triângulo de asteriscos com \texttt{n} linhas.
+
+\begin{lstlisting}
+*
+**
+***
+...
+\end{lstlisting}
+
+\end{document}
