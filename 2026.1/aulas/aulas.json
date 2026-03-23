@@ -54,5 +54,21 @@
     "descricao": "Introdução aos laços de repetição começando com while e for, incluindo break e continue, com exemplos e atividades práticas.",
     "link": "./aulas/aula07.html",
     "topicos": ["while", "for", "range()", "break", "continue", "Repetição"]
+  },
+  {
+    "numero": 8,
+    "titulo": "Aula 08 - Laços de Repetição em Python",
+    "subtitulo": "while, for, break e continue — simulação visual",
+    "descricao": "Aprofundamento nos laços de repetição com simulador visual passo a passo, fluxogramas e atividades progressivas.",
+    "link": "./aulas/aula08.html",
+    "topicos": ["while", "for", "break", "continue", "Simulador visual", "Fluxogramas"]
+  },
+  {
+    "numero": 9,
+    "titulo": "Aula 09 - Listas, Dicionários e Tuplas",
+    "subtitulo": "Estruturas de dados em Python",
+    "descricao": "Listas, dicionários e tuplas com simulador visual passo a passo, padrões acumular+classificar, enumerate, zip e tabela comparativa das estruturas.",
+    "link": "./aulas/aula09.html",
+    "topicos": ["Listas", "Dicionários", "Tuplas", "for", "items()", "enumerate", "zip", "Simulador visual"]
   }
 ]
