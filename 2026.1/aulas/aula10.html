@@ -322,7 +322,7 @@
         <div class="activity-card">
           <p class="activity-title"><i class="fa-solid fa-list-ol" aria-hidden="true"></i> Criar e percorrer</p>
           <p class="activity-question">Crie uma lista com <strong>5 nomes</strong>.</p>
-          <p class="activity-question">Imprima cada nome junto com seu indice usando <code>enumerate()</code>.</p>
+          <p class="activity-question">Imprima cada nome junto com seu indice </code>.</p>
           <div class="activity-timer" data-duration="240">
             <p class="activity-timer-label"><i class="fa-solid fa-hourglass-half" aria-hidden="true"></i> Tempo sugerido: <strong class="activity-timer-display">04:00</strong></p>
             <div class="activity-timer-controls">
@@ -342,8 +342,8 @@
           <pre><code class="language-python" data-trim data-noescape>
 nomes = ["Ana", "Bruno", "Carla", "Diego", "Eva"]
 
-for i, nome in enumerate(nomes):
-    print(i, nome)
+for i in range(len(nomes)):
+    print(i, nomes[i])
           </code></pre>
         </div>
       </section>
@@ -354,6 +354,7 @@ for i, nome in enumerate(nomes):
           <p class="activity-title"><i class="fa-solid fa-calculator" aria-hidden="true"></i> Vetor de numeros</p>
           <p class="activity-question">Leia <strong>6 numeros inteiros</strong> e armazene no vetor <code>numeros</code>.</p>
           <p class="activity-question">Ao final, imprima a lista e a <strong>soma total</strong>.</p>
+          <p class="activity-question">Use a função sum()</p>
           <div class="activity-timer" data-duration="300">
             <p class="activity-timer-label"><i class="fa-solid fa-hourglass-half" aria-hidden="true"></i> Tempo sugerido: <strong class="activity-timer-display">05:00</strong></p>
             <div class="activity-timer-controls">
@@ -421,12 +422,12 @@ print("Menor:", min(numeros))
       </section>
 
       <section class="activity-slide">
-        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade 4 &mdash; Vetores PAR e IMPAR</h2>
+        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade 4 &mdash; lista PAR e IMPAR</h2>
         <div class="activity-card">
           <p class="activity-title"><i class="fa-solid fa-filter" aria-hidden="true"></i> Separacao de numeros</p>
-          <p class="activity-question">Leia <strong>20 numeros inteiros</strong> e armazene no vetor <code>numeros</code>.</p>
-          <p class="activity-question">Armazene os pares no vetor <code>par</code> e os impares no vetor <code>impar</code>.</p>
-          <p class="activity-question">Imprima os tres vetores no final.</p>
+          <p class="activity-question">Leia <strong>20 numeros inteiros</strong> e armazene na lista <code>numeros</code>.</p>
+          <p class="activity-question">Armazene os pares na lista <code>par</code> e os impares na lista <code>impar</code>.</p>
+          <p class="activity-question">Imprima as três lista no final.</p>
           <div class="activity-timer" data-duration="420">
             <p class="activity-timer-label"><i class="fa-solid fa-hourglass-half" aria-hidden="true"></i> Tempo sugerido: <strong class="activity-timer-display">07:00</strong></p>
             <div class="activity-timer-controls">
@@ -624,7 +625,7 @@ print("Reprovados:", reprovados) # 1
         <div class="summary-grid">
           <div class="summary-card listas">
             <p><strong>Aquecimento com Listas</strong></p>
-            <p>4 atividades simples para revisar criacao de vetores, media, maior/menor e separacao em <code>par</code>/<code>impar</code>.</p>
+            <p>4 atividades simples para revisar criacao de lista, media, maior/menor e separacao em <code>par</code>/<code>impar</code>.</p>
           </div>
           <div class="summary-card dicts">
             <p><strong>Dicionarios</strong></p>
