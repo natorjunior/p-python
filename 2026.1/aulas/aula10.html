@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Aula 09 - Estruturas de dados em Python: Listas, Dicionarios e Tuplas.">
-  <title>Aula 09 - Listas, Dicionarios e Tuplas</title>
+  <meta name="description" content="Aula 10 - Dicionarios em Python, com aquecimento inicial de listas.">
+  <title>Aula 10 - Dicionarios em Python</title>
 
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -74,6 +74,48 @@
     .activity-title { margin: 0 0 8px; color: #124980 !important; font-size: 0.84em !important; font-weight: 700; display: flex; align-items: center; gap: 9px; }
     .activity-question { margin: 4px 0; color: #2b4352 !important; font-size: 0.72em !important; line-height: 1.45; }
     .activity-question code { background: rgba(255,255,255,.92); border-radius: 6px; padding: 2px 6px; font-size: 0.95em; white-space: nowrap; }
+    .activity-timer { margin-top: 12px; padding: 10px 12px; border-radius: 10px; border: 1px dashed #9ec2e6; background: #f4f9ff; }
+    .activity-timer-label { margin: 0 0 8px; color: #184877 !important; font-size: 0.66em !important; display: flex; align-items: center; gap: 8px; }
+    .activity-timer-display { font-family: "Consolas","Courier New",monospace; font-size: 1.08em; color: #0f4c81; }
+    .activity-timer-display.warning { color: #b45309; }
+    .activity-timer-display.done { color: #b42318; }
+    .activity-timer-controls { display: flex; flex-wrap: wrap; gap: 8px; }
+    .activity-timer-btn { border: 1px solid #9ec2e6; border-radius: 8px; background: #fff; color: #184877; padding: 4px 10px; font-size: 0.58em; font-weight: 700; cursor: pointer; }
+    .activity-timer-btn.start { background: #1f8f5f; border-color: #1f8f5f; color: #fff; }
+    .activity-timer-btn.pause { background: #f59e0b; border-color: #f59e0b; color: #fff; }
+    .activity-timer-btn.reset { background: #475569; border-color: #475569; color: #fff; }
+    .activity-timer-btn.config { background: #2f6fd4; border-color: #2f6fd4; color: #fff; }
+
+    .timer-modal[hidden] { display: none !important; }
+    .timer-modal { position: fixed; inset: 0; z-index: 1400; }
+    .timer-modal-backdrop { position: absolute; inset: 0; background: rgba(7, 20, 43, .52); }
+    .timer-modal-card {
+      position: relative;
+      width: min(92vw, 460px);
+      margin: 10vh auto 0;
+      background: #fff;
+      border: 1px solid #c7d9ef;
+      border-radius: 14px;
+      box-shadow: 0 18px 42px rgba(8, 27, 55, .28);
+      padding: 16px;
+      text-align: left;
+    }
+    .timer-modal-title { margin: 0 0 10px; color: #0f4c81 !important; font-size: 0.95em !important; }
+    .timer-modal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .timer-modal-field { display: flex; flex-direction: column; gap: 5px; }
+    .timer-modal-field label { font-size: 0.58em; color: #3b5878; font-weight: 700; }
+    .timer-modal-field input {
+      border: 1px solid #c3d6ed;
+      border-radius: 8px;
+      padding: 6px 8px;
+      font-size: 0.7em;
+      color: #123a63;
+      background: #fafdff;
+    }
+    .timer-modal-note { margin: 10px 0 0; font-size: 0.56em !important; color: #5a738f !important; }
+    .timer-modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 12px; }
+    .timer-modal-btn { border: 1px solid #bfd0e7; border-radius: 8px; padding: 6px 10px; font-size: 0.6em; font-weight: 700; cursor: pointer; background: #fff; color: #264d76; }
+    .timer-modal-btn.primary { background: #1f8f5f; border-color: #1f8f5f; color: #fff; }
 
     /* Quiz Slides */
     .quiz-slide { background: radial-gradient(circle at bottom left, #fef9f0 0%, #fff7eb 40%, #fef5e7 100%) !important; text-align: left; padding: 20px 26px !important; }
@@ -83,7 +125,7 @@
     .quiz-answer { margin: 10px 0 0; padding: 8px 12px; border-radius: 8px; background: #e7f6ec; border: 1px solid #a3d9b1; color: #1a6b3a !important; font-size: 0.68em !important; font-weight: 500; }
 
     /* Summary Grid */
-    .summary-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-top: 14px; }
+    .summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
     .summary-card { background: #fff; border-radius: 12px; padding: 12px; }
     .summary-card p:first-child { margin: 0; font-size: 0.86em; }
     .summary-card p:last-child  { margin: 6px 0 0; font-size: 0.68em; }
@@ -239,16 +281,16 @@
         <div class="hero-grid">
           <div class="hero-content">
             <p class="hero-kicker"><i class="fa-solid fa-laptop-code icon" aria-hidden="true"></i>Introducao a Programacao</p>
-            <h1 class="hero-title">Aula 09<br><span>Listas, Dicionarios e Tuplas</span></h1>
-            <p class="hero-subtitle">Estruturas de dados essenciais para organizar, buscar e manipular informacoes em Python — com simulacao visual passo a passo.</p>
+            <h1 class="hero-title">Aula 10<br><span>Dicionarios em Python</span></h1>
+            <p class="hero-subtitle">Aquecimento com listas e foco principal em dicionarios: criar, atualizar, percorrer e resolver problemas simples.</p>
             <div class="hero-tags">
-              <span>listas</span><span>dicionarios</span><span>tuplas</span><span>for</span><span>items()</span><span>imutavel</span>
+              <span>listas</span><span>revisao</span><span>dicionarios</span><span>items()</span><span>get()</span><span>for</span>
             </div>
             <p class="hero-meta"><i class="fa-solid fa-user-tie icon" aria-hidden="true"></i>Prof. Msc. Nator Junior Carvalho da Costa</p>
           </div>
           <div class="hero-mark">
             <div class="hero-icon-wrap">
-              <i class="fa-solid fa-layer-group icon-only" aria-hidden="true"></i>
+              <i class="fa-solid fa-book icon-only" aria-hidden="true"></i>
             </div>
           </div>
         </div>
@@ -259,266 +301,148 @@
         <h2><i class="fa-solid fa-bullseye icon" aria-hidden="true"></i> Objetivos da Aula</h2>
         <div class="box">
           <ul>
-            <li>Entender as diferencas entre <strong>listas</strong>, <strong>dicionarios</strong> e <strong>tuplas</strong>.</li>
-            <li>Dominar os principais metodos e operacoes de cada estrutura.</li>
-            <li>Usar <code>for</code> com acumuladores e condicionais dentro de cada estrutura.</li>
+            <li>Revisar listas com <strong>4 atividades simples</strong> no inicio da aula.</li>
+            <li>Dominar a estrutura <strong>chave-valor</strong> dos dicionarios.</li>
+            <li>Aplicar <code>for</code>, <code>items()</code> e condicionais em problemas praticos.</li>
           </ul>
         </div>
       </section>
 
-      <!-- ═══ PARTE 1: LISTAS ═══ -->
+      <!-- ═══ ABERTURA: REVISAO RAPIDA DE LISTAS ═══ -->
       <section>
 
-      <!-- SLIDE 3 — Divisor Parte 1 -->
       <section class="section-divider" data-background-gradient="linear-gradient(135deg, #0f4c81, #2c7da0, #61a5c2)">
-        <div class="section-number">Parte 1</div>
-        <h2><i class="fa-solid fa-list icon" aria-hidden="true"></i> Listas</h2>
-        <p>Colecao <strong>ordenada</strong> e <strong>mutavel</strong> de elementos de qualquer tipo.</p>
+        <div class="section-number">Aquecimento</div>
+        <h2><i class="fa-solid fa-list icon" aria-hidden="true"></i> Revisao Rapida de Listas</h2>
+        <p>Antes de dicionarios, resolva 4 atividades simples para aquecer.</p>
       </section>
 
-      <!-- SLIDE 4 — 1.1 Criacao e Acesso -->
-      <section class="bg-light">
-        <h2><i class="fa-solid fa-code icon" aria-hidden="true"></i> 1.1 &mdash; Criacao e Acesso</h2>
-        <pre><code class="language-python" data-trim data-noescape>
-nomes = ["Ana", "Bruno", "Carlos", "Diana"]
-
-print(nomes[0])       # Ana    — primeiro elemento
-print(nomes[-1])      # Diana  — ultimo (indice negativo)
-print(nomes[1:3])     # ["Bruno", "Carlos"] — slice
-
-print(len(nomes))     # 4 — tamanho da lista
-print("Bruno" in nomes)  # True — verificar existencia
-        </code></pre>
-        <div class="box">
-          <p><strong>Indices:</strong> comecam em <code>0</code>; indices negativos contam do fim (<code>-1</code> e o ultimo).</p>
-        </div>
-      </section>
-
-      <!-- SLIDE 5 — Funcoes internas -->
-      <section class="bg-light">
-        <h2><i class="fa-solid fa-list-check icon" aria-hidden="true"></i> 1.2 &mdash; Metodos internos de listas</h2>
-        <div class="box">
-          <p>No Python, listas possuem metodos internos para alteracao rapida dos elementos.</p>
-          <p>Principais para iniciar: <code>append()</code>, <code>insert()</code>, <code>pop()</code> e <code>del</code>.</p>
-        </div>
-      </section>
-
-      <!-- SLIDE 6 — append() -->
-      <section class="bg-light">
-        <h2><i class="fa-solid fa-plus icon" aria-hidden="true"></i> append()</h2>
-        <div class="box">
-          <p>Adiciona um item no final da lista.</p>
-        </div>
-        <pre><code class="language-python" data-trim data-noescape>
-lista = ["Arroz", "Feijao", "Macarrao"]
-lista.append("Carne")
-print(lista)
-# ['Arroz', 'Feijao', 'Macarrao', 'Carne']
-        </code></pre>
-      </section>
-
-      <!-- SLIDE 7 — insert() -->
-      <section class="bg-light">
-        <h2><i class="fa-solid fa-arrow-right-to-bracket icon" aria-hidden="true"></i> insert()</h2>
-        <div class="box">
-          <p>Insere um item em um indice especifico.</p>
-        </div>
-        <pre><code class="language-python" data-trim data-noescape>
-lista = ["Arroz", "Feijao", "Macarrao"]
-lista.insert(0, "Carne")
-print(lista)
-# ['Carne', 'Arroz', 'Feijao', 'Macarrao']
-        </code></pre>
-      </section>
-
-      <!-- SLIDE 8 — pop() -->
-      <section class="bg-light">
-        <h2><i class="fa-solid fa-trash icon" aria-hidden="true"></i> pop()</h2>
-        <div class="box">
-          <p>Remove item por indice. Sem indice, remove o ultimo.</p>
-        </div>
-        <pre><code class="language-python" data-trim data-noescape>
-lista = ["Arroz", "Feijao", "Macarrao"]
-lista.pop(0)   # remove o primeiro
-lista.pop()    # remove o ultimo
-print(lista)
-# ['Feijao']
-        </code></pre>
-      </section>
-
-      <!-- SLIDE 9 — del -->
-      <section class="bg-light">
-        <h2><i class="fa-solid fa-scissors icon" aria-hidden="true"></i> del</h2>
-        <div class="box">
-          <p>Comando para remover por indice ou faixa de indices.</p>
-        </div>
-        <pre><code class="language-python" data-trim data-noescape>
-lista = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-del lista[2:5]   # remove indices 2,3,4
-del lista[0]     # remove indice 0
-print(lista)
-# [2, 6, 7, 8, 9, 10]
-        </code></pre>
-      </section>
-
-
-      <!-- SLIDE 6 — 1.3 Iteracao Basica -->
-      <section class="bg-light">
-        <h2><i class="fa-solid fa-arrows-spin icon" aria-hidden="true"></i> 1.3 &mdash; Iteracao Basica com <code>for</code></h2>
-        <pre><code class="language-python" data-trim data-noescape>
-nomes = ["Ana", "Bruno", "Carlos"]
-
-# percorrer todos os elementos
-for nome in nomes:
-    print("Ola,", nome)
-        </code></pre>
-        <div class="box-green">
-          <p><strong>Padrao:</strong> <code>for item in lista</code> acessa cada elemento em ordem.</p>
-        </div>
-      </section>
-
-      <!-- SLIDE 7 — Lista + Figura D3 (Laboratorio) -->
-      <section class="list-d3-slide">
-        <h2><i class="fa-solid fa-diagram-project icon" aria-hidden="true"></i> Interativo</h2>
-        <div class="list-d3-grid">
-          <div class="list-d3-panel">
-            <p class="activity-question"><strong>Escreva o codigo de lista abaixo e clique em Executar.</strong></p>
-            <textarea id="list-d3-code" class="list-d3-editor">numeros = [10, 20, 30]
-
-numeros.append(40)
-numeros[1] = 99
-numeros.pop(0)</textarea>
-            <div class="list-d3-controls">
-              <button id="list-d3-run" class="list-d3-btn primary" type="button">Executar</button>
-              <button id="list-d3-prev" class="list-d3-btn" type="button">&larr; Etapa</button>
-              <button id="list-d3-next" class="list-d3-btn" type="button">Etapa &rarr;</button>
-              <button id="list-d3-example" class="list-d3-btn" type="button">Carregar Exemplo</button>
-            </div>
-            <p id="list-d3-status" class="list-d3-status"></p>
-          </div>
-          <div class="list-d3-panel">
-            <svg id="list-d3-svg" class="list-d3-svg" viewBox="0 0 560 220" preserveAspectRatio="xMidYMid meet"></svg>
-            <p id="list-d3-caption" class="list-d3-caption"></p>
-            <p class="list-d3-meta">Etapa atual: <strong id="list-d3-step-label">0 / 0</strong></p>
-          </div>
-        </div>
-      </section>
-
-      
-      <!-- SLIDE 8 — Simulador lista-sim -->
-      <section class="py-sim-slide">
-        <h2><i class="fa-solid fa-laptop-code icon" aria-hidden="true"></i>Simulacao visual &mdash; Listas</h2>
-        <div class="py-sim-controls">
-          <label for="lista-sim-example"><strong>Exemplo:</strong></label>
-          <select id="lista-sim-example">
-            <option value="percorrer">1) Percorrer (basico)</option>
-            <option value="acumular">2) Soma e media</option>
-            <option value="filtrar">3) Filtrar aprovados</option>
-            <option value="nested">4) Classificacao com if aninhado</option>
-          </select>
-          <button id="lista-sim-play" class="py-sim-btn" type="button"><i class="fa-solid fa-play"></i> Play</button>
-          <button id="lista-sim-stop" class="py-sim-btn stop" type="button"><i class="fa-solid fa-stop"></i> Stop</button>
-          <button id="lista-sim-step" class="py-sim-btn step" type="button"><i class="fa-solid fa-forward-step"></i> Step</button>
-          <label for="lista-sim-speed"><strong>Velocidade:</strong></label>
-          <input id="lista-sim-speed" type="range" min="0.45" max="2.5" step="0.05" value="1">
-          <span id="lista-sim-speed-label" class="py-sim-speed-label">1.00x</span>
-        </div>
-        <div class="py-sim-shell" id="lista-sim-shell">
-          <div class="py-sim-main">
-            <div class="py-sim-panel py-sim-code-panel">
-              <div class="py-sim-panel-title">code</div>
-              <div class="py-sim-code-body" id="lista-sim-code-body"></div>
-            </div>
-            <div class="py-sim-panel">
-              <div class="py-sim-panel-title">output</div>
-              <div class="py-sim-output-body" id="lista-sim-output"></div>
-            </div>
-          </div>
-          <div class="py-sim-vars">
-            <div class="py-sim-vars-title">variables</div>
-            <div class="py-sim-vars-list" id="lista-sim-vars-list"></div>
-          </div>
-        </div>
-        <p class="py-sim-tip">Use <strong>Play</strong> para rodar, <strong>Stop</strong> para pausar e <strong>Step</strong> para executar linha a linha.</p>
-      </section>
-
-      <!-- SLIDE 9 — Atividade 1 -->
       <section class="activity-slide">
-        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade 1 &mdash; Lista com 10 valores</h2>
+        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade 1 &mdash; Nomes com indice</h2>
         <div class="activity-card">
-          <p class="activity-title"><i class="fa-solid fa-list-ol" aria-hidden="true"></i> Criar e imprimir</p>
-          <p class="activity-question">Crie uma lista com <strong>10 valores inteiros</strong>.</p>
-          <p class="activity-question">Depois, imprima todos os valores da lista usando <code>for</code>.</p>
-          <p class="activity-question" style="margin-top:10px;"><strong>Exemplo:</strong> <code>[1,2,3,4,5,6,7,8,9,10]</code></p>
+          <p class="activity-title"><i class="fa-solid fa-list-ol" aria-hidden="true"></i> Criar e percorrer</p>
+          <p class="activity-question">Crie uma lista com <strong>5 nomes</strong>.</p>
+          <p class="activity-question">Imprima cada nome junto com seu indice usando <code>enumerate()</code>.</p>
+          <div class="activity-timer" data-duration="240">
+            <p class="activity-timer-label"><i class="fa-solid fa-hourglass-half" aria-hidden="true"></i> Tempo sugerido: <strong class="activity-timer-display">04:00</strong></p>
+            <div class="activity-timer-controls">
+              <button type="button" class="activity-timer-btn start">Iniciar</button>
+              <button type="button" class="activity-timer-btn pause">Pausar</button>
+              <button type="button" class="activity-timer-btn reset">Reiniciar</button>
+              <button type="button" class="activity-timer-btn config">Configurar</button>
+            </div>
+          </div>
         </div>
       </section>
 
-      <!-- SLIDE 10 — Resposta Atividade 1 -->
       <section class="quiz-slide">
-        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta &mdash; Atividade 1</h2>
+        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Solucao &mdash; Atividade 1</h2>
         <div class="quiz-card">
-          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solucao</p>
+          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Codigo</p>
           <pre><code class="language-python" data-trim data-noescape>
-valores = [1,2,3,4,5,6,7,8,9,10]
+nomes = ["Ana", "Bruno", "Carla", "Diego", "Eva"]
 
-for v in valores:
-    print(v)
+for i, nome in enumerate(nomes):
+    print(i, nome)
           </code></pre>
-          <div class="quiz-answer">
-            Primeiro passo da iteracao: criar a lista e percorrer cada elemento.
+        </div>
+      </section>
+
+      <section class="activity-slide">
+        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade 2 &mdash; Soma dos elementos</h2>
+        <div class="activity-card">
+          <p class="activity-title"><i class="fa-solid fa-calculator" aria-hidden="true"></i> Vetor de numeros</p>
+          <p class="activity-question">Leia <strong>6 numeros inteiros</strong> e armazene no vetor <code>numeros</code>.</p>
+          <p class="activity-question">Ao final, imprima a lista e a <strong>soma total</strong>.</p>
+          <div class="activity-timer" data-duration="300">
+            <p class="activity-timer-label"><i class="fa-solid fa-hourglass-half" aria-hidden="true"></i> Tempo sugerido: <strong class="activity-timer-display">05:00</strong></p>
+            <div class="activity-timer-controls">
+              <button type="button" class="activity-timer-btn start">Iniciar</button>
+              <button type="button" class="activity-timer-btn pause">Pausar</button>
+              <button type="button" class="activity-timer-btn reset">Reiniciar</button>
+              <button type="button" class="activity-timer-btn config">Configurar</button>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- SLIDE 11 — Atividade 2 -->
-      <section class="activity-slide">
-        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade 2 </h2>
-        <div class="activity-card">
-          <p class="activity-title"><i class="fa-solid fa-users" aria-hidden="true"></i> Media da idade de 5 pessoas</p>
-          <p class="activity-question">Peca a idade de <strong>5 pessoas</strong> e armazene no vetor <code>idades</code>.</p>
-          <p class="activity-question">Depois imprima a <strong>media das idades</strong>.</p>
-        </div>
-      </section>
-
-      <!-- SLIDE 12 — Resposta Atividade 2 -->
       <section class="quiz-slide">
-        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta &mdash; Atividade 2</h2>
+        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Solucao &mdash; Atividade 2</h2>
         <div class="quiz-card">
-          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solucao</p>
+          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Codigo</p>
           <pre><code class="language-python" data-trim data-noescape>
-idades = []
+numeros = []
 
-for i in range(5):
-    idade = int(input(f"Digite a idade da {i+1}a pessoa: "))
-    idades.append(idade)
+for i in range(6):
+    n = int(input(f"Digite o {i+1}o numero: "))
+    numeros.append(n)
 
-media = sum(idades) / len(idades)
-
-print("Idades:", idades)
-print("Media das idades:", media)
+total = sum(numeros)
+print("Numeros:", numeros)
+print("Soma:", total)
           </code></pre>
-          <div class="quiz-answer">
-            Preenche o vetor com <code>append()</code> e calcula a media com <code>sum()/len()</code>.
+        </div>
+      </section>
+
+      <section class="activity-slide">
+        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade 3 &mdash; Maior e menor</h2>
+        <div class="activity-card">
+          <p class="activity-title"><i class="fa-solid fa-arrow-up-right-dots" aria-hidden="true"></i> Analise simples</p>
+          <p class="activity-question">Crie uma lista com <strong>8 numeros</strong> digitados pelo usuario.</p>
+          <p class="activity-question">Mostre o <strong>maior</strong> e o <strong>menor</strong> valor da lista.</p>
+          <div class="activity-timer" data-duration="300">
+            <p class="activity-timer-label"><i class="fa-solid fa-hourglass-half" aria-hidden="true"></i> Tempo sugerido: <strong class="activity-timer-display">05:00</strong></p>
+            <div class="activity-timer-controls">
+              <button type="button" class="activity-timer-btn start">Iniciar</button>
+              <button type="button" class="activity-timer-btn pause">Pausar</button>
+              <button type="button" class="activity-timer-btn reset">Reiniciar</button>
+              <button type="button" class="activity-timer-btn config">Configurar</button>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- SLIDE 13 — Atividade 3 -->
+      <section class="quiz-slide">
+        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Solucao &mdash; Atividade 3</h2>
+        <div class="quiz-card">
+          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Codigo</p>
+          <pre><code class="language-python" data-trim data-noescape>
+numeros = []
+
+for i in range(8):
+    n = int(input(f"Digite o {i+1}o numero: "))
+    numeros.append(n)
+
+print("Lista:", numeros)
+print("Maior:", max(numeros))
+print("Menor:", min(numeros))
+          </code></pre>
+        </div>
+      </section>
+
       <section class="activity-slide">
-        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade 3 </h2>
+        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade 4 &mdash; Vetores PAR e IMPAR</h2>
         <div class="activity-card">
-          <p class="activity-title"><i class="fa-solid fa-filter" aria-hidden="true"></i> Vetor PAR e vetor IMPAR</p>
+          <p class="activity-title"><i class="fa-solid fa-filter" aria-hidden="true"></i> Separacao de numeros</p>
           <p class="activity-question">Leia <strong>20 numeros inteiros</strong> e armazene no vetor <code>numeros</code>.</p>
           <p class="activity-question">Armazene os pares no vetor <code>par</code> e os impares no vetor <code>impar</code>.</p>
           <p class="activity-question">Imprima os tres vetores no final.</p>
+          <div class="activity-timer" data-duration="420">
+            <p class="activity-timer-label"><i class="fa-solid fa-hourglass-half" aria-hidden="true"></i> Tempo sugerido: <strong class="activity-timer-display">07:00</strong></p>
+            <div class="activity-timer-controls">
+              <button type="button" class="activity-timer-btn start">Iniciar</button>
+              <button type="button" class="activity-timer-btn pause">Pausar</button>
+              <button type="button" class="activity-timer-btn reset">Reiniciar</button>
+              <button type="button" class="activity-timer-btn config">Configurar</button>
+            </div>
+          </div>
         </div>
       </section>
 
-      <!-- SLIDE 14 — Resposta Atividade 3 -->
       <section class="quiz-slide">
-        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta &mdash; Atividade 3</h2>
+        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Solucao &mdash; Atividade 4</h2>
         <div class="quiz-card">
-          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solucao</p>
+          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Codigo</p>
           <pre><code class="language-python" data-trim data-noescape>
 numeros = []
 par = []
@@ -532,17 +456,13 @@ for i in range(20):
     else:
         impar.append(n)
 
-print("Vetor completo:", numeros)
-print("Vetor PAR:", par)
-print("Vetor IMPAR:", impar)
+print("Numeros:", numeros)
+print("PAR:", par)
+print("IMPAR:", impar)
           </code></pre>
-          <div class="quiz-answer">
-            Estrategia: guardar no vetor principal e classificar em <code>par</code> ou <code>impar</code>.
-          </div>
         </div>
       </section>
 
-      
       </section>
       <!-- ═══ PARTE 2: DICIONARIOS ═══ -->
 
@@ -554,7 +474,7 @@ print("Vetor IMPAR:", impar)
 
       <!-- SLIDE 14 — Divisor Parte 2 -->
       <section class="section-divider" data-background-gradient="linear-gradient(135deg, #3f1c7a, #6c43bf, #9551e0)">
-        <div class="section-number">Parte 2</div>
+        <div class="section-number">Parte Principal</div>
         <h2><i class="fa-solid fa-book icon" aria-hidden="true"></i> Dicionarios</h2>
         <p>Estrutura <strong>chave-valor</strong> para busca e organizacao rapida de informacoes.</p>
       </section>
@@ -614,9 +534,9 @@ print(aluno)
         <p class="py-sim-tip">Use <strong>Play</strong> para rodar, <strong>Stop</strong> para pausar e <strong>Step</strong> para executar linha a linha.</p>
       </section>
 
-      <!-- SLIDE 19 — Atividade 2 -->
+      <!-- SLIDE 19 — Atividade D1 -->
       <section class="activity-slide">
-        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade 2 &mdash; Dicionarios</h2>
+        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade D1 &mdash; Dicionarios</h2>
         <div class="activity-card">
           <p class="activity-title"><i class="fa-solid fa-warehouse" aria-hidden="true"></i> Controle de estoque</p>
           <p class="activity-question">Considere o dicionario:</p>
@@ -628,9 +548,9 @@ print(aluno)
         </div>
       </section>
 
-      <!-- SLIDE 20 — Resposta Atividade 2 -->
+      <!-- SLIDE 20 — Resposta Atividade D1 -->
       <section class="quiz-slide">
-        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta &mdash; Atividade 2</h2>
+        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta &mdash; Atividade D1</h2>
         <div class="quiz-card">
           <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solucao com Dicionario</p>
           <pre><code class="language-python" data-trim data-noescape>
@@ -653,9 +573,9 @@ print("Produtos com estoque baixo:", baixo_estoque) # ['feijao', 'oleo']
         </div>
       </section>
 
-      <!-- SLIDE 21 — Atividade 2b -->
+      <!-- SLIDE 21 — Atividade D2 -->
       <section class="activity-slide">
-        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade 2b &mdash; Dicionarios com if/elif/else</h2>
+        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade D2 &mdash; Dicionarios com if/elif/else</h2>
         <div class="activity-card">
           <p class="activity-title"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Situacao dos alunos</p>
           <p class="activity-question">Considere:</p>
@@ -668,9 +588,9 @@ print("Produtos com estoque baixo:", baixo_estoque) # ['feijao', 'oleo']
         </div>
       </section>
 
-      <!-- SLIDE 22 — Resposta Atividade 2b -->
+      <!-- SLIDE 22 — Resposta Atividade D2 -->
       <section class="quiz-slide">
-        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta &mdash; Atividade 2b</h2>
+        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta &mdash; Atividade D2</h2>
         <div class="quiz-card">
           <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solucao com if/elif/else</p>
           <pre><code class="language-python" data-trim data-noescape>
@@ -698,187 +618,48 @@ print("Reprovados:", reprovados) # 1
         </div>
       </section>
 </section>
-      <!-- ═══ PARTE 3: TUPLAS ═══ -->
-
-
-<section>
-
-
-
-
-      <!-- SLIDE 23 — Divisor Parte 3 -->
-      <section class="section-divider" data-background-gradient="linear-gradient(135deg, #7a3d16, #c56b2f, #f2a65a)">
-        <div class="section-number">Parte 3</div>
-        <h2><i class="fa-solid fa-layer-group icon" aria-hidden="true"></i> Tuplas</h2>
-        <p>Sequencia <strong>ordenada</strong> e <strong>imutavel</strong> para representar dados fixos e estruturados.</p>
-      </section>
-
-      <!-- SLIDE 24 — 3.1 Conceito e Imutabilidade -->
-      <section class="bg-light">
-        <h2><i class="fa-solid fa-lock icon" aria-hidden="true"></i> 3.1 &mdash; Conceito e Imutabilidade</h2>
-        <pre><code class="language-python" data-trim data-noescape>
-coordenada = (10, 20)
-usuario = ("maria", 19, "ADS")
-
-print(coordenada[0])   # 10
-print(usuario[2])      # ADS
-
-# tuplas sao imutaveis — esta linha causaria erro:
-# usuario[1] = 20  →  TypeError: 'tuple' does not support item assignment
-
-# metodos disponiveis:
-nums = (1, 2, 2, 3, 2)
-print(nums.count(2))   # 3 — quantas vezes 2 aparece
-print(nums.index(3))   # 3 — indice onde 3 esta
-        </code></pre>
-        <div class="box">
-          <p>Tupla usa <code>()</code>; lista usa <code>[]</code>. Use tupla quando os dados <strong>nao devem mudar</strong>: coordenadas, registros, configuracoes.</p>
-        </div>
-      </section>
-
-      <!-- SLIDE 25 — 3.2 Desempacotamento -->
-      <section class="bg-light">
-        <h2><i class="fa-solid fa-box-open icon" aria-hidden="true"></i> 3.2 &mdash; Desempacotamento (Unpacking)</h2>
-        <pre><code class="language-python" data-trim data-noescape>
-# desempacotamento simples
-x, y = (10, 20)
-print(x, y)   # 10  20
-
-nome, idade, curso = ("Maria", 19, "ADS")
-print(nome)   # Maria
-
-# desempacotamento em loops — o padrao mais util
-pontos = [(0, 0), (3, 4), (1, 7)]
-for x, y in pontos:
-    dist = (x**2 + y**2) ** 0.5
-    print(f"({x},{y}) distancia: {dist:.2f}")
-        </code></pre>
-        <div class="box-green">
-          <p><strong>Desempacotamento</strong> nomeia cada campo da tupla diretamente no <code>for</code>, tornando o codigo muito mais legivel.</p>
-        </div>
-      </section>
-
-      <!-- SLIDE 26 — 3.3 Lista de Tuplas -->
-      <section class="bg-light">
-        <h2><i class="fa-solid fa-table-list icon" aria-hidden="true"></i> 3.3 &mdash; Lista de Tuplas (padrao real)</h2>
-        <pre><code class="language-python" data-trim data-noescape>
-# cada tupla representa um "registro" com campos fixos
-rota = [("Centro", 2.5), ("Bairro A", 4.0), ("Bairro B", 3.2)]
-distancia_total = 0
-
-for destino, km in rota:
-    print(destino, "->", km, "km")
-    distancia_total += km
-
-print("Distancia total:", distancia_total, "km")  # 9.7 km
-        </code></pre>
-        <div class="box">
-          <p>Lista de tuplas e o padrao para dados tabulares: <code>(nome, valor)</code>, <code>(produto, qtd, preco)</code>, <code>(lat, lon)</code>.</p>
-          <p>A <strong>lista</strong> e mutavel (podemos adicionar/remover registros); cada <strong>tupla</strong> e um registro imutavel.</p>
-        </div>
-      </section>
-
-      <!-- SLIDE 27 — Simulador tupla-sim -->
-      <section class="py-sim-slide">
-        <h2><i class="fa-solid fa-laptop-code icon" aria-hidden="true"></i>Simulacao visual &mdash; Tuplas</h2>
-        <div class="py-sim-controls">
-          <label for="tupla-sim-example"><strong>Exemplo:</strong></label>
-          <select id="tupla-sim-example">
-            <option value="basico">1) Percorrer tuplas (basico)</option>
-            <option value="subtotal">2) Subtotal de cada item</option>
-            <option value="filtrar">3) Filtrar por subtotal</option>
-            <option value="nested">4) Conceito de nota com if aninhado</option>
-          </select>
-          <button id="tupla-sim-play" class="py-sim-btn" type="button"><i class="fa-solid fa-play"></i> Play</button>
-          <button id="tupla-sim-stop" class="py-sim-btn stop" type="button"><i class="fa-solid fa-stop"></i> Stop</button>
-          <button id="tupla-sim-step" class="py-sim-btn step" type="button"><i class="fa-solid fa-forward-step"></i> Step</button>
-          <label for="tupla-sim-speed"><strong>Velocidade:</strong></label>
-          <input id="tupla-sim-speed" type="range" min="0.45" max="2.5" step="0.05" value="1">
-          <span id="tupla-sim-speed-label" class="py-sim-speed-label">1.00x</span>
-        </div>
-        <div class="py-sim-shell" id="tupla-sim-shell">
-          <div class="py-sim-main">
-            <div class="py-sim-panel py-sim-code-panel">
-              <div class="py-sim-panel-title">code</div>
-              <div class="py-sim-code-body" id="tupla-sim-code-body"></div>
-            </div>
-            <div class="py-sim-panel">
-              <div class="py-sim-panel-title">output</div>
-              <div class="py-sim-output-body" id="tupla-sim-output"></div>
-            </div>
-          </div>
-          <div class="py-sim-vars">
-            <div class="py-sim-vars-title">variables</div>
-            <div class="py-sim-vars-list" id="tupla-sim-vars-list"></div>
-          </div>
-        </div>
-        <p class="py-sim-tip">Use <strong>Play</strong> para rodar, <strong>Stop</strong> para pausar e <strong>Step</strong> para executar linha a linha.</p>
-      </section>
-
-      <!-- SLIDE 28 — Atividade 3 -->
-      <section class="activity-slide">
-        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade 3 &mdash; Tuplas</h2>
-        <div class="activity-card">
-          <p class="activity-title"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i> Pedido com tuplas</p>
-          <p class="activity-question">Considere a lista de tuplas:</p>
-          <p class="activity-question"><code>itens = [("Mouse", 2, 59.9), ("Teclado", 1, 120.0), ("Cabo", 3, 15.0)]</code></p>
-          <p class="activity-question">Cada tupla tem: <code>(produto, quantidade, preco_unitario)</code>.</p>
-          <p class="activity-question">1) Mostre o subtotal de cada item (<code>qtd * preco</code>).</p>
-          <p class="activity-question">2) Calcule e exiba o total geral.</p>
-          <p class="activity-question">3) Indique quais itens tiveram subtotal acima de <code>R$ 100</code>.</p>
-        </div>
-      </section>
-
-      <!-- SLIDE 29 — Resposta Atividade 3 -->
-      <section class="quiz-slide">
-        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta &mdash; Atividade 3</h2>
-        <div class="quiz-card">
-          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solucao com Lista de Tuplas</p>
-          <pre><code class="language-python" data-trim data-noescape>
-itens = [("Mouse", 2, 59.9), ("Teclado", 1, 120.0), ("Cabo", 3, 15.0)]
-total = 0
-destaques = []
-
-for produto, qtd, preco in itens:
-    subtotal = qtd * preco
-    total += subtotal
-    print(produto, "- subtotal: R$", round(subtotal, 2))
-    if subtotal > 100:
-        destaques.append(produto)
-
-print("Total geral: R$", round(total, 2))    # 284.8
-print("Itens acima de R$100:", destaques)    # ['Mouse', 'Teclado']
-          </code></pre>
-          <div class="quiz-answer">
-            Desempacotamento <code>for produto, qtd, preco in itens</code> nomeia cada campo. Combinar com acumulador e lista de coleta e o padrao completo.
-          </div>
-        </div>
-      </section>
-</section>
-      <!-- ═══ PARTE 4: COMPARACAO ═══ -->
-
-      
-      
       <!-- SLIDE 33 — Resumo + Referencias -->
       <section class="bg-light">
         <h2><i class="fa-solid fa-clipboard-list icon" aria-hidden="true"></i> Resumo da Aula</h2>
         <div class="summary-grid">
           <div class="summary-card listas">
-            <p><strong>Listas</strong></p>
-            <p>Ordenadas e mutaveis. <code>for x in lista</code>. Acumuladores, filtros e <code>enumerate</code> sao padroes essenciais.</p>
+            <p><strong>Aquecimento com Listas</strong></p>
+            <p>4 atividades simples para revisar criacao de vetores, media, maior/menor e separacao em <code>par</code>/<code>impar</code>.</p>
           </div>
           <div class="summary-card dicts">
             <p><strong>Dicionarios</strong></p>
-            <p>Chave-valor. <code>for k, v in d.items()</code>. Ideal para registros com nome e buscas rapidas.</p>
-          </div>
-          <div class="summary-card tuplas">
-            <p><strong>Tuplas</strong></p>
-            <p>Imutaveis e estruturadas. Desempacotamento em loops e o padrao. Ideal para dados fixos.</p>
+            <p>Estrutura chave-valor com foco em acesso, atualizacao e varredura com <code>for chave, valor in d.items()</code>.</p>
           </div>
         </div>
 
       </section>
 
+    </div>
+  </div>
+
+  <div id="timer-config-modal" class="timer-modal" hidden>
+    <div class="timer-modal-backdrop" data-timer-modal-close="1"></div>
+    <div class="timer-modal-card" role="dialog" aria-modal="true" aria-labelledby="timer-config-title">
+      <h3 id="timer-config-title" class="timer-modal-title"><i class="fa-solid fa-sliders icon" aria-hidden="true"></i> Configurar Contador</h3>
+      <div class="timer-modal-grid">
+        <div class="timer-modal-field">
+          <label for="timer-config-minutes">Minutos</label>
+          <input id="timer-config-minutes" type="number" min="0" max="120" step="1" value="5">
+        </div>
+        <div class="timer-modal-field">
+          <label for="timer-config-seconds">Segundos</label>
+          <input id="timer-config-seconds" type="number" min="0" max="59" step="1" value="0">
+        </div>
+        <div class="timer-modal-field">
+          <label for="timer-config-warning">Alerta final (seg)</label>
+          <input id="timer-config-warning" type="number" min="5" max="600" step="5" value="60">
+        </div>
+      </div>
+      <p class="timer-modal-note">A configuracao e aplicada apenas ao contador da atividade atual.</p>
+      <div class="timer-modal-actions">
+        <button type="button" id="timer-config-cancel" class="timer-modal-btn">Cancelar</button>
+        <button type="button" id="timer-config-apply" class="timer-modal-btn primary">Aplicar</button>
+      </div>
     </div>
   </div>
 
@@ -895,6 +676,148 @@ print("Itens acima de R$100:", destaques)    # ['Mouse', 'Teclado']
       transition: 'convex',
       plugins: [RevealHighlight]
     });
+
+    (function setupActivityTimers() {
+      var timerRoots = Array.from(document.querySelectorAll('.activity-timer'));
+      if (!timerRoots.length) return;
+      var modal = document.getElementById('timer-config-modal');
+      var modalMinutes = document.getElementById('timer-config-minutes');
+      var modalSeconds = document.getElementById('timer-config-seconds');
+      var modalWarning = document.getElementById('timer-config-warning');
+      var modalApply = document.getElementById('timer-config-apply');
+      var modalCancel = document.getElementById('timer-config-cancel');
+      var modalBackdrop = modal ? modal.querySelector('[data-timer-modal-close]') : null;
+      var activeTimer = null;
+      if (!modal || !modalMinutes || !modalSeconds || !modalWarning || !modalApply || !modalCancel || !modalBackdrop) return;
+
+      var timers = [];
+
+      function formatClock(totalSeconds) {
+        var mins = Math.floor(totalSeconds / 60);
+        var secs = totalSeconds % 60;
+        return String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
+      }
+
+      timerRoots.forEach(function (root) {
+        var display = root.querySelector('.activity-timer-display');
+        var startBtn = root.querySelector('.activity-timer-btn.start');
+        var pauseBtn = root.querySelector('.activity-timer-btn.pause');
+        var resetBtn = root.querySelector('.activity-timer-btn.reset');
+        var configBtn = root.querySelector('.activity-timer-btn.config');
+        if (!display || !startBtn || !pauseBtn || !resetBtn || !configBtn) return;
+
+        var initialSeconds = Number(root.getAttribute('data-duration'));
+        if (!Number.isFinite(initialSeconds) || initialSeconds <= 0) initialSeconds = 300;
+        var warningSeconds = Number(root.getAttribute('data-warning'));
+        if (!Number.isFinite(warningSeconds) || warningSeconds <= 0) warningSeconds = 60;
+
+        var remaining = initialSeconds;
+        var intervalId = null;
+
+        function updateView() {
+          display.textContent = formatClock(remaining);
+          display.classList.toggle('warning', remaining > 0 && remaining <= warningSeconds);
+          display.classList.toggle('done', remaining === 0);
+        }
+
+        function stop() {
+          if (!intervalId) return;
+          clearInterval(intervalId);
+          intervalId = null;
+        }
+
+        function tick() {
+          if (remaining <= 0) {
+            stop();
+            return;
+          }
+          remaining -= 1;
+          updateView();
+          if (remaining === 0) stop();
+        }
+
+        startBtn.addEventListener('click', function () {
+          if (intervalId || remaining === 0) return;
+          intervalId = setInterval(tick, 1000);
+        });
+
+        pauseBtn.addEventListener('click', stop);
+
+        resetBtn.addEventListener('click', function () {
+          stop();
+          remaining = initialSeconds;
+          updateView();
+        });
+
+        configBtn.addEventListener('click', function () {
+          activeTimer = timer;
+          var mins = Math.floor(timer.initialSeconds / 60);
+          var secs = timer.initialSeconds % 60;
+          modalMinutes.value = String(mins);
+          modalSeconds.value = String(secs);
+          modalWarning.value = String(timer.warningSeconds);
+          modal.hidden = false;
+          modalMinutes.focus();
+        });
+
+        var timer = {
+          root: root,
+          stop: stop,
+          get initialSeconds() { return initialSeconds; },
+          get warningSeconds() { return warningSeconds; },
+          applyConfig: function (newInitialSeconds, newWarningSeconds) {
+            initialSeconds = newInitialSeconds;
+            warningSeconds = newWarningSeconds;
+            root.setAttribute('data-duration', String(newInitialSeconds));
+            root.setAttribute('data-warning', String(newWarningSeconds));
+            stop();
+            remaining = initialSeconds;
+            updateView();
+          }
+        };
+
+        updateView();
+        timers.push(timer);
+      });
+
+      function closeModal() {
+        modal.hidden = true;
+        activeTimer = null;
+      }
+
+      function normalizeInt(value, fallback) {
+        var n = Number(value);
+        if (!Number.isFinite(n)) return fallback;
+        return Math.floor(n);
+      }
+
+      modalApply.addEventListener('click', function () {
+        if (!activeTimer) return;
+        var mins = Math.max(0, normalizeInt(modalMinutes.value, 0));
+        var secs = normalizeInt(modalSeconds.value, 0);
+        secs = Math.max(0, Math.min(59, secs));
+        var total = mins * 60 + secs;
+        if (total <= 0) total = 60;
+        var warn = Math.max(5, normalizeInt(modalWarning.value, 60));
+        if (warn > total) warn = total;
+        activeTimer.applyConfig(total, warn);
+        closeModal();
+      });
+
+      modalCancel.addEventListener('click', closeModal);
+      modalBackdrop.addEventListener('click', closeModal);
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && !modal.hidden) closeModal();
+      });
+
+      Reveal.on('slidechanged', function () {
+        var current = Reveal.getCurrentSlide();
+        timers.forEach(function (timer) {
+          if (current && !current.contains(timer.root)) timer.stop();
+        });
+        if (activeTimer && current && !current.contains(activeTimer.root)) closeModal();
+      });
+    })();
 
     (function setupListD3() {
       var svgEl = document.getElementById('list-d3-svg');

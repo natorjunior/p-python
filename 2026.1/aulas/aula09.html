@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Aula 09 - Estruturas de dados em Python: Listas, Dicionarios e Tuplas.">
-  <title>Aula 09 - Listas, Dicionarios e Tuplas</title>
+  <title>Aula 09 - Listas</title>
 
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -25,115 +25,630 @@
       --transition-fragment: 0.3s ease;
     }
 
-    body { font-family: 'Roboto', sans-serif; }
-    .reveal h1, .reveal h2, .reveal h3 { color: var(--primary-color); }
-    .reveal p, .reveal li { color: var(--secondary-color); font-size: 0.95em; }
-    .reveal .icon      { color: currentColor; margin-right: 0.28em; }
-    .reveal .icon-only { color: currentColor; margin-right: 0; }
-    .reveal pre code { font-size: 0.84em; background: var(--code-bg); border-radius: 8px; padding: 12px; }
-    .fragment { transition: all var(--transition-fragment); }
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
 
-    .bg-light    { background-color: var(--light-bg)    !important; }
-    .bg-accent   { background-color: var(--accent-bg)   !important; }
-    .bg-warn     { background-color: var(--warn-bg)     !important; }
+    .reveal h1,
+    .reveal h2,
+    .reveal h3 {
+      color: var(--primary-color);
+    }
+
+    .reveal p,
+    .reveal li {
+      color: var(--secondary-color);
+      font-size: 0.95em;
+    }
+
+    .reveal .icon {
+      color: currentColor;
+      margin-right: 0.28em;
+    }
+
+    .reveal .icon-only {
+      color: currentColor;
+      margin-right: 0;
+    }
+
+    .reveal pre code {
+      font-size: 0.84em;
+      background: var(--code-bg);
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    .fragment {
+      transition: all var(--transition-fragment);
+    }
+
+    .bg-light {
+      background-color: var(--light-bg) !important;
+    }
+
+    .bg-accent {
+      background-color: var(--accent-bg) !important;
+    }
+
+    .bg-warn {
+      background-color: var(--warn-bg) !important;
+    }
 
     /* Hero Cover */
-    .hero-cover { position: relative; overflow: hidden; padding: 40px !important; }
-    .hero-cover::before { content: ""; position: absolute; inset: 0; background: linear-gradient(140deg, rgba(3,15,35,.55), rgba(11,53,112,.4), rgba(17,126,111,.28)); z-index: 1; }
-    .hero-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1.5fr 1fr; gap: 28px; align-items: center; }
-    .hero-content { background: rgba(7,24,54,.5); border: 1px solid rgba(255,255,255,.2); border-radius: 16px; padding: 24px 26px; text-align: left; box-shadow: 0 18px 44px rgba(0,0,0,.22); backdrop-filter: blur(2px); }
-    .hero-kicker { margin: 0 0 12px; color: rgba(255,255,255,.9) !important; font-size: 0.4em !important; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; }
-    .hero-title  { margin: 0 0 12px !important; color: #fff !important; font-size: 1.35em !important; line-height: 1.12 !important; text-shadow: 0 10px 20px rgba(0,0,0,.35); }
-    .hero-title span { color: rgba(230,244,255,.96); font-weight: 500; font-size: 0.88em; }
-    .hero-subtitle { margin: 0 0 16px; color: rgba(255,255,255,.92) !important; font-size: 0.5em !important; line-height: 1.45; }
-    .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
-    .hero-tags span { background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.26); border-radius: 999px; color: #fff; font-size: 0.34em; font-weight: 500; padding: 4px 10px; }
-    .hero-meta { margin: 0; color: rgba(255,255,255,.88) !important; font-size: 0.4em !important; }
-    .hero-mark { display: flex; justify-content: center; align-items: center; }
-    .hero-icon-wrap { width: 180px; height: 180px; border-radius: 24px; display: flex; justify-content: center; align-items: center; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.35); box-shadow: 0 18px 42px rgba(0,0,0,.24); color: #fff; font-size: 3.4em; }
+    .hero-cover {
+      position: relative;
+      overflow: hidden;
+      padding: 40px !important;
+    }
+
+    .hero-cover::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(140deg, rgba(3, 15, 35, .55), rgba(11, 53, 112, .4), rgba(17, 126, 111, .28));
+      z-index: 1;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero-content {
+      background: rgba(7, 24, 54, .5);
+      border: 1px solid rgba(255, 255, 255, .2);
+      border-radius: 16px;
+      padding: 24px 26px;
+      text-align: left;
+      box-shadow: 0 18px 44px rgba(0, 0, 0, .22);
+      backdrop-filter: blur(2px);
+    }
+
+    .hero-kicker {
+      margin: 0 0 12px;
+      color: rgba(255, 255, 255, .9) !important;
+      font-size: 0.4em !important;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .hero-title {
+      margin: 0 0 12px !important;
+      color: #fff !important;
+      font-size: 1.35em !important;
+      line-height: 1.12 !important;
+      text-shadow: 0 10px 20px rgba(0, 0, 0, .35);
+    }
+
+    .hero-title span {
+      color: rgba(230, 244, 255, .96);
+      font-weight: 500;
+      font-size: 0.88em;
+    }
+
+    .hero-subtitle {
+      margin: 0 0 16px;
+      color: rgba(255, 255, 255, .92) !important;
+      font-size: 0.5em !important;
+      line-height: 1.45;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 18px;
+    }
+
+    .hero-tags span {
+      background: rgba(255, 255, 255, .14);
+      border: 1px solid rgba(255, 255, 255, .26);
+      border-radius: 999px;
+      color: #fff;
+      font-size: 0.34em;
+      font-weight: 500;
+      padding: 4px 10px;
+    }
+
+    .hero-meta {
+      margin: 0;
+      color: rgba(255, 255, 255, .88) !important;
+      font-size: 0.4em !important;
+    }
+
+    .hero-mark {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-icon-wrap {
+      width: 180px;
+      height: 180px;
+      border-radius: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(255, 255, 255, .14);
+      border: 1px solid rgba(255, 255, 255, .35);
+      box-shadow: 0 18px 42px rgba(0, 0, 0, .24);
+      color: #fff;
+      font-size: 3.4em;
+    }
 
     /* Boxes */
-    .box, .box-green, .box-orange { padding: 14px 18px; border-radius: 8px; margin: 14px 0; text-align: left; }
-    .box        { background: var(--light-bg);  border-left: 5px solid var(--primary-color); }
-    .box-green  { background: var(--accent-bg); border-left: 5px solid #27ae60; }
-    .box-orange { background: #fff3e0;          border-left: 5px solid #e67e22; }
+    .box,
+    .box-green,
+    .box-orange {
+      padding: 14px 18px;
+      border-radius: 8px;
+      margin: 14px 0;
+      text-align: left;
+    }
 
-    .columns { display: flex; gap: 24px; align-items: flex-start; }
-    .columns > div { flex: 1; }
+    .box {
+      background: var(--light-bg);
+      border-left: 5px solid var(--primary-color);
+    }
+
+    .box-green {
+      background: var(--accent-bg);
+      border-left: 5px solid #27ae60;
+    }
+
+    .box-orange {
+      background: #fff3e0;
+      border-left: 5px solid #e67e22;
+    }
+
+    .columns {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .columns>div {
+      flex: 1;
+    }
 
     /* Section Divider */
-    .section-divider { position: relative; padding: 40px !important; }
-    .section-divider h2 { color: #fff !important; font-size: 1.6em; text-shadow: 0 4px 16px rgba(0,0,0,.3); }
-    .section-divider p  { color: rgba(255,255,255,.9) !important; font-size: 0.85em; }
-    .section-number { display: inline-block; background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.3); border-radius: 16px; padding: 6px 20px; color: #fff; font-size: 0.5em; font-weight: 600; letter-spacing: 0.06em; margin-bottom: 12px; }
+    .section-divider {
+      position: relative;
+      padding: 40px !important;
+    }
+
+    .section-divider h2 {
+      color: #fff !important;
+      font-size: 1.6em;
+      text-shadow: 0 4px 16px rgba(0, 0, 0, .3);
+    }
+
+    .section-divider p {
+      color: rgba(255, 255, 255, .9) !important;
+      font-size: 0.85em;
+    }
+
+    .section-number {
+      display: inline-block;
+      background: rgba(255, 255, 255, .18);
+      border: 1px solid rgba(255, 255, 255, .3);
+      border-radius: 16px;
+      padding: 6px 20px;
+      color: #fff;
+      font-size: 0.5em;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
 
     /* Activity Slides */
-    .activity-slide { background: radial-gradient(circle at top right, #eef6ff 0%, #f8fbff 44%, #eef4fb 100%) !important; text-align: left; padding: 20px 26px !important; }
-    .activity-card { max-width: 880px; margin: 10px auto 0; padding: 16px 18px; border-radius: 14px; border: 1px solid #bfd9f2; border-left: 6px solid #1a5f9b; background: linear-gradient(140deg, #f8fcff, #edf6ff); box-shadow: 0 10px 24px rgba(9,43,84,.1); max-height: 62vh; overflow-y: auto; overflow-x: hidden; }
-    .activity-card pre { max-height: 28vh; overflow: auto; border-radius: 8px; }
-    .activity-title { margin: 0 0 8px; color: #124980 !important; font-size: 0.84em !important; font-weight: 700; display: flex; align-items: center; gap: 9px; }
-    .activity-question { margin: 4px 0; color: #2b4352 !important; font-size: 0.72em !important; line-height: 1.45; }
-    .activity-question code { background: rgba(255,255,255,.92); border-radius: 6px; padding: 2px 6px; font-size: 0.95em; white-space: nowrap; }
+    .activity-slide {
+      background: radial-gradient(circle at top right, #eef6ff 0%, #f8fbff 44%, #eef4fb 100%) !important;
+      text-align: left;
+      padding: 20px 26px !important;
+    }
+
+    .activity-card {
+      max-width: 880px;
+      margin: 10px auto 0;
+      padding: 16px 18px;
+      border-radius: 14px;
+      border: 1px solid #bfd9f2;
+      border-left: 6px solid #1a5f9b;
+      background: linear-gradient(140deg, #f8fcff, #edf6ff);
+      box-shadow: 0 10px 24px rgba(9, 43, 84, .1);
+      max-height: 62vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    .activity-card pre {
+      max-height: 28vh;
+      overflow: auto;
+      border-radius: 8px;
+    }
+
+    .activity-title {
+      margin: 0 0 8px;
+      color: #124980 !important;
+      font-size: 0.84em !important;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .activity-question {
+      margin: 4px 0;
+      color: #2b4352 !important;
+      font-size: 0.72em !important;
+      line-height: 1.45;
+    }
+
+    .activity-question code {
+      background: rgba(255, 255, 255, .92);
+      border-radius: 6px;
+      padding: 2px 6px;
+      font-size: 0.95em;
+      white-space: nowrap;
+    }
 
     /* Quiz Slides */
-    .quiz-slide { background: radial-gradient(circle at bottom left, #fef9f0 0%, #fff7eb 40%, #fef5e7 100%) !important; text-align: left; padding: 20px 26px !important; }
-    .quiz-card { max-width: 880px; margin: 10px auto 0; padding: 16px 18px; border-radius: 14px; border: 1px solid #f5d6a7; border-left: 6px solid #e67e22; background: linear-gradient(140deg, #fffcf7, #fef6ea); box-shadow: 0 10px 24px rgba(120,60,5,.08); max-height: 62vh; overflow-y: auto; overflow-x: hidden; }
-    .quiz-card pre { max-height: 28vh; overflow: auto; border-radius: 8px; }
-    .quiz-title  { margin: 0 0 10px; color: #b45309 !important; font-size: 0.84em !important; font-weight: 700; display: flex; align-items: center; gap: 9px; }
-    .quiz-answer { margin: 10px 0 0; padding: 8px 12px; border-radius: 8px; background: #e7f6ec; border: 1px solid #a3d9b1; color: #1a6b3a !important; font-size: 0.68em !important; font-weight: 500; }
+    .quiz-slide {
+      background: radial-gradient(circle at bottom left, #fef9f0 0%, #fff7eb 40%, #fef5e7 100%) !important;
+      text-align: left;
+      padding: 20px 26px !important;
+    }
+
+    .quiz-card {
+      max-width: 880px;
+      margin: 10px auto 0;
+      padding: 16px 18px;
+      border-radius: 14px;
+      border: 1px solid #f5d6a7;
+      border-left: 6px solid #e67e22;
+      background: linear-gradient(140deg, #fffcf7, #fef6ea);
+      box-shadow: 0 10px 24px rgba(120, 60, 5, .08);
+      max-height: 62vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    .quiz-card pre {
+      max-height: 28vh;
+      overflow: auto;
+      border-radius: 8px;
+    }
+
+    .quiz-title {
+      margin: 0 0 10px;
+      color: #b45309 !important;
+      font-size: 0.84em !important;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .quiz-answer {
+      margin: 10px 0 0;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: #e7f6ec;
+      border: 1px solid #a3d9b1;
+      color: #1a6b3a !important;
+      font-size: 0.68em !important;
+      font-weight: 500;
+    }
 
     /* Summary Grid */
-    .summary-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-top: 14px; }
-    .summary-card { background: #fff; border-radius: 12px; padding: 12px; }
-    .summary-card p:first-child { margin: 0; font-size: 0.86em; }
-    .summary-card p:last-child  { margin: 6px 0 0; font-size: 0.68em; }
-    .summary-card.listas { border: 2px solid #2c7da0; }
-    .summary-card.dicts  { border: 2px solid #6c43bf; }
-    .summary-card.tuplas { border: 2px solid #c56b2f; }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .summary-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 12px;
+    }
+
+    .summary-card p:first-child {
+      margin: 0;
+      font-size: 0.86em;
+    }
+
+    .summary-card p:last-child {
+      margin: 6px 0 0;
+      font-size: 0.68em;
+    }
+
+    .summary-card.listas {
+      border: 2px solid #2c7da0;
+    }
+
+    .summary-card.dicts {
+      border: 2px solid #6c43bf;
+    }
+
+    .summary-card.tuplas {
+      border: 2px solid #c56b2f;
+    }
 
     /* Table */
-    .reveal table { font-size: 0.75em; margin: 16px auto; }
-    .reveal table th { background: var(--primary-color); color: #fff; padding: 8px 14px; }
-    .reveal table td { padding: 7px 12px; border-bottom: 1px solid #ddd; text-align: left; }
+    .reveal table {
+      font-size: 0.75em;
+      margin: 16px auto;
+    }
+
+    .reveal table th {
+      background: var(--primary-color);
+      color: #fff;
+      padding: 8px 14px;
+    }
+
+    .reveal table td {
+      padding: 7px 12px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
 
     /* Python Execution Simulator */
-    .py-sim-slide { background: radial-gradient(circle at top right, #f4f8ff 0%, #eef4ff 48%, #e6eefb 100%) !important; padding: 18px 26px !important; text-align: left; }
-    .py-sim-slide h2 { margin: 0 0 10px 0; font-size: 1em; }
-    .py-sim-controls { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; font-size: 0.62em; color: #2f4153; }
-    .py-sim-controls select { border: 1px solid #b7c8e4; border-radius: 8px; background: #fff; color: #1b3f69; padding: 5px 8px; font-size: 0.96em; font-family: inherit; font-weight: 500; }
-    .py-sim-btn { border: 1px solid #275ea9; border-radius: 8px; background: #2f6fd4; color: #fff; font-size: 0.94em; font-family: inherit; font-weight: 600; padding: 5px 10px; cursor: pointer; transition: transform .14s ease, filter .14s ease; }
-    .py-sim-btn:hover { filter: brightness(1.08); transform: translateY(-1px); }
-    .py-sim-btn:active { transform: translateY(0); }
-    .py-sim-btn.stop { background: #c53c31; border-color: #a22f27; }
-    .py-sim-btn.step { background: #1f8f5f; border-color: #1a744e; }
-    .py-sim-controls input[type="range"] { width: 220px; accent-color: #2f6fd4; }
-    .py-sim-speed-label { display: inline-block; min-width: 50px; font-weight: 700; color: #124980; }
-    .py-sim-shell { max-width: 980px; margin: 0 auto; border: 1px solid #c8d7ee; border-radius: 10px; background: #f9fbff; box-shadow: 0 12px 24px rgba(18,44,89,.08); overflow: hidden; }
-    .py-sim-main { display: grid; grid-template-columns: minmax(320px, 2.8fr) minmax(170px, 1fr); height: min(52vh, 400px); }
-    .py-sim-panel { display: flex; flex-direction: column; min-height: 0; }
-    .py-sim-code-panel { border-right: 1px solid #d2deef; }
-    .py-sim-panel-title { background: #f2f6fd; border-bottom: 1px solid #d2deef; padding: 6px 10px; color: #6b7e93; font-size: 0.5em; font-style: italic; text-align: right; text-transform: lowercase; letter-spacing: .02em; }
-    .py-sim-code-body { font-family: "Consolas","Courier New",monospace; font-size: 0.66em; line-height: 1.45; padding: 10px 0; background: #fcfdff; flex: 1; min-height: 0; overflow-y: auto; overflow-x: auto; }
-    .py-sim-line { display: grid; grid-template-columns: 38px 1fr; align-items: center; border-left: 4px solid transparent; transition: background .2s ease, border-color .2s ease; min-height: 26px; padding-right: 10px; }
-    .py-sim-line .ln { text-align: right; padding-right: 10px; color: #7d8c9f; user-select: none; }
-    .py-sim-line .txt { white-space: pre; color: #1f3550; }
-    .py-sim-line.active { background: #e8f0ff; border-left-color: #2f6fd4; }
-    .py-sim-line .kw  { color: #385fcb; font-weight: 600; }
-    .py-sim-line .num { color: #d95f02; }
-    .py-sim-line .op  { color: #0f172a; }
-    .py-sim-line .str { color: #0f8a4a; }
-    .py-sim-output-body { font-family: "Consolas","Courier New",monospace; font-size: 0.64em; line-height: 1.4; padding: 9px 10px; color: #29435a; flex: 1; min-height: 0; overflow-y: auto; overflow-x: auto; background: #fff; }
-    .py-sim-out-line { opacity: 0; transform: translateY(8px); animation: py-sim-fade-in .26s ease forwards; }
-    @keyframes py-sim-fade-in { to { opacity: 1; transform: translateY(0); } }
-    .py-sim-vars { border-top: 1px solid #d2deef; background: #f7faff; min-height: 80px; }
-    .py-sim-vars-title { padding: 6px 10px; color: #6b7e93; font-size: 0.5em; font-style: italic; text-align: right; border-bottom: 1px solid #d2deef; background: #f2f6fd; text-transform: lowercase; }
-    .py-sim-vars-list { display: flex; flex-wrap: wrap; gap: 10px; padding: 4px 8px 10px; }
-    .py-sim-vars-list .py-sim-vars-row { padding: 8px 10px; border: 1px solid #d7e3f4; border-radius: 8px; background: #fff; min-width: 110px; font-family: "Consolas","Courier New",monospace; font-size: 0.68em; color: #12314f; }
-    .py-sim-vars-list .py-sim-vars-row strong { display: inline-block; min-width: 18px; color: #1b4a80; }
-    .py-sim-tip { margin-top: 8px; font-size: 0.5em !important; color: #4e6377 !important; }
+    .py-sim-slide {
+      background: radial-gradient(circle at top right, #f4f8ff 0%, #eef4ff 48%, #e6eefb 100%) !important;
+      padding: 18px 26px !important;
+      text-align: left;
+    }
+
+    .py-sim-slide h2 {
+      margin: 0 0 10px 0;
+      font-size: 1em;
+    }
+
+    .py-sim-controls {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 0.62em;
+      color: #2f4153;
+    }
+
+    .py-sim-controls select {
+      border: 1px solid #b7c8e4;
+      border-radius: 8px;
+      background: #fff;
+      color: #1b3f69;
+      padding: 5px 8px;
+      font-size: 0.96em;
+      font-family: inherit;
+      font-weight: 500;
+    }
+
+    .py-sim-btn {
+      border: 1px solid #275ea9;
+      border-radius: 8px;
+      background: #2f6fd4;
+      color: #fff;
+      font-size: 0.94em;
+      font-family: inherit;
+      font-weight: 600;
+      padding: 5px 10px;
+      cursor: pointer;
+      transition: transform .14s ease, filter .14s ease;
+    }
+
+    .py-sim-btn:hover {
+      filter: brightness(1.08);
+      transform: translateY(-1px);
+    }
+
+    .py-sim-btn:active {
+      transform: translateY(0);
+    }
+
+    .py-sim-btn.stop {
+      background: #c53c31;
+      border-color: #a22f27;
+    }
+
+    .py-sim-btn.step {
+      background: #1f8f5f;
+      border-color: #1a744e;
+    }
+
+    .py-sim-controls input[type="range"] {
+      width: 220px;
+      accent-color: #2f6fd4;
+    }
+
+    .py-sim-speed-label {
+      display: inline-block;
+      min-width: 50px;
+      font-weight: 700;
+      color: #124980;
+    }
+
+    .py-sim-shell {
+      max-width: 980px;
+      margin: 0 auto;
+      border: 1px solid #c8d7ee;
+      border-radius: 10px;
+      background: #f9fbff;
+      box-shadow: 0 12px 24px rgba(18, 44, 89, .08);
+      overflow: hidden;
+    }
+
+    .py-sim-main {
+      display: grid;
+      grid-template-columns: minmax(320px, 2.8fr) minmax(170px, 1fr);
+      height: min(52vh, 400px);
+    }
+
+    .py-sim-panel {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .py-sim-code-panel {
+      border-right: 1px solid #d2deef;
+    }
+
+    .py-sim-panel-title {
+      background: #f2f6fd;
+      border-bottom: 1px solid #d2deef;
+      padding: 6px 10px;
+      color: #6b7e93;
+      font-size: 0.5em;
+      font-style: italic;
+      text-align: right;
+      text-transform: lowercase;
+      letter-spacing: .02em;
+    }
+
+    .py-sim-code-body {
+      font-family: "Consolas", "Courier New", monospace;
+      font-size: 0.66em;
+      line-height: 1.45;
+      padding: 10px 0;
+      background: #fcfdff;
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+      overflow-x: auto;
+    }
+
+    .py-sim-line {
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      align-items: center;
+      border-left: 4px solid transparent;
+      transition: background .2s ease, border-color .2s ease;
+      min-height: 26px;
+      padding-right: 10px;
+    }
+
+    .py-sim-line .ln {
+      text-align: right;
+      padding-right: 10px;
+      color: #7d8c9f;
+      user-select: none;
+    }
+
+    .py-sim-line .txt {
+      white-space: pre;
+      color: #1f3550;
+    }
+
+    .py-sim-line.active {
+      background: #e8f0ff;
+      border-left-color: #2f6fd4;
+    }
+
+    .py-sim-line .kw {
+      color: #385fcb;
+      font-weight: 600;
+    }
+
+    .py-sim-line .num {
+      color: #d95f02;
+    }
+
+    .py-sim-line .op {
+      color: #0f172a;
+    }
+
+    .py-sim-line .str {
+      color: #0f8a4a;
+    }
+
+    .py-sim-output-body {
+      font-family: "Consolas", "Courier New", monospace;
+      font-size: 0.64em;
+      line-height: 1.4;
+      padding: 9px 10px;
+      color: #29435a;
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+      overflow-x: auto;
+      background: #fff;
+    }
+
+    .py-sim-out-line {
+      opacity: 0;
+      transform: translateY(8px);
+      animation: py-sim-fade-in .26s ease forwards;
+    }
+
+    @keyframes py-sim-fade-in {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .py-sim-vars {
+      border-top: 1px solid #d2deef;
+      background: #f7faff;
+      min-height: 80px;
+    }
+
+    .py-sim-vars-title {
+      padding: 6px 10px;
+      color: #6b7e93;
+      font-size: 0.5em;
+      font-style: italic;
+      text-align: right;
+      border-bottom: 1px solid #d2deef;
+      background: #f2f6fd;
+      text-transform: lowercase;
+    }
+
+    .py-sim-vars-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 4px 8px 10px;
+    }
+
+    .py-sim-vars-list .py-sim-vars-row {
+      padding: 8px 10px;
+      border: 1px solid #d7e3f4;
+      border-radius: 8px;
+      background: #fff;
+      min-width: 110px;
+      font-family: "Consolas", "Courier New", monospace;
+      font-size: 0.68em;
+      color: #12314f;
+    }
+
+    .py-sim-vars-list .py-sim-vars-row strong {
+      display: inline-block;
+      min-width: 18px;
+      color: #1b4a80;
+    }
+
+    .py-sim-tip {
+      margin-top: 8px;
+      font-size: 0.5em !important;
+      color: #4e6377 !important;
+    }
 
     /* Lista D3 Lab */
-    .list-d3-slide { background: radial-gradient(circle at top left, #eef6ff 0%, #f8fbff 44%, #eef4fb 100%) !important; }
+    .list-d3-slide {
+      background: radial-gradient(circle at top left, #eef6ff 0%, #f8fbff 44%, #eef4fb 100%) !important;
+    }
+
     .list-d3-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -141,14 +656,16 @@
       align-items: start;
       margin-top: 8px;
     }
+
     .list-d3-panel {
       background: #fff;
       border: 1px solid #cfe0f5;
       border-radius: 12px;
       padding: 10px;
-      box-shadow: 0 8px 18px rgba(9,43,84,.08);
+      box-shadow: 0 8px 18px rgba(9, 43, 84, .08);
       text-align: left;
     }
+
     .list-d3-editor {
       width: 100%;
       min-height: 210px;
@@ -156,17 +673,19 @@
       border: 1px solid #c8d8ef;
       border-radius: 10px;
       padding: 10px;
-      font-family: "Consolas","Courier New",monospace;
+      font-family: "Consolas", "Courier New", monospace;
       font-size: 0.62em;
       line-height: 1.45;
       color: #173b61;
       background: #fbfdff;
       box-sizing: border-box;
     }
+
     .list-d3-editor:focus {
       outline: 2px solid #bfd7f6;
       border-color: #9fc3ef;
     }
+
     .list-d3-svg {
       width: 100%;
       height: 230px;
@@ -175,12 +694,14 @@
       background: linear-gradient(180deg, #f9fcff 0%, #f2f8ff 100%);
       display: block;
     }
+
     .list-d3-controls {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       margin-top: 10px;
     }
+
     .list-d3-btn {
       border: 1px solid #b8cbea;
       border-radius: 8px;
@@ -192,25 +713,35 @@
       font-family: inherit;
       cursor: pointer;
     }
+
     .list-d3-btn.primary {
       background: #1f5fa5;
       border-color: #1f5fa5;
       color: #fff;
     }
+
     .list-d3-status {
       margin: 8px 2px 0;
       font-size: 0.58em !important;
       color: #375778 !important;
       min-height: 1.3em;
     }
-    .list-d3-status.error { color: #b42318 !important; }
-    .list-d3-status.ok { color: #166534 !important; }
+
+    .list-d3-status.error {
+      color: #b42318 !important;
+    }
+
+    .list-d3-status.ok {
+      color: #166534 !important;
+    }
+
     .list-d3-caption {
       margin: 10px 2px 0;
       font-size: 0.62em !important;
       color: #355372 !important;
       min-height: 2.2em;
     }
+
     .list-d3-meta {
       margin: 8px 2px 0;
       font-size: 0.56em !important;
@@ -218,14 +749,40 @@
     }
 
     @media (max-width: 900px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .hero-icon-wrap { width: 130px; height: 130px; font-size: 2.4em; }
-      .columns { flex-direction: column; }
-      .summary-grid { grid-template-columns: 1fr; }
-      .py-sim-main { grid-template-columns: 1fr; }
-      .py-sim-code-panel { border-right: 0; border-bottom: 1px solid #d2deef; }
-      .py-sim-panel { min-height: 190px; }
-      .list-d3-grid { grid-template-columns: 1fr; }
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-icon-wrap {
+        width: 130px;
+        height: 130px;
+        font-size: 2.4em;
+      }
+
+      .columns {
+        flex-direction: column;
+      }
+
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .py-sim-main {
+        grid-template-columns: 1fr;
+      }
+
+      .py-sim-code-panel {
+        border-right: 0;
+        border-bottom: 1px solid #d2deef;
+      }
+
+      .py-sim-panel {
+        min-height: 190px;
+      }
+
+      .list-d3-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -238,13 +795,16 @@
       <section class="hero-cover" data-background-gradient="linear-gradient(140deg, #0d2550, #1450a4, #1ba37f)">
         <div class="hero-grid">
           <div class="hero-content">
-            <p class="hero-kicker"><i class="fa-solid fa-laptop-code icon" aria-hidden="true"></i>Introducao a Programacao</p>
+            <p class="hero-kicker"><i class="fa-solid fa-laptop-code icon" aria-hidden="true"></i>Introducao a
+              Programacao</p>
             <h1 class="hero-title">Aula 09<br><span>Listas, Dicionarios e Tuplas</span></h1>
-            <p class="hero-subtitle">Estruturas de dados essenciais para organizar, buscar e manipular informacoes em Python — com simulacao visual passo a passo.</p>
+            <p class="hero-subtitle">Estruturas de dados essenciais para organizar, buscar e manipular informacoes em
+              Python — com simulacao visual passo a passo.</p>
             <div class="hero-tags">
               <span>listas</span><span>dicionarios</span><span>tuplas</span><span>for</span><span>items()</span><span>imutavel</span>
             </div>
-            <p class="hero-meta"><i class="fa-solid fa-user-tie icon" aria-hidden="true"></i>Prof. Msc. Nator Junior Carvalho da Costa</p>
+            <p class="hero-meta"><i class="fa-solid fa-user-tie icon" aria-hidden="true"></i>Prof. Msc. Nator Junior
+              Carvalho da Costa</p>
           </div>
           <div class="hero-mark">
             <div class="hero-icon-wrap">
@@ -259,7 +819,8 @@
         <h2><i class="fa-solid fa-bullseye icon" aria-hidden="true"></i> Objetivos da Aula</h2>
         <div class="box">
           <ul>
-            <li>Entender as diferencas entre <strong>listas</strong>, <strong>dicionarios</strong> e <strong>tuplas</strong>.</li>
+            <li>Entender as diferencas entre <strong>listas</strong>, <strong>dicionarios</strong> e
+              <strong>tuplas</strong>.</li>
             <li>Dominar os principais metodos e operacoes de cada estrutura.</li>
             <li>Usar <code>for</code> com acumuladores e condicionais dentro de cada estrutura.</li>
           </ul>
@@ -269,17 +830,17 @@
       <!-- ═══ PARTE 1: LISTAS ═══ -->
       <section>
 
-      <!-- SLIDE 3 — Divisor Parte 1 -->
-      <section class="section-divider" data-background-gradient="linear-gradient(135deg, #0f4c81, #2c7da0, #61a5c2)">
-        <div class="section-number">Parte 1</div>
-        <h2><i class="fa-solid fa-list icon" aria-hidden="true"></i> Listas</h2>
-        <p>Colecao <strong>ordenada</strong> e <strong>mutavel</strong> de elementos de qualquer tipo.</p>
-      </section>
+        <!-- SLIDE 3 — Divisor Parte 1 -->
+        <section class="section-divider" data-background-gradient="linear-gradient(135deg, #0f4c81, #2c7da0, #61a5c2)">
+          <div class="section-number">Parte 1</div>
+          <h2><i class="fa-solid fa-list icon" aria-hidden="true"></i> Listas</h2>
+          <p>Colecao <strong>ordenada</strong> e <strong>mutavel</strong> de elementos de qualquer tipo.</p>
+        </section>
 
-      <!-- SLIDE 4 — 1.1 Criacao e Acesso -->
-      <section class="bg-light">
-        <h2><i class="fa-solid fa-code icon" aria-hidden="true"></i> 1.1 &mdash; Criacao e Acesso</h2>
-        <pre><code class="language-python" data-trim data-noescape>
+        <!-- SLIDE 4 — 1.1 Criacao e Acesso -->
+        <section class="bg-light">
+          <h2><i class="fa-solid fa-code icon" aria-hidden="true"></i> 1.1 &mdash; Criacao e Acesso</h2>
+          <pre><code class="language-python" data-trim data-noescape>
 nomes = ["Ana", "Bruno", "Carlos", "Diana"]
 
 print(nomes[0])       # Ana    — primeiro elemento
@@ -289,203 +850,214 @@ print(nomes[1:3])     # ["Bruno", "Carlos"] — slice
 print(len(nomes))     # 4 — tamanho da lista
 print("Bruno" in nomes)  # True — verificar existencia
         </code></pre>
-        <div class="box">
-          <p><strong>Indices:</strong> comecam em <code>0</code>; indices negativos contam do fim (<code>-1</code> e o ultimo).</p>
-        </div>
-      </section>
+          <div class="box">
+            <p><strong>Indices:</strong> comecam em <code>0</code>; indices negativos contam do fim (<code>-1</code> e o
+              ultimo).</p>
+          </div>
+        </section>
 
-      <!-- SLIDE 5 — Funcoes internas -->
-      <section class="bg-light">
-        <h2><i class="fa-solid fa-list-check icon" aria-hidden="true"></i> 1.2 &mdash; Metodos internos de listas</h2>
-        <div class="box">
-          <p>No Python, listas possuem metodos internos para alteracao rapida dos elementos.</p>
-          <p>Principais para iniciar: <code>append()</code>, <code>insert()</code>, <code>pop()</code> e <code>del</code>.</p>
-        </div>
-      </section>
+        <!-- SLIDE 5 — Funcoes internas -->
+        <section class="bg-light">
+          <h2><i class="fa-solid fa-list-check icon" aria-hidden="true"></i> 1.2 &mdash; Metodos internos de listas</h2>
+          <div class="box">
+            <p>No Python, listas possuem metodos internos para alteracao rapida dos elementos.</p>
+            <p>Principais para iniciar: <code>append()</code>, <code>insert()</code>, <code>pop()</code> e
+              <code>del</code>.</p>
+          </div>
+        </section>
 
-      <!-- SLIDE 6 — append() -->
-      <section class="bg-light">
-        <h2><i class="fa-solid fa-plus icon" aria-hidden="true"></i> append()</h2>
-        <div class="box">
-          <p>Adiciona um item no final da lista.</p>
-        </div>
-        <pre><code class="language-python" data-trim data-noescape>
+        <!-- SLIDE 6 — append() -->
+        <section class="bg-light">
+          <h2><i class="fa-solid fa-plus icon" aria-hidden="true"></i> append()</h2>
+          <div class="box">
+            <p>Adiciona um item no final da lista.</p>
+          </div>
+          <pre><code class="language-python" data-trim data-noescape>
 lista = ["Arroz", "Feijao", "Macarrao"]
 lista.append("Carne")
 print(lista)
 # ['Arroz', 'Feijao', 'Macarrao', 'Carne']
         </code></pre>
-      </section>
+        </section>
 
-      <!-- SLIDE 7 — insert() -->
-      <section class="bg-light">
-        <h2><i class="fa-solid fa-arrow-right-to-bracket icon" aria-hidden="true"></i> insert()</h2>
-        <div class="box">
-          <p>Insere um item em um indice especifico.</p>
-        </div>
-        <pre><code class="language-python" data-trim data-noescape>
+        <!-- SLIDE 7 — insert() -->
+        <section class="bg-light">
+          <h2><i class="fa-solid fa-arrow-right-to-bracket icon" aria-hidden="true"></i> insert()</h2>
+          <div class="box">
+            <p>Insere um item em um indice especifico.</p>
+          </div>
+          <pre><code class="language-python" data-trim data-noescape>
 lista = ["Arroz", "Feijao", "Macarrao"]
 lista.insert(0, "Carne")
 print(lista)
 # ['Carne', 'Arroz', 'Feijao', 'Macarrao']
         </code></pre>
-      </section>
+        </section>
 
-      <!-- SLIDE 8 — pop() -->
-      <section class="bg-light">
-        <h2><i class="fa-solid fa-trash icon" aria-hidden="true"></i> pop()</h2>
-        <div class="box">
-          <p>Remove item por indice. Sem indice, remove o ultimo.</p>
-        </div>
-        <pre><code class="language-python" data-trim data-noescape>
+        <!-- SLIDE 8 — pop() -->
+        <section class="bg-light">
+          <h2><i class="fa-solid fa-trash icon" aria-hidden="true"></i> pop()</h2>
+          <div class="box">
+            <p>Remove item por indice. Sem indice, remove o ultimo.</p>
+          </div>
+          <pre><code class="language-python" data-trim data-noescape>
 lista = ["Arroz", "Feijao", "Macarrao"]
 lista.pop(0)   # remove o primeiro
 lista.pop()    # remove o ultimo
 print(lista)
 # ['Feijao']
         </code></pre>
-      </section>
+        </section>
 
-      <!-- SLIDE 9 — del -->
-      <section class="bg-light">
-        <h2><i class="fa-solid fa-scissors icon" aria-hidden="true"></i> del</h2>
-        <div class="box">
-          <p>Comando para remover por indice ou faixa de indices.</p>
-        </div>
-        <pre><code class="language-python" data-trim data-noescape>
+        <!-- SLIDE 9 — del -->
+        <section class="bg-light">
+          <h2><i class="fa-solid fa-scissors icon" aria-hidden="true"></i> del</h2>
+          <div class="box">
+            <p>Comando para remover por indice ou faixa de indices.</p>
+          </div>
+          <pre><code class="language-python" data-trim data-noescape>
 lista = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 del lista[2:5]   # remove indices 2,3,4
 del lista[0]     # remove indice 0
 print(lista)
 # [2, 6, 7, 8, 9, 10]
         </code></pre>
-      </section>
+        </section>
 
 
-      <!-- SLIDE 6 — 1.3 Iteracao Basica -->
-      <section class="bg-light">
-        <h2><i class="fa-solid fa-arrows-spin icon" aria-hidden="true"></i> 1.3 &mdash; Iteracao Basica com <code>for</code></h2>
-        <pre><code class="language-python" data-trim data-noescape>
+        <!-- SLIDE 6 — 1.3 Iteracao Basica -->
+        <section class="bg-light">
+          <h2><i class="fa-solid fa-arrows-spin icon" aria-hidden="true"></i> 1.3 &mdash; Iteracao Basica com
+            <code>for</code></h2>
+          <pre><code class="language-python" data-trim data-noescape>
 nomes = ["Ana", "Bruno", "Carlos"]
 
 # percorrer todos os elementos
 for nome in nomes:
     print("Ola,", nome)
         </code></pre>
-        <div class="box-green">
-          <p><strong>Padrao:</strong> <code>for item in lista</code> acessa cada elemento em ordem.</p>
-        </div>
-      </section>
+          <div class="box-green">
+            <p><strong>Padrao:</strong> <code>for item in lista</code> acessa cada elemento em ordem.</p>
+          </div>
+        </section>
 
-      <!-- SLIDE 7 — Lista + Figura D3 (Laboratorio) -->
-      <section class="list-d3-slide">
-        <h2><i class="fa-solid fa-diagram-project icon" aria-hidden="true"></i> Interativo</h2>
-        <div class="list-d3-grid">
-          <div class="list-d3-panel">
-            <p class="activity-question"><strong>Escreva o codigo de lista abaixo e clique em Executar.</strong></p>
-            <textarea id="list-d3-code" class="list-d3-editor">numeros = [10, 20, 30]
+        <!-- SLIDE 7 — Lista + Figura D3 (Laboratorio) -->
+        <section class="list-d3-slide">
+          <h2><i class="fa-solid fa-diagram-project icon" aria-hidden="true"></i> Interativo</h2>
+          <div class="list-d3-grid">
+            <div class="list-d3-panel">
+              <p class="activity-question"><strong>Escreva o codigo de lista abaixo e clique em Executar.</strong></p>
+              <textarea id="list-d3-code" class="list-d3-editor">numeros = [10, 20, 30]
 
 numeros.append(40)
 numeros[1] = 99
 numeros.pop(0)</textarea>
-            <div class="list-d3-controls">
-              <button id="list-d3-run" class="list-d3-btn primary" type="button">Executar</button>
-              <button id="list-d3-prev" class="list-d3-btn" type="button">&larr; Etapa</button>
-              <button id="list-d3-next" class="list-d3-btn" type="button">Etapa &rarr;</button>
-              <button id="list-d3-example" class="list-d3-btn" type="button">Carregar Exemplo</button>
+              <div class="list-d3-controls">
+                <button id="list-d3-run" class="list-d3-btn primary" type="button">Executar</button>
+                <button id="list-d3-prev" class="list-d3-btn" type="button">&larr; Etapa</button>
+                <button id="list-d3-next" class="list-d3-btn" type="button">Etapa &rarr;</button>
+                <button id="list-d3-example" class="list-d3-btn" type="button">Carregar Exemplo</button>
+              </div>
+              <p id="list-d3-status" class="list-d3-status"></p>
             </div>
-            <p id="list-d3-status" class="list-d3-status"></p>
-          </div>
-          <div class="list-d3-panel">
-            <svg id="list-d3-svg" class="list-d3-svg" viewBox="0 0 560 220" preserveAspectRatio="xMidYMid meet"></svg>
-            <p id="list-d3-caption" class="list-d3-caption"></p>
-            <p class="list-d3-meta">Etapa atual: <strong id="list-d3-step-label">0 / 0</strong></p>
-          </div>
-        </div>
-      </section>
-
-      
-      <!-- SLIDE 8 — Simulador lista-sim -->
-      <section class="py-sim-slide">
-        <h2><i class="fa-solid fa-laptop-code icon" aria-hidden="true"></i>Simulacao visual &mdash; Listas</h2>
-        <div class="py-sim-controls">
-          <label for="lista-sim-example"><strong>Exemplo:</strong></label>
-          <select id="lista-sim-example">
-            <option value="percorrer">1) Percorrer (basico)</option>
-            <option value="acumular">2) Soma e media</option>
-            <option value="filtrar">3) Filtrar aprovados</option>
-            <option value="nested">4) Classificacao com if aninhado</option>
-          </select>
-          <button id="lista-sim-play" class="py-sim-btn" type="button"><i class="fa-solid fa-play"></i> Play</button>
-          <button id="lista-sim-stop" class="py-sim-btn stop" type="button"><i class="fa-solid fa-stop"></i> Stop</button>
-          <button id="lista-sim-step" class="py-sim-btn step" type="button"><i class="fa-solid fa-forward-step"></i> Step</button>
-          <label for="lista-sim-speed"><strong>Velocidade:</strong></label>
-          <input id="lista-sim-speed" type="range" min="0.45" max="2.5" step="0.05" value="1">
-          <span id="lista-sim-speed-label" class="py-sim-speed-label">1.00x</span>
-        </div>
-        <div class="py-sim-shell" id="lista-sim-shell">
-          <div class="py-sim-main">
-            <div class="py-sim-panel py-sim-code-panel">
-              <div class="py-sim-panel-title">code</div>
-              <div class="py-sim-code-body" id="lista-sim-code-body"></div>
-            </div>
-            <div class="py-sim-panel">
-              <div class="py-sim-panel-title">output</div>
-              <div class="py-sim-output-body" id="lista-sim-output"></div>
+            <div class="list-d3-panel">
+              <svg id="list-d3-svg" class="list-d3-svg" viewBox="0 0 560 220" preserveAspectRatio="xMidYMid meet"></svg>
+              <p id="list-d3-caption" class="list-d3-caption"></p>
+              <p class="list-d3-meta">Etapa atual: <strong id="list-d3-step-label">0 / 0</strong></p>
             </div>
           </div>
-          <div class="py-sim-vars">
-            <div class="py-sim-vars-title">variables</div>
-            <div class="py-sim-vars-list" id="lista-sim-vars-list"></div>
+        </section>
+
+
+        <!-- SLIDE 8 — Simulador lista-sim -->
+        <section class="py-sim-slide">
+          <h2><i class="fa-solid fa-laptop-code icon" aria-hidden="true"></i>Simulacao visual &mdash; Listas</h2>
+          <div class="py-sim-controls">
+            <label for="lista-sim-example"><strong>Exemplo:</strong></label>
+            <select id="lista-sim-example">
+              <option value="percorrer">1) Percorrer (basico)</option>
+              <option value="acumular">2) Soma e media</option>
+              <option value="filtrar">3) Filtrar aprovados</option>
+              <option value="nested">4) Classificacao com if aninhado</option>
+            </select>
+            <button id="lista-sim-play" class="py-sim-btn" type="button"><i class="fa-solid fa-play"></i> Play</button>
+            <button id="lista-sim-stop" class="py-sim-btn stop" type="button"><i class="fa-solid fa-stop"></i>
+              Stop</button>
+            <button id="lista-sim-step" class="py-sim-btn step" type="button"><i class="fa-solid fa-forward-step"></i>
+              Step</button>
+            <label for="lista-sim-speed"><strong>Velocidade:</strong></label>
+            <input id="lista-sim-speed" type="range" min="0.45" max="2.5" step="0.05" value="1">
+            <span id="lista-sim-speed-label" class="py-sim-speed-label">1.00x</span>
           </div>
-        </div>
-        <p class="py-sim-tip">Use <strong>Play</strong> para rodar, <strong>Stop</strong> para pausar e <strong>Step</strong> para executar linha a linha.</p>
-      </section>
+          <div class="py-sim-shell" id="lista-sim-shell">
+            <div class="py-sim-main">
+              <div class="py-sim-panel py-sim-code-panel">
+                <div class="py-sim-panel-title">code</div>
+                <div class="py-sim-code-body" id="lista-sim-code-body"></div>
+              </div>
+              <div class="py-sim-panel">
+                <div class="py-sim-panel-title">output</div>
+                <div class="py-sim-output-body" id="lista-sim-output"></div>
+              </div>
+            </div>
+            <div class="py-sim-vars">
+              <div class="py-sim-vars-title">variables</div>
+              <div class="py-sim-vars-list" id="lista-sim-vars-list"></div>
+            </div>
+          </div>
+          <p class="py-sim-tip">Use <strong>Play</strong> para rodar, <strong>Stop</strong> para pausar e
+            <strong>Step</strong> para executar linha a linha.</p>
+        </section>
 
-      <!-- SLIDE 9 — Atividade 1 -->
-      <section class="activity-slide">
-        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade 1 &mdash; Lista com 10 valores</h2>
-        <div class="activity-card">
-          <p class="activity-title"><i class="fa-solid fa-list-ol" aria-hidden="true"></i> Criar e imprimir</p>
-          <p class="activity-question">Crie uma lista com <strong>10 valores inteiros</strong>.</p>
-          <p class="activity-question">Depois, imprima todos os valores da lista usando <code>for</code>.</p>
-          <p class="activity-question" style="margin-top:10px;"><strong>Exemplo:</strong> <code>[1,2,3,4,5,6,7,8,9,10]</code></p>
-        </div>
-      </section>
+        <!-- SLIDE 9 — Atividade 1 -->
+        <section class="activity-slide">
+          <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade 1 &mdash; Lista com 10 valores</h2>
+          <div class="activity-card">
+            <p class="activity-title"><i class="fa-solid fa-list-ol" aria-hidden="true"></i> Criar e imprimir</p>
+            <p class="activity-question">Crie uma lista com <strong>10 valores inteiros</strong>.</p>
+            <p class="activity-question">Depois, imprima todos os valores da lista usando <code>for</code>.</p>
+            <p class="activity-question" style="margin-top:10px;"><strong>Exemplo:</strong>
+              <code>[1,2,3,4,5,6,7,8,9,10]</code></p>
+          </div>
+        </section>
 
-      <!-- SLIDE 10 — Resposta Atividade 1 -->
-      <section class="quiz-slide">
-        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta &mdash; Atividade 1</h2>
-        <div class="quiz-card">
-          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solucao</p>
-          <pre><code class="language-python" data-trim data-noescape>
+        <!-- SLIDE 10 — Resposta Atividade 1 -->
+        <section class="quiz-slide">
+          <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta &mdash;
+            Atividade 1</h2>
+          <div class="quiz-card">
+            <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solucao</p>
+            <pre><code class="language-python" data-trim data-noescape>
 valores = [1,2,3,4,5,6,7,8,9,10]
 
 for v in valores:
     print(v)
           </code></pre>
-          <div class="quiz-answer">
-            Primeiro passo da iteracao: criar a lista e percorrer cada elemento.
+            <div class="quiz-answer">
+              Primeiro passo da iteracao: criar a lista e percorrer cada elemento.
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- SLIDE 11 — Atividade 2 -->
-      <section class="activity-slide">
-        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade 2 </h2>
-        <div class="activity-card">
-          <p class="activity-title"><i class="fa-solid fa-users" aria-hidden="true"></i> Media da idade de 5 pessoas</p>
-          <p class="activity-question">Peca a idade de <strong>5 pessoas</strong> e armazene no vetor <code>idades</code>.</p>
-          <p class="activity-question">Depois imprima a <strong>media das idades</strong>.</p>
-        </div>
-      </section>
+        <!-- SLIDE 11 — Atividade 2 -->
+        <section class="activity-slide">
+          <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade 2 </h2>
+          <div class="activity-card">
+            <p class="activity-title"><i class="fa-solid fa-users" aria-hidden="true"></i> Media da idade de 5 pessoas
+            </p>
+            <p class="activity-question">Peca a idade de <strong>5 pessoas</strong> e armazene no vetor
+              <code>idades</code>.</p>
+            <p class="activity-question">Depois imprima a <strong>media das idades</strong>.</p>
+          </div>
+        </section>
 
-      <!-- SLIDE 12 — Resposta Atividade 2 -->
-      <section class="quiz-slide">
-        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta &mdash; Atividade 2</h2>
-        <div class="quiz-card">
-          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solucao</p>
-          <pre><code class="language-python" data-trim data-noescape>
+        <!-- SLIDE 12 — Resposta Atividade 2 -->
+        <section class="quiz-slide">
+          <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta &mdash;
+            Atividade 2</h2>
+          <div class="quiz-card">
+            <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solucao</p>
+            <pre><code class="language-python" data-trim data-noescape>
 idades = []
 
 for i in range(5):
@@ -497,386 +1069,39 @@ media = sum(idades) / len(idades)
 print("Idades:", idades)
 print("Media das idades:", media)
           </code></pre>
-          <div class="quiz-answer">
-            Preenche o vetor com <code>append()</code> e calcula a media com <code>sum()/len()</code>.
-          </div>
-        </div>
-      </section>
-
-      <!-- SLIDE 13 — Atividade 3 -->
-      <section class="activity-slide">
-        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade 3 </h2>
-        <div class="activity-card">
-          <p class="activity-title"><i class="fa-solid fa-filter" aria-hidden="true"></i> Vetor PAR e vetor IMPAR</p>
-          <p class="activity-question">Leia <strong>20 numeros inteiros</strong> e armazene no vetor <code>numeros</code>.</p>
-          <p class="activity-question">Armazene os pares no vetor <code>par</code> e os impares no vetor <code>impar</code>.</p>
-          <p class="activity-question">Imprima os tres vetores no final.</p>
-        </div>
-      </section>
-
-      <!-- SLIDE 14 — Resposta Atividade 3 -->
-      <section class="quiz-slide">
-        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta &mdash; Atividade 3</h2>
-        <div class="quiz-card">
-          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solucao</p>
-          <pre><code class="language-python" data-trim data-noescape>
-numeros = []
-par = []
-impar = []
-
-for i in range(20):
-    n = int(input(f"Digite o {i+1}o numero: "))
-    numeros.append(n)
-    if n % 2 == 0:
-        par.append(n)
-    else:
-        impar.append(n)
-
-print("Vetor completo:", numeros)
-print("Vetor PAR:", par)
-print("Vetor IMPAR:", impar)
-          </code></pre>
-          <div class="quiz-answer">
-            Estrategia: guardar no vetor principal e classificar em <code>par</code> ou <code>impar</code>.
-          </div>
-        </div>
-      </section>
-
-      
-      </section>
-      <!-- ═══ PARTE 2: DICIONARIOS ═══ -->
-
-
-<section>
-
-
-
-
-      <!-- SLIDE 14 — Divisor Parte 2 -->
-      <section class="section-divider" data-background-gradient="linear-gradient(135deg, #3f1c7a, #6c43bf, #9551e0)">
-        <div class="section-number">Parte 2</div>
-        <h2><i class="fa-solid fa-book icon" aria-hidden="true"></i> Dicionarios</h2>
-        <p>Estrutura <strong>chave-valor</strong> para busca e organizacao rapida de informacoes.</p>
-      </section>
-
-      <!-- SLIDE 15 — 2.1 Sintaxe e Acesso -->
-      <section class="bg-light">
-        <h2><i class="fa-solid fa-code icon" aria-hidden="true"></i> 2.1 &mdash; Sintaxe e Acesso</h2>
-        <pre><code class="language-python" data-trim data-noescape>
-aluno = {"nome": "Lia", "idade": 17, "curso": "Python"}
-
-print(aluno["nome"])             # Lia — acesso direto
-
-aluno["idade"] = 18   # atualizar valor existente
-aluno["turma"] = "A"  # adicionar nova chave
-del aluno["curso"]    # remover chave
-
-print(aluno)
-# {"nome": "Lia", "idade": 18, "turma": "A"}
-        </code></pre>
-      </section>
-
-
-      <!-- SLIDE 18 — Simulador dict-sim -->
-      <section class="py-sim-slide">
-        <h2><i class="fa-solid fa-laptop-code icon" aria-hidden="true"></i>Simulacao visual &mdash; Dicionarios</h2>
-        <div class="py-sim-controls">
-          <label for="dict-sim-example"><strong>Exemplo:</strong></label>
-          <select id="dict-sim-example">
-            <option value="basico">1) Percorrer com items() (basico)</option>
-            <option value="filtrar">2) Filtrar estoque baixo</option>
-            <option value="acumular">3) Total e maior valor</option>
-            <option value="nested">4) Classificacao com if aninhado</option>
-          </select>
-          <button id="dict-sim-play" class="py-sim-btn" type="button"><i class="fa-solid fa-play"></i> Play</button>
-          <button id="dict-sim-stop" class="py-sim-btn stop" type="button"><i class="fa-solid fa-stop"></i> Stop</button>
-          <button id="dict-sim-step" class="py-sim-btn step" type="button"><i class="fa-solid fa-forward-step"></i> Step</button>
-          <label for="dict-sim-speed"><strong>Velocidade:</strong></label>
-          <input id="dict-sim-speed" type="range" min="0.45" max="2.5" step="0.05" value="1">
-          <span id="dict-sim-speed-label" class="py-sim-speed-label">1.00x</span>
-        </div>
-        <div class="py-sim-shell" id="dict-sim-shell">
-          <div class="py-sim-main">
-            <div class="py-sim-panel py-sim-code-panel">
-              <div class="py-sim-panel-title">code</div>
-              <div class="py-sim-code-body" id="dict-sim-code-body"></div>
-            </div>
-            <div class="py-sim-panel">
-              <div class="py-sim-panel-title">output</div>
-              <div class="py-sim-output-body" id="dict-sim-output"></div>
+            <div class="quiz-answer">
+              Preenche o vetor com <code>append()</code> e calcula a media com <code>sum()/len()</code>.
             </div>
           </div>
-          <div class="py-sim-vars">
-            <div class="py-sim-vars-title">variables</div>
-            <div class="py-sim-vars-list" id="dict-sim-vars-list"></div>
-          </div>
-        </div>
-        <p class="py-sim-tip">Use <strong>Play</strong> para rodar, <strong>Stop</strong> para pausar e <strong>Step</strong> para executar linha a linha.</p>
-      </section>
+        </section>
 
-      <!-- SLIDE 19 — Atividade 2 -->
-      <section class="activity-slide">
-        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade 2 &mdash; Dicionarios</h2>
+        <!-- SLIDE 13 — Atividade 3 -->
+        <section class="activity-slide">
+          <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade 3 </h2>
+          <div class="activity-card">
+            <p class="activity-title"><i class="fa-solid fa-filter" aria-hidden="true"></i> Vetor PAR e vetor IMPAR</p>
+            <p class="activity-question">Leia <strong>20 numeros inteiros</strong> e armazene no vetor
+              <code>numeros</code>.</p>
+            <p class="activity-question">Armazene os pares no vetor <code>par</code> e os impares no vetor
+              <code>impar</code>.</p>
+            <p class="activity-question">Imprima os tres vetores no final.</p>
+          </div>
+        </section>
+
+      </section>
+      <!-- SLIDE FINAL — RESUMO -->
+      <section class="bg-light">
+        <h2><i class="fa-solid fa-clipboard-check icon" aria-hidden="true"></i> Resumo da Aula</h2>
         <div class="activity-card">
-          <p class="activity-title"><i class="fa-solid fa-warehouse" aria-hidden="true"></i> Controle de estoque</p>
-          <p class="activity-question">Considere o dicionario:</p>
-          <p class="activity-question"><code>estoque = {"arroz": 12, "feijao": 4, "macarrao": 7, "oleo": 3}</code></p>
-          <p class="activity-question">Percorra o dicionario e informe:</p>
-          <p class="activity-question">1) Quantidade total de itens em estoque.</p>
-          <p class="activity-question">2) Quais produtos estao com estoque baixo (<code>&lt; 5</code>).</p>
-          <p class="activity-question" style="margin-top:10px;"><strong>Dica:</strong> use <code>baixo_estoque = []</code> e adicione produtos com <code>append()</code>.</p>
+          <p class="activity-question"><strong>Listas:</strong> criacao, acesso por indice e percorrer com
+            <code>for</code>.</p>
+          <p class="activity-question"><strong>Metodos principais:</strong> <code>append()</code>,
+            <code>insert()</code>, <code>pop()</code> e <code>del</code>.</p>
+          <p class="activity-question"><strong>Pratica:</strong> imprimir lista, calcular media de idades e separar
+            valores em vetores <code>par</code> e <code>impar</code>.</p>
+          <p class="activity-question"><strong>Proximo passo:</strong> aplicar a mesma logica com
+            <strong>dicionarios</strong> e <strong>tuplas</strong>.</p>
         </div>
-      </section>
-
-      <!-- SLIDE 20 — Resposta Atividade 2 -->
-      <section class="quiz-slide">
-        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta &mdash; Atividade 2</h2>
-        <div class="quiz-card">
-          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solucao com Dicionario</p>
-          <pre><code class="language-python" data-trim data-noescape>
-estoque = {"arroz": 12, "feijao": 4, "macarrao": 7, "oleo": 3}
-
-total_itens = 0
-baixo_estoque = []
-
-for produto, qtd in estoque.items():
-    total_itens += qtd
-    if qtd < 5:
-        baixo_estoque.append(produto)
-
-print("Total de itens:", total_itens)              # 26
-print("Produtos com estoque baixo:", baixo_estoque) # ['feijao', 'oleo']
-          </code></pre>
-          <div class="quiz-answer">
-            <code>for chave, valor in dicionario.items()</code> e o padrao padrao para dicionarios. Combinar com lista de coleta (<code>append</code>) e muito util.
-          </div>
-        </div>
-      </section>
-
-      <!-- SLIDE 21 — Atividade 2b -->
-      <section class="activity-slide">
-        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade 2b &mdash; Dicionarios com if/elif/else</h2>
-        <div class="activity-card">
-          <p class="activity-title"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Situacao dos alunos</p>
-          <p class="activity-question">Considere:</p>
-          <p class="activity-question"><code>notas = {"Ana": 8.5, "Bruno": 5.2, "Carla": 6.8, "Diego": 4.5}</code></p>
-          <p class="activity-question">Classifique cada aluno em tres niveis:</p>
-          <p class="activity-question">&nbsp;&nbsp;&nbsp;&nbsp;<code>&ge; 7.0</code> &rarr; <em>aprovado</em></p>
-          <p class="activity-question">&nbsp;&nbsp;&nbsp;&nbsp;<code>5.0 a 6.9</code> &rarr; <em>recuperacao</em></p>
-          <p class="activity-question">&nbsp;&nbsp;&nbsp;&nbsp;<code>&lt; 5.0</code> &rarr; <em>reprovado</em></p>
-          <p class="activity-question">Ao final, exiba o total de aprovados e reprovados.</p>
-        </div>
-      </section>
-
-      <!-- SLIDE 22 — Resposta Atividade 2b -->
-      <section class="quiz-slide">
-        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta &mdash; Atividade 2b</h2>
-        <div class="quiz-card">
-          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solucao com if/elif/else</p>
-          <pre><code class="language-python" data-trim data-noescape>
-notas = {"Ana": 8.5, "Bruno": 5.2, "Carla": 6.8, "Diego": 4.5}
-aprovados = 0
-reprovados = 0
-
-for nome, nota in notas.items():
-    if nota >= 7:
-        situacao = "aprovado"
-        aprovados += 1
-    elif nota >= 5:
-        situacao = "recuperacao"
-    else:
-        situacao = "reprovado"
-        reprovados += 1
-    print(nome, "->", situacao)
-
-print("Aprovados:", aprovados)   # 1
-print("Reprovados:", reprovados) # 1
-          </code></pre>
-          <div class="quiz-answer">
-            <code>if/elif/else</code> dentro do loop classifica em tres categorias; variaveis de contagem separadas rastreiam cada grupo de interesse.
-          </div>
-        </div>
-      </section>
-</section>
-      <!-- ═══ PARTE 3: TUPLAS ═══ -->
-
-
-<section>
-
-
-
-
-      <!-- SLIDE 23 — Divisor Parte 3 -->
-      <section class="section-divider" data-background-gradient="linear-gradient(135deg, #7a3d16, #c56b2f, #f2a65a)">
-        <div class="section-number">Parte 3</div>
-        <h2><i class="fa-solid fa-layer-group icon" aria-hidden="true"></i> Tuplas</h2>
-        <p>Sequencia <strong>ordenada</strong> e <strong>imutavel</strong> para representar dados fixos e estruturados.</p>
-      </section>
-
-      <!-- SLIDE 24 — 3.1 Conceito e Imutabilidade -->
-      <section class="bg-light">
-        <h2><i class="fa-solid fa-lock icon" aria-hidden="true"></i> 3.1 &mdash; Conceito e Imutabilidade</h2>
-        <pre><code class="language-python" data-trim data-noescape>
-coordenada = (10, 20)
-usuario = ("maria", 19, "ADS")
-
-print(coordenada[0])   # 10
-print(usuario[2])      # ADS
-
-# tuplas sao imutaveis — esta linha causaria erro:
-# usuario[1] = 20  →  TypeError: 'tuple' does not support item assignment
-
-# metodos disponiveis:
-nums = (1, 2, 2, 3, 2)
-print(nums.count(2))   # 3 — quantas vezes 2 aparece
-print(nums.index(3))   # 3 — indice onde 3 esta
-        </code></pre>
-        <div class="box">
-          <p>Tupla usa <code>()</code>; lista usa <code>[]</code>. Use tupla quando os dados <strong>nao devem mudar</strong>: coordenadas, registros, configuracoes.</p>
-        </div>
-      </section>
-
-      <!-- SLIDE 25 — 3.2 Desempacotamento -->
-      <section class="bg-light">
-        <h2><i class="fa-solid fa-box-open icon" aria-hidden="true"></i> 3.2 &mdash; Desempacotamento (Unpacking)</h2>
-        <pre><code class="language-python" data-trim data-noescape>
-# desempacotamento simples
-x, y = (10, 20)
-print(x, y)   # 10  20
-
-nome, idade, curso = ("Maria", 19, "ADS")
-print(nome)   # Maria
-
-# desempacotamento em loops — o padrao mais util
-pontos = [(0, 0), (3, 4), (1, 7)]
-for x, y in pontos:
-    dist = (x**2 + y**2) ** 0.5
-    print(f"({x},{y}) distancia: {dist:.2f}")
-        </code></pre>
-        <div class="box-green">
-          <p><strong>Desempacotamento</strong> nomeia cada campo da tupla diretamente no <code>for</code>, tornando o codigo muito mais legivel.</p>
-        </div>
-      </section>
-
-      <!-- SLIDE 26 — 3.3 Lista de Tuplas -->
-      <section class="bg-light">
-        <h2><i class="fa-solid fa-table-list icon" aria-hidden="true"></i> 3.3 &mdash; Lista de Tuplas (padrao real)</h2>
-        <pre><code class="language-python" data-trim data-noescape>
-# cada tupla representa um "registro" com campos fixos
-rota = [("Centro", 2.5), ("Bairro A", 4.0), ("Bairro B", 3.2)]
-distancia_total = 0
-
-for destino, km in rota:
-    print(destino, "->", km, "km")
-    distancia_total += km
-
-print("Distancia total:", distancia_total, "km")  # 9.7 km
-        </code></pre>
-        <div class="box">
-          <p>Lista de tuplas e o padrao para dados tabulares: <code>(nome, valor)</code>, <code>(produto, qtd, preco)</code>, <code>(lat, lon)</code>.</p>
-          <p>A <strong>lista</strong> e mutavel (podemos adicionar/remover registros); cada <strong>tupla</strong> e um registro imutavel.</p>
-        </div>
-      </section>
-
-      <!-- SLIDE 27 — Simulador tupla-sim -->
-      <section class="py-sim-slide">
-        <h2><i class="fa-solid fa-laptop-code icon" aria-hidden="true"></i>Simulacao visual &mdash; Tuplas</h2>
-        <div class="py-sim-controls">
-          <label for="tupla-sim-example"><strong>Exemplo:</strong></label>
-          <select id="tupla-sim-example">
-            <option value="basico">1) Percorrer tuplas (basico)</option>
-            <option value="subtotal">2) Subtotal de cada item</option>
-            <option value="filtrar">3) Filtrar por subtotal</option>
-            <option value="nested">4) Conceito de nota com if aninhado</option>
-          </select>
-          <button id="tupla-sim-play" class="py-sim-btn" type="button"><i class="fa-solid fa-play"></i> Play</button>
-          <button id="tupla-sim-stop" class="py-sim-btn stop" type="button"><i class="fa-solid fa-stop"></i> Stop</button>
-          <button id="tupla-sim-step" class="py-sim-btn step" type="button"><i class="fa-solid fa-forward-step"></i> Step</button>
-          <label for="tupla-sim-speed"><strong>Velocidade:</strong></label>
-          <input id="tupla-sim-speed" type="range" min="0.45" max="2.5" step="0.05" value="1">
-          <span id="tupla-sim-speed-label" class="py-sim-speed-label">1.00x</span>
-        </div>
-        <div class="py-sim-shell" id="tupla-sim-shell">
-          <div class="py-sim-main">
-            <div class="py-sim-panel py-sim-code-panel">
-              <div class="py-sim-panel-title">code</div>
-              <div class="py-sim-code-body" id="tupla-sim-code-body"></div>
-            </div>
-            <div class="py-sim-panel">
-              <div class="py-sim-panel-title">output</div>
-              <div class="py-sim-output-body" id="tupla-sim-output"></div>
-            </div>
-          </div>
-          <div class="py-sim-vars">
-            <div class="py-sim-vars-title">variables</div>
-            <div class="py-sim-vars-list" id="tupla-sim-vars-list"></div>
-          </div>
-        </div>
-        <p class="py-sim-tip">Use <strong>Play</strong> para rodar, <strong>Stop</strong> para pausar e <strong>Step</strong> para executar linha a linha.</p>
-      </section>
-
-      <!-- SLIDE 28 — Atividade 3 -->
-      <section class="activity-slide">
-        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade 3 &mdash; Tuplas</h2>
-        <div class="activity-card">
-          <p class="activity-title"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i> Pedido com tuplas</p>
-          <p class="activity-question">Considere a lista de tuplas:</p>
-          <p class="activity-question"><code>itens = [("Mouse", 2, 59.9), ("Teclado", 1, 120.0), ("Cabo", 3, 15.0)]</code></p>
-          <p class="activity-question">Cada tupla tem: <code>(produto, quantidade, preco_unitario)</code>.</p>
-          <p class="activity-question">1) Mostre o subtotal de cada item (<code>qtd * preco</code>).</p>
-          <p class="activity-question">2) Calcule e exiba o total geral.</p>
-          <p class="activity-question">3) Indique quais itens tiveram subtotal acima de <code>R$ 100</code>.</p>
-        </div>
-      </section>
-
-      <!-- SLIDE 29 — Resposta Atividade 3 -->
-      <section class="quiz-slide">
-        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Resposta &mdash; Atividade 3</h2>
-        <div class="quiz-card">
-          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Solucao com Lista de Tuplas</p>
-          <pre><code class="language-python" data-trim data-noescape>
-itens = [("Mouse", 2, 59.9), ("Teclado", 1, 120.0), ("Cabo", 3, 15.0)]
-total = 0
-destaques = []
-
-for produto, qtd, preco in itens:
-    subtotal = qtd * preco
-    total += subtotal
-    print(produto, "- subtotal: R$", round(subtotal, 2))
-    if subtotal > 100:
-        destaques.append(produto)
-
-print("Total geral: R$", round(total, 2))    # 284.8
-print("Itens acima de R$100:", destaques)    # ['Mouse', 'Teclado']
-          </code></pre>
-          <div class="quiz-answer">
-            Desempacotamento <code>for produto, qtd, preco in itens</code> nomeia cada campo. Combinar com acumulador e lista de coleta e o padrao completo.
-          </div>
-        </div>
-      </section>
-</section>
-      <!-- ═══ PARTE 4: COMPARACAO ═══ -->
-
-      
-      
-      <!-- SLIDE 33 — Resumo + Referencias -->
-      <section class="bg-light">
-        <h2><i class="fa-solid fa-clipboard-list icon" aria-hidden="true"></i> Resumo da Aula</h2>
-        <div class="summary-grid">
-          <div class="summary-card listas">
-            <p><strong>Listas</strong></p>
-            <p>Ordenadas e mutaveis. <code>for x in lista</code>. Acumuladores, filtros e <code>enumerate</code> sao padroes essenciais.</p>
-          </div>
-          <div class="summary-card dicts">
-            <p><strong>Dicionarios</strong></p>
-            <p>Chave-valor. <code>for k, v in d.items()</code>. Ideal para registros com nome e buscas rapidas.</p>
-          </div>
-          <div class="summary-card tuplas">
-            <p><strong>Tuplas</strong></p>
-            <p>Imutaveis e estruturadas. Desempacotamento em loops e o padrao. Ideal para dados fixos.</p>
-          </div>
-        </div>
-
       </section>
 
     </div>
@@ -1244,16 +1469,16 @@ print("Itens acima de R$100:", destaques)    # ['Mouse', 'Teclado']
     (function setupCodeSimulators() {
 
       function setupCodeSimulator(prefix, examples) {
-        var shell      = document.getElementById(prefix + '-shell');
-        var exSel      = document.getElementById(prefix + '-example');
-        var playBtn    = document.getElementById(prefix + '-play');
-        var stopBtn    = document.getElementById(prefix + '-stop');
-        var stepBtn    = document.getElementById(prefix + '-step');
+        var shell = document.getElementById(prefix + '-shell');
+        var exSel = document.getElementById(prefix + '-example');
+        var playBtn = document.getElementById(prefix + '-play');
+        var stopBtn = document.getElementById(prefix + '-stop');
+        var stepBtn = document.getElementById(prefix + '-step');
         var speedInput = document.getElementById(prefix + '-speed');
-        var speedLbl   = document.getElementById(prefix + '-speed-label');
-        var codeBody   = document.getElementById(prefix + '-code-body');
-        var outputEl   = document.getElementById(prefix + '-output');
-        var varsList   = document.getElementById(prefix + '-vars-list');
+        var speedLbl = document.getElementById(prefix + '-speed-label');
+        var codeBody = document.getElementById(prefix + '-code-body');
+        var outputEl = document.getElementById(prefix + '-output');
+        var varsList = document.getElementById(prefix + '-vars-list');
 
         if (!shell || !exSel || !playBtn || !stopBtn || !stepBtn || !speedInput || !speedLbl || !codeBody || !outputEl || !varsList) return;
 
