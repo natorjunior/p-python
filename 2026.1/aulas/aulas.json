@@ -70,5 +70,29 @@
     "descricao": "Listas, dicionários e tuplas com simulador visual passo a passo, padrões acumular+classificar, enumerate, zip e tabela comparativa das estruturas.",
     "link": "./aulas/aula09.html",
     "topicos": ["Listas", "Dicionários", "Tuplas", "for", "items()", "enumerate", "zip", "Simulador visual"]
+  },
+  {
+    "numero": 10,
+    "titulo": "Aula 10 - Dicionarios em Python",
+    "subtitulo": "Aquecimento com listas e foco em chave-valor",
+    "descricao": "Revisao rapida de listas e aprofundamento em dicionarios: criacao, acesso, atualizacao, loop com items() e atividades praticas.",
+    "link": "./aulas/aula10.html",
+    "topicos": ["Listas", "Dicionarios", "items()", "for", "if/elif/else", "Atividades praticas"]
+  },
+  {
+    "numero": 11,
+    "titulo": "Aula 11 - Introducao sobre Funcoes",
+    "subtitulo": "def, parametros, return e escopo",
+    "descricao": "Introducao ao uso de funcoes em Python para organizar e reutilizar codigo, com exemplos, atividades e boas praticas.",
+    "link": "./aulas/aula11.html",
+    "topicos": ["Funcoes", "def", "Parametros", "return", "Escopo", "Reutilizacao de codigo"]
+  },
+  {
+    "numero": 12,
+    "titulo": "Aula 12 - Break, Continue e Tuplas",
+    "subtitulo": "Controle de loops e estrutura imutavel",
+    "descricao": "Aula extra com foco no uso de break e continue em repeticoes e introducao pratica a tuplas com desempacotamento.",
+    "link": "./aulas/aula12.html",
+    "topicos": ["break", "continue", "for", "while", "Tuplas", "Desempacotamento", "Atividades praticas"]
   }
 ]

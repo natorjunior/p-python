@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aula 11 - Revisao Estrutura de Dados com codigos em Python e secoes aninhadas.">
+  <title>Aula 11 - Revisao Estrutura de Dados (Python)</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="./dist/reveal.css">
+  <link rel="stylesheet" href="./dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="./plugin/highlight/atom-one-dark.css">
+  <style>
+    :root {
+      --primary: #124a8a;
+      --secondary: #263648;
+      --light: #f2f7ff;
+      --accent: #e7f6ec;
+      --code: #1f2937;
+      --outline-border: #91bce9;
+      --question-border: #e9bb7f;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(180deg, #f8fbff 0%, #f2f7ff 100%);
+    }
+
+    .reveal h1,
+    .reveal h2,
+    .reveal h3 {
+      color: var(--primary);
+      letter-spacing: -0.01em;
+    }
+
+    .reveal p,
+    .reveal li {
+      color: var(--secondary);
+      font-size: 0.9em;
+      line-height: 1.42;
+    }
+
+    .reveal pre code {
+      font-size: 0.75em;
+      line-height: 1.45;
+      background: var(--code);
+      border-radius: 10px;
+      padding: 14px;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+    }
+
+    .reveal pre {
+      margin: 10px 0 0;
+      border-radius: 10px;
+      overflow: auto;
+    }
+
+    .reveal ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    .reveal ::-webkit-scrollbar-thumb {
+      background: #b8c8dd;
+      border-radius: 999px;
+    }
+
+    .hero-cover {
+      position: relative;
+      overflow: hidden;
+      padding: 40px !important;
+    }
+
+    .hero-cover::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(140deg, rgba(3, 15, 35, .58), rgba(11, 53, 112, .44), rgba(17, 126, 111, .30));
+      z-index: 1;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero-content {
+      background: rgba(7, 24, 54, .52);
+      border: 1px solid rgba(255, 255, 255, .25);
+      border-radius: 18px;
+      padding: 24px 26px;
+      text-align: left;
+      box-shadow: 0 24px 50px rgba(0, 0, 0, .24);
+      backdrop-filter: blur(2px);
+    }
+
+    .hero-kicker {
+      margin: 0 0 12px;
+      color: rgba(255, 255, 255, .9) !important;
+      font-size: 0.4em !important;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .hero-title {
+      margin: 0 0 12px !important;
+      color: #fff !important;
+      font-size: 1.35em !important;
+      line-height: 1.1 !important;
+      text-shadow: 0 10px 24px rgba(0, 0, 0, .35);
+    }
+
+    .hero-subtitle {
+      margin: 0 0 16px;
+      color: rgba(255, 255, 255, .93) !important;
+      font-size: 0.5em !important;
+      line-height: 1.45;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 16px;
+    }
+
+    .hero-tags span {
+      background: rgba(255, 255, 255, .15);
+      border: 1px solid rgba(255, 255, 255, .28);
+      border-radius: 999px;
+      color: #fff;
+      font-size: 0.34em;
+      font-weight: 500;
+      padding: 4px 10px;
+    }
+
+    .hero-meta {
+      margin: 0;
+      color: rgba(255, 255, 255, .88) !important;
+      font-size: 0.4em !important;
+    }
+
+    .hero-icon-wrap {
+      width: 180px;
+      height: 180px;
+      border-radius: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(255, 255, 255, .14);
+      border: 1px solid rgba(255, 255, 255, .35);
+      color: #fff;
+      font-size: 3.4em;
+      margin: 0 auto;
+      box-shadow: 0 22px 48px rgba(0, 0, 0, .24);
+    }
+
+    .outline-slide {
+      background: radial-gradient(circle at top right, #eef6ff 0%, #f8fbff 52%, #edf5ff 100%) !important;
+      text-align: left;
+      padding: 24px 26px !important;
+    }
+
+    .outline-card {
+      max-width: 930px;
+      margin: 10px auto 0;
+      padding: 16px 18px;
+      border-radius: 16px;
+      border: 1px solid var(--outline-border);
+      border-left: 7px solid #1a5f9b;
+      background: linear-gradient(140deg, #fcfeff, #edf6ff);
+      box-shadow: 0 14px 28px rgba(9, 43, 84, .11);
+    }
+
+    .outline-card p {
+      margin: 0 0 8px;
+      font-size: 0.66em !important;
+      color: #355679 !important;
+    }
+
+    .outline-card ol {
+      margin: 10px 0 0 20px;
+    }
+
+    .question-slide {
+      background: radial-gradient(circle at bottom left, #fef9f0 0%, #fff8ee 42%, #fef3e4 100%) !important;
+      text-align: left;
+      padding: 20px 26px !important;
+    }
+
+    .question-card {
+      max-width: 950px;
+      margin: 8px auto 0;
+      padding: 16px 18px;
+      border-radius: 16px;
+      border: 1px solid var(--question-border);
+      border-left: 7px solid #d68932;
+      background: linear-gradient(145deg, #fffcf7, #fff5e8);
+      box-shadow: 0 14px 30px rgba(120, 60, 5, .09);
+      max-height: 68vh;
+      overflow: auto;
+    }
+
+    .question-meta {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 2px 0 10px;
+    }
+
+    .module-chip,
+    .question-chip {
+      display: inline-block;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 0.46em;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .module-chip {
+      color: #fff;
+      background: linear-gradient(135deg, #1f5fa5, #2e7acb);
+    }
+
+    .question-chip {
+      color: #24517f;
+      border: 1px solid #b6d0ee;
+      background: #f7fbff;
+    }
+
+    .question-prompt {
+      margin: 2px 0 10px;
+      color: #4f3f2f !important;
+      font-size: 0.66em !important;
+      font-weight: 500;
+    }
+
+    .answer-box {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: var(--accent);
+      border: 1px solid #9fd2ac;
+      color: #1a6b3a !important;
+      font-size: 0.63em !important;
+      font-weight: 500;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .45);
+    }
+
+    .answer-box strong {
+      color: #16592f;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-icon-wrap {
+        width: 130px;
+        height: 130px;
+        font-size: 2.4em;
+      }
+
+      .question-card,
+      .outline-card {
+        max-height: 70vh;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <section class="hero-cover" data-background-gradient="linear-gradient(140deg, #0d2550, #1450a4, #1ba37f)">
+          <div class="hero-grid">
+            <div class="hero-content">
+              <p class="hero-kicker"><i class="fa-solid fa-laptop-code" aria-hidden="true"></i> Estrutura de Dados - Revisao</p>
+              <h1 class="hero-title">Aula 11<br><span>Revisao em Python</span></h1>
+              <p class="hero-subtitle">Versao em Python com secoes aninhadas no Reveal para navegacao horizontal e vertical.</p>
+              <div class="hero-tags"><span>Python</span><span>Operadores</span><span>Condicionais</span><span>Lacos</span><span>Funcoes</span><span>Estruturas</span></div>
+              <p class="hero-meta"><i class="fa-solid fa-user-tie" aria-hidden="true"></i> Prof. Msc. Nator Junior Carvalho da Costa</p>
+            </div>
+            <div class="hero-icon-wrap"><i class="fa-solid fa-book-open" aria-hidden="true"></i></div>
+          </div>
+        </section>
+        <section class="outline-slide">
+          <h2><i class="fa-solid fa-list" aria-hidden="true"></i> Roteiro Geral</h2>
+          <div class="outline-card"><ol>
+            <li>Operadores Relacionais</li>
+            <li>Operadores Logicos</li>
+            <li>Operadores Aritmeticos</li>
+            <li>Estruturas Condicionais</li>
+            <li>Lacos de Repeticao</li>
+            <li>Listas, Dicionarios e Tuplas</li>
+            <li>Funcoes</li>
+          </ol></div>
+        </section>
+      </section>
+      <section>
+        <section class="outline-slide">
+          <h2><i class="fa-solid fa-layer-group" aria-hidden="true"></i> Operadores Relacionais</h2>
+          <div class="outline-card">
+            <p>Use as setas verticais para navegar pelas questoes deste bloco.</p>
+            <ol>
+              <li>Questao 1</li>
+              <li>Questao 2</li>
+              <li>Questao 3</li>
+              <li>Questao 4</li>
+              <li>Questao 5</li>
+              <li>Questao 6</li>
+              <li>Questao 7</li>
+              <li>Questao 8</li>
+            </ol>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Operadores Relacionais - Questao 1</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+a, b = 1, 3
+print(a &gt; b)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> False
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Operadores Relacionais - Questao 2</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+a, b = True, True
+print(a &gt;= b)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> True
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Operadores Relacionais - Questao 3</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+a, b = True, False
+print(a != b)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> True
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Operadores Relacionais - Questao 4</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+a, b = False, False
+print(a &lt; b)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> False
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Operadores Relacionais - Questao 5</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+a, b = True, True
+print(a &lt;= b and a != False)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> True
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Operadores Relacionais - Questao 6</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+a, b = False, False
+print(a == b or a &gt; True)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> True
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Operadores Relacionais - Questao 7</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+a, b, c = True, False, False
+print(a &gt; b or (a &gt; c and c &lt; b))
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> True
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Operadores Relacionais - Questao 8</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+a, b, c = False, True, True
+print((a == b) or (c &gt; a))
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> True
+            </div>
+          </div>
+        </section>
+      </section>
+      <section>
+        <section class="outline-slide">
+          <h2><i class="fa-solid fa-layer-group" aria-hidden="true"></i> Operadores Logicos</h2>
+          <div class="outline-card">
+            <p>Use as setas verticais para navegar pelas questoes deste bloco.</p>
+            <ol>
+              <li>Questao 1</li>
+              <li>Questao 2</li>
+              <li>Questao 3</li>
+              <li>Questao 4</li>
+              <li>Questao 5</li>
+              <li>Questao 6</li>
+              <li>Questao 7</li>
+              <li>Questao 8</li>
+            </ol>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Operadores Logicos - Questao 1</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+a, b = True, False
+print(a and b)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> False
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Operadores Logicos - Questao 2</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+a, b = True, True
+print(a or b)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> True
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Operadores Logicos - Questao 3</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+a = False
+print(not a)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> True
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Operadores Logicos - Questao 4</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+a, b = True, True
+print(a and b)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> True
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Operadores Logicos - Questao 5</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+a, b = True, True
+print(a == b and a and False)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> False
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Operadores Logicos - Questao 6</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+a, b, c = False, True, False
+print(a or b or c)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> True
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Operadores Logicos - Questao 7</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+a, b, c = True, True, True
+print(a and b and c)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> True
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Operadores Logicos - Questao 8</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+a, b, c = False, True, False
+print((a or b) and not c)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> True
+            </div>
+          </div>
+        </section>
+      </section>
+      <section>
+        <section class="outline-slide">
+          <h2><i class="fa-solid fa-layer-group" aria-hidden="true"></i> Operadores Aritmeticos</h2>
+          <div class="outline-card">
+            <p>Use as setas verticais para navegar pelas questoes deste bloco.</p>
+            <ol>
+              <li>Questao 1</li>
+              <li>Questao 2</li>
+              <li>Questao 3</li>
+              <li>Questao 4</li>
+              <li>Questao 5</li>
+              <li>Questao 6</li>
+              <li>Questao 7</li>
+              <li>Questao 8</li>
+            </ol>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Operadores Aritmeticos - Questao 1</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+a, b = 10, 5
+print(a + b)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> 15
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Operadores Aritmeticos - Questao 2</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+a, b = 20, 4
+print(a - b * 2)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> 12
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Operadores Aritmeticos - Questao 3</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+a, b = 15, 10
+print((a - b) * 2)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> 10
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Operadores Aritmeticos - Questao 4</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+a, b = 3, 7
+print(a * (b + 3))
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> 30
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Operadores Aritmeticos - Questao 5</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+a, b = 10, 0
+print(a / b)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> Erro de divisao por zero.
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Operadores Aritmeticos - Questao 6</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+a, b = 21, 4
+print(a % b + 3)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> 4
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Operadores Aritmeticos - Questao 7</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+a = 5
+print(a)
+a += 1
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> 5
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Operadores Aritmeticos - Questao 8</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+a, b = 18, 5
+print((a // b) + (a % b))
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> 6
+            </div>
+          </div>
+        </section>
+      </section>
+      <section>
+        <section class="outline-slide">
+          <h2><i class="fa-solid fa-layer-group" aria-hidden="true"></i> Estruturas Condicionais</h2>
+          <div class="outline-card">
+            <p>Use as setas verticais para navegar pelas questoes deste bloco.</p>
+            <ol>
+              <li>Questao 1</li>
+              <li>Questao 2</li>
+              <li>Questao 3</li>
+              <li>Questao 4</li>
+              <li>Questao 5</li>
+              <li>Questao 6</li>
+              <li>Questao 7</li>
+            </ol>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Estruturas Condicionais - Questao 1</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+a = 5
+if a &gt; 3:
+    print(&quot;a e maior que 3&quot;)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> a e maior que 3
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Estruturas Condicionais - Questao 2</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+a = 2
+if a &gt; 5:
+    print(&quot;a e maior que 5&quot;)
+else:
+    print(&quot;a e menor ou igual a 5&quot;)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> a e menor ou igual a 5
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Estruturas Condicionais - Questao 3</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+a = 10
+if a == 10:
+    print(&quot;a e igual a 10&quot;)
+elif a &lt; 10:
+    print(&quot;a e menor que 10&quot;)
+else:
+    print(&quot;a e maior que 10&quot;)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> a e igual a 10
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Estruturas Condicionais - Questao 4</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+a = 15
+if a &gt; 10:
+    print(&quot;a e maior que 10&quot;)
+elif a == 15:
+    print(&quot;a e igual a 15&quot;)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> a e maior que 10
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Estruturas Condicionais - Questao 5</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+a, b = 5, 10
+if a &gt; b:
+    print(&quot;a e maior que b&quot;)
+elif a &lt; b:
+    print(&quot;a e menor que b&quot;)
+else:
+    print(&quot;a e igual a b&quot;)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> a e menor que b
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Estruturas Condicionais - Questao 6</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+a = 10
+if a &gt; 5 and a &lt; 15:
+    print(&quot;a esta entre 5 e 15&quot;)
+else:
+    print(&quot;a nao esta entre 5 e 15&quot;)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> a esta entre 5 e 15
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Estruturas Condicionais - Questao 7</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+idade = 18
+
+if idade &gt;= 60:
+    print(&quot;idoso&quot;)
+elif idade &gt;= 18:
+    print(&quot;adulto&quot;)
+else:
+    print(&quot;menor&quot;)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> adulto
+            </div>
+          </div>
+        </section>
+      </section>
+      <section>
+        <section class="outline-slide">
+          <h2><i class="fa-solid fa-layer-group" aria-hidden="true"></i> Lacos de Repeticao</h2>
+          <div class="outline-card">
+            <p>Use as setas verticais para navegar pelas questoes deste bloco.</p>
+            <ol>
+              <li>Questao 1</li>
+              <li>Questao 2</li>
+              <li>Questao 3</li>
+              <li>Questao 4</li>
+              <li>Questao 5</li>
+              <li>Questao 6</li>
+              <li>Questao 7</li>
+              <li>Questao 8</li>
+            </ol>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Lacos de Repeticao - Questao 1</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+for i in range(5):
+    print(i, end=&quot; &quot;)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> 0 1 2 3 4
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Lacos de Repeticao - Questao 2</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+i = 0
+while i &lt; 3:
+    print(i, end=&quot; &quot;)
+    i += 1
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> 0 1 2
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Lacos de Repeticao - Questao 3</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+i = 5
+while True:
+    print(i, end=&quot; &quot;)
+    i -= 1
+    if i &lt;= 0:
+        break
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> 5 4 3 2 1
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Lacos de Repeticao - Questao 4</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+for i in range(0, 11, 2):
+    print(i, end=&quot; &quot;)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> 0 2 4 6 8 10
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Lacos de Repeticao - Questao 5</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+for i in range(10):
+    if i % 2 == 0:
+        continue
+    print(i, end=&quot; &quot;)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> 1 3 5 7 9
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Lacos de Repeticao - Questao 6</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+i = 0
+while i &lt; 5:
+    i += 1
+    if i == 3:
+        break
+    print(i, end=&quot; &quot;)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> 1 2
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Lacos de Repeticao - Questao 7</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+i = 0
+while i &lt; 5:
+    print(i, end=&quot; &quot;)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> Loop infinito, imprimindo 0 continuamente.
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Lacos de Repeticao - Questao 8</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+soma = 0
+for i in range(1, 6):
+    soma += i
+print(soma)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> 15
+            </div>
+          </div>
+        </section>
+      </section>
+      <section>
+        <section class="outline-slide">
+          <h2><i class="fa-solid fa-layer-group" aria-hidden="true"></i> Listas, Dicionarios e Tuplas</h2>
+          <div class="outline-card">
+            <p>Use as setas verticais para navegar pelas questoes deste bloco.</p>
+            <ol>
+              <li>Questao 1</li>
+              <li>Questao 2</li>
+              <li>Questao 3</li>
+              <li>Questao 4</li>
+              <li>Questao 5</li>
+              <li>Questao 6</li>
+              <li>Questao 7</li>
+              <li>Questao 8</li>
+              <li>Questao 9</li>
+              <li>Questao 10</li>
+            </ol>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Listas, Dicionarios e Tuplas - Questao 1</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+numeros = [4, 8, 15, 16]
+print(numeros[0], numeros[-1])
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> 4 16
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Listas, Dicionarios e Tuplas - Questao 2</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+valores = [3, 5, 7]
+print(sum(valores))
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> 15
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Listas, Dicionarios e Tuplas - Questao 3</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+nums = [1, 2, 3, 4, 5, 6]
+soma_pares = 0
+for n in nums:
+    if n % 2 == 0:
+        soma_pares += n
+print(soma_pares)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> 12
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Listas, Dicionarios e Tuplas - Questao 4</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+aluno = {&quot;nome&quot;: &quot;Ana&quot;, &quot;nota&quot;: 8.5}
+print(aluno[&quot;nome&quot;], aluno[&quot;nota&quot;])
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> Ana 8.5
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Listas, Dicionarios e Tuplas - Questao 5</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+texto = &quot;banana&quot;
+freq = {}
+for ch in texto:
+    if ch in freq:
+        freq[ch] += 1
+    else:
+        freq[ch] = 1
+print(freq[&quot;a&quot;], freq[&quot;n&quot;])
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> 3 2
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Listas, Dicionarios e Tuplas - Questao 6</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+ponto = (10, 20)
+x, y = ponto
+print(x + y)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> 30
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Listas, Dicionarios e Tuplas - Questao 7</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+notas = [6, 7, 5, 8]
+aprovados = 0
+for nota in notas:
+    if nota &gt;= 6:
+        aprovados += 1
+print(aprovados)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> 3
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Listas, Dicionarios e Tuplas - Questao 8</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+matriz = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+diagonal = matriz[0][0] + matriz[1][1] + matriz[2][2]
+print(diagonal)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> 15
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Listas, Dicionarios e Tuplas - Questao 9</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+matriz = [[2, 1, 0], [3, 5, 4], [7, 6, 8]]
+maior = matriz[0][0]
+pos = (0, 0)
+for i in range(len(matriz)):
+    for j in range(len(matriz[i])):
+        valor = matriz[i][j]
+        if valor &gt; maior:
+            maior = valor
+            pos = (i, j)
+print(maior, pos)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> 8 (2, 2)
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Listas, Dicionarios e Tuplas - Questao 10</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+a = [[1, 2], [3, 4]]
+b = [[2, 0], [1, 2]]
+c = [[0, 0], [0, 0]]
+for i in range(2):
+    for j in range(2):
+        for k in range(2):
+            c[i][j] += a[i][k] * b[k][j]
+print(c)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> [[4, 4], [10, 8]]
+            </div>
+          </div>
+        </section>
+      </section>
+      <section>
+        <section class="outline-slide">
+          <h2><i class="fa-solid fa-layer-group" aria-hidden="true"></i> Funcoes</h2>
+          <div class="outline-card">
+            <p>Use as setas verticais para navegar pelas questoes deste bloco.</p>
+            <ol>
+              <li>Questao 1</li>
+              <li>Questao 2</li>
+              <li>Questao 3</li>
+              <li>Questao 4</li>
+              <li>Questao 5</li>
+              <li>Questao 6</li>
+              <li>Questao 7</li>
+              <li>Questao 8</li>
+            </ol>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Funcoes - Questao 1</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+def soma(a, b):
+    return a + b
+
+print(soma(5, 3))
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> 8
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Funcoes - Questao 2</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+def imprimir_numero(numero):
+    print(numero)
+
+imprimir_numero(10)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> 10
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Funcoes - Questao 3</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+def multiplicar(a, b):
+    return a * b
+
+resultado = multiplicar(4, 5)
+print(resultado)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> 20
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Funcoes - Questao 4</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+def fatorial(n):
+    if n == 0:
+        return 1
+    return n * fatorial(n - 1)
+
+print(fatorial(5))
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> 120
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Funcoes - Questao 5</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+def eh_par(numero):
+    return numero % 2 == 0
+
+num = 4
+if eh_par(num):
+    print(f&quot;{num} e par&quot;)
+else:
+    print(f&quot;{num} e impar&quot;)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> 4 e par
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Funcoes - Questao 6</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+def maximo(a, b):
+    if a &gt; b:
+        return a
+    return b
+
+print(maximo(10, 20))
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> 20
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Funcoes - Questao 7</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+def media(a, b, c):
+    return (a + b + c) / 3
+
+resultado = media(20, 30, 40)
+print(f&quot;{resultado:.2f}&quot;)
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> 30.00
+            </div>
+          </div>
+        </section>
+        <section class="question-slide">
+          <h2><i class="fa-solid fa-code" aria-hidden="true"></i> Funcoes - Questao 8</h2>
+          <div class="question-card">
+            <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
+            <pre><code class="language-python" data-trim data-noescape>
+def potencia(base, expoente=2):
+    return base ** expoente
+
+print(potencia(3), potencia(2, 3))
+            </code></pre>
+            <div class="answer-box fragment">
+              <strong>Resposta esperada:</strong> 9 8
+            </div>
+          </div>
+        </section>
+      </section>
+    </div>
+  </div>
+  <script src="./dist/reveal.js"></script>
+  <script src="./plugin/highlight/highlight.js"></script>
+  <script>
+    (function decorateQuestionSlides() {
+      var moduleGroups = Array.from(document.querySelectorAll('.slides > section')).slice(1);
+
+      moduleGroups.forEach(function (group, moduleIndex) {
+        var moduleTitleEl = group.querySelector('.outline-slide h2');
+        var moduleTitle = moduleTitleEl ? moduleTitleEl.textContent.replace(/\s+/g, ' ').trim() : 'Modulo';
+        var questions = Array.from(group.querySelectorAll('.question-slide'));
+
+        questions.forEach(function (slide, questionIndex) {
+          var card = slide.querySelector('.question-card');
+          if (!card || card.querySelector('.question-meta')) return;
+
+          var meta = document.createElement('div');
+          meta.className = 'question-meta';
+          meta.innerHTML =
+            '<span class="module-chip">Modulo ' + (moduleIndex + 1) + '</span>' +
+            '<span class="question-chip">Questao ' + (questionIndex + 1) + ' / ' + questions.length + '</span>';
+
+          var prompt = card.querySelector('.question-prompt');
+          if (prompt) {
+            card.insertBefore(meta, prompt);
+          } else {
+            card.prepend(meta);
+          }
+
+          slide.setAttribute('data-module-title', moduleTitle);
+        });
+      });
+    })();
+
+    Reveal.initialize({
+      center: false,
+      controls: true,
+      progress: true,
+      slideNumber: true,
+      controlsTutorial: true,
+      hash: true,
+      history: true,
+      transition: 'convex',
+      transitionSpeed: 'default',
+      plugins: [RevealHighlight]
+    });
+  </script>
+</body>
+</html>

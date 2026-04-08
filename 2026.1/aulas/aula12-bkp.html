@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aula 12 - Aula extra de break, continue e tuplas em Python com atividades praticas.">
+  <title>Aula 12 - Break, Continue e Tuplas</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="./dist/reveal.css">
+  <link rel="stylesheet" href="./dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="./plugin/highlight/atom-one-dark.css">
+
+  <style>
+    :root {
+      --primary-color: #0056b3;
+      --secondary-color: #2f2f2f;
+      --light-bg: #f2f7ff;
+      --accent-bg: #e7f6ec;
+      --warn-bg: #fff8e1;
+      --code-bg: #1f2937;
+      --transition-fragment: 0.3s ease;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .reveal h1,
+    .reveal h2,
+    .reveal h3 {
+      color: var(--primary-color);
+    }
+
+    .reveal p,
+    .reveal li {
+      color: var(--secondary-color);
+      font-size: 0.95em;
+    }
+
+    .reveal .icon {
+      color: currentColor;
+      margin-right: 0.28em;
+    }
+
+    .reveal .icon-only {
+      color: currentColor;
+      margin-right: 0;
+    }
+
+    .reveal pre code {
+      font-size: 0.84em;
+      background: var(--code-bg);
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    .fragment {
+      transition: all var(--transition-fragment);
+    }
+
+    .bg-light {
+      background-color: var(--light-bg) !important;
+    }
+
+    .bg-accent {
+      background-color: var(--accent-bg) !important;
+    }
+
+    .bg-warn {
+      background-color: var(--warn-bg) !important;
+    }
+
+    .hero-cover {
+      position: relative;
+      overflow: hidden;
+      padding: 40px !important;
+    }
+
+    .hero-cover::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(140deg, rgba(3, 15, 35, .55), rgba(11, 53, 112, .4), rgba(17, 126, 111, .28));
+      z-index: 1;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero-content {
+      background: rgba(7, 24, 54, .5);
+      border: 1px solid rgba(255, 255, 255, .2);
+      border-radius: 16px;
+      padding: 24px 26px;
+      text-align: left;
+      box-shadow: 0 18px 44px rgba(0, 0, 0, .22);
+      backdrop-filter: blur(2px);
+    }
+
+    .hero-kicker {
+      margin: 0 0 12px;
+      color: rgba(255, 255, 255, .9) !important;
+      font-size: 0.4em !important;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .hero-title {
+      margin: 0 0 12px !important;
+      color: #fff !important;
+      font-size: 1.35em !important;
+      line-height: 1.12 !important;
+      text-shadow: 0 10px 20px rgba(0, 0, 0, .35);
+    }
+
+    .hero-title span {
+      color: rgba(230, 244, 255, .96);
+      font-weight: 500;
+      font-size: 0.88em;
+    }
+
+    .hero-subtitle {
+      margin: 0 0 16px;
+      color: rgba(255, 255, 255, .92) !important;
+      font-size: 0.5em !important;
+      line-height: 1.45;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 18px;
+    }
+
+    .hero-tags span {
+      background: rgba(255, 255, 255, .14);
+      border: 1px solid rgba(255, 255, 255, .26);
+      border-radius: 999px;
+      color: #fff;
+      font-size: 0.34em;
+      font-weight: 500;
+      padding: 4px 10px;
+    }
+
+    .hero-meta {
+      margin: 0;
+      color: rgba(255, 255, 255, .88) !important;
+      font-size: 0.4em !important;
+    }
+
+    .hero-mark {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-icon-wrap {
+      width: 180px;
+      height: 180px;
+      border-radius: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(255, 255, 255, .14);
+      border: 1px solid rgba(255, 255, 255, .35);
+      box-shadow: 0 18px 42px rgba(0, 0, 0, .24);
+      color: #fff;
+      font-size: 3.4em;
+    }
+
+    .box,
+    .box-green,
+    .box-orange {
+      padding: 14px 18px;
+      border-radius: 8px;
+      margin: 14px 0;
+      text-align: left;
+    }
+
+    .box {
+      background: var(--light-bg);
+      border-left: 5px solid var(--primary-color);
+    }
+
+    .box-green {
+      background: var(--accent-bg);
+      border-left: 5px solid #27ae60;
+    }
+
+    .box-orange {
+      background: #fff3e0;
+      border-left: 5px solid #e67e22;
+    }
+
+    .columns {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .columns>div {
+      flex: 1;
+    }
+
+    .section-divider {
+      position: relative;
+      padding: 40px !important;
+    }
+
+    .section-divider h2 {
+      color: #fff !important;
+      font-size: 1.6em;
+      text-shadow: 0 4px 16px rgba(0, 0, 0, .3);
+    }
+
+    .section-divider p {
+      color: rgba(255, 255, 255, .9) !important;
+      font-size: 0.85em;
+    }
+
+    .section-number {
+      display: inline-block;
+      background: rgba(255, 255, 255, .18);
+      border: 1px solid rgba(255, 255, 255, .3);
+      border-radius: 16px;
+      padding: 6px 20px;
+      color: #fff;
+      font-size: 0.5em;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+
+    .activity-slide {
+      background: radial-gradient(circle at top right, #eef6ff 0%, #f8fbff 44%, #eef4fb 100%) !important;
+      text-align: left;
+      padding: 20px 26px !important;
+    }
+
+    .activity-card {
+      max-width: 880px;
+      margin: 10px auto 0;
+      padding: 16px 18px;
+      border-radius: 14px;
+      border: 1px solid #bfd9f2;
+      border-left: 6px solid #1a5f9b;
+      background: linear-gradient(140deg, #f8fcff, #edf6ff);
+      box-shadow: 0 10px 24px rgba(9, 43, 84, .1);
+      max-height: 62vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    .activity-title {
+      margin: 0 0 8px;
+      color: #124980 !important;
+      font-size: 0.84em !important;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .activity-question {
+      margin: 4px 0;
+      color: #2b4352 !important;
+      font-size: 0.72em !important;
+      line-height: 1.45;
+    }
+
+    .activity-question code {
+      background: rgba(255, 255, 255, .92);
+      border-radius: 6px;
+      padding: 2px 6px;
+      font-size: 0.95em;
+      white-space: nowrap;
+    }
+
+    .activity-timer {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px dashed #9ec2e6;
+      background: #f4f9ff;
+    }
+
+    .activity-timer-label {
+      margin: 0 0 8px;
+      color: #184877 !important;
+      font-size: 0.66em !important;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .activity-timer-display {
+      font-family: "Consolas", "Courier New", monospace;
+      font-size: 1.08em;
+      color: #0f4c81;
+    }
+
+    .activity-timer-display.warning {
+      color: #b45309;
+    }
+
+    .activity-timer-display.done {
+      color: #b42318;
+    }
+
+    .activity-timer-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .activity-timer-btn {
+      border: 1px solid #9ec2e6;
+      border-radius: 8px;
+      background: #fff;
+      color: #184877;
+      padding: 4px 10px;
+      font-size: 0.58em;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .activity-timer-btn.start {
+      background: #1f8f5f;
+      border-color: #1f8f5f;
+      color: #fff;
+    }
+
+    .activity-timer-btn.pause {
+      background: #f59e0b;
+      border-color: #f59e0b;
+      color: #fff;
+    }
+
+    .activity-timer-btn.reset {
+      background: #475569;
+      border-color: #475569;
+      color: #fff;
+    }
+
+    .activity-timer-btn.config {
+      background: #2f6fd4;
+      border-color: #2f6fd4;
+      color: #fff;
+    }
+
+    .timer-modal[hidden] {
+      display: none !important;
+    }
+
+    .timer-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1400;
+    }
+
+    .timer-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(7, 20, 43, .52);
+    }
+
+    .timer-modal-card {
+      position: relative;
+      width: min(92vw, 460px);
+      margin: 10vh auto 0;
+      background: #fff;
+      border: 1px solid #c7d9ef;
+      border-radius: 14px;
+      box-shadow: 0 18px 42px rgba(8, 27, 55, .28);
+      padding: 16px;
+      text-align: left;
+    }
+
+    .timer-modal-title {
+      margin: 0 0 10px;
+      color: #0f4c81 !important;
+      font-size: 0.95em !important;
+    }
+
+    .timer-modal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .timer-modal-field {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .timer-modal-field label {
+      font-size: 0.58em;
+      color: #3b5878;
+      font-weight: 700;
+    }
+
+    .timer-modal-field input {
+      border: 1px solid #c3d6ed;
+      border-radius: 8px;
+      padding: 6px 8px;
+      font-size: 0.7em;
+      color: #123a63;
+      background: #fafdff;
+    }
+
+    .timer-modal-note {
+      margin: 10px 0 0;
+      font-size: 0.56em !important;
+      color: #5a738f !important;
+    }
+
+    .timer-modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .timer-modal-btn {
+      border: 1px solid #bfd0e7;
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-size: 0.6em;
+      font-weight: 700;
+      cursor: pointer;
+      background: #fff;
+      color: #264d76;
+    }
+
+    .timer-modal-btn.primary {
+      background: #1f8f5f;
+      border-color: #1f8f5f;
+      color: #fff;
+    }
+
+    .quiz-slide {
+      background: radial-gradient(circle at bottom left, #fef9f0 0%, #fff7eb 40%, #fef5e7 100%) !important;
+      text-align: left;
+      padding: 20px 26px !important;
+    }
+
+    .quiz-card {
+      max-width: 880px;
+      margin: 10px auto 0;
+      padding: 16px 18px;
+      border-radius: 14px;
+      border: 1px solid #f5d6a7;
+      border-left: 6px solid #e67e22;
+      background: linear-gradient(140deg, #fffcf7, #fef6ea);
+      box-shadow: 0 10px 24px rgba(120, 60, 5, .08);
+      max-height: 62vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    .quiz-title {
+      margin: 0 0 10px;
+      color: #b45309 !important;
+      font-size: 0.84em !important;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .quiz-answer {
+      margin: 10px 0 0;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: #e7f6ec;
+      border: 1px solid #a3d9b1;
+      color: #1a6b3a !important;
+      font-size: 0.68em !important;
+      font-weight: 500;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .summary-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 12px;
+    }
+
+    .summary-card p:first-child {
+      margin: 0;
+      font-size: 0.86em;
+    }
+
+    .summary-card p:last-child {
+      margin: 6px 0 0;
+      font-size: 0.68em;
+    }
+
+    .summary-card.syntax {
+      border: 2px solid #2c7da0;
+    }
+
+    .summary-card.return {
+      border: 2px solid #6c43bf;
+    }
+
+    .summary-card.practice {
+      border: 2px solid #c56b2f;
+    }
+
+    .reveal table {
+      font-size: 0.75em;
+      margin: 16px auto;
+    }
+
+    .reveal table th {
+      background: var(--primary-color);
+      color: #fff;
+      padding: 8px 14px;
+    }
+
+    .reveal table td {
+      padding: 7px 12px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-icon-wrap {
+        width: 130px;
+        height: 130px;
+        font-size: 2.4em;
+      }
+
+      .columns {
+        flex-direction: column;
+      }
+
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <section class="hero-cover" data-background-gradient="linear-gradient(140deg, #0d2550, #1450a4, #1ba37f)">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <p class="hero-kicker"><i class="fa-solid fa-laptop-code icon" aria-hidden="true"></i>Introducao a Programacao</p>
+            <h1 class="hero-title">Aula 12<br><span>Break, Continue e Tuplas</span></h1>
+            <p class="hero-subtitle">Aula extra para controlar loops com <code>break</code>/<code>continue</code> e trabalhar com tuplas em problemas praticos.</p>
+            <div class="hero-tags">
+              <span>for</span><span>while</span><span>break</span><span>continue</span><span>tuplas</span><span>desempacotamento</span>
+            </div>
+            <p class="hero-meta"><i class="fa-solid fa-user-tie icon" aria-hidden="true"></i>Prof. Msc. Nator Junior Carvalho da Costa</p>
+          </div>
+          <div class="hero-mark">
+            <div class="hero-icon-wrap">
+              <i class="fa-solid fa-code-branch icon-only" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-light">
+        <h2><i class="fa-solid fa-bullseye icon" aria-hidden="true"></i> Objetivos da Aula</h2>
+        <div class="box">
+          <ul>
+            <li>Entender quando usar <code>break</code> e quando usar <code>continue</code>.</li>
+            <li>Aplicar controle de fluxo em loops com regras reais.</li>
+            <li>Revisar tuplas como estrutura imutavel.</li>
+            <li>Percorrer e desempacotar tuplas em listas de dados.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section-divider" data-background-gradient="linear-gradient(135deg, #0f4c81, #2c7da0, #61a5c2)">
+        <div class="section-number">Parte 1</div>
+        <h2><i class="fa-solid fa-arrows-turn-to-dots icon" aria-hidden="true"></i> Break e Continue</h2>
+        <p>Comandos para controlar o comportamento do loop no meio da execucao.</p>
+      </section>
+
+      <section class="bg-light">
+        <h2><i class="fa-solid fa-door-open icon" aria-hidden="true"></i> O que faz <code>break</code>?</h2>
+        <pre><code class="language-python" data-trim data-noescape>
+for n in range(1, 11):
+    if n == 6:
+        break
+    print(n)
+
+# saida: 1 2 3 4 5
+        </code></pre>
+        <div class="box-orange">
+          <p><code>break</code> encerra o loop imediatamente, sem continuar as proximas iteracoes.</p>
+        </div>
+      </section>
+
+      <section class="bg-accent">
+        <h2><i class="fa-solid fa-forward icon" aria-hidden="true"></i> O que faz <code>continue</code>?</h2>
+        <pre><code class="language-python" data-trim data-noescape>
+for n in range(1, 8):
+    if n == 4:
+        continue
+    print(n)
+
+# saida: 1 2 3 5 6 7
+        </code></pre>
+        <div class="box-green">
+          <p><code>continue</code> pula apenas a iteracao atual e segue o loop normalmente.</p>
+        </div>
+      </section>
+
+      <section class="bg-warn">
+        <h2><i class="fa-solid fa-table icon" aria-hidden="true"></i> Comparacao Rapida</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Comando</th>
+              <th>Efeito</th>
+              <th>Uso tipico</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>break</code></td>
+              <td>Interrompe o loop</td>
+              <td>Parar busca quando encontrou o alvo</td>
+            </tr>
+            <tr>
+              <td><code>continue</code></td>
+              <td>Pula para proxima iteracao</td>
+              <td>Ignorar item invalido e continuar</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="activity-slide">
+        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade B1 &mdash; Busca com Break</h2>
+        <div class="activity-card">
+          <p class="activity-title"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> Parada antecipada</p>
+          <p class="activity-question">Leia numeros inteiros em loop.</p>
+          <p class="activity-question">Quando o usuario digitar <code>0</code>, interrompa o loop com <code>break</code>.</p>
+          <p class="activity-question">Mostre quantos numeros positivos foram digitados antes do zero.</p>
+          <div class="activity-timer" data-duration="360">
+            <p class="activity-timer-label"><i class="fa-solid fa-hourglass-half" aria-hidden="true"></i> Tempo sugerido: <strong class="activity-timer-display">06:00</strong></p>
+            <div class="activity-timer-controls">
+              <button type="button" class="activity-timer-btn start">Iniciar</button>
+              <button type="button" class="activity-timer-btn pause">Pausar</button>
+              <button type="button" class="activity-timer-btn reset">Reiniciar</button>
+              <button type="button" class="activity-timer-btn config">Configurar</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz-slide">
+        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Solucao &mdash; Atividade B1</h2>
+        <div class="quiz-card">
+          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Codigo</p>
+          <pre><code class="language-python" data-trim data-noescape>
+qtd_positivos = 0
+
+while True:
+    n = int(input("Digite um numero (0 para parar): "))
+    if n == 0:
+        break
+    if n > 0:
+        qtd_positivos += 1
+
+print("Positivos digitados:", qtd_positivos)
+          </code></pre>
+        </div>
+      </section>
+
+      <section class="activity-slide">
+        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade B2 &mdash; Filtro com Continue</h2>
+        <div class="activity-card">
+          <p class="activity-title"><i class="fa-solid fa-filter" aria-hidden="true"></i> Ignorando valores</p>
+          <p class="activity-question">Percorra os numeros de <code>1</code> ate <code>20</code>.</p>
+          <p class="activity-question">Use <code>continue</code> para ignorar os multiplos de 3.</p>
+          <p class="activity-question">Imprima apenas os valores restantes.</p>
+          <div class="activity-timer" data-duration="300">
+            <p class="activity-timer-label"><i class="fa-solid fa-hourglass-half" aria-hidden="true"></i> Tempo sugerido: <strong class="activity-timer-display">05:00</strong></p>
+            <div class="activity-timer-controls">
+              <button type="button" class="activity-timer-btn start">Iniciar</button>
+              <button type="button" class="activity-timer-btn pause">Pausar</button>
+              <button type="button" class="activity-timer-btn reset">Reiniciar</button>
+              <button type="button" class="activity-timer-btn config">Configurar</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz-slide">
+        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Solucao &mdash; Atividade B2</h2>
+        <div class="quiz-card">
+          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Codigo</p>
+          <pre><code class="language-python" data-trim data-noescape>
+for n in range(1, 21):
+    if n % 3 == 0:
+        continue
+    print(n)
+          </code></pre>
+          <div class="quiz-answer">
+            O loop continua, mas os valores que atendem a condicao sao pulados.
+          </div>
+        </div>
+      </section>
+
+      <section class="section-divider" data-background-gradient="linear-gradient(135deg, #3f1c7a, #6c43bf, #9551e0)">
+        <div class="section-number">Parte 2</div>
+        <h2><i class="fa-solid fa-box-archive icon" aria-hidden="true"></i> Tuplas</h2>
+        <p>Estrutura ordenada e imutavel para representar pares e registros fixos.</p>
+      </section>
+
+      <section class="bg-light">
+        <h2><i class="fa-solid fa-code icon" aria-hidden="true"></i> Criacao e Acesso</h2>
+        <pre><code class="language-python" data-trim data-noescape>
+coordenada = (10, 25)
+print(coordenada[0])  # 10
+print(coordenada[1])  # 25
+
+aluno = ("Ana", 8.7)
+nome = aluno[0]
+nota = aluno[1]
+        </code></pre>
+        <div class="box">
+          <ul>
+            <li>Tuplas usam parenteses: <code>()</code>.</li>
+            <li>Podem guardar tipos diferentes no mesmo registro.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="bg-accent">
+        <h2><i class="fa-solid fa-lock icon" aria-hidden="true"></i> Imutabilidade</h2>
+        <pre><code class="language-python" data-trim data-noescape>
+cores = ("azul", "verde", "amarelo")
+
+# cores[1] = "vermelho"  -> erro!
+print(cores)
+        </code></pre>
+        <div class="box-green">
+          <p>Depois de criada, a tupla nao permite alteracao direta dos elementos.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2><i class="fa-solid fa-diagram-project icon" aria-hidden="true"></i> Percorrendo Tuplas</h2>
+        <pre><code class="language-python" data-trim data-noescape>
+produtos = [("Arroz", 12.5), ("Feijao", 9.8), ("Oleo", 7.2)]
+
+for nome, preco in produtos:
+    print(nome, "-> R$", preco)
+        </code></pre>
+        <div class="box-orange">
+          <p>Esse padrao de desempacotamento em <code>for nome, valor in ...</code> e muito comum.</p>
+        </div>
+      </section>
+
+      <section class="activity-slide">
+        <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade T1 &mdash; Tupla de Produtos</h2>
+        <div class="activity-card">
+          <p class="activity-title"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i> Lista de compras</p>
+          <p class="activity-question">Crie uma lista com 4 tuplas no formato <code>(produto, preco)</code>.</p>
+          <p class="activity-question">Percorra a lista e mostre cada produto com seu preco.</p>
+          <p class="activity-question">No final, mostre a soma total dos precos.</p>
+          <div class="activity-timer" data-duration="420">
+            <p class="activity-timer-label"><i class="fa-solid fa-hourglass-half" aria-hidden="true"></i> Tempo sugerido: <strong class="activity-timer-display">07:00</strong></p>
+            <div class="activity-timer-controls">
+              <button type="button" class="activity-timer-btn start">Iniciar</button>
+              <button type="button" class="activity-timer-btn pause">Pausar</button>
+              <button type="button" class="activity-timer-btn reset">Reiniciar</button>
+              <button type="button" class="activity-timer-btn config">Configurar</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz-slide">
+        <h2><i class="fa-solid fa-circle-check icon" style="color:#27ae60;" aria-hidden="true"></i> Solucao &mdash; Atividade T1</h2>
+        <div class="quiz-card">
+          <p class="quiz-title"><i class="fa-solid fa-code" aria-hidden="true"></i> Codigo</p>
+          <pre><code class="language-python" data-trim data-noescape>
+itens = [("Arroz", 12.5), ("Feijao", 9.8), ("Oleo", 7.2), ("Cafe", 15.0)]
+total = 0
+
+for produto, preco in itens:
+    print(produto, "-> R$", preco)
+    total += preco
+
+print("Total:", total)
+          </code></pre>
+        </div>
+      </section>
+
+      <section class="bg-light">
+        <h2><i class="fa-solid fa-clipboard-list icon" aria-hidden="true"></i> Resumo da Aula</h2>
+        <div class="summary-grid">
+          <div class="summary-card syntax">
+            <p><strong>Break e Continue</strong></p>
+            <p>Controlam o fluxo de repeticoes: <code>break</code> para sair e <code>continue</code> para pular iteracao.</p>
+          </div>
+          <div class="summary-card return">
+            <p><strong>Tuplas</strong></p>
+            <p>Estruturas ordenadas e imutaveis, muito uteis para pares de dados.</p>
+          </div>
+          <div class="summary-card practice">
+            <p><strong>Pratica</strong></p>
+            <p>Aplicamos os conceitos em atividades de filtro, parada antecipada e listas de tuplas.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <div id="timer-config-modal" class="timer-modal" hidden>
+    <div class="timer-modal-backdrop" data-timer-modal-close="1"></div>
+    <div class="timer-modal-card" role="dialog" aria-modal="true" aria-labelledby="timer-config-title">
+      <h3 id="timer-config-title" class="timer-modal-title"><i class="fa-solid fa-sliders icon" aria-hidden="true"></i> Configurar Contador</h3>
+      <div class="timer-modal-grid">
+        <div class="timer-modal-field">
+          <label for="timer-config-minutes">Minutos</label>
+          <input id="timer-config-minutes" type="number" min="0" max="120" step="1" value="5">
+        </div>
+        <div class="timer-modal-field">
+          <label for="timer-config-seconds">Segundos</label>
+          <input id="timer-config-seconds" type="number" min="0" max="59" step="1" value="0">
+        </div>
+        <div class="timer-modal-field">
+          <label for="timer-config-warning">Alerta final (seg)</label>
+          <input id="timer-config-warning" type="number" min="5" max="600" step="5" value="60">
+        </div>
+      </div>
+      <p class="timer-modal-note">A configuracao e aplicada apenas ao contador da atividade atual.</p>
+      <div class="timer-modal-actions">
+        <button type="button" id="timer-config-cancel" class="timer-modal-btn">Cancelar</button>
+        <button type="button" id="timer-config-apply" class="timer-modal-btn primary">Aplicar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./dist/reveal.js"></script>
+  <script src="./plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({
+      center: false,
+      controls: true,
+      progress: true,
+      slideNumber: true,
+      history: true,
+      transition: 'convex',
+      plugins: [RevealHighlight]
+    });
+
+    (function setupActivityTimers() {
+      var timerRoots = Array.from(document.querySelectorAll('.activity-timer'));
+      if (!timerRoots.length) return;
+      var modal = document.getElementById('timer-config-modal');
+      var modalMinutes = document.getElementById('timer-config-minutes');
+      var modalSeconds = document.getElementById('timer-config-seconds');
+      var modalWarning = document.getElementById('timer-config-warning');
+      var modalApply = document.getElementById('timer-config-apply');
+      var modalCancel = document.getElementById('timer-config-cancel');
+      var modalBackdrop = modal ? modal.querySelector('[data-timer-modal-close]') : null;
+      var activeTimer = null;
+      if (!modal || !modalMinutes || !modalSeconds || !modalWarning || !modalApply || !modalCancel || !modalBackdrop) return;
+
+      var timers = [];
+
+      function formatClock(totalSeconds) {
+        var mins = Math.floor(totalSeconds / 60);
+        var secs = totalSeconds % 60;
+        return String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
+      }
+
+      timerRoots.forEach(function (root) {
+        var display = root.querySelector('.activity-timer-display');
+        var startBtn = root.querySelector('.activity-timer-btn.start');
+        var pauseBtn = root.querySelector('.activity-timer-btn.pause');
+        var resetBtn = root.querySelector('.activity-timer-btn.reset');
+        var configBtn = root.querySelector('.activity-timer-btn.config');
+        if (!display || !startBtn || !pauseBtn || !resetBtn || !configBtn) return;
+
+        var initialSeconds = Number(root.getAttribute('data-duration'));
+        if (!Number.isFinite(initialSeconds) || initialSeconds <= 0) initialSeconds = 300;
+        var warningSeconds = Number(root.getAttribute('data-warning'));
+        if (!Number.isFinite(warningSeconds) || warningSeconds <= 0) warningSeconds = 60;
+
+        var remaining = initialSeconds;
+        var intervalId = null;
+
+        function updateView() {
+          display.textContent = formatClock(remaining);
+          display.classList.toggle('warning', remaining > 0 && remaining <= warningSeconds);
+          display.classList.toggle('done', remaining === 0);
+        }
+
+        function stop() {
+          if (!intervalId) return;
+          clearInterval(intervalId);
+          intervalId = null;
+        }
+
+        function tick() {
+          if (remaining <= 0) {
+            stop();
+            return;
+          }
+          remaining -= 1;
+          updateView();
+          if (remaining === 0) stop();
+        }
+
+        startBtn.addEventListener('click', function () {
+          if (intervalId || remaining === 0) return;
+          intervalId = setInterval(tick, 1000);
+        });
+
+        pauseBtn.addEventListener('click', stop);
+
+        resetBtn.addEventListener('click', function () {
+          stop();
+          remaining = initialSeconds;
+          updateView();
+        });
+
+        configBtn.addEventListener('click', function () {
+          activeTimer = timer;
+          var mins = Math.floor(timer.initialSeconds / 60);
+          var secs = timer.initialSeconds % 60;
+          modalMinutes.value = String(mins);
+          modalSeconds.value = String(secs);
+          modalWarning.value = String(timer.warningSeconds);
+          modal.hidden = false;
+        });
+
+        updateView();
+
+        var timer = {
+          root: root,
+          stop: stop,
+          get initialSeconds() { return initialSeconds; },
+          get warningSeconds() { return warningSeconds; },
+          setConfig: function (seconds, warning) {
+            initialSeconds = seconds;
+            warningSeconds = warning;
+            remaining = seconds;
+            updateView();
+          }
+        };
+
+        timers.push(timer);
+      });
+
+      function closeModal() {
+        modal.hidden = true;
+        activeTimer = null;
+      }
+
+      function applyModal() {
+        if (!activeTimer) return closeModal();
+        var mins = Number(modalMinutes.value);
+        var secs = Number(modalSeconds.value);
+        var warning = Number(modalWarning.value);
+        if (!Number.isFinite(mins) || mins < 0) mins = 0;
+        if (!Number.isFinite(secs) || secs < 0) secs = 0;
+        if (secs > 59) secs = 59;
+        var total = mins * 60 + secs;
+        if (total <= 0) total = 60;
+        if (!Number.isFinite(warning) || warning < 5) warning = 5;
+        if (warning > total) warning = total;
+        activeTimer.stop();
+        activeTimer.setConfig(total, warning);
+        closeModal();
+      }
+
+      modalApply.addEventListener('click', applyModal);
+      modalCancel.addEventListener('click', closeModal);
+      modalBackdrop.addEventListener('click', closeModal);
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && !modal.hidden) closeModal();
+      });
+
+      Reveal.on('slidechanged', function () {
+        timers.forEach(function (timer) { timer.stop(); });
+      });
+    })();
+  </script>
+</body>
+
+</html>

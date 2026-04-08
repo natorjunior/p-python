@@ -1,0 +1,1941 @@
+TOTAL_PAGES: 120
+
+===== PAGE 1 =====
+Revis˜ ao: Estrutura de Dados
+Msc. Nator Junior
+Faculdade Senac Cear´ a - Av. Trist˜ ao Gon¸ calves, 1245 - Bairro Centro CEP 60015-000 -
+Fortaleza - CE
+April 22, 2024
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 1 / 65
+
+===== PAGE 2 =====
+Outline
+1Operadores Relacionais
+2Operadores L´ ogicos
+3Operadores Aritm´ eticos
+4Estruturas condicionais
+5La¸ cos de repeti¸ c˜ ao
+6Fun¸ c˜ oes
+7Ponteiros
+8Fun¸ c˜ oes (passagem por valor e referˆ encia)
+9Estruturas
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 2 / 65
+
+===== PAGE 3 =====
+Operadores Relacionais - Quest˜ ao 1
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2 int main (){
+3 int a = 5, b = 10;
+4 printf ("%d\n", a > b);
+5 return 0;
+6 }
+O que ser´ a impresso ?
+0
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 3 / 65
+
+===== PAGE 4 =====
+Operadores Relacionais - Quest˜ ao 1
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2 int main (){
+3 int a = 5, b = 10;
+4 printf ("%d\n", a > b);
+5 return 0;
+6 }
+O que ser´ a impresso ?
+0
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 3 / 65
+
+===== PAGE 5 =====
+Operadores Relacionais - Quest˜ ao 2
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2 int main (){
+3 int a = 10, b = 10;
+4 printf ("%d\n", a >= b);
+5 return 0;
+6 }
+O que ser´ a impresso ?
+1
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 4 / 65
+
+===== PAGE 6 =====
+Operadores Relacionais - Quest˜ ao 2
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2 int main (){
+3 int a = 10, b = 10;
+4 printf ("%d\n", a >= b);
+5 return 0;
+6 }
+O que ser´ a impresso ?
+1
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 4 / 65
+
+===== PAGE 7 =====
+Operadores Relacionais - Quest˜ ao 3
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2 int main (){
+3 int a = 15;
+4 int b = 20;
+5 printf ("%d\n", a != b);
+6 return 0;
+7 }
+O que ser´ a impresso ?
+1
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 5 / 65
+
+===== PAGE 8 =====
+Operadores Relacionais - Quest˜ ao 3
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2 int main (){
+3 int a = 15;
+4 int b = 20;
+5 printf ("%d\n", a != b);
+6 return 0;
+7 }
+O que ser´ a impresso ?
+1
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 5 / 65
+
+===== PAGE 9 =====
+Operadores Relacionais - Quest˜ ao 4
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2 int main (){
+3 int a = 25;
+4 int b = 25;
+5 printf ("%d\n", a < b);
+6 return 0;
+7 }
+O que ser´ a impresso ?
+0
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 6 / 65
+
+===== PAGE 10 =====
+Operadores Relacionais - Quest˜ ao 4
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2 int main (){
+3 int a = 25;
+4 int b = 25;
+5 printf ("%d\n", a < b);
+6 return 0;
+7 }
+O que ser´ a impresso ?
+0
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 6 / 65
+
+===== PAGE 11 =====
+Operadores Relacionais - Quest˜ ao 5
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2 int main (){
+3 int a = 30, b = 40;
+4 printf ("%d\n", a <= b && a != 40) ;
+5 return 0;
+6 }
+O que ser´ a impresso ?
+1
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 7 / 65
+
+===== PAGE 12 =====
+Operadores Relacionais - Quest˜ ao 5
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2 int main (){
+3 int a = 30, b = 40;
+4 printf ("%d\n", a <= b && a != 40) ;
+5 return 0;
+6 }
+O que ser´ a impresso ?
+1
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 7 / 65
+
+===== PAGE 13 =====
+Operadores Relacionais - Quest˜ ao 6
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2 int main (){
+3 int a = 50, b = 50;
+4 printf ("%d\n", a == b || a > 60) ;
+5 return 0;
+6 }
+O que ser´ a impresso ?
+1
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 8 / 65
+
+===== PAGE 14 =====
+Operadores Relacionais - Quest˜ ao 6
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2 int main (){
+3 int a = 50, b = 50;
+4 printf ("%d\n", a == b || a > 60) ;
+5 return 0;
+6 }
+O que ser´ a impresso ?
+1
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 8 / 65
+
+===== PAGE 15 =====
+Operadores Relacionais - Quest˜ ao 7
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2 int main (){
+3 int a = 75, b = 100 , c = 50;
+4 printf ("%d\n", a > b || a > c && c < b);
+5 return 0;
+6 }
+O que ser´ a impresso ?
+1
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 9 / 65
+
+===== PAGE 16 =====
+Operadores Relacionais - Quest˜ ao 7
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2 int main (){
+3 int a = 75, b = 100 , c = 50;
+4 printf ("%d\n", a > b || a > c && c < b);
+5 return 0;
+6 }
+O que ser´ a impresso ?
+1
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 9 / 65
+
+===== PAGE 17 =====
+Outline
+1Operadores Relacionais
+2Operadores L´ ogicos
+3Operadores Aritm´ eticos
+4Estruturas condicionais
+5La¸ cos de repeti¸ c˜ ao
+6Fun¸ c˜ oes
+7Ponteiros
+8Fun¸ c˜ oes (passagem por valor e referˆ encia)
+9Estruturas
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 10 / 65
+
+===== PAGE 18 =====
+Operadores L´ ogicos - Quest˜ ao 1
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2int main (){
+3 int a = 1, b = 0;
+4 printf ("%d\n", a && b);
+5 return 0;
+6}
+O que ser´ a impresso ?
+0
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 11 / 65
+
+===== PAGE 19 =====
+Operadores L´ ogicos - Quest˜ ao 1
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2int main (){
+3 int a = 1, b = 0;
+4 printf ("%d\n", a && b);
+5 return 0;
+6}
+O que ser´ a impresso ?
+0
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 11 / 65
+
+===== PAGE 20 =====
+Operadores L´ ogicos - Quest˜ ao 2
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2int main (){
+3 int a = 1, b = 1;
+4 printf ("%d\n", a || b);
+5 return 0;
+6}
+O que ser´ a impresso ?
+1
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 12 / 65
+
+===== PAGE 21 =====
+Operadores L´ ogicos - Quest˜ ao 2
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2int main (){
+3 int a = 1, b = 1;
+4 printf ("%d\n", a || b);
+5 return 0;
+6}
+O que ser´ a impresso ?
+1
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 12 / 65
+
+===== PAGE 22 =====
+Operadores L´ ogicos - Quest˜ ao 3
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2int main (){
+3 int a = 0;
+4 printf ("%d\n", !a);
+5 return 0;
+6}
+O que ser´ a impresso ?
+1
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 13 / 65
+
+===== PAGE 23 =====
+Operadores L´ ogicos - Quest˜ ao 3
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2int main (){
+3 int a = 0;
+4 printf ("%d\n", !a);
+5 return 0;
+6}
+O que ser´ a impresso ?
+1
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 13 / 65
+
+===== PAGE 24 =====
+Operadores L´ ogicos - Quest˜ ao 4
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2int main (){
+3 int a = 5, b = 10;
+4 printf ("%d\n", a > 0 && b < 15) ;
+5 return 0;
+6}
+O que ser´ a impresso ?
+1
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 14 / 65
+
+===== PAGE 25 =====
+Operadores L´ ogicos - Quest˜ ao 4
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2int main (){
+3 int a = 5, b = 10;
+4 printf ("%d\n", a > 0 && b < 15) ;
+5 return 0;
+6}
+O que ser´ a impresso ?
+1
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 14 / 65
+
+===== PAGE 26 =====
+Operadores L´ ogicos - Quest˜ ao 5
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2int main (){
+3 int a = 5, b = 5;
+4 printf ("%d\n", a == b && a > 10) ;
+5 return 0;
+6}
+O que ser´ a impresso ?
+0
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 15 / 65
+
+===== PAGE 27 =====
+Operadores L´ ogicos - Quest˜ ao 5
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2int main (){
+3 int a = 5, b = 5;
+4 printf ("%d\n", a == b && a > 10) ;
+5 return 0;
+6}
+O que ser´ a impresso ?
+0
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 15 / 65
+
+===== PAGE 28 =====
+Operadores L´ ogicos - Quest˜ ao 6
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2int main (){
+3 int a = 5, b = 10, c = 15;
+4 printf ("%d\n", a < b || b > c);
+5 return 0;
+6}
+O que ser´ a impresso ?
+1
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 16 / 65
+
+===== PAGE 29 =====
+Operadores L´ ogicos - Quest˜ ao 6
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2int main (){
+3 int a = 5, b = 10, c = 15;
+4 printf ("%d\n", a < b || b > c);
+5 return 0;
+6}
+O que ser´ a impresso ?
+1
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 16 / 65
+
+===== PAGE 30 =====
+Operadores L´ ogicos - Quest˜ ao 7
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2int main (){
+3 int a = 10, b = 20, c = 30;
+4 printf ("%d\n", a > 5 && b <= 20 && c >=
+25);
+5 return 0;
+6}
+O que ser´ a impresso ?
+1
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 17 / 65
+
+===== PAGE 31 =====
+Operadores L´ ogicos - Quest˜ ao 7
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2int main (){
+3 int a = 10, b = 20, c = 30;
+4 printf ("%d\n", a > 5 && b <= 20 && c >=
+25);
+5 return 0;
+6}
+O que ser´ a impresso ?
+1
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 17 / 65
+
+===== PAGE 32 =====
+Operadores L´ ogicos - Quest˜ ao 8
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2 int main (){
+3 int a = 5, b = 5;
+4 printf ("%d\n", a = b && a > 10) ;
+5 return 0;
+6 }
+O que ser´ a impresso ?
+Erro: Usa-se ‘a = b‘ (atribui¸ c˜ ao) em vez de ‘a == b‘ (compara¸ c˜ ao).
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 18 / 65
+
+===== PAGE 33 =====
+Operadores L´ ogicos - Quest˜ ao 8
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2 int main (){
+3 int a = 5, b = 5;
+4 printf ("%d\n", a = b && a > 10) ;
+5 return 0;
+6 }
+O que ser´ a impresso ?
+Erro: Usa-se ‘a = b‘ (atribui¸ c˜ ao) em vez de ‘a == b‘ (compara¸ c˜ ao).
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 18 / 65
+
+===== PAGE 34 =====
+Outline
+1Operadores Relacionais
+2Operadores L´ ogicos
+3Operadores Aritm´ eticos
+4Estruturas condicionais
+5La¸ cos de repeti¸ c˜ ao
+6Fun¸ c˜ oes
+7Ponteiros
+8Fun¸ c˜ oes (passagem por valor e referˆ encia)
+9Estruturas
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 19 / 65
+
+===== PAGE 35 =====
+Operadores Aritm´ eticos - Quest˜ ao 1
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2int main (){
+3 int a = 10, b = 5;
+4 printf ("%d\n", a + b);
+5 return 0;
+6}
+O que ser´ a impresso ?
+15
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 20 / 65
+
+===== PAGE 36 =====
+Operadores Aritm´ eticos - Quest˜ ao 1
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2int main (){
+3 int a = 10, b = 5;
+4 printf ("%d\n", a + b);
+5 return 0;
+6}
+O que ser´ a impresso ?
+15
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 20 / 65
+
+===== PAGE 37 =====
+Operadores Aritm´ eticos - Quest˜ ao 2
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2int main (){
+3 int a = 20, b = 4;
+4 printf ("%d\n", a - b * 2);
+5 return 0;
+6}
+O que ser´ a impresso ?
+12
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 21 / 65
+
+===== PAGE 38 =====
+Operadores Aritm´ eticos - Quest˜ ao 2
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2int main (){
+3 int a = 20, b = 4;
+4 printf ("%d\n", a - b * 2);
+5 return 0;
+6}
+O que ser´ a impresso ?
+12
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 21 / 65
+
+===== PAGE 39 =====
+Operadores Aritm´ eticos - Quest˜ ao 3
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2int main (){
+3 int a = 15, b = 10;
+4 printf ("%d\n", (a - b) * 2);
+5 return 0;
+6}
+O que ser´ a impresso ?
+10
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 22 / 65
+
+===== PAGE 40 =====
+Operadores Aritm´ eticos - Quest˜ ao 3
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2int main (){
+3 int a = 15, b = 10;
+4 printf ("%d\n", (a - b) * 2);
+5 return 0;
+6}
+O que ser´ a impresso ?
+10
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 22 / 65
+
+===== PAGE 41 =====
+Operadores Aritm´ eticos - Quest˜ ao 4
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2int main (){
+3 int a = 3, b = 7;
+4 printf ("%d\n", a * (b + 3));
+5 return 0;
+6}
+O que ser´ a impresso ?
+30
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 23 / 65
+
+===== PAGE 42 =====
+Operadores Aritm´ eticos - Quest˜ ao 4
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2int main (){
+3 int a = 3, b = 7;
+4 printf ("%d\n", a * (b + 3));
+5 return 0;
+6}
+O que ser´ a impresso ?
+30
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 23 / 65
+
+===== PAGE 43 =====
+Operadores Aritm´ eticos - Quest˜ ao 5
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2int main (){
+3 int a = 10, b = 0;
+4 printf ("%d\n", a / b);
+5 return 0;
+6}
+O que ser´ a impresso ?
+Erro de divis˜ ao por zero.
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 24 / 65
+
+===== PAGE 44 =====
+Operadores Aritm´ eticos - Quest˜ ao 5
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2int main (){
+3 int a = 10, b = 0;
+4 printf ("%d\n", a / b);
+5 return 0;
+6}
+O que ser´ a impresso ?
+Erro de divis˜ ao por zero.
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 24 / 65
+
+===== PAGE 45 =====
+Operadores Aritm´ eticos - Quest˜ ao 6
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2int main (){
+3 int a = 21, b = 4;
+4 printf ("%d\n", a % b + 3);
+5 return 0;
+6}
+O que ser´ a impresso ?
+4
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 25 / 65
+
+===== PAGE 46 =====
+Operadores Aritm´ eticos - Quest˜ ao 6
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2int main (){
+3 int a = 21, b = 4;
+4 printf ("%d\n", a % b + 3);
+5 return 0;
+6}
+O que ser´ a impresso ?
+4
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 25 / 65
+
+===== PAGE 47 =====
+Operadores Aritm´ eticos - Quest˜ ao 7
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1 # include <stdio .h>
+2 int main (){
+3 int a = 5;
+4 printf ("%d\n", a++) ;
+5 return 0;
+6 }
+O que ser´ a impresso ?
+5
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 26 / 65
+
+===== PAGE 48 =====
+Operadores Aritm´ eticos - Quest˜ ao 7
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1 # include <stdio .h>
+2 int main (){
+3 int a = 5;
+4 printf ("%d\n", a++) ;
+5 return 0;
+6 }
+O que ser´ a impresso ?
+5
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 26 / 65
+
+===== PAGE 49 =====
+Outline
+1Operadores Relacionais
+2Operadores L´ ogicos
+3Operadores Aritm´ eticos
+4Estruturas condicionais
+5La¸ cos de repeti¸ c˜ ao
+6Fun¸ c˜ oes
+7Ponteiros
+8Fun¸ c˜ oes (passagem por valor e referˆ encia)
+9Estruturas
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 27 / 65
+
+===== PAGE 50 =====
+Estruturas Condicionais - Quest˜ ao 1
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1int main (){
+2 int a = 5;
+3 if (a > 3)
+4 printf ("a ´ e maior que 3\n");
+5 return 0;
+6}
+O que ser´ a impresso ?
+a ´ e maior que 3
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 28 / 65
+
+===== PAGE 51 =====
+Estruturas Condicionais - Quest˜ ao 1
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1int main (){
+2 int a = 5;
+3 if (a > 3)
+4 printf ("a ´ e maior que 3\n");
+5 return 0;
+6}
+O que ser´ a impresso ?
+a ´ e maior que 3
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 28 / 65
+
+===== PAGE 52 =====
+Estruturas Condicionais - Quest˜ ao 2
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1int main (){
+2 int a = 2;
+3 if (a > 5)
+4 printf ("a ´ e maior que 5\n");
+5 else
+6 printf ("a ´ e menor ou igual a 5\n");
+7 return 0;
+8}
+O que ser´ a impresso ?
+a ´ e menor ou igual a 5
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 29 / 65
+
+===== PAGE 53 =====
+Estruturas Condicionais - Quest˜ ao 2
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1int main (){
+2 int a = 2;
+3 if (a > 5)
+4 printf ("a ´ e maior que 5\n");
+5 else
+6 printf ("a ´ e menor ou igual a 5\n");
+7 return 0;
+8}
+O que ser´ a impresso ?
+a ´ e menor ou igual a 5
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 29 / 65
+
+===== PAGE 54 =====
+Estruturas Condicionais - Quest˜ ao 3
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1int main (){
+2 int a = 10;
+3 if (a == 10)
+4 printf ("a ´ e igual a 10\ n");
+5 else if (a < 10)
+6 printf ("a ´ e menor que 10\ n");
+7 else
+8 printf ("a ´ e maior que 10\ n");
+9 return 0;
+10}
+O que ser´ a impresso ?
+a ´ e igual a 10
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 30 / 65
+
+===== PAGE 55 =====
+Estruturas Condicionais - Quest˜ ao 3
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1int main (){
+2 int a = 10;
+3 if (a == 10)
+4 printf ("a ´ e igual a 10\ n");
+5 else if (a < 10)
+6 printf ("a ´ e menor que 10\ n");
+7 else
+8 printf ("a ´ e maior que 10\ n");
+9 return 0;
+10}
+O que ser´ a impresso ?
+a ´ e igual a 10
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 30 / 65
+
+===== PAGE 56 =====
+Estruturas Condicionais - Quest˜ ao 4
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1int main (){
+2 int a = 15;
+3 if (a > 10)
+4 printf ("a ´ e maior que 10\ n");
+5 else if (a == 15)
+6 printf ("a ´ e igual a 15\ n");
+7 return 0;
+8}
+O que ser´ a impresso ?
+a ´ e maior que 10
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 31 / 65
+
+===== PAGE 57 =====
+Estruturas Condicionais - Quest˜ ao 4
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1int main (){
+2 int a = 15;
+3 if (a > 10)
+4 printf ("a ´ e maior que 10\ n");
+5 else if (a == 15)
+6 printf ("a ´ e igual a 15\ n");
+7 return 0;
+8}
+O que ser´ a impresso ?
+a ´ e maior que 10
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 31 / 65
+
+===== PAGE 58 =====
+Estruturas Condicionais - Quest˜ ao 5
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1int main (){
+2 int a = 5, b = 10;
+3 if (a > b)
+4 printf ("a ´ e maior que b\n");
+5 else if (a < b)
+6 printf ("a ´ e menor que b\n");
+7 else
+8 printf ("a ´ e igual a b\n");
+9 return 0;
+10}
+O que ser´ a impresso ?
+a ´ e menor que b
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 32 / 65
+
+===== PAGE 59 =====
+Estruturas Condicionais - Quest˜ ao 5
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1int main (){
+2 int a = 5, b = 10;
+3 if (a > b)
+4 printf ("a ´ e maior que b\n");
+5 else if (a < b)
+6 printf ("a ´ e menor que b\n");
+7 else
+8 printf ("a ´ e igual a b\n");
+9 return 0;
+10}
+O que ser´ a impresso ?
+a ´ e menor que b
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 32 / 65
+
+===== PAGE 60 =====
+Estruturas Condicionais - Quest˜ ao 6
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1int main (){
+2 int a = 10;
+3 if (a > 5 && a < 15)
+4 printf ("a est ´ a entre 5 e 15\ n");
+5 else
+6 printf ("a n o est ´ a entre 5 e 15\ n");
+7 return 0;
+8}
+O que ser´ a impresso ?
+a est´ a entre 5 e 15
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 33 / 65
+
+===== PAGE 61 =====
+Estruturas Condicionais - Quest˜ ao 6
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1int main (){
+2 int a = 10;
+3 if (a > 5 && a < 15)
+4 printf ("a est ´ a entre 5 e 15\ n");
+5 else
+6 printf ("a n o est ´ a entre 5 e 15\ n");
+7 return 0;
+8}
+O que ser´ a impresso ?
+a est´ a entre 5 e 15
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 33 / 65
+
+===== PAGE 62 =====
+Outline
+1Operadores Relacionais
+2Operadores L´ ogicos
+3Operadores Aritm´ eticos
+4Estruturas condicionais
+5La¸ cos de repeti¸ c˜ ao
+6Fun¸ c˜ oes
+7Ponteiros
+8Fun¸ c˜ oes (passagem por valor e referˆ encia)
+9Estruturas
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 34 / 65
+
+===== PAGE 63 =====
+La¸ cos de Repeti¸ c˜ ao - Quest˜ ao 1
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1int main () {
+2 for (int i = 0; i < 5; i++) {
+3 printf ("%d ", i);
+4 }
+5 return 0;
+6}
+O que ser´ a impresso ?
+0 1 2 3 4
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 35 / 65
+
+===== PAGE 64 =====
+La¸ cos de Repeti¸ c˜ ao - Quest˜ ao 1
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1int main () {
+2 for (int i = 0; i < 5; i++) {
+3 printf ("%d ", i);
+4 }
+5 return 0;
+6}
+O que ser´ a impresso ?
+0 1 2 3 4
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 35 / 65
+
+===== PAGE 65 =====
+La¸ cos de Repeti¸ c˜ ao - Quest˜ ao 2
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1int main () {
+2 int i = 0;
+3 while (i < 3) {
+4 printf ("%d ", i);
+5 i++;
+6 }
+7 return 0;
+8}
+O que ser´ a impresso ?
+0 1 2
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 36 / 65
+
+===== PAGE 66 =====
+La¸ cos de Repeti¸ c˜ ao - Quest˜ ao 2
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1int main () {
+2 int i = 0;
+3 while (i < 3) {
+4 printf ("%d ", i);
+5 i++;
+6 }
+7 return 0;
+8}
+O que ser´ a impresso ?
+0 1 2
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 36 / 65
+
+===== PAGE 67 =====
+La¸ cos de Repeti¸ c˜ ao - Quest˜ ao 3
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1int main () {
+2 int i = 5;
+3 do {
+4 printf ("%d ", i);
+5 i --;
+6 } while (i > 0);
+7 return 0;
+8}
+O que ser´ a impresso ?
+5 4 3 2 1
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 37 / 65
+
+===== PAGE 68 =====
+La¸ cos de Repeti¸ c˜ ao - Quest˜ ao 3
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1int main () {
+2 int i = 5;
+3 do {
+4 printf ("%d ", i);
+5 i --;
+6 } while (i > 0);
+7 return 0;
+8}
+O que ser´ a impresso ?
+5 4 3 2 1
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 37 / 65
+
+===== PAGE 69 =====
+La¸ cos de Repeti¸ c˜ ao - Quest˜ ao 4
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1int main () {
+2 for (int i = 0; i <= 10; i += 2) {
+3 printf ("%d ", i);
+4 }
+5 return 0;
+6}
+O que ser´ a impresso ?
+0 2 4 6 8 10
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 38 / 65
+
+===== PAGE 70 =====
+La¸ cos de Repeti¸ c˜ ao - Quest˜ ao 4
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1int main () {
+2 for (int i = 0; i <= 10; i += 2) {
+3 printf ("%d ", i);
+4 }
+5 return 0;
+6}
+O que ser´ a impresso ?
+0 2 4 6 8 10
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 38 / 65
+
+===== PAGE 71 =====
+La¸ cos de Repeti¸ c˜ ao - Quest˜ ao 5
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1int main () {
+2 for (int i = 0; i < 10; i++) {
+3 if (i % 2 == 0) continue ;
+4 printf ("%d ", i);
+5 }
+6 return 0;
+7}
+O que ser´ a impresso ?
+1 3 5 7 9
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 39 / 65
+
+===== PAGE 72 =====
+La¸ cos de Repeti¸ c˜ ao - Quest˜ ao 5
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1int main () {
+2 for (int i = 0; i < 10; i++) {
+3 if (i % 2 == 0) continue ;
+4 printf ("%d ", i);
+5 }
+6 return 0;
+7}
+O que ser´ a impresso ?
+1 3 5 7 9
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 39 / 65
+
+===== PAGE 73 =====
+La¸ cos de Repeti¸ c˜ ao - Quest˜ ao 6
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1int main () {
+2 int i = 0;
+3 while (i < 5) {
+4 i++;
+5 if (i == 3) break ;
+6 printf ("%d ", i);
+7 }
+8 return 0;
+9}
+O que ser´ a impresso ?
+1 2
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 40 / 65
+
+===== PAGE 74 =====
+La¸ cos de Repeti¸ c˜ ao - Quest˜ ao 6
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1int main () {
+2 int i = 0;
+3 while (i < 5) {
+4 i++;
+5 if (i == 3) break ;
+6 printf ("%d ", i);
+7 }
+8 return 0;
+9}
+O que ser´ a impresso ?
+1 2
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 40 / 65
+
+===== PAGE 75 =====
+La¸ cos de Repeti¸ c˜ ao - Quest˜ ao 7
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1int main () {
+2 int i = 0;
+3 while (i < 5) {
+4 printf ("%d ", i);
+5 }
+6 return 0;
+7}
+O que ser´ a impresso ?
+A execu¸ c˜ ao entra em um loop infinito, imprimindo continuamente 0.
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 41 / 65
+
+===== PAGE 76 =====
+La¸ cos de Repeti¸ c˜ ao - Quest˜ ao 7
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1int main () {
+2 int i = 0;
+3 while (i < 5) {
+4 printf ("%d ", i);
+5 }
+6 return 0;
+7}
+O que ser´ a impresso ?
+A execu¸ c˜ ao entra em um loop infinito, imprimindo continuamente 0.
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 41 / 65
+
+===== PAGE 77 =====
+Outline
+1Operadores Relacionais
+2Operadores L´ ogicos
+3Operadores Aritm´ eticos
+4Estruturas condicionais
+5La¸ cos de repeti¸ c˜ ao
+6Fun¸ c˜ oes
+7Ponteiros
+8Fun¸ c˜ oes (passagem por valor e referˆ encia)
+9Estruturas
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 42 / 65
+
+===== PAGE 78 =====
+Fun¸ c˜ oes - Quest˜ ao 1
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2
+3int soma (int a, int b) {
+4 return a + b;
+5}
+6
+7int main () {
+8 printf ("%d\n", soma (5, 3));
+9 return 0;
+10}
+O que ser´ a impresso ?
+8
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 43 / 65
+
+===== PAGE 79 =====
+Fun¸ c˜ oes - Quest˜ ao 1
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2
+3int soma (int a, int b) {
+4 return a + b;
+5}
+6
+7int main () {
+8 printf ("%d\n", soma (5, 3));
+9 return 0;
+10}
+O que ser´ a impresso ?
+8
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 43 / 65
+
+===== PAGE 80 =====
+Fun¸ c˜ oes - Quest˜ ao 2
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2
+3void imprimirNumero (int numero ) {
+4 printf ("%d\n", numero );
+5}
+6
+7int main () {
+8 imprimirNumero (10) ;
+9 return 0;
+10}
+O que ser´ a impresso ?
+10
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 44 / 65
+
+===== PAGE 81 =====
+Fun¸ c˜ oes - Quest˜ ao 2
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2
+3void imprimirNumero (int numero ) {
+4 printf ("%d\n", numero );
+5}
+6
+7int main () {
+8 imprimirNumero (10) ;
+9 return 0;
+10}
+O que ser´ a impresso ?
+10
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 44 / 65
+
+===== PAGE 82 =====
+Fun¸ c˜ oes - Quest˜ ao 3
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2
+3int multiplicar (int a, int b) {
+4 return a * b;
+5}
+6
+7int main () {
+8 int resultado = multiplicar (4, 5);
+9 printf ("%d\n", resultado );
+10 return 0;
+11}
+O que ser´ a impresso ?
+20
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 45 / 65
+
+===== PAGE 83 =====
+Fun¸ c˜ oes - Quest˜ ao 3
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2
+3int multiplicar (int a, int b) {
+4 return a * b;
+5}
+6
+7int main () {
+8 int resultado = multiplicar (4, 5);
+9 printf ("%d\n", resultado );
+10 return 0;
+11}
+O que ser´ a impresso ?
+20
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 45 / 65
+
+===== PAGE 84 =====
+Fun¸ c˜ oes - Quest˜ ao 4
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2
+3int fatorial (int n) {
+4 if (n == 0) return 1;
+5 return n * fatorial (n - 1);
+6}
+7
+8int main () {
+9 printf ("%d\n", fatorial (5) );
+10 return 0;
+11}
+O que ser´ a impresso ?
+120
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 46 / 65
+
+===== PAGE 85 =====
+Fun¸ c˜ oes - Quest˜ ao 4
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2
+3int fatorial (int n) {
+4 if (n == 0) return 1;
+5 return n * fatorial (n - 1);
+6}
+7
+8int main () {
+9 printf ("%d\n", fatorial (5) );
+10 return 0;
+11}
+O que ser´ a impresso ?
+120
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 46 / 65
+
+===== PAGE 86 =====
+Fun¸ c˜ oes - Quest˜ ao 5
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2int ehPar (int numero ) {
+3 return numero % 2 == 0;
+4}
+5
+6int main () {
+7 int num = 4;
+8 if ( ehPar ( num))
+9 printf ("%d ´ e par \n", num );
+10 else
+11 printf ("%d ´ e ´ ı mpar \n", num );
+12 return 0;
+13}
+O que ser´ a impresso ?
+4 ´ e par
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 47 / 65
+
+===== PAGE 87 =====
+Fun¸ c˜ oes - Quest˜ ao 5
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2int ehPar (int numero ) {
+3 return numero % 2 == 0;
+4}
+5
+6int main () {
+7 int num = 4;
+8 if ( ehPar ( num))
+9 printf ("%d ´ e par \n", num );
+10 else
+11 printf ("%d ´ e ´ ı mpar \n", num );
+12 return 0;
+13}
+O que ser´ a impresso ?
+4 ´ e par
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 47 / 65
+
+===== PAGE 88 =====
+Fun¸ c˜ oes - Quest˜ ao 6
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2
+3int max(int a, int b) {
+4 if (a > b) return a;
+5 else return b;
+6}
+7
+8int main () {
+9 printf ("%d\n", max (10 , 20) );
+10 return 0;
+11}
+O que ser´ a impresso ?
+20
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 48 / 65
+
+===== PAGE 89 =====
+Fun¸ c˜ oes - Quest˜ ao 6
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2
+3int max(int a, int b) {
+4 if (a > b) return a;
+5 else return b;
+6}
+7
+8int main () {
+9 printf ("%d\n", max (10 , 20) );
+10 return 0;
+11}
+O que ser´ a impresso ?
+20
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 48 / 65
+
+===== PAGE 90 =====
+Fun¸ c˜ oes - Quest˜ ao 7
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1 # include <stdio .h>
+2
+3 double media (int a, int b, int c) {
+4 return (a + b + c) / 3.0;
+5 }
+6
+7 int main () {
+8 double resultado = media (20 , 30, 40) ;
+9 printf ("%.2 f\n", resultado );
+10 return 0;
+11 }
+O que ser´ a impresso ?
+30.00
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 49 / 65
+
+===== PAGE 91 =====
+Fun¸ c˜ oes - Quest˜ ao 7
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1 # include <stdio .h>
+2
+3 double media (int a, int b, int c) {
+4 return (a + b + c) / 3.0;
+5 }
+6
+7 int main () {
+8 double resultado = media (20 , 30, 40) ;
+9 printf ("%.2 f\n", resultado );
+10 return 0;
+11 }
+O que ser´ a impresso ?
+30.00
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 49 / 65
+
+===== PAGE 92 =====
+Outline
+1Operadores Relacionais
+2Operadores L´ ogicos
+3Operadores Aritm´ eticos
+4Estruturas condicionais
+5La¸ cos de repeti¸ c˜ ao
+6Fun¸ c˜ oes
+7Ponteiros
+8Fun¸ c˜ oes (passagem por valor e referˆ encia)
+9Estruturas
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 50 / 65
+
+===== PAGE 93 =====
+Ponteiros - Quest˜ ao 1
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2
+3int main () {
+4 int a = 10;
+5 int *p = &a;
+6 printf ("%d\n", *p);
+7 return 0;
+8}
+O que ser´ a impresso ?
+10
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 51 / 65
+
+===== PAGE 94 =====
+Ponteiros - Quest˜ ao 1
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2
+3int main () {
+4 int a = 10;
+5 int *p = &a;
+6 printf ("%d\n", *p);
+7 return 0;
+8}
+O que ser´ a impresso ?
+10
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 51 / 65
+
+===== PAGE 95 =====
+Ponteiros - Quest˜ ao 2
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2
+3int main () {
+4 int a = 20;
+5 int *p = &a;
+6 *p = 30;
+7 printf ("%d\n", a);
+8 return 0;
+9}
+O que ser´ a impresso ?
+30
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 52 / 65
+
+===== PAGE 96 =====
+Ponteiros - Quest˜ ao 2
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2
+3int main () {
+4 int a = 20;
+5 int *p = &a;
+6 *p = 30;
+7 printf ("%d\n", a);
+8 return 0;
+9}
+O que ser´ a impresso ?
+30
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 52 / 65
+
+===== PAGE 97 =====
+Ponteiros - Quest˜ ao 3
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2
+3int main () {
+4 int a = 20;
+5 int b = 10;
+6 int *p = &a;
+7 int *q = &b;
+8 *p = *q;
+9 printf ("a = %d, b = %d\n", a, b);
+10 return 0;
+11}
+O que ser´ a impresso ?
+a = 10, b = 10
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 53 / 65
+
+===== PAGE 98 =====
+Ponteiros - Quest˜ ao 3
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2
+3int main () {
+4 int a = 20;
+5 int b = 10;
+6 int *p = &a;
+7 int *q = &b;
+8 *p = *q;
+9 printf ("a = %d, b = %d\n", a, b);
+10 return 0;
+11}
+O que ser´ a impresso ?
+a = 10, b = 10
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 53 / 65
+
+===== PAGE 99 =====
+Ponteiros - Quest˜ ao 4
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2
+3void troca (int *a, int *b) {
+4 int temp = *a;
+5 *a = *b;
+6 *b = temp ;
+7}
+8int main () {
+9 int x = 10, y = 20;
+10 troca (&x, &y);
+11 printf ("x = %d, y = %d\n", x, y);
+12 return 0;
+13}
+O que ser´ a impresso ?
+x = 20, y = 10
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 54 / 65
+
+===== PAGE 100 =====
+Ponteiros - Quest˜ ao 4
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2
+3void troca (int *a, int *b) {
+4 int temp = *a;
+5 *a = *b;
+6 *b = temp ;
+7}
+8int main () {
+9 int x = 10, y = 20;
+10 troca (&x, &y);
+11 printf ("x = %d, y = %d\n", x, y);
+12 return 0;
+13}
+O que ser´ a impresso ?
+x = 20, y = 10
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 54 / 65
+
+===== PAGE 101 =====
+Ponteiros - Quest˜ ao 5
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1 # include <stdio .h>
+2
+3 int main () {
+4 int *p;
+5 *p = 10;
+6 printf ("%d\n", *p);
+7 return 0;
+8 }
+O que ser´ a impresso ?
+Ocorrer´ a um erro de segmenta¸ c˜ ao, pois o ponteiro ‘p‘ n˜ ao foi
+inicializado e est´ a tentando acessar uma regi˜ ao de mem´ oria n˜ ao
+permitida.
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 55 / 65
+
+===== PAGE 102 =====
+Ponteiros - Quest˜ ao 5
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1 # include <stdio .h>
+2
+3 int main () {
+4 int *p;
+5 *p = 10;
+6 printf ("%d\n", *p);
+7 return 0;
+8 }
+O que ser´ a impresso ?
+Ocorrer´ a um erro de segmenta¸ c˜ ao, pois o ponteiro ‘p‘ n˜ ao foi
+inicializado e est´ a tentando acessar uma regi˜ ao de mem´ oria n˜ ao
+permitida.
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 55 / 65
+
+===== PAGE 103 =====
+Outline
+1Operadores Relacionais
+2Operadores L´ ogicos
+3Operadores Aritm´ eticos
+4Estruturas condicionais
+5La¸ cos de repeti¸ c˜ ao
+6Fun¸ c˜ oes
+7Ponteiros
+8Fun¸ c˜ oes (passagem por valor e referˆ encia)
+9Estruturas
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 56 / 65
+
+===== PAGE 104 =====
+Passagem por Valor e Referˆ encia - Quest˜ ao 1
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2
+3void incrementaValor (int a) {
+4 a++;
+5}
+6
+7int main () {
+8 int a = 5;
+9 incrementaValor (a);
+10 printf ("%d\n", a);
+11 return 0;
+12}
+O que ser´ a impresso ?
+5
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 57 / 65
+
+===== PAGE 105 =====
+Passagem por Valor e Referˆ encia - Quest˜ ao 1
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2
+3void incrementaValor (int a) {
+4 a++;
+5}
+6
+7int main () {
+8 int a = 5;
+9 incrementaValor (a);
+10 printf ("%d\n", a);
+11 return 0;
+12}
+O que ser´ a impresso ?
+5
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 57 / 65
+
+===== PAGE 106 =====
+Passagem por Valor e Referˆ encia - Quest˜ ao 2
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2
+3void incrementaReferencia (int *a) {
+4 (*a) ++;
+5}
+6
+7int main () {
+8 int a = 5;
+9 incrementaReferencia (&a);
+10 printf ("%d\n", a);
+11 return 0;
+12}
+O que ser´ a impresso ?
+6
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 58 / 65
+
+===== PAGE 107 =====
+Passagem por Valor e Referˆ encia - Quest˜ ao 2
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2
+3void incrementaReferencia (int *a) {
+4 (*a) ++;
+5}
+6
+7int main () {
+8 int a = 5;
+9 incrementaReferencia (&a);
+10 printf ("%d\n", a);
+11 return 0;
+12}
+O que ser´ a impresso ?
+6
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 58 / 65
+
+===== PAGE 108 =====
+Passagem por Valor e Referˆ encia - Quest˜ ao 3
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2
+3void troca (int *a, int *b) {
+4 int temp = *a;
+5 *a = *b;
+6 *b = temp ;
+7}
+8int main () {
+9 int x = 10, y = 20;
+10 troca (&x, &y);
+11 printf ("x = %d, y = %d\n", x, y);
+12 return 0;
+13}
+O que ser´ a impresso ?
+x = 20, y = 10
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 59 / 65
+
+===== PAGE 109 =====
+Passagem por Valor e Referˆ encia - Quest˜ ao 3
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2
+3void troca (int *a, int *b) {
+4 int temp = *a;
+5 *a = *b;
+6 *b = temp ;
+7}
+8int main () {
+9 int x = 10, y = 20;
+10 troca (&x, &y);
+11 printf ("x = %d, y = %d\n", x, y);
+12 return 0;
+13}
+O que ser´ a impresso ?
+x = 20, y = 10
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 59 / 65
+
+===== PAGE 110 =====
+Passagem por Valor e Referˆ encia - Quest˜ ao 4
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2
+3void modifica (int *a, int *b, int *c) {
+4 *a += 1;
+5 *b += 2;
+6 *c += 3;
+7}
+8int main () {
+9 int x = 1, y = 2, z = 3;
+10 modifica (&x, &y, &z);
+11 printf ("x = %d, y = %d, z = %d\n", x, y,
+z);
+12 return 0;
+13}
+O que ser´ a impresso ?
+x = 2, y = 4, z = 6
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 60 / 65
+
+===== PAGE 111 =====
+Passagem por Valor e Referˆ encia - Quest˜ ao 4
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2
+3void modifica (int *a, int *b, int *c) {
+4 *a += 1;
+5 *b += 2;
+6 *c += 3;
+7}
+8int main () {
+9 int x = 1, y = 2, z = 3;
+10 modifica (&x, &y, &z);
+11 printf ("x = %d, y = %d, z = %d\n", x, y,
+z);
+12 return 0;
+13}
+O que ser´ a impresso ?
+x = 2, y = 4, z = 6Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 60 / 65
+
+===== PAGE 112 =====
+Outline
+1Operadores Relacionais
+2Operadores L´ ogicos
+3Operadores Aritm´ eticos
+4Estruturas condicionais
+5La¸ cos de repeti¸ c˜ ao
+6Fun¸ c˜ oes
+7Ponteiros
+8Fun¸ c˜ oes (passagem por valor e referˆ encia)
+9Estruturas
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 61 / 65
+
+===== PAGE 113 =====
+Estruturas - Quest˜ ao 1
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2
+3struct Ponto {
+4 int x;
+5 int y;
+6};
+7
+8int main () {
+9 struct Ponto p = {10 , 20};
+10 printf (" Ponto : x = %d, y = %d\n", p.x,
+p.y);
+11 return 0;
+12}
+O que ser´ a impresso ?
+Ponto: x = 10, y = 20
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 62 / 65
+
+===== PAGE 114 =====
+Estruturas - Quest˜ ao 1
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2
+3struct Ponto {
+4 int x;
+5 int y;
+6};
+7
+8int main () {
+9 struct Ponto p = {10 , 20};
+10 printf (" Ponto : x = %d, y = %d\n", p.x,
+p.y);
+11 return 0;
+12}
+O que ser´ a impresso ?
+Ponto: x = 10, y = 20
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 62 / 65
+
+===== PAGE 115 =====
+Estruturas - Quest˜ ao 2
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2
+3struct Pessoa {
+4 char nome [50];
+5 int idade ;
+6};
+7
+8int main () {
+9 struct Pessoa pessoa = {" Alice ", 30};
+10 printf ("%s tem %d anos .\n", pessoa .nome ,
+pessoa . idade );
+11 return 0;
+12}
+O que ser´ a impresso ?
+Alice tem 30 anos.
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 63 / 65
+
+===== PAGE 116 =====
+Estruturas - Quest˜ ao 2
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2
+3struct Pessoa {
+4 char nome [50];
+5 int idade ;
+6};
+7
+8int main () {
+9 struct Pessoa pessoa = {" Alice ", 30};
+10 printf ("%s tem %d anos .\n", pessoa .nome ,
+pessoa . idade );
+11 return 0;
+12}
+O que ser´ a impresso ?
+Alice tem 30 anos.
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 63 / 65
+
+===== PAGE 117 =====
+Estruturas - Quest˜ ao 3
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2struct Retangulo {
+3 int largura ;
+4 int altura ;
+5};
+6int area ( struct Retangulo r) {
+7 return r. largura * r. altura ;
+8}
+9int main () {
+10 struct Retangulo ret = {5, 10};
+11 printf (" rea : %d\n", area (ret ));
+12 return 0;
+13}
+O que ser´ a impresso ?
+´Area: 50
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 64 / 65
+
+===== PAGE 118 =====
+Estruturas - Quest˜ ao 3
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa:
+1# include <stdio .h>
+2struct Retangulo {
+3 int largura ;
+4 int altura ;
+5};
+6int area ( struct Retangulo r) {
+7 return r. largura * r. altura ;
+8}
+9int main () {
+10 struct Retangulo ret = {5, 10};
+11 printf (" rea : %d\n", area (ret ));
+12 return 0;
+13}
+O que ser´ a impresso ?
+´Area: 50
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 64 / 65
+
+===== PAGE 119 =====
+Estruturas - Quest˜ ao 4
+1# include <stdio .h>
+2struct Pessoa {
+3 char nome [100];
+4 int idade ;
+5};
+6void aniversario ( struct Pessoa *p) {
+7 p-> idade ++;
+8}
+9int main () {
+10 struct Pessoa pessoa = {" Carlos ", 29};
+11 aniversario (& pessoa );
+12 printf ("%s agora tem %d anos .\n",
+pessoa .nome , pessoa . idade );
+13 return 0;
+14}
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa: ?
+Carlos agora tem 30 anos.
+Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 65 / 65
+
+===== PAGE 120 =====
+Estruturas - Quest˜ ao 4
+1# include <stdio .h>
+2struct Pessoa {
+3 char nome [100];
+4 int idade ;
+5};
+6void aniversario ( struct Pessoa *p) {
+7 p-> idade ++;
+8}
+9int main () {
+10 struct Pessoa pessoa = {" Carlos ", 29};
+11 aniversario (& pessoa );
+12 printf ("%s agora tem %d anos .\n",
+pessoa .nome , pessoa . idade );
+13 return 0;
+14}
+Avalie a quest˜ ao e responda se cont´ em algum erro, caso n˜ ao, qual a
+sa´ ıda do programa: ?
+Carlos agora tem 30 anos.Msc. Nator Junior (SENAC) Estrutura de Dados April 22, 2024 65 / 65
+
