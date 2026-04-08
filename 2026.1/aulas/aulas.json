@@ -83,7 +83,7 @@
     "numero": 11,
     "titulo": "Aula 11 - Introducao sobre Funcoes",
     "subtitulo": "def, parametros, return e escopo",
-    "descricao": "Introducao ao uso de funcoes em Python para organizar e reutilizar codigo, com exemplos, atividades e boas praticas.",
+    "descricao": "Revisao geral em Python com exercicios de operadores relacionais, logicos e aritmeticos, estruturas condicionais, lacos de repeticao, listas, dicionarios, tuplas e funcoes.",
     "link": "./aulas/aula11.html",
     "topicos": ["Funcoes", "def", "Parametros", "return", "Escopo", "Reutilizacao de codigo"]
   },
