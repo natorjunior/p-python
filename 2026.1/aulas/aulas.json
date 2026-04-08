@@ -81,8 +81,8 @@
   },
   {
     "numero": 11,
-    "titulo": "Aula 11 - Introducao sobre Funcoes",
-    "subtitulo": "def, parametros, return e escopo",
+    "titulo": "Aula 11 - Revisao geral em Python",
+    "subtitulo": "Revisao geral em Python",
     "descricao": "Revisao geral em Python com exercicios de operadores relacionais, logicos e aritmeticos, estruturas condicionais, lacos de repeticao, listas, dicionarios, tuplas e funcoes.",
     "link": "./aulas/aula11.html",
     "topicos": ["Funcoes", "def", "Parametros", "return", "Escopo", "Reutilizacao de codigo"]
