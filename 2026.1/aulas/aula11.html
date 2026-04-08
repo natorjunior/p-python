@@ -341,7 +341,7 @@ print(a &gt; b)
           <div class="question-card">
             <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
             <pre><code class="language-python" data-trim data-noescape>
-a, b = True, True
+a, b = 5, 5
 print(a &gt;= b)
             </code></pre>
             <div class="answer-box fragment">
@@ -354,7 +354,7 @@ print(a &gt;= b)
           <div class="question-card">
             <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
             <pre><code class="language-python" data-trim data-noescape>
-a, b = True, False
+a, b = 8, 3
 print(a != b)
             </code></pre>
             <div class="answer-box fragment">
@@ -367,11 +367,11 @@ print(a != b)
           <div class="question-card">
             <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
             <pre><code class="language-python" data-trim data-noescape>
-a, b = False, False
+a, b = 2, 9
 print(a &lt; b)
             </code></pre>
             <div class="answer-box fragment">
-              <strong>Resposta esperada:</strong> False
+              <strong>Resposta esperada:</strong> True
             </div>
           </div>
         </section>
@@ -380,8 +380,8 @@ print(a &lt; b)
           <div class="question-card">
             <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
             <pre><code class="language-python" data-trim data-noescape>
-a, b = True, True
-print(a &lt;= b and a != False)
+a, b = 4, 4
+print(a &lt;= b and a != 0)
             </code></pre>
             <div class="answer-box fragment">
               <strong>Resposta esperada:</strong> True
@@ -393,8 +393,8 @@ print(a &lt;= b and a != False)
           <div class="question-card">
             <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
             <pre><code class="language-python" data-trim data-noescape>
-a, b = False, False
-print(a == b or a &gt; True)
+a, b = 2, 2
+print(a == b or a &gt; 10)
             </code></pre>
             <div class="answer-box fragment">
               <strong>Resposta esperada:</strong> True
@@ -406,7 +406,7 @@ print(a == b or a &gt; True)
           <div class="question-card">
             <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
             <pre><code class="language-python" data-trim data-noescape>
-a, b, c = True, False, False
+a, b, c = 9, 4, 2
 print(a &gt; b or (a &gt; c and c &lt; b))
             </code></pre>
             <div class="answer-box fragment">
@@ -419,7 +419,7 @@ print(a &gt; b or (a &gt; c and c &lt; b))
           <div class="question-card">
             <p class="question-prompt">Analise o codigo e informe a saida esperada (ou o erro).</p>
             <pre><code class="language-python" data-trim data-noescape>
-a, b, c = False, True, True
+a, b, c = 1, 2, 3
 print((a == b) or (c &gt; a))
             </code></pre>
             <div class="answer-box fragment">
