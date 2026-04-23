@@ -89,10 +89,10 @@
   },
   {
     "numero": 12,
-    "titulo": "Aula 12 - Break, Continue e Tuplas",
-    "subtitulo": "Controle de loops e estrutura imutavel",
-    "descricao": "Aula extra com foco no uso de break e continue em repeticoes e introducao pratica a tuplas com desempacotamento.",
+    "titulo": "Aula 12 - Funcoes e Modularizacao",
+    "subtitulo": "def, return e import em multiplos arquivos",
+    "descricao": "Aula focada em criacao de funcoes reutilizaveis, escopo de variaveis e organizacao do codigo em modulos com importacao.",
     "link": "./aulas/aula12.html",
-    "topicos": ["break", "continue", "for", "while", "Tuplas", "Desempacotamento", "Atividades praticas"]
+    "topicos": ["Funcoes", "def", "Parametros", "return", "Escopo", "Modularizacao", "import", "Atividades praticas"]
   }
 ]

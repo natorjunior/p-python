@@ -1,0 +1,1959 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aula 12 - Funções em Python para iniciantes.">
+  <title>Aula 12 - Funções em Python</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="./dist/reveal.css">
+  <link rel="stylesheet" href="./dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="./plugin/highlight/atom-one-dark.css">
+
+  <style>
+    :root {
+      --primary-color: #0056b3;
+      --secondary-color: #2f2f2f;
+      --light-bg: #f2f7ff;
+      --accent-bg: #e7f6ec;
+      --warn-bg: #fff8e1;
+      --code-bg: #1f2937;
+      --transition-fragment: 0.3s ease;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(180deg, #f9fbff 0%, #f2f7ff 100%);
+    }
+
+    .reveal h1,
+    .reveal h2,
+    .reveal h3 {
+      color: var(--primary-color);
+    }
+
+    .reveal p,
+    .reveal li {
+      color: var(--secondary-color);
+      font-size: 0.95em;
+    }
+
+    .reveal .icon {
+      color: currentColor;
+      margin-right: 0.28em;
+    }
+
+    .reveal .icon-only {
+      color: currentColor;
+      margin-right: 0;
+    }
+
+    .reveal pre code {
+      font-size: 0.84em;
+      background: var(--code-bg);
+      border-radius: 8px;
+      padding: 12px;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .08);
+    }
+
+    .reveal pre {
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 12px;
+    }
+
+    .fragment {
+      transition: all var(--transition-fragment);
+    }
+
+    .bg-light {
+      background-color: var(--light-bg) !important;
+    }
+
+    .bg-accent {
+      background-color: var(--accent-bg) !important;
+    }
+
+    .bg-warn {
+      background-color: var(--warn-bg) !important;
+    }
+
+    .hero-cover {
+      position: relative;
+      overflow: hidden;
+      padding: 40px !important;
+    }
+
+    .hero-cover::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(140deg, rgba(3, 15, 35, .55), rgba(11, 53, 112, .4), rgba(17, 126, 111, .28));
+      z-index: 1;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero-content {
+      background: rgba(7, 24, 54, .5);
+      border: 1px solid rgba(255, 255, 255, .2);
+      border-radius: 16px;
+      padding: 24px 26px;
+      text-align: left;
+      box-shadow: 0 18px 44px rgba(0, 0, 0, .22);
+      backdrop-filter: blur(2px);
+    }
+
+    .hero-kicker {
+      margin: 0 0 12px;
+      color: rgba(255, 255, 255, .9) !important;
+      font-size: 0.4em !important;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .hero-title {
+      margin: 0 0 12px !important;
+      color: #fff !important;
+      font-size: 1.35em !important;
+      line-height: 1.12 !important;
+      text-shadow: 0 10px 20px rgba(0, 0, 0, .35);
+    }
+
+    .hero-title span {
+      color: rgba(230, 244, 255, .96);
+      font-weight: 500;
+      font-size: 0.88em;
+    }
+
+    .hero-subtitle {
+      margin: 0 0 16px;
+      color: rgba(255, 255, 255, .92) !important;
+      font-size: 0.5em !important;
+      line-height: 1.45;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 18px;
+    }
+
+    .hero-tags span {
+      background: rgba(255, 255, 255, .14);
+      border: 1px solid rgba(255, 255, 255, .26);
+      border-radius: 999px;
+      color: #fff;
+      font-size: 0.34em;
+      font-weight: 500;
+      padding: 4px 10px;
+    }
+
+    .hero-meta {
+      margin: 0;
+      color: rgba(255, 255, 255, .88) !important;
+      font-size: 0.4em !important;
+    }
+
+    .hero-mark {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-icon-wrap {
+      width: 180px;
+      height: 180px;
+      border-radius: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(255, 255, 255, .14);
+      border: 1px solid rgba(255, 255, 255, .35);
+      box-shadow: 0 18px 42px rgba(0, 0, 0, .24);
+      color: #fff;
+      font-size: 3.4em;
+    }
+
+    .box,
+    .box-green,
+    .box-orange {
+      padding: 14px 18px;
+      border-radius: 12px;
+      margin: 14px 0;
+      text-align: left;
+      box-shadow: 0 10px 20px rgba(16, 55, 101, .08);
+    }
+
+    .box {
+      background: var(--light-bg);
+      border-left: 5px solid var(--primary-color);
+    }
+
+    .box-green {
+      background: var(--accent-bg);
+      border-left: 5px solid #27ae60;
+    }
+
+    .box-orange {
+      background: #fff3e0;
+      border-left: 5px solid #e67e22;
+    }
+
+    .columns {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .columns>div {
+      flex: 1;
+    }
+
+    .section-divider {
+      position: relative;
+      padding: 40px !important;
+    }
+
+    .section-divider h2 {
+      color: #fff !important;
+      font-size: 1.6em;
+      text-shadow: 0 4px 16px rgba(0, 0, 0, .3);
+    }
+
+    .section-divider p {
+      color: rgba(255, 255, 255, .9) !important;
+      font-size: 0.85em;
+    }
+
+    .section-number {
+      display: inline-block;
+      background: rgba(255, 255, 255, .18);
+      border: 1px solid rgba(255, 255, 255, .3);
+      border-radius: 16px;
+      padding: 6px 20px;
+      color: #fff;
+      font-size: 0.5em;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+
+    .agenda-slide {
+      background: radial-gradient(circle at top left, #eef6ff 0%, #f8fbff 45%, #edf4ff 100%) !important;
+      text-align: left;
+      padding: 20px 26px !important;
+    }
+
+    .agenda-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .agenda-list li {
+      background: #fff;
+      border: 1px solid #c6d9f1;
+      border-left: 6px solid #2f6fd4;
+      border-radius: 12px;
+      padding: 10px 12px;
+      color: #1f3f63;
+      font-size: 0.72em !important;
+      box-shadow: 0 8px 18px rgba(22, 63, 112, .08);
+    }
+
+    .agenda-list li strong {
+      color: #1a4f88;
+      margin-right: 6px;
+    }
+
+    .math-slide {
+      background: radial-gradient(circle at top right, #f2f8ff 0%, #f9fcff 52%, #edf5ff 100%) !important;
+      text-align: left;
+      padding: 20px 26px !important;
+    }
+
+    .math-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .math-card {
+      background: #fff;
+      border: 1px solid #cadcf2;
+      border-radius: 12px;
+      padding: 12px 10px;
+      text-align: center;
+      box-shadow: 0 8px 18px rgba(20, 57, 100, .08);
+    }
+
+    .math-formula {
+      margin: 0;
+      color: #1d4f88 !important;
+      font-size: 0.82em !important;
+      font-weight: 700;
+      letter-spacing: .01em;
+    }
+
+    .math-result {
+      margin: 8px 0 0;
+      color: #325578 !important;
+      font-size: 0.68em !important;
+    }
+
+    .prompt-slide {
+      background: radial-gradient(circle at bottom left, #fff8ef 0%, #fffaf3 40%, #fff3e3 100%) !important;
+      text-align: left;
+      padding: 20px 26px !important;
+    }
+
+    .code-slide {
+      background: radial-gradient(circle at top left, #eef6ff 0%, #f9fcff 46%, #edf4ff 100%) !important;
+      text-align: left;
+      padding: 20px 26px !important;
+    }
+
+    .slide-subtitle {
+      margin: 4px 0 6px;
+      color: #4a6788 !important;
+      font-size: 0.63em !important;
+    }
+
+    .func-step-slide {
+      background: radial-gradient(circle at top right, #eef6ff 0%, #f9fcff 48%, #edf5ff 100%) !important;
+      text-align: left;
+      padding: 20px 26px !important;
+    }
+
+    .func-step-d3-stage {
+      width: min(1080px, 90vw);
+      margin: 14px auto 0;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #c7d8ec;
+      box-shadow: 0 14px 28px rgba(17, 51, 93, .12);
+      background: #e8eef7;
+      aspect-ratio: 16 / 9;
+      position: relative;
+    }
+
+    .func-step-d3-stage svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .func-step-guide {
+      margin: 12px auto 0 !important;
+      max-width: 980px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      padding-left: 22px !important;
+      font-size: 0.58em !important;
+      color: #355879 !important;
+    }
+
+    .func-step-guide li {
+      margin: 0;
+      padding: 7px 10px;
+      border-left: 4px solid #c9d9ec;
+      background: rgba(255, 255, 255, .64);
+      border-radius: 8px;
+    }
+
+    .func-step-guide li.visible {
+      border-left-color: #2563eb;
+      background: #f0f6ff;
+      color: #1e3a5f !important;
+    }
+
+    .func-step-guide li.current-fragment {
+      border-left-color: #1d4ed8;
+      background: #e8f1ff;
+      box-shadow: 0 0 0 1px rgba(29, 78, 216, .14);
+    }
+
+    .func-step-caption {
+      margin-top: 12px;
+      font-size: 0.62em !important;
+      color: #476788 !important;
+      text-align: center;
+    }
+
+    .activity-slide {
+      background: radial-gradient(circle at top right, #eef6ff 0%, #f8fbff 44%, #eef4fb 100%) !important;
+      text-align: left;
+      padding: 20px 26px !important;
+    }
+
+    .activity-card {
+      max-width: 880px;
+      margin: 10px auto 0;
+      padding: 16px 18px;
+      border-radius: 14px;
+      border: 1px solid #bfd9f2;
+      border-left: 6px solid #1a5f9b;
+      background: linear-gradient(140deg, #f8fcff, #edf6ff);
+      box-shadow: 0 10px 24px rgba(9, 43, 84, .1);
+      max-height: 62vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    .activity-title {
+      margin: 0 0 8px;
+      color: #124980 !important;
+      font-size: 0.84em !important;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .activity-question {
+      margin: 4px 0;
+      color: #2b4352 !important;
+      font-size: 0.72em !important;
+      line-height: 1.45;
+    }
+
+    .activity-question code {
+      background: rgba(255, 255, 255, .92);
+      border-radius: 6px;
+      padding: 2px 6px;
+      font-size: 0.95em;
+      white-space: nowrap;
+    }
+
+    .activity-timer {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px dashed #9ec2e6;
+      background: #f4f9ff;
+    }
+
+    .activity-timer-label {
+      margin: 0 0 8px;
+      color: #184877 !important;
+      font-size: 0.66em !important;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .activity-timer-display {
+      font-family: "Consolas", "Courier New", monospace;
+      font-size: 1.08em;
+      color: #0f4c81;
+    }
+
+    .activity-timer-display.warning {
+      color: #b45309;
+    }
+
+    .activity-timer-display.done {
+      color: #b42318;
+    }
+
+    .activity-timer-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .activity-timer-btn {
+      border: 1px solid #9ec2e6;
+      border-radius: 8px;
+      background: #fff;
+      color: #184877;
+      padding: 4px 10px;
+      font-size: 0.58em;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .activity-timer-btn.start {
+      background: #1f8f5f;
+      border-color: #1f8f5f;
+      color: #fff;
+    }
+
+    .activity-timer-btn.pause {
+      background: #f59e0b;
+      border-color: #f59e0b;
+      color: #fff;
+    }
+
+    .activity-timer-btn.reset {
+      background: #475569;
+      border-color: #475569;
+      color: #fff;
+    }
+
+    .activity-timer-btn.config {
+      background: #2f6fd4;
+      border-color: #2f6fd4;
+      color: #fff;
+    }
+
+    .timer-modal[hidden] {
+      display: none !important;
+    }
+
+    .timer-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1400;
+    }
+
+    .timer-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(7, 20, 43, .52);
+    }
+
+    .timer-modal-card {
+      position: relative;
+      width: min(92vw, 460px);
+      margin: 10vh auto 0;
+      background: #fff;
+      border: 1px solid #c7d9ef;
+      border-radius: 14px;
+      box-shadow: 0 18px 42px rgba(8, 27, 55, .28);
+      padding: 16px;
+      text-align: left;
+    }
+
+    .timer-modal-title {
+      margin: 0 0 10px;
+      color: #0f4c81 !important;
+      font-size: 0.95em !important;
+    }
+
+    .timer-modal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .timer-modal-field {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .timer-modal-field label {
+      font-size: 0.58em;
+      color: #3b5878;
+      font-weight: 700;
+    }
+
+    .timer-modal-field input {
+      border: 1px solid #c3d6ed;
+      border-radius: 8px;
+      padding: 6px 8px;
+      font-size: 0.7em;
+      color: #123a63;
+      background: #fafdff;
+    }
+
+    .timer-modal-note {
+      margin: 10px 0 0;
+      font-size: 0.56em !important;
+      color: #5a738f !important;
+    }
+
+    .timer-modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .timer-modal-btn {
+      border: 1px solid #bfd0e7;
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-size: 0.6em;
+      font-weight: 700;
+      cursor: pointer;
+      background: #fff;
+      color: #264d76;
+    }
+
+    .timer-modal-btn.primary {
+      background: #1f8f5f;
+      border-color: #1f8f5f;
+      color: #fff;
+    }
+
+    .quiz-slide {
+      background: radial-gradient(circle at bottom left, #fef9f0 0%, #fff7eb 40%, #fef5e7 100%) !important;
+      text-align: left;
+      padding: 20px 26px !important;
+    }
+
+    .quiz-card {
+      max-width: 880px;
+      margin: 10px auto 0;
+      padding: 16px 18px;
+      border-radius: 14px;
+      border: 1px solid #f5d6a7;
+      border-left: 6px solid #e67e22;
+      background: linear-gradient(140deg, #fffcf7, #fef6ea);
+      box-shadow: 0 10px 24px rgba(120, 60, 5, .08);
+      max-height: 62vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    .quiz-title {
+      margin: 0 0 10px;
+      color: #b45309 !important;
+      font-size: 0.84em !important;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .quiz-answer {
+      margin: 10px 0 0;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: #e7f6ec;
+      border: 1px solid #a3d9b1;
+      color: #1a6b3a !important;
+      font-size: 0.68em !important;
+      font-weight: 500;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .summary-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 12px;
+    }
+
+    .summary-card p:first-child {
+      margin: 0;
+      font-size: 0.86em;
+    }
+
+    .summary-card p:last-child {
+      margin: 6px 0 0;
+      font-size: 0.68em;
+    }
+
+    .summary-card.syntax {
+      border: 2px solid #2c7da0;
+    }
+
+    .summary-card.return {
+      border: 2px solid #6c43bf;
+    }
+
+    .summary-card.practice {
+      border: 2px solid #c56b2f;
+    }
+
+    .reveal table {
+      font-size: 0.75em;
+      margin: 16px auto;
+    }
+
+    .reveal table th {
+      background: var(--primary-color);
+      color: #fff;
+      padding: 8px 14px;
+    }
+
+    .reveal table td {
+      padding: 7px 12px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-icon-wrap {
+        width: 130px;
+        height: 130px;
+        font-size: 2.4em;
+      }
+
+      .columns {
+        flex-direction: column;
+      }
+
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .math-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .func-step-d3-stage {
+        width: 100%;
+      }
+
+      .func-step-guide {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section class="hero-cover" data-background-gradient="linear-gradient(140deg, #0d2550, #1450a4, #1ba37f)">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <p class="hero-kicker"><i class="fa-solid fa-laptop-code icon" aria-hidden="true"></i>Introdução à
+              Programação</p>
+            <h1 class="hero-title">Funções em Python<br><span>Aula 12</span></h1>
+            <p class="hero-subtitle">Primeiro contato com funções: por que usar, como criar e como aplicar em problemas
+              simples.</p>
+            <div class="hero-tags">
+              <span>def</span><span>parâmetros</span><span>return</span><span>reutilização</span>
+            </div>
+            <p class="hero-meta"><i class="fa-solid fa-user-tie icon" aria-hidden="true"></i>Prof. Msc. Nator Junior
+              Carvalho da Costa</p>
+          </div>
+          <div class="hero-mark">
+            <div class="hero-icon-wrap">
+              <i class="fa-solid fa-function icon-only" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="agenda-slide">
+        <h2><i class="fa-solid fa-calendar-check icon" aria-hidden="true"></i> Cronograma da Aula</h2>
+        <p class="slide-subtitle">Roteiro rápido do que veremos hoje.</p>
+        <div class="box">
+          <ol class="agenda-list">
+            <li><strong>01.</strong> Motivação: por que evitar repetição de código.</li>
+            <li><strong>02.</strong> Conceito de função: entrada, processamento e saída.</li>
+            <li><strong>03.</strong> Estrutura básica em Python com <code>def</code>.</li>
+            <li><strong>04.</strong> Exemplo simples com chamada de função.</li>
+            <li><strong>05.</strong> Funções com parâmetros e retorno.</li>
+            <li><strong>06.</strong> Fechamento e dúvidas.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section>
+        <section class="section-divider" data-background-gradient="linear-gradient(135deg, #0f4c81, #2c7da0, #61a5c2)">
+          <div class="section-number">Tema da Aula</div>
+          <h2><i class="fa-solid fa-function icon" aria-hidden="true"></i> Funções</h2>
+          <p>Blocos de código reutilizáveis para organizar e simplificar programas.</p>
+        </section>
+
+        <section class="math-slide">
+          <h2><i class="fa-solid fa-square-root-variable icon" aria-hidden="true"></i> Funções na Matemática</h2>
+          <p class="slide-subtitle">Entrada -> Regra -> Saída</p>
+          <div class="math-grid">
+            <div class="math-card">
+              <p class="math-formula">f(x) = x</p>
+              <p class="math-result">f(10) = 10</p>
+            </div>
+            <div class="math-card">
+              <p class="math-formula">g(x) = 2x + 3</p>
+              <p class="math-result">g(10) = 23</p>
+            </div>
+            <div class="math-card">
+              <p class="math-formula">h(x) = x²</p>
+              <p class="math-result">h(10) = 100</p>
+            </div>
+          </div>
+          <div class="box-green">
+            <p>Em programação, funções seguem a mesma ideia: recebem entrada, processam e geram saída.</p>
+          </div>
+        </section>
+
+        <section class="prompt-slide">
+          <h2><i class="fa-solid fa-circle-question icon" aria-hidden="true"></i> Pergunta Provocativa</h2>
+          <p class="slide-subtitle">Pense como alguém que vai manter esse código no futuro.</p>
+          <div class="box-orange">
+            <p><strong>Por que repetir código é ruim?</strong></p>
+            <p>Se a regra mudar, vamos precisar corrigir em vários lugares. Isso aumenta retrabalho e erros.</p>
+          </div>
+        </section>
+
+        <section class="code-slide">
+          <h2><i class="fa-solid fa-copy icon" aria-hidden="true"></i> Repetição de Código</h2>
+          <p class="slide-subtitle">Mesmo cálculo escrito duas vezes.</p>
+          <pre><code class="language-python" data-trim data-noescape>
+nota1, nota2 = 8.0, 6.0
+media1 = (nota1 + nota2) / 2
+print("Média aluno 1:", media1)
+
+nota3, nota4 = 7.5, 9.0
+media2 = (nota3 + nota4) / 2
+print("Média aluno 2:", media2)
+        </code></pre>
+          <div class="box-orange">
+            <p>A mesma lógica foi escrita duas vezes. Em turmas grandes isso cresce rapidamente.</p>
+          </div>
+        </section>
+
+        <section class="code-slide">
+          <h2><i class="fa-solid fa-recycle icon" aria-hidden="true"></i> Reutilização com Funções</h2>
+          <p class="slide-subtitle">Uma função, várias chamadas.</p>
+          <pre><code class="language-python" data-trim data-noescape>
+def calcular_media(a, b):
+    return (a + b) / 2
+
+print("Média aluno 1:", calcular_media(8.0, 6.0))
+print("Média aluno 2:", calcular_media(7.5, 9.0))
+        </code></pre>
+          <div class="box-green">
+            <p>Agora a regra está centralizada em uma função, fácil de manter e reutilizar.</p>
+          </div>
+        </section>
+
+        <section class="func-step-slide">
+          <h2><i class="fa-solid fa-shoe-prints icon" aria-hidden="true"></i>  Passo a Passo (Funções)</h2>
+          <!-- <p class="slide-subtitle">Desenho em <code>d3.js</code>. Avance os fragments para destacar cada parte.</p> -->
+
+          <div id="func-step-d3-stage" class="func-step-d3-stage" aria-label="Ilustração desenhada com d3.js"></div>
+
+          <ol class="func-step-guide">
+            <li class="fragment" data-func-d3-step="1">Passo 1: <code>def</code> indica que estamos definindo uma
+              função.</li>
+            <li class="fragment" data-func-d3-step="2">Passo 2: <code>funcao</code> é o nome usado para chamar essa
+              função.</li>
+            <li class="fragment" data-func-d3-step="3">Passo 3: os parênteses <code>()</code> guardam os parâmetros.
+            </li>
+            <li class="fragment" data-func-d3-step="4">Passo 4: a linha identada é o bloco de instruções da função.
+            </li>
+          </ol>
+
+          <!-- <p class="func-step-caption">Sequência didática: <code>def</code> -> nome -> parâmetros -> bloco.</p> -->
+        </section>
+
+        <section class="activity-slide">
+          <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade A1 - Estrutura de Função</h2>
+          <div class="activity-card">
+            <p class="activity-title"><i class="fa-solid fa-sitemap" aria-hidden="true"></i> Identificando as partes</p>
+            <pre><code class="language-python" data-trim data-noescape>
+def saudacao(nome):
+    print(f"Olá, {nome}")
+            </code></pre>
+            <p class="activity-question">Reescreva a função com o nome <code>boas_vindas</code>.</p>
+          </div>
+        </section>
+
+        <section class="func-step-slide func-call-slide">
+          <!-- <h2><i class="fa-solid fa-arrows-spin icon" aria-hidden="true"></i> Fluxo da Execução da Função</h2> -->
+          <!-- <p class="slide-subtitle">Sequência visual: chamada -> execução -> retorno -> continuação.</p> -->
+
+          <div id="func-call-d3-stage" class="func-step-d3-stage"
+            aria-label="Fluxo da chamada, execução, retorno e continuação"></div>
+
+          <ol class="func-step-guide">
+            <li class="fragment" data-func-call-step="1">Passo 1 (programa): executa
+              <code>print("Antes da função")</code>.</li>
+            <li class="fragment" data-func-call-step="2">Passo 2 (programa): faz a chamada <code>funcao()</code>.
+            </li>
+            <li class="fragment" data-func-call-step="3">Passo 3 (função): executa
+              <code>print("Olá mundo")</code>.</li>
+            <li class="fragment" data-func-call-step="4">Passo 4 (função): termina e faz o <code>retorno</code> para
+              o programa.</li>
+            <li class="fragment" data-func-call-step="5">Passo 5 (programa): continua em
+              <code>print("Depois da função")</code>.</li>
+          </ol>
+
+          <p class="func-step-caption">Regra prática: o principal executa, chama, pausa; a função executa e retorna;
+            então o principal continua.</p>
+        </section>
+
+        <section class="activity-slide">
+          <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade A2 - Fluxo do Programa</h2>
+          <div class="activity-card">
+            <p class="activity-title"><i class="fa-solid fa-route" aria-hidden="true"></i> Ordem de execução</p>
+            <p class="activity-question">Dado:</p>
+            <pre><code class="language-python" data-trim data-noescape>
+def msg():
+    print("B")
+
+print("A")
+msg()
+print("C")
+            </code></pre>
+            <p class="activity-question">Escreva a saída correta e explique por que a letra <code>B</code> aparece entre <code>A</code> e <code>C</code>.</p>
+          </div>
+        </section>
+
+        <section class="code-slide" data-auto-animate>
+          <h2><i class="fa-solid fa-sliders icon" aria-hidden="true"></i> Funções com Parâmetros</h2>
+          <p class="slide-subtitle">Auto animate - quadro 1: definição da função e parâmetro.</p>
+          <pre data-id="param-code"><code class="language-python" data-trim data-noescape>
+def saudacao(nome):
+    print(f"Olá, {nome}!")
+          </code></pre>
+          <div class="box">
+            <p><strong>Parâmetro:</strong> <code>nome</code> é a variável que recebe o valor na chamada.</p>
+          </div>
+        </section>
+
+        <section class="code-slide" data-auto-animate>
+          <h2><i class="fa-solid fa-sliders icon" aria-hidden="true"></i> Funções com Parâmetros</h2>
+          <p class="slide-subtitle">Auto animate - quadro 2: chamada e resultado.</p>
+          <pre data-id="param-code"><code class="language-python" data-trim data-noescape>
+def saudacao(nome):
+    print(f"Olá, {nome}!")
+
+usuario = "Ana"
+saudacao(usuario)
+          </code></pre>
+          <pre><code class="language-text" data-trim data-noescape>
+Olá, Ana!
+          </code></pre>
+          <div class="box-green">
+            <p>Argumento <code>usuario</code> (fora) -> parâmetro <code>nome</code> (dentro).</p>
+          </div>
+        </section>
+
+        <section class="activity-slide">
+          <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade A3 - Funções com Parâmetros</h2>
+          <div class="activity-card">
+            <p class="activity-title"><i class="fa-solid fa-user-pen" aria-hidden="true"></i> Personalizando saída</p>
+            <p class="activity-question">Crie a função <code>apresentar(nome, idade)</code>.</p>
+            <p class="activity-question">Ela deve imprimir: <code>"Meu nome é {nome} e tenho {idade} anos."</code>.</p>
+            <p class="activity-question">Teste com 3 chamadas diferentes.</p>
+          </div>
+        </section>
+
+        <section class="code-slide" data-auto-animate>
+          <h2><i class="fa-solid fa-right-left icon" aria-hidden="true"></i> Funções com e sem Retorno</h2>
+          <p class="slide-subtitle">Auto animate - quadro 1: sem retorno x com retorno.</p>
+          <pre data-id="return-code"><code class="language-python" data-trim data-noescape>
+def exibe_mensagem():
+    print("Processando...")
+
+def soma(a, b):
+    return a + b
+          </code></pre>
+          <div class="box">
+            <p><code>exibe_mensagem()</code> apenas mostra texto. <code>soma()</code> devolve um valor.</p>
+          </div>
+        </section>
+
+        <section class="code-slide" data-auto-animate>
+          <h2><i class="fa-solid fa-right-left icon" aria-hidden="true"></i> Funções com e sem Retorno</h2>
+          <p class="slide-subtitle">Auto animate - quadro 2: usando o valor retornado.</p>
+          <pre data-id="return-code"><code class="language-python" data-trim data-noescape>
+def exibe_mensagem():
+    print("Processando...")
+
+def soma(a, b):
+    return a + b
+
+exibe_mensagem()
+resultado = soma(5, 7)
+print("Resultado:", resultado)
+          </code></pre>
+          <pre><code class="language-text" data-trim data-noescape>
+Processando...
+Resultado: 12
+          </code></pre>
+        </section>
+
+        <section class="activity-slide">
+          <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade A4 - Retorno</h2>
+          <div class="activity-card">
+            <p class="activity-title"><i class="fa-solid fa-calculator" aria-hidden="true"></i> Calculando dobro</p>
+            <p class="activity-question">Crie <code>dobro(n)</code> com <code>return</code>.</p>
+            <p class="activity-question">No programa principal, leia um número, chame a função e imprima o resultado.</p>
+            <p class="activity-question">Depois faça uma versão sem <code>return</code> e compare.</p>
+          </div>
+        </section>
+
+        <section class="code-slide" data-auto-animate>
+          <h2><i class="fa-solid fa-globe icon" aria-hidden="true"></i> Escopo de Variável</h2>
+          <p class="slide-subtitle">Auto animate - quadro 1: global e local no mesmo código.</p>
+          <pre data-id="scope-code"><code class="language-python" data-trim data-noescape>
+x = 10
+
+def alterar():
+    x = 20
+    print("Dentro:", x)
+
+alterar()
+print("Fora:", x)
+          </code></pre>
+          <div class="box-orange">
+            <p>A atribuição <code>x = 20</code> dentro da função cria escopo local.</p>
+          </div>
+        </section>
+
+        <section class="code-slide" data-auto-animate>
+          <h2><i class="fa-solid fa-globe icon" aria-hidden="true"></i> Escopo de Variável</h2>
+          <p class="slide-subtitle">Auto animate - quadro 2: observando a saída final.</p>
+          <pre data-id="scope-code"><code class="language-python" data-trim data-noescape>
+x = 10
+
+def alterar():
+    x = 20
+    print("Dentro:", x)
+
+alterar()
+print("Fora:", x)
+          </code></pre>
+          <pre><code class="language-text" data-trim data-noescape>
+Dentro: 20
+Fora: 10
+          </code></pre>
+        </section>
+
+        <section class="activity-slide">
+          <h2><i class="fa-solid fa-pencil icon" aria-hidden="true"></i> Atividade A5 - Escopo</h2>
+          <div class="activity-card">
+            <p class="activity-title"><i class="fa-solid fa-layer-group" aria-hidden="true"></i> Global x Local</p>
+            <p class="activity-question">Monte um exemplo com variável global <code>taxa = 0.1</code> e uma função que
+              cria <code>taxa = 0.2</code> localmente.</p>
+            <p class="activity-question">Imprima dentro e fora da função para provar que os valores podem ser diferentes.</p>
+          </div>
+        </section>
+
+      </section>
+
+
+
+    </div>
+  </div>
+  <div id="timer-config-modal" class="timer-modal" hidden>
+    <div class="timer-modal-backdrop" data-timer-modal-close="1"></div>
+    <div class="timer-modal-card" role="dialog" aria-modal="true" aria-labelledby="timer-config-title">
+      <h3 id="timer-config-title" class="timer-modal-title"><i class="fa-solid fa-sliders icon" aria-hidden="true"></i>
+        Configurar Contador</h3>
+      <div class="timer-modal-grid">
+        <div class="timer-modal-field">
+          <label for="timer-config-minutes">Minutos</label>
+          <input id="timer-config-minutes" type="number" min="0" max="120" step="1" value="5">
+        </div>
+        <div class="timer-modal-field">
+          <label for="timer-config-seconds">Segundos</label>
+          <input id="timer-config-seconds" type="number" min="0" max="59" step="1" value="0">
+        </div>
+        <div class="timer-modal-field">
+          <label for="timer-config-warning">Alerta final (seg)</label>
+          <input id="timer-config-warning" type="number" min="5" max="600" step="5" value="60">
+        </div>
+      </div>
+      <p class="timer-modal-note">A configuracao e aplicada apenas ao contador da atividade atual.</p>
+      <div class="timer-modal-actions">
+        <button type="button" id="timer-config-cancel" class="timer-modal-btn">Cancelar</button>
+        <button type="button" id="timer-config-apply" class="timer-modal-btn primary">Aplicar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./dist/reveal.js"></script>
+  <script src="./plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script>
+    Reveal.initialize({
+      center: false,
+      controls: true,
+      progress: true,
+      slideNumber: true,
+      history: true,
+      transition: 'convex',
+      plugins: [RevealHighlight]
+    });
+
+    (function setupActivityTimers() {
+      var timerRoots = Array.from(document.querySelectorAll('.activity-timer'));
+      if (!timerRoots.length) return;
+      var modal = document.getElementById('timer-config-modal');
+      var modalMinutes = document.getElementById('timer-config-minutes');
+      var modalSeconds = document.getElementById('timer-config-seconds');
+      var modalWarning = document.getElementById('timer-config-warning');
+      var modalApply = document.getElementById('timer-config-apply');
+      var modalCancel = document.getElementById('timer-config-cancel');
+      var modalBackdrop = modal ? modal.querySelector('[data-timer-modal-close]') : null;
+      var activeTimer = null;
+      if (!modal || !modalMinutes || !modalSeconds || !modalWarning || !modalApply || !modalCancel || !modalBackdrop) return;
+
+      var timers = [];
+
+      function formatClock(totalSeconds) {
+        var mins = Math.floor(totalSeconds / 60);
+        var secs = totalSeconds % 60;
+        return String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
+      }
+
+      timerRoots.forEach(function (root) {
+        var display = root.querySelector('.activity-timer-display');
+        var startBtn = root.querySelector('.activity-timer-btn.start');
+        var pauseBtn = root.querySelector('.activity-timer-btn.pause');
+        var resetBtn = root.querySelector('.activity-timer-btn.reset');
+        var configBtn = root.querySelector('.activity-timer-btn.config');
+        if (!display || !startBtn || !pauseBtn || !resetBtn || !configBtn) return;
+
+        var initialSeconds = Number(root.getAttribute('data-duration'));
+        if (!Number.isFinite(initialSeconds) || initialSeconds <= 0) initialSeconds = 300;
+        var warningSeconds = Number(root.getAttribute('data-warning'));
+        if (!Number.isFinite(warningSeconds) || warningSeconds <= 0) warningSeconds = 60;
+
+        var remaining = initialSeconds;
+        var intervalId = null;
+
+        function updateView() {
+          display.textContent = formatClock(remaining);
+          display.classList.toggle('warning', remaining > 0 && remaining <= warningSeconds);
+          display.classList.toggle('done', remaining === 0);
+        }
+
+        function stop() {
+          if (!intervalId) return;
+          clearInterval(intervalId);
+          intervalId = null;
+        }
+
+        function tick() {
+          if (remaining <= 0) {
+            stop();
+            return;
+          }
+          remaining -= 1;
+          updateView();
+          if (remaining === 0) stop();
+        }
+
+        startBtn.addEventListener('click', function () {
+          if (intervalId || remaining === 0) return;
+          intervalId = setInterval(tick, 1000);
+        });
+
+        pauseBtn.addEventListener('click', stop);
+
+        resetBtn.addEventListener('click', function () {
+          stop();
+          remaining = initialSeconds;
+          updateView();
+        });
+
+        configBtn.addEventListener('click', function () {
+          activeTimer = timer;
+          var mins = Math.floor(timer.initialSeconds / 60);
+          var secs = timer.initialSeconds % 60;
+          modalMinutes.value = String(mins);
+          modalSeconds.value = String(secs);
+          modalWarning.value = String(timer.warningSeconds);
+          modal.hidden = false;
+        });
+
+        updateView();
+
+        var timer = {
+          root: root,
+          stop: stop,
+          get initialSeconds() { return initialSeconds; },
+          get warningSeconds() { return warningSeconds; },
+          setConfig: function (seconds, warning) {
+            initialSeconds = seconds;
+            warningSeconds = warning;
+            remaining = seconds;
+            updateView();
+          }
+        };
+
+        timers.push(timer);
+      });
+
+      function closeModal() {
+        modal.hidden = true;
+        activeTimer = null;
+      }
+
+      function applyModal() {
+        if (!activeTimer) return closeModal();
+        var mins = Number(modalMinutes.value);
+        var secs = Number(modalSeconds.value);
+        var warning = Number(modalWarning.value);
+        if (!Number.isFinite(mins) || mins < 0) mins = 0;
+        if (!Number.isFinite(secs) || secs < 0) secs = 0;
+        if (secs > 59) secs = 59;
+        var total = mins * 60 + secs;
+        if (total <= 0) total = 60;
+        if (!Number.isFinite(warning) || warning < 5) warning = 5;
+        if (warning > total) warning = total;
+        activeTimer.stop();
+        activeTimer.setConfig(total, warning);
+        closeModal();
+      }
+
+      modalApply.addEventListener('click', applyModal);
+      modalCancel.addEventListener('click', closeModal);
+      modalBackdrop.addEventListener('click', closeModal);
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && !modal.hidden) closeModal();
+      });
+
+      Reveal.on('slidechanged', function () {
+        timers.forEach(function (timer) { timer.stop(); });
+      });
+    })();
+
+    (function setupFunctionD3StepByStep() {
+      var slide = document.querySelector('.func-step-slide');
+      var stage = document.getElementById('func-step-d3-stage');
+      if (!slide || !stage) return;
+
+      if (typeof d3 === 'undefined') {
+        stage.innerHTML = '<p style="font:600 16px Roboto,sans-serif;color:#264d76;padding:16px;">Nao foi possivel carregar d3.js.</p>';
+        return;
+      }
+
+      var W = 1280;
+      var H = 720;
+      var svg = d3.select(stage)
+        .html('')
+        .append('svg')
+        .attr('viewBox', '0 0 ' + W + ' ' + H)
+        .attr('preserveAspectRatio', 'xMidYMid meet');
+
+      var defs = svg.append('defs');
+      var bgGradient = defs.append('linearGradient')
+        .attr('id', 'func-bg-gradient')
+        .attr('x1', '0%')
+        .attr('x2', '100%')
+        .attr('y1', '0%')
+        .attr('y2', '100%');
+      bgGradient.append('stop').attr('offset', '0%').attr('stop-color', '#f8fbff');
+      bgGradient.append('stop').attr('offset', '100%').attr('stop-color', '#eef4ff');
+
+      defs.append('marker')
+        .attr('id', 'func-arrow')
+        .attr('viewBox', '0 0 10 10')
+        .attr('refX', 9)
+        .attr('refY', 5)
+        .attr('markerWidth', 9)
+        .attr('markerHeight', 9)
+        .attr('orient', 'auto')
+        .append('path')
+        .attr('d', 'M 0 0 L 10 5 L 0 10 z')
+        .attr('fill', '#2563eb');
+
+      svg.append('rect')
+        .attr('x', 0)
+        .attr('y', 0)
+        .attr('width', W)
+        .attr('height', H)
+        .attr('fill', 'url(#func-bg-gradient)');
+
+      var panel = svg.append('g');
+      panel.append('rect')
+        .attr('x', 54)
+        .attr('y', 40)
+        .attr('width', W - 108)
+        .attr('height', H - 80)
+        .attr('rx', 20)
+        .attr('fill', '#ffffff')
+        .attr('stroke', '#d4e0f0')
+        .attr('stroke-width', 2);
+
+      panel.append('rect')
+        .attr('x', 82)
+        .attr('y', 72)
+        .attr('width', 260)
+        .attr('height', 42)
+        .attr('rx', 21)
+        .attr('fill', '#e8f1ff')
+        .attr('stroke', '#b7d0fb')
+        .attr('stroke-width', 1.5);
+
+      panel.append('text')
+        .attr('x', 102)
+        .attr('y', 100)
+        .attr('font-family', 'Roboto, sans-serif')
+        .attr('font-size', 22)
+        .attr('font-weight', 700)
+        .attr('fill', '#1f4f99')
+        .text('Estrutura de função');
+
+      var codeX = 132;
+      var codeY = 150;
+      var codeW = 840;
+      var codeH = 410;
+      var code = panel.append('g');
+
+      code.append('rect')
+        .attr('x', codeX)
+        .attr('y', codeY)
+        .attr('width', codeW)
+        .attr('height', codeH)
+        .attr('rx', 16)
+        .attr('fill', '#0f172a')
+        .attr('stroke', '#1e293b')
+        .attr('stroke-width', 2.2);
+
+      code.append('rect')
+        .attr('x', codeX)
+        .attr('y', codeY)
+        .attr('width', codeW)
+        .attr('height', 46)
+        .attr('rx', 16)
+        .attr('fill', '#111f36');
+
+      code.append('circle').attr('cx', codeX + 24).attr('cy', codeY + 23).attr('r', 6).attr('fill', '#ef4444');
+      code.append('circle').attr('cx', codeX + 44).attr('cy', codeY + 23).attr('r', 6).attr('fill', '#f59e0b');
+      code.append('circle').attr('cx', codeX + 64).attr('cy', codeY + 23).attr('r', 6).attr('fill', '#22c55e');
+
+      code.append('text')
+        .attr('x', codeX + 96)
+        .attr('y', codeY + 30)
+        .attr('font-family', 'Roboto, sans-serif')
+        .attr('font-size', 17)
+        .attr('fill', '#94a3b8')
+        .text('aula12.py');
+
+      code.append('line')
+        .attr('x1', codeX + 66)
+        .attr('x2', codeX + 66)
+        .attr('y1', codeY + 56)
+        .attr('y2', codeY + codeH - 16)
+        .attr('stroke', '#243041')
+        .attr('stroke-width', 2);
+
+      var fontFamily = 'JetBrains Mono, Fira Code, Menlo, Consolas, monospace';
+      var line1Y = codeY + 130;
+      var line2Y = codeY + 225;
+      var line3Y = codeY + 305;
+
+      code.append('text')
+        .attr('x', codeX + 42)
+        .attr('y', line1Y)
+        .attr('font-family', fontFamily)
+        .attr('font-size', 24)
+        .attr('fill', '#64748b')
+        .attr('text-anchor', 'end')
+        .text('1');
+
+      code.append('text')
+        .attr('x', codeX + 42)
+        .attr('y', line2Y)
+        .attr('font-family', fontFamily)
+        .attr('font-size', 24)
+        .attr('fill', '#64748b')
+        .attr('text-anchor', 'end')
+        .text('2');
+
+      code.append('text')
+        .attr('x', codeX + 42)
+        .attr('y', line3Y)
+        .attr('font-family', fontFamily)
+        .attr('font-size', 24)
+        .attr('fill', '#64748b')
+        .attr('text-anchor', 'end')
+        .text('3');
+
+      var codeLine1 = code.append('text')
+        .attr('x', codeX + 92)
+        .attr('y', line1Y)
+        .attr('font-family', fontFamily)
+        .attr('font-size', 52)
+        .attr('font-weight', 600);
+      codeLine1.append('tspan').attr('fill', '#60a5fa').text('def');
+      codeLine1.append('tspan').attr('fill', '#e2e8f0').text(' ');
+      codeLine1.append('tspan').attr('fill', '#f8fafc').text('funcao');
+      codeLine1.append('tspan').attr('fill', '#e2e8f0').text('(');
+      codeLine1.append('tspan').attr('fill', '#e2e8f0').text(')');
+      codeLine1.append('tspan').attr('fill', '#f8fafc').text(':');
+
+      var codeLine2 = code.append('text')
+        .attr('x', codeX + 148)
+        .attr('y', line2Y)
+        .attr('font-family', fontFamily)
+        .attr('font-size', 52)
+        .attr('font-weight', 500);
+      codeLine2.append('tspan').attr('fill', '#c084fc').text('print');
+      codeLine2.append('tspan').attr('fill', '#e2e8f0').text('(');
+      codeLine2.append('tspan').attr('fill', '#34d399').text('"Olá mundo"');
+      codeLine2.append('tspan').attr('fill', '#e2e8f0').text(')');
+
+      code.append('text')
+        .attr('x', codeX + 92)
+        .attr('y', line3Y)
+        .attr('font-family', fontFamily)
+        .attr('font-size', 34)
+        .attr('fill', '#334155')
+        .text('# corpo da função');
+
+      var highlight = panel.append('g');
+      var defHighlight = highlight.append('rect')
+        .attr('x', codeX + 84)
+        .attr('y', line1Y - 52)
+        .attr('width', 118)
+        .attr('height', 66)
+        .attr('rx', 14)
+        .attr('fill', '#60a5fa')
+        .attr('fill-opacity', 0.26)
+        .attr('stroke', '#60a5fa')
+        .attr('stroke-width', 2)
+        .style('opacity', 0);
+
+      var nameHighlight = highlight.append('line')
+        .attr('x1', codeX + 246)
+        .attr('y1', line1Y + 10)
+        .attr('x2', codeX + 464)
+        .attr('y2', line1Y + 10)
+        .attr('stroke', '#f59e0b')
+        .attr('stroke-width', 6)
+        .attr('stroke-linecap', 'round')
+        .style('opacity', 0);
+
+      var paramsHighlight = highlight.append('ellipse')
+        .attr('cx', codeX + 436)
+        .attr('cy', line1Y - 15)
+        .attr('rx', 34)
+        .attr('ry', 34)
+        .attr('fill', 'none')
+        .attr('stroke', '#22c55e')
+        .attr('stroke-width', 4)
+        .style('opacity', 0);
+
+      var blockHighlight = highlight.append('rect')
+        .attr('x', codeX + 130)
+        .attr('y', line2Y - 58)
+        .attr('width', 665)
+        .attr('height', 74)
+        .attr('rx', 13)
+        .attr('fill', '#f8fafc')
+        .attr('fill-opacity', 0.05)
+        .attr('stroke', '#a78bfa')
+        .attr('stroke-width', 3)
+        .style('opacity', 0);
+
+      var callout = panel.append('g');
+      var calloutRect = callout.append('rect')
+        .attr('rx', 14)
+        .attr('fill', '#ffffff')
+        .attr('stroke', '#cddcf2')
+        .attr('stroke-width', 2)
+        .attr('filter', 'drop-shadow(0px 4px 8px rgba(37, 99, 235, 0.10))');
+
+      var calloutTitle = callout.append('text')
+        .attr('font-family', 'Roboto, sans-serif')
+        .attr('font-size', 34)
+        .attr('font-weight', 700)
+        .attr('fill', '#1e40af');
+
+      var calloutDesc = callout.append('text')
+        .attr('font-family', 'Roboto, sans-serif')
+        .attr('font-size', 22)
+        .attr('fill', '#3b5d85');
+
+      var arrow = panel.append('path')
+        .attr('fill', 'none')
+        .attr('stroke', '#2563eb')
+        .attr('stroke-width', 3)
+        .attr('marker-end', 'url(#func-arrow)');
+
+      function updateCallout(cfg) {
+        calloutRect
+          .attr('x', cfg.boxX)
+          .attr('y', cfg.boxY)
+          .attr('width', cfg.boxW)
+          .attr('height', cfg.boxH);
+        calloutTitle
+          .attr('x', cfg.boxX + 18)
+          .attr('y', cfg.boxY + 38)
+          .text(cfg.title);
+        calloutDesc
+          .attr('x', cfg.boxX + 18)
+          .attr('y', cfg.boxY + 70)
+          .text(cfg.desc);
+        arrow.attr('d', 'M ' + cfg.fromX + ' ' + cfg.fromY + ' Q ' + cfg.ctrlX + ' ' + cfg.ctrlY + ' ' + cfg.toX + ' ' + cfg.toY);
+      }
+
+      function visibleStep() {
+        var step = 0;
+        var fragments = Array.from(slide.querySelectorAll('.fragment[data-func-d3-step]'));
+        fragments.forEach(function (fragment) {
+          if (!fragment.classList.contains('visible')) return;
+          var value = Number(fragment.getAttribute('data-func-d3-step'));
+          if (Number.isFinite(value) && value > step) step = value;
+        });
+        return step;
+      }
+
+      function applyStep(rawStep) {
+        var step = rawStep > 0 ? rawStep : 1;
+        defHighlight.style('opacity', 0);
+        nameHighlight.style('opacity', 0);
+        paramsHighlight.style('opacity', 0);
+        blockHighlight.style('opacity', 0);
+
+        if (step === 1) {
+          defHighlight.style('opacity', 1);
+          updateCallout({
+            boxX: 100,
+            boxY: 82,
+            boxW: 390,
+            boxH: 100,
+            title: 'Palavra-chave def',
+            desc: 'Marca o início da definição.',
+            fromX: 390,
+            fromY: 182,
+            ctrlX: 320,
+            ctrlY: 216,
+            toX: codeX + 138,
+            toY: line1Y - 18
+          });
+          return;
+        }
+        if (step === 2) {
+          nameHighlight.style('opacity', 1);
+          updateCallout({
+            boxX: 760,
+            boxY: 90,
+            boxW: 390,
+            boxH: 100,
+            title: 'Nome da Função',
+            desc: 'Usado para fazer a chamada.',
+            fromX: 760,
+            fromY: 182,
+            ctrlX: 700,
+            ctrlY: 214,
+            toX: codeX + 352,
+            toY: line1Y - 8
+          });
+          return;
+        }
+        if (step === 3) {
+          paramsHighlight.style('opacity', 1);
+          updateCallout({
+            boxX: 760,
+            boxY: 248,
+            boxW: 420,
+            boxH: 100,
+            title: 'Parâmetros',
+            desc: 'Entradas entre parênteses.',
+            fromX: 760,
+            fromY: 320,
+            ctrlX: 710,
+            ctrlY: 288,
+            toX: codeX + 456,
+            toY: line1Y - 15
+          });
+          return;
+        }
+        blockHighlight.style('opacity', 1);
+        updateCallout({
+          boxX: 760,
+          boxY: 440,
+          boxW: 430,
+          boxH: 100,
+          title: 'Bloco de instruções',
+          desc: 'Comandos executados na função.',
+          fromX: 760,
+          fromY: 500,
+          ctrlX: 700,
+          ctrlY: 430,
+          toX: codeX + 430,
+          toY: line2Y - 26
+        });
+      }
+
+      function refreshFromFragment(fragment) {
+        if (!fragment || !fragment.hasAttribute('data-func-d3-step')) return;
+        applyStep(visibleStep());
+      }
+
+      Reveal.on('fragmentshown', function (event) { refreshFromFragment(event.fragment); });
+      Reveal.on('fragmenthidden', function (event) { refreshFromFragment(event.fragment); });
+      Reveal.on('slidechanged', function (event) {
+        if (event.currentSlide === slide) {
+          applyStep(visibleStep());
+        } else {
+          applyStep(1);
+        }
+      });
+
+      applyStep(visibleStep());
+    })();
+
+    (function setupFunctionCallFlowD3() {
+      var slide = document.getElementById('func-call-d3-stage');
+      if (!slide) return;
+      var section = slide.closest('.func-step-slide');
+      if (!section) return;
+
+      if (typeof d3 === 'undefined') {
+        slide.innerHTML = '<p style="font:600 16px Roboto,sans-serif;color:#264d76;padding:16px;">Nao foi possivel carregar d3.js.</p>';
+        return;
+      }
+
+      var W = 1280;
+      var H = 720;
+      var svg = d3.select(slide)
+        .html('')
+        .append('svg')
+        .attr('viewBox', '0 0 ' + W + ' ' + H)
+        .attr('preserveAspectRatio', 'xMidYMid meet');
+
+      var defs = svg.append('defs');
+      var bg = defs.append('linearGradient')
+        .attr('id', 'func-call-bg')
+        .attr('x1', '0%')
+        .attr('x2', '100%')
+        .attr('y1', '0%')
+        .attr('y2', '100%');
+      bg.append('stop').attr('offset', '0%').attr('stop-color', '#f8fbff');
+      bg.append('stop').attr('offset', '100%').attr('stop-color', '#eef4ff');
+
+      defs.append('marker')
+        .attr('id', 'func-call-arrow')
+        .attr('viewBox', '0 0 10 10')
+        .attr('refX', 9)
+        .attr('refY', 5)
+        .attr('markerWidth', 8)
+        .attr('markerHeight', 8)
+        .attr('orient', 'auto')
+        .append('path')
+        .attr('d', 'M 0 0 L 10 5 L 0 10 z')
+        .attr('fill', '#2563eb');
+
+      svg.append('rect')
+        .attr('x', 0)
+        .attr('y', 0)
+        .attr('width', W)
+        .attr('height', H)
+        .attr('fill', 'url(#func-call-bg)');
+
+      svg.append('rect')
+        .attr('x', 54)
+        .attr('y', 38)
+        .attr('width', W - 108)
+        .attr('height', H - 76)
+        .attr('rx', 20)
+        .attr('fill', '#fff')
+        .attr('stroke', '#d4e0f0')
+        .attr('stroke-width', 2);
+
+      var mono = 'JetBrains Mono, Fira Code, Menlo, Consolas, monospace';
+      var body = svg.append('g');
+
+      var mainX = 98;
+      var mainY = 126;
+      var mainW = 508;
+      var mainH = 470;
+      body.append('rect')
+        .attr('x', mainX)
+        .attr('y', mainY)
+        .attr('width', mainW)
+        .attr('height', mainH)
+        .attr('rx', 16)
+        .attr('fill', '#08193b')
+        .attr('stroke', '#1e3359')
+        .attr('stroke-width', 2.2);
+
+      body.append('rect')
+        .attr('x', mainX)
+        .attr('y', mainY)
+        .attr('width', mainW)
+        .attr('height', 44)
+        .attr('rx', 16)
+        .attr('fill', '#0d2248');
+
+      body.append('text')
+        .attr('x', mainX + 20)
+        .attr('y', mainY + 30)
+        .attr('font-family', 'Roboto, sans-serif')
+        .attr('font-size', 20)
+        .attr('font-weight', 700)
+        .attr('fill', '#96b4e7')
+        .text('Programa Principal');
+
+      var m1y = mainY + 118;
+      var m2y = mainY + 192;
+      var m3y = mainY + 266;
+
+      body.append('text').attr('x', mainX + 30).attr('y', m1y).attr('font-family', mono).attr('font-size', 24).attr('fill', '#64748b').text('1');
+      body.append('text').attr('x', mainX + 30).attr('y', m2y).attr('font-family', mono).attr('font-size', 24).attr('fill', '#64748b').text('2');
+      body.append('text').attr('x', mainX + 30).attr('y', m3y).attr('font-family', mono).attr('font-size', 24).attr('fill', '#64748b').text('3');
+
+      var mainLine1 = body.append('text').attr('x', mainX + 72).attr('y', m1y).attr('font-family', mono).attr('font-size', 35);
+      mainLine1.append('tspan').attr('fill', '#c084fc').text('print');
+      mainLine1.append('tspan').attr('fill', '#e2e8f0').text('(');
+      mainLine1.append('tspan').attr('fill', '#34d399').text('"Antes da função"');
+      mainLine1.append('tspan').attr('fill', '#e2e8f0').text(')');
+
+      var mainLine2 = body.append('text').attr('x', mainX + 72).attr('y', m2y).attr('font-family', mono).attr('font-size', 40);
+      mainLine2.append('tspan').attr('fill', '#f8fafc').text('funcao');
+      mainLine2.append('tspan').attr('fill', '#e2e8f0').text('()');
+
+      var mainLine3 = body.append('text').attr('x', mainX + 72).attr('y', m3y).attr('font-family', mono).attr('font-size', 35);
+      mainLine3.append('tspan').attr('fill', '#c084fc').text('print');
+      mainLine3.append('tspan').attr('fill', '#e2e8f0').text('(');
+      mainLine3.append('tspan').attr('fill', '#34d399').text('"Depois da função"');
+      mainLine3.append('tspan').attr('fill', '#e2e8f0').text(')');
+
+      var dots = body.append('g');
+      [336, 390, 444].forEach(function (y) {
+        dots.append('circle')
+          .attr('cx', mainX + 42)
+          .attr('cy', y)
+          .attr('r', 5)
+          .attr('fill', '#5b6f95');
+      });
+
+      var fnX = 674;
+      var fnY = 126;
+      var fnW = 508;
+      var fnH = 320;
+      body.append('rect')
+        .attr('x', fnX)
+        .attr('y', fnY)
+        .attr('width', fnW)
+        .attr('height', fnH)
+        .attr('rx', 16)
+        .attr('fill', '#0a1d44')
+        .attr('stroke', '#223868')
+        .attr('stroke-width', 2.2);
+
+      body.append('rect')
+        .attr('x', fnX)
+        .attr('y', fnY)
+        .attr('width', fnW)
+        .attr('height', 44)
+        .attr('rx', 16)
+        .attr('fill', '#132955');
+
+      body.append('text')
+        .attr('x', fnX + 20)
+        .attr('y', fnY + 30)
+        .attr('font-family', 'Roboto, sans-serif')
+        .attr('font-size', 20)
+        .attr('font-weight', 700)
+        .attr('fill', '#a5c0eb')
+        .text('Função');
+
+      var f1y = fnY + 118;
+      var f2y = fnY + 192;
+      var fnLine1 = body.append('text').attr('x', fnX + 36).attr('y', f1y).attr('font-family', mono).attr('font-size', 40);
+      fnLine1.append('tspan').attr('fill', '#60a5fa').text('def');
+      fnLine1.append('tspan').attr('fill', '#e2e8f0').text(' ');
+      fnLine1.append('tspan').attr('fill', '#f8fafc').text('funcao');
+      fnLine1.append('tspan').attr('fill', '#e2e8f0').text('():');
+
+      var fnLine2 = body.append('text').attr('x', fnX + 78).attr('y', f2y).attr('font-family', mono).attr('font-size', 38);
+      fnLine2.append('tspan').attr('fill', '#c084fc').text('print');
+      fnLine2.append('tspan').attr('fill', '#e2e8f0').text('(');
+      fnLine2.append('tspan').attr('fill', '#34d399').text('"Olá mundo"');
+      fnLine2.append('tspan').attr('fill', '#e2e8f0').text(')');
+
+      var outX = 674;
+      var outY = 468;
+      var outW = 508;
+      var outH = 128;
+      body.append('rect')
+        .attr('x', outX)
+        .attr('y', outY)
+        .attr('width', outW)
+        .attr('height', outH)
+        .attr('rx', 14)
+        .attr('fill', '#f8fbff')
+        .attr('stroke', '#c6d8f3')
+        .attr('stroke-width', 2);
+
+      body.append('text')
+        .attr('x', outX + 18)
+        .attr('y', outY + 33)
+        .attr('font-family', 'Roboto, sans-serif')
+        .attr('font-size', 20)
+        .attr('font-weight', 700)
+        .attr('fill', '#2a4f87')
+        .text('Saída');
+
+      var out1 = body.append('text')
+        .attr('x', outX + 22).attr('y', outY + 66)
+        .attr('font-family', mono).attr('font-size', 22).attr('fill', '#345884')
+        .text('Antes da função');
+
+      var out2 = body.append('text')
+        .attr('x', outX + 22).attr('y', outY + 92)
+        .attr('font-family', mono).attr('font-size', 22).attr('fill', '#345884')
+        .text('Olá mundo');
+
+      var out3 = body.append('text')
+        .attr('x', outX + 22).attr('y', outY + 118)
+        .attr('font-family', mono).attr('font-size', 22).attr('fill', '#345884')
+        .text('Depois da função');
+
+      var mainCallHighlight = body.append('rect')
+        .attr('x', mainX + 56).attr('y', m2y - 46).attr('width', 240).attr('height', 56)
+        .attr('rx', 10).attr('fill', '#60a5fa').attr('fill-opacity', 0.18)
+        .attr('stroke', '#60a5fa').attr('stroke-width', 2.4).style('opacity', 0);
+
+      var mainBeforeHighlight = body.append('rect')
+        .attr('x', mainX + 56).attr('y', m1y - 46).attr('width', 470).attr('height', 56)
+        .attr('rx', 10).attr('fill', '#14b8a6').attr('fill-opacity', 0.14)
+        .attr('stroke', '#14b8a6').attr('stroke-width', 2.4).style('opacity', 0);
+
+      var fnExecHighlight = body.append('rect')
+        .attr('x', fnX + 62).attr('y', f2y - 44).attr('width', 336).attr('height', 56)
+        .attr('rx', 10).attr('fill', '#34d399').attr('fill-opacity', 0.14)
+        .attr('stroke', '#34d399').attr('stroke-width', 2.4).style('opacity', 0);
+
+      var mainContHighlight = body.append('rect')
+        .attr('x', mainX + 56).attr('y', m3y - 46).attr('width', 470).attr('height', 56)
+        .attr('rx', 10).attr('fill', '#f59e0b').attr('fill-opacity', 0.14)
+        .attr('stroke', '#f59e0b').attr('stroke-width', 2.4).style('opacity', 0);
+
+      var arrow1 = body.append('path').attr('fill', 'none').attr('stroke', '#2563eb').attr('stroke-width', 4).attr('marker-end', 'url(#func-call-arrow)').style('opacity', 0);
+      var arrow2 = body.append('path').attr('fill', 'none').attr('stroke', '#16a34a').attr('stroke-width', 4).attr('marker-end', 'url(#func-call-arrow)').style('opacity', 0);
+      var arrow3 = body.append('path').attr('fill', 'none').attr('stroke', '#2563eb').attr('stroke-width', 4).attr('marker-end', 'url(#func-call-arrow)').style('opacity', 0);
+      var arrow4 = body.append('path').attr('fill', 'none').attr('stroke', '#f59e0b').attr('stroke-width', 4).attr('marker-end', 'url(#func-call-arrow)').style('opacity', 0);
+
+      arrow1.attr('d', 'M ' + (mainX + 300) + ' ' + (m2y - 20) + ' C 610 250, 640 236, ' + (fnX + 78) + ' ' + (f1y - 18));
+      arrow2.attr('d', 'M ' + (fnX + 252) + ' ' + (f1y - 16) + ' C 1090 184, 1100 228, ' + (fnX + 220) + ' ' + (f2y - 20));
+      arrow3.attr('d', 'M ' + (fnX + 160) + ' ' + (f2y - 10) + ' C 635 388, 594 412, ' + (mainX + 302) + ' ' + (m3y - 22));
+      arrow4.attr('d', 'M ' + (mainX + 412) + ' ' + (m3y - 20) + ' C 700 420, 770 436, ' + (outX + 218) + ' ' + (outY + 112));
+
+      function badge(x, y, text, color) {
+        var g = body.append('g').style('opacity', 0);
+        g.append('circle').attr('cx', x).attr('cy', y).attr('r', 18).attr('fill', color);
+        g.append('text')
+          .attr('x', x).attr('y', y + 7)
+          .attr('text-anchor', 'middle')
+          .attr('font-family', 'Roboto, sans-serif')
+          .attr('font-size', 20)
+          .attr('font-weight', 800)
+          .attr('fill', '#fff')
+          .text(text);
+        return g;
+      }
+
+      var b1 = badge(mainX + 540, m1y - 22, '1', '#14b8a6');
+      var b2 = badge(622, 226, '2', '#2563eb');
+      var b3 = badge(1106, 226, '3', '#16a34a');
+      var b4 = badge(622, 394, '4', '#2563eb');
+      var b5 = badge(outX + 244, outY + 114, '5', '#f59e0b');
+
+      var statusBox = body.append('rect')
+        .attr('x', 98).attr('y', 620).attr('width', W - 196).attr('height', 56).attr('rx', 12)
+        .attr('fill', '#f7fbff').attr('stroke', '#cadbf1').attr('stroke-width', 2);
+      var statusText = body.append('text')
+        .attr('x', 120).attr('y', 656)
+        .attr('font-family', 'Roboto, sans-serif')
+        .attr('font-size', 26)
+        .attr('font-weight', 600)
+        .attr('fill', '#2b4f79');
+
+      function visibleStep() {
+        var step = 0;
+        var fragments = Array.from(section.querySelectorAll('.fragment[data-func-call-step]'));
+        fragments.forEach(function (fragment) {
+          if (!fragment.classList.contains('visible')) return;
+          var value = Number(fragment.getAttribute('data-func-call-step'));
+          if (Number.isFinite(value) && value > step) step = value;
+        });
+        return step;
+      }
+
+      function setOpacity(sel, on) {
+        sel.style('opacity', on ? 1 : 0);
+      }
+
+      function applyStep(stepRaw) {
+        var step = stepRaw > 0 ? stepRaw : 1;
+
+        setOpacity(mainBeforeHighlight, step >= 1);
+        setOpacity(b1, step >= 1);
+
+        setOpacity(mainCallHighlight, step >= 2);
+        setOpacity(arrow1, step >= 2);
+        setOpacity(b2, step >= 2);
+
+        setOpacity(fnExecHighlight, step >= 3);
+        setOpacity(arrow2, step >= 3);
+        setOpacity(b3, step >= 3);
+
+        setOpacity(arrow3, step >= 4);
+        setOpacity(b4, step >= 4);
+
+        setOpacity(mainContHighlight, step >= 5);
+        setOpacity(arrow4, step >= 5);
+        setOpacity(b5, step >= 5);
+
+        out1.attr('fill', step >= 1 ? '#1e3a5f' : '#8aa0be').attr('font-weight', step >= 1 ? 700 : 400);
+        out2.attr('fill', step >= 3 ? '#1e3a5f' : '#8aa0be').attr('font-weight', step >= 3 ? 700 : 400);
+        out3.attr('fill', step >= 5 ? '#1e3a5f' : '#8aa0be').attr('font-weight', step >= 5 ? 700 : 400);
+
+        if (step === 1) {
+          statusText.text('1) Programa: print("Antes da função").');
+          return;
+        }
+        if (step === 2) {
+          statusText.text('2) Programa: chamada da função funcao().');
+          return;
+        }
+        if (step === 3) {
+          statusText.text('3) Função: executa print("Olá mundo").');
+          return;
+        }
+        if (step === 4) {
+          statusText.text('4) Função: término e retorno ao programa principal.');
+          return;
+        }
+        statusText.text('5) Programa: continua em print("Depois da função").');
+      }
+
+      function refreshFromFragment(fragment) {
+        if (!fragment || !fragment.hasAttribute('data-func-call-step')) return;
+        applyStep(visibleStep());
+      }
+
+      Reveal.on('fragmentshown', function (event) { refreshFromFragment(event.fragment); });
+      Reveal.on('fragmenthidden', function (event) { refreshFromFragment(event.fragment); });
+      Reveal.on('slidechanged', function (event) {
+        if (event.currentSlide === section) {
+          applyStep(visibleStep());
+        } else {
+          applyStep(1);
+        }
+      });
+
+      applyStep(visibleStep());
+    })();
+
+  </script>
+</body>
+
+</html>
